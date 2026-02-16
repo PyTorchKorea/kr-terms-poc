@@ -24,6 +24,34 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Validate term data
+        run: |
+          node -e "
+          const fs = require('fs');
+          const index = JSON.parse(fs.readFileSync('data/index.json', 'utf-8'));
+          let errors = 0;
+          for (const file of index) {
+            const terms = JSON.parse(fs.readFileSync('data/' + file, 'utf-8'));
+            for (const term of terms) {
+              if (!term.term || !Array.isArray(term.meanings) || term.meanings.length === 0) {
+                console.error('Invalid term in ' + file + ':', term.term);
+                errors++;
+              }
+              for (const m of term.meanings) {
+                if (!m.korean || !m.domain || !m.definition) {
+                  console.error('Missing fields in ' + file + ' term: ' + term.term);
+                  errors++;
+                }
+                if (m.domain.includes(' ')) {
+                  console.error('Domain has spaces in ' + file + ': ' + m.domain);
+                  errors++;
+                }
+              }
+            }
+          }
+          if (errors > 0) { console.error(errors + ' validation errors found'); process.exit(1); }
+          console.log('All ' + index.length + ' data files validated successfully');
+          "
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,7 +1,14 @@
 {
   "name": "terms-kr",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "AI/ML 용어의 한국어 번역을 표준화하는 오픈소스 사전",
+  "author": "9bow",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/9bow/terms-kr"
+  },
   "type": "module",
   "scripts": {
     "predev": "cp -r data/ public/data/",
