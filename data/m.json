@@ -1,0 +1,105 @@
+[
+  {
+    "term": "model",
+    "meanings": [
+      {
+        "korean": "모델",
+        "domain": "머신러닝",
+        "definition": "데이터로부터 학습된 패턴을 바탕으로 예측이나 결정을 수행하는 수학적 구조",
+        "examples": ["CNN 모델은 이미지 분류에 특화되어 있다.", "모델을 저장하고 나중에 다시 불러올 수 있다."],
+        "synonyms": ["학습 모델", "예측 모델"]
+      },
+      {
+        "korean": "모형",
+        "domain": "통계",
+        "definition": "현상을 설명하거나 예측하기 위한 수학적 또는 개념적 표현",
+        "examples": ["회귀 모형을 사용하여 변수 간 관계를 분석한다.", "통계 모형의 적합도를 검증해야 한다."],
+        "synonyms": ["통계 모형", "수학 모형"]
+      }
+    ]
+  },
+  {
+    "term": "momentum",
+    "meanings": [
+      {
+        "korean": "모멘텀",
+        "domain": "최적화",
+        "definition": "이전 그래디언트의 방향을 고려하여 현재 업데이트 방향을 결정하는 최적화 기법",
+        "examples": ["모멘텀은 지역 최솟값을 벗어나는 데 도움을 준다.", "SGD with momentum은 일반 SGD보다 빠르게 수렴한다."],
+        "synonyms": ["운동량", "관성"]
+      }
+    ]
+  },
+  {
+    "term": "machine translation",
+    "meanings": [
+      {
+        "korean": "기계 번역",
+        "domain": "자연어처리",
+        "definition": "한 언어의 텍스트를 다른 언어로 자동 변환하는 기술로, 시퀀스-투-시퀀스 모델이나 트랜스포머가 주로 사용됩니다.",
+        "examples": ["신경망 기반 machine translation은 통계적 방법보다 자연스러운 번역을 생성한다."],
+        "synonyms": ["NMT", "신경 기계 번역"]
+      }
+    ]
+  },
+  {
+    "term": "Markov decision process",
+    "meanings": [
+      {
+        "korean": "마르코프 결정 과정",
+        "domain": "강화학습",
+        "definition": "순차적 의사결정 문제를 수학적으로 정형화한 프레임워크로, 상태, 행동, 전이 확률, 보상으로 구성됩니다.",
+        "examples": ["대부분의 강화학습 문제는 Markov decision process로 모델링할 수 있다."],
+        "synonyms": ["MDP"]
+      }
+    ]
+  },
+  {
+    "term": "mixed precision",
+    "meanings": [
+      {
+        "korean": "혼합 정밀도",
+        "domain": "모델최적화",
+        "definition": "FP16과 FP32를 혼합하여 연산하는 기법으로, 메모리 사용량을 줄이고 학습 속도를 높이면서 정밀도를 유지합니다.",
+        "examples": ["mixed precision training은 최신 GPU에서 2-3배의 학습 속도 향상을 가져온다."],
+        "synonyms": ["혼합 정밀도 학습"]
+      }
+    ]
+  },
+  {
+    "term": "model parallelism",
+    "meanings": [
+      {
+        "korean": "모델 병렬화",
+        "domain": "분산학습",
+        "definition": "하나의 모델을 여러 GPU에 분할하여 배치하는 병렬 처리 기법으로, 단일 GPU 메모리에 담기지 않는 대형 모델 학습에 사용됩니다.",
+        "examples": ["GPT-3와 같은 초대형 모델은 model parallelism 없이는 학습이 불가능하다."],
+        "synonyms": ["모델 병렬 처리"]
+      }
+    ]
+  },
+  {
+    "term": "model serving",
+    "meanings": [
+      {
+        "korean": "모델 서빙",
+        "domain": "배포/인프라",
+        "definition": "학습된 모델을 API나 서비스 형태로 배포하여 실시간 추론 요청을 처리하는 시스템입니다.",
+        "examples": ["TorchServe는 PyTorch 모델의 model serving을 위한 공식 프레임워크이다."],
+        "synonyms": ["모델 배포", "추론 서빙"]
+      }
+    ]
+  },
+  {
+    "term": "mel-frequency",
+    "meanings": [
+      {
+        "korean": "멜 주파수",
+        "domain": "음성처리",
+        "definition": "인간의 청각 인지 특성을 반영한 주파수 척도로, 음성 신호를 스펙트럼으로 변환할 때 사용됩니다.",
+        "examples": ["mel-frequency cepstral coefficients(MFCC)는 음성 인식의 기본 특징으로 사용된다."],
+        "synonyms": ["멜 스케일"]
+      }
+    ]
+  }
+]

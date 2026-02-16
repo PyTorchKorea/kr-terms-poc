@@ -1,0 +1,62 @@
+[
+  {
+    "term": "gradient",
+    "meanings": [
+      {
+        "korean": "그래디언트",
+        "domain": "최적화",
+        "definition": "손실 함수의 각 매개변수에 대한 편미분 값으로, 매개변수 업데이트 방향을 결정",
+        "examples": ["그래디언트 하강법은 그래디언트의 반대 방향으로 매개변수를 업데이트한다.", "그래디언트가 0에 가까우면 최적점에 도달했음을 의미한다."],
+        "synonyms": ["기울기", "경사"]
+      }
+    ]
+  },
+  {
+    "term": "generative model",
+    "meanings": [
+      {
+        "korean": "생성 모델",
+        "domain": "생성형 AI",
+        "definition": "학습 데이터의 분포를 학습하여 새로운 데이터를 생성하는 모델",
+        "examples": ["GAN과 VAE는 대표적인 생성 모델이다.", "생성 모델은 이미지, 텍스트, 음악 등 다양한 콘텐츠를 만들어낼 수 있다."],
+        "synonyms": ["제너레이티브 모델", "생성형 모델"]
+      }
+    ]
+  },
+  {
+    "term": "gradient accumulation",
+    "meanings": [
+      {
+        "korean": "그래디언트 누적",
+        "domain": "모델최적화",
+        "definition": "여러 미니배치의 그래디언트를 합산한 후 한 번에 파라미터를 업데이트하여, 메모리 제한 하에서 큰 배치 크기의 효과를 얻는 기법입니다.",
+        "examples": ["GPU 메모리가 부족할 때 gradient accumulation을 사용하면 효과적인 배치 크기를 늘릴 수 있다."],
+        "synonyms": ["그래디언트 축적"]
+      }
+    ]
+  },
+  {
+    "term": "gradient synchronization",
+    "meanings": [
+      {
+        "korean": "그래디언트 동기화",
+        "domain": "분산학습",
+        "definition": "분산 학습에서 각 노드의 그래디언트를 통합하여 모든 노드가 동일한 모델 업데이트를 수행하도록 하는 과정입니다.",
+        "examples": ["gradient synchronization의 효율성이 분산 학습의 확장성을 결정한다."],
+        "synonyms": ["그래디언트 통신"]
+      }
+    ]
+  },
+  {
+    "term": "GAN",
+    "meanings": [
+      {
+        "korean": "생성적 적대 신경망",
+        "domain": "딥러닝",
+        "definition": "생성자와 판별자 두 신경망이 경쟁적으로 학습하여 실제와 유사한 데이터를 생성하는 모델 구조입니다.",
+        "examples": ["GAN은 사실적인 이미지 생성, 스타일 변환 등에 널리 활용된다.", "학습이 불안정할 수 있어 다양한 GAN 변형이 제안되었다."],
+        "synonyms": ["갠", "적대적 생성 신경망"]
+      }
+    ]
+  }
+]

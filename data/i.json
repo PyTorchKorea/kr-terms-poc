@@ -1,0 +1,50 @@
+[
+  {
+    "term": "inference",
+    "meanings": [
+      {
+        "korean": "추론",
+        "domain": "머신러닝",
+        "definition": "학습이 완료된 모델을 사용하여 새로운 입력 데이터에 대한 예측을 수행하는 과정",
+        "examples": ["추론 시에는 역전파가 필요 없으므로 계산이 빠르다.", "엣지 디바이스에서 실시간 추론을 수행한다."],
+        "synonyms": ["예측", "인퍼런스"]
+      }
+    ]
+  },
+  {
+    "term": "iteration",
+    "meanings": [
+      {
+        "korean": "반복",
+        "domain": "학습",
+        "definition": "하나의 배치를 사용하여 모델 매개변수를 한 번 업데이트하는 과정",
+        "examples": ["1 에포크는 전체 데이터셋 크기를 배치 크기로 나눈 만큼의 반복을 포함한다.", "매 반복마다 손실 함수 값을 기록하여 학습 진행 상황을 모니터링한다."],
+        "synonyms": ["이터레이션", "학습 단계"]
+      }
+    ]
+  },
+  {
+    "term": "image classification",
+    "meanings": [
+      {
+        "korean": "이미지 분류",
+        "domain": "컴퓨터비전",
+        "definition": "입력 이미지를 사전 정의된 카테고리 중 하나로 분류하는 컴퓨터비전 태스크입니다.",
+        "examples": ["ResNet은 image classification에서 획기적인 성능 향상을 달성했다."],
+        "synonyms": ["영상 분류"]
+      }
+    ]
+  },
+  {
+    "term": "image segmentation",
+    "meanings": [
+      {
+        "korean": "이미지 분할",
+        "domain": "컴퓨터비전",
+        "definition": "이미지의 각 픽셀을 특정 클래스로 분류하여 객체의 정확한 영역을 식별하는 기법입니다.",
+        "examples": ["자율주행에서 image segmentation은 도로, 차량, 보행자를 구분하는 데 사용된다."],
+        "synonyms": ["영상 분할", "세그멘테이션"]
+      }
+    ]
+  }
+]

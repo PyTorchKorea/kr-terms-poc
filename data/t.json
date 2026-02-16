@@ -1,0 +1,98 @@
+[
+  {
+    "term": "tensor",
+    "meanings": [
+      {
+        "korean": "텐서",
+        "domain": "딥러닝",
+        "definition": "다차원 배열 형태의 데이터 구조로, 신경망에서 데이터를 표현하는 기본 단위",
+        "examples": ["이미지는 3차원 텐서(높이, 너비, 채널)로 표현된다.", "PyTorch와 TensorFlow는 텐서 연산을 지원하는 프레임워크다."],
+        "synonyms": ["다차원 배열", "행렬"]
+      }
+    ]
+  },
+  {
+    "term": "training",
+    "meanings": [
+      {
+        "korean": "훈련",
+        "domain": "머신러닝",
+        "definition": "데이터를 사용하여 모델의 매개변수를 최적화하는 과정",
+        "examples": ["모델 훈련에 GPU를 사용하면 속도가 크게 향상된다.", "훈련 과정에서 손실이 감소하는지 모니터링한다."],
+        "synonyms": ["학습", "트레이닝"]
+      }
+    ]
+  },
+  {
+    "term": "transformer",
+    "meanings": [
+      {
+        "korean": "트랜스포머",
+        "domain": "딥러닝",
+        "definition": "어텐션 메커니즘만을 사용하여 시퀀스 데이터를 처리하는 신경망 아키텍처",
+        "examples": ["BERT와 GPT는 트랜스포머 기반 모델이다.", "트랜스포머는 자연어 처리의 표준 아키텍처가 되었다."],
+        "synonyms": ["변환기", "트랜스포머 모델"]
+      }
+    ]
+  },
+  {
+    "term": "transfer learning",
+    "meanings": [
+      {
+        "korean": "전이학습",
+        "domain": "머신러닝",
+        "definition": "한 작업에서 학습한 지식을 다른 관련 작업에 적용하는 학습 방법",
+        "examples": ["ImageNet에서 사전 학습된 모델을 의료 이미지 분석에 전이학습했다.", "전이학습은 데이터가 부족한 상황에서 효과적이다."],
+        "synonyms": ["전달 학습", "트랜스퍼 러닝"]
+      }
+    ]
+  },
+  {
+    "term": "text-to-speech",
+    "meanings": [
+      {
+        "korean": "텍스트 음성 변환",
+        "domain": "음성처리",
+        "definition": "텍스트를 자연스러운 음성으로 변환하는 기술입니다.",
+        "examples": ["Tacotron은 딥러닝 기반의 text-to-speech 모델이다."],
+        "synonyms": ["TTS", "음성 합성"]
+      }
+    ]
+  },
+  {
+    "term": "TensorBoard",
+    "meanings": [
+      {
+        "korean": "텐서보드",
+        "domain": "배포/인프라",
+        "definition": "학습 과정의 지표, 그래프, 히스토그램 등을 시각화하는 도구입니다.",
+        "examples": ["TensorBoard로 학습 손실과 정확도의 변화 추이를 모니터링할 수 있다."],
+        "synonyms": ["텐서보드"]
+      }
+    ]
+  },
+  {
+    "term": "tensor parallelism",
+    "meanings": [
+      {
+        "korean": "텐서 병렬화",
+        "domain": "분산학습",
+        "definition": "개별 텐서 연산을 여러 GPU에 분할하여 수행하는 병렬 기법으로, 대형 모델의 단일 레이어를 병렬 처리합니다.",
+        "examples": ["Megatron-LM은 tensor parallelism을 사용하여 초대형 트랜스포머를 학습한다."],
+        "synonyms": ["텐서 병렬 처리"]
+      }
+    ]
+  },
+  {
+    "term": "tokenization",
+    "meanings": [
+      {
+        "korean": "토큰화",
+        "domain": "자연어처리",
+        "definition": "텍스트를 모델이 처리할 수 있는 최소 단위(토큰)로 분리하는 전처리 과정입니다.",
+        "examples": ["BPE(Byte Pair Encoding)는 널리 사용되는 서브워드 tokenization 방법이다.", "한국어 tokenization에는 형태소 분석기가 자주 활용된다."],
+        "synonyms": ["토큰 분리"]
+      }
+    ]
+  }
+]

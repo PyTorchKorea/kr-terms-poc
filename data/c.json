@@ -1,0 +1,74 @@
+[
+  {
+    "term": "classification",
+    "meanings": [
+      {
+        "korean": "분류",
+        "domain": "머신러닝",
+        "definition": "입력 데이터를 미리 정의된 범주 중 하나로 할당하는 지도학습 작업",
+        "examples": ["이미지 분류 모델은 사진이 고양이인지 개인지 판별한다.", "이진 분류는 두 개의 클래스 중 하나를 선택하는 작업이다."],
+        "synonyms": ["범주화", "카테고리화"]
+      }
+    ]
+  },
+  {
+    "term": "convolution",
+    "meanings": [
+      {
+        "korean": "합성곱",
+        "domain": "컴퓨터 비전",
+        "definition": "이미지의 일부 영역에 필터를 적용하여 특징을 추출하는 연산",
+        "examples": ["합성곱 신경망은 이미지 인식에서 뛰어난 성능을 보인다.", "합성곱 연산은 이미지의 공간적 특성을 효과적으로 학습한다."],
+        "synonyms": ["컨볼루션", "합성곱 연산"]
+      }
+    ]
+  },
+  {
+    "term": "cross-entropy",
+    "meanings": [
+      {
+        "korean": "교차 엔트로피",
+        "domain": "머신러닝",
+        "definition": "예측 확률 분포와 실제 분포 간의 차이를 측정하는 손실 함수",
+        "examples": ["분류 문제에서 교차 엔트로피 손실이 주로 사용된다.", "교차 엔트로피 값이 낮을수록 예측이 정확하다."],
+        "synonyms": ["크로스 엔트로피", "교차 엔트로피 손실"]
+      }
+    ]
+  },
+  {
+    "term": "computational graph",
+    "meanings": [
+      {
+        "korean": "계산 그래프",
+        "domain": "자동미분",
+        "definition": "수학적 연산의 흐름을 방향 그래프로 표현한 것으로, 자동 미분과 역전파의 기반이 됩니다.",
+        "examples": ["PyTorch는 동적 계산 그래프를 사용하여 유연한 모델 구성을 지원한다."],
+        "synonyms": ["연산 그래프"]
+      }
+    ]
+  },
+  {
+    "term": "chain rule",
+    "meanings": [
+      {
+        "korean": "연쇄 법칙",
+        "domain": "자동미분",
+        "definition": "합성 함수의 미분을 구하기 위한 수학적 법칙으로, 역전파 알고리즘의 이론적 기초입니다.",
+        "examples": ["역전파는 chain rule을 반복 적용하여 각 파라미터의 그래디언트를 계산한다."],
+        "synonyms": ["연쇄율", "체인 룰"]
+      }
+    ]
+  },
+  {
+    "term": "CUDA",
+    "meanings": [
+      {
+        "korean": "CUDA",
+        "domain": "배포/인프라",
+        "definition": "NVIDIA의 병렬 컴퓨팅 플랫폼으로, GPU를 활용한 범용 연산을 가능하게 합니다.",
+        "examples": ["CUDA를 지원하는 GPU가 있어야 PyTorch에서 GPU 학습이 가능하다.", "torch.cuda.is_available()로 CUDA 사용 가능 여부를 확인할 수 있다."],
+        "synonyms": ["쿠다"]
+      }
+    ]
+  }
+]

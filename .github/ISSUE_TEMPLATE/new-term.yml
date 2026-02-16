@@ -1,0 +1,41 @@
+name: 새 용어 요청
+description: 사전에 없는 AI/ML 용어의 추가를 요청합니다
+title: "[새 용어] "
+labels: ["새 용어 요청"]
+body:
+  - type: input
+    id: term
+    attributes:
+      label: 영문 용어
+      description: 추가를 요청하는 영문 용어를 입력하세요
+      placeholder: "예: retrieval-augmented generation"
+    validations:
+      required: true
+  - type: input
+    id: korean
+    attributes:
+      label: 제안 한글 번역
+      description: 적절한 한글 번역을 제안해주세요
+      placeholder: "예: 검색 증강 생성"
+    validations:
+      required: true
+  - type: input
+    id: domain
+    attributes:
+      label: 분야
+      description: 해당 용어가 사용되는 AI/ML 세부 분야
+      placeholder: "예: 자연어처리"
+    validations:
+      required: true
+  - type: textarea
+    id: definition
+    attributes:
+      label: 정의
+      description: 용어에 대한 간결한 한국어 정의를 작성해주세요
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: 사용 예시 (선택)
+      description: 실제 기술 문서에서 사용되는 예시 문장

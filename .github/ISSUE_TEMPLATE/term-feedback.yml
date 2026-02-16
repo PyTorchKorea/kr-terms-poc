@@ -1,0 +1,39 @@
+name: 용어 피드백
+description: AI/ML 용어의 번역이나 설명에 대한 의견을 제안합니다
+title: "[용어 피드백] "
+labels: ["용어 피드백"]
+body:
+  - type: input
+    id: term
+    attributes:
+      label: 영문 용어
+      description: 피드백을 제공하려는 영문 용어를 입력하세요
+      placeholder: "예: attention"
+    validations:
+      required: true
+  - type: dropdown
+    id: feedback-type
+    attributes:
+      label: 피드백 유형
+      options:
+        - 번역 개선 제안
+        - 새로운 의미 추가
+        - 예시 문장 추가/수정
+        - 유의어 추가
+        - 오류 수정
+        - 기타
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 제안 내용
+      description: 구체적인 제안 내용을 작성해주세요
+      placeholder: "현재 번역: ...\n제안 번역: ...\n이유: ..."
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 추가 맥락 (선택)
+      description: 참고 자료나 추가 설명이 있다면 작성해주세요

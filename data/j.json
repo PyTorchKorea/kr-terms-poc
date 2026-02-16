@@ -1,0 +1,14 @@
+[
+  {
+    "term": "jacobian",
+    "meanings": [
+      {
+        "korean": "야코비안",
+        "domain": "자동미분",
+        "definition": "다변수 벡터 함수의 일차 편미분으로 구성된 행렬로, 함수의 국소적 선형 변환을 나타냅니다.",
+        "examples": ["torch.autograd.functional.jacobian으로 야코비안 행렬을 계산할 수 있다."],
+        "synonyms": ["야코비 행렬"]
+      }
+    ]
+  }
+]

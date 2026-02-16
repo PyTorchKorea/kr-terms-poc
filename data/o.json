@@ -1,0 +1,50 @@
+[
+  {
+    "term": "optimizer",
+    "meanings": [
+      {
+        "korean": "옵티마이저",
+        "domain": "최적화",
+        "definition": "손실 함수를 최소화하기 위해 모델의 매개변수를 업데이트하는 알고리즘",
+        "examples": ["Adam 옵티마이저는 적응형 학습률을 사용한다.", "적절한 옵티마이저 선택은 학습 성능에 큰 영향을 미친다."],
+        "synonyms": ["최적화 알고리즘", "최적화기"]
+      }
+    ]
+  },
+  {
+    "term": "overfitting",
+    "meanings": [
+      {
+        "korean": "과적합",
+        "domain": "머신러닝",
+        "definition": "모델이 훈련 데이터에 지나치게 특화되어 새로운 데이터에 대한 일반화 성능이 떨어지는 현상",
+        "examples": ["과적합을 방지하기 위해 정규화 기법을 사용한다.", "훈련 정확도는 높지만 검증 정확도가 낮으면 과적합을 의심해야 한다."],
+        "synonyms": ["과대적합", "오버피팅"]
+      }
+    ]
+  },
+  {
+    "term": "object detection",
+    "meanings": [
+      {
+        "korean": "객체 검출",
+        "domain": "컴퓨터비전",
+        "definition": "이미지에서 특정 객체의 위치와 종류를 동시에 식별하는 컴퓨터비전 태스크입니다.",
+        "examples": ["YOLO는 실시간 object detection에 최적화된 모델이다.", "자율주행에서 object detection은 핵심 기술이다."],
+        "synonyms": ["객체 탐지", "물체 검출"]
+      }
+    ]
+  },
+  {
+    "term": "ONNX",
+    "meanings": [
+      {
+        "korean": "ONNX",
+        "domain": "배포/인프라",
+        "definition": "서로 다른 딥러닝 프레임워크 간 모델을 교환할 수 있는 개방형 표준 형식입니다.",
+        "examples": ["PyTorch 모델을 ONNX 형식으로 내보내면 다양한 추론 엔진에서 실행할 수 있다."],
+        "synonyms": ["오픈 신경망 교환 형식"]
+      }
+    ]
+  }
+]
