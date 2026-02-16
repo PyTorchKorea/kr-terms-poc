@@ -14,13 +14,3 @@ const domainColorMap: Record<string, string> = {
 export function getDomainColor(domain: string): string {
   return domainColorMap[domain] || '#757575'
 }
-
-export function getAllDomains(terms: Array<{ meanings: Array<{ domain: string }> }>): string[] {
-  const domainsSet = new Set<string>()
-  terms.forEach((term) => {
-    term.meanings.forEach((meaning) => {
-      domainsSet.add(meaning.domain)
-    })
-  })
-  return Array.from(domainsSet).sort()
-}
