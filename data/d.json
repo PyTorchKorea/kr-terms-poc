@@ -82,5 +82,29 @@
         "synonyms": ["DDP", "분산 데이터 병렬 처리"]
       }
     ]
+  },
+  {
+    "term": "deep neural network",
+    "meanings": [
+      {
+        "korean": "심층 신경망",
+        "domain": "딥러닝",
+        "definition": "여러 개의 은닉층을 가진 인공 신경망으로, 복잡한 비선형 관계를 학습할 수 있습니다.",
+        "examples": ["심층 신경망은 이미지 인식과 음성 인식에서 뛰어난 성능을 보인다."],
+        "synonyms": ["DNN"]
+      }
+    ]
+  },
+  {
+    "term": "derivative",
+    "meanings": [
+      {
+        "korean": "도함수",
+        "domain": "자동미분",
+        "definition": "함수의 변화율을 나타내는 수학적 개념으로, 신경망의 역전파에서 손실 함수의 기울기를 계산하는 데 사용됩니다.",
+        "examples": ["역전파 알고리즘은 손실 함수의 derivative를 각 가중치에 대해 계산한다."],
+        "synonyms": ["미분", "미분값"]
+      }
+    ]
   }
 ]

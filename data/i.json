@@ -46,5 +46,29 @@
         "synonyms": ["영상 분할", "세그멘테이션"]
       }
     ]
+  },
+  {
+    "term": "initialization",
+    "meanings": [
+      {
+        "korean": "초기화",
+        "domain": "딥러닝",
+        "definition": "신경망의 가중치를 학습 시작 전에 적절한 값으로 설정하는 과정으로, 학습의 수렴 속도와 성능에 큰 영향을 미칩니다.",
+        "examples": ["Xavier initialization은 시그모이드 활성화 함수와 잘 작동한다.", "He initialization은 ReLU 활성화 함수에 적합하다."],
+        "synonyms": ["가중치 초기화"]
+      }
+    ]
+  },
+  {
+    "term": "in-place",
+    "meanings": [
+      {
+        "korean": "제자리",
+        "domain": "딥러닝",
+        "definition": "새로운 텐서를 생성하지 않고 기존 텐서의 값을 직접 수정하는 연산 방식으로, 메모리를 절약할 수 있습니다.",
+        "examples": ["PyTorch에서 in-place 연산은 함수 이름 뒤에 밑줄(_)을 붙여 표시한다.", "x.add_(1)은 x에 1을 더하는 in-place 연산이다."],
+        "synonyms": ["제자리 연산"]
+      }
+    ]
   }
 ]

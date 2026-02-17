@@ -46,5 +46,17 @@
         "synonyms": ["오픈 신경망 교환 형식"]
       }
     ]
+  },
+  {
+    "term": "one-hot encoding",
+    "meanings": [
+      {
+        "korean": "원-핫 인코딩",
+        "domain": "머신러닝",
+        "definition": "범주형 변수를 이진 벡터로 변환하는 기법으로, 해당 범주의 위치만 1이고 나머지는 0인 벡터를 만듭니다.",
+        "examples": ["3개 클래스 중 두 번째 클래스는 one-hot encoding으로 [0, 1, 0]이 된다."],
+        "synonyms": ["원핫 인코딩"]
+      }
+    ]
   }
 ]

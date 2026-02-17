@@ -70,5 +70,17 @@
         "synonyms": ["쿠다"]
       }
     ]
+  },
+  {
+    "term": "confusion matrix",
+    "meanings": [
+      {
+        "korean": "혼동 행렬",
+        "domain": "머신러닝",
+        "definition": "분류 모델의 예측 결과를 실제 값과 비교하여 정리한 행렬로, 모델의 성능을 시각적으로 평가하는 데 사용됩니다.",
+        "examples": ["confusion matrix를 통해 모델이 어떤 클래스를 잘못 분류하는지 확인할 수 있다."],
+        "synonyms": ["오차 행렬"]
+      }
+    ]
   }
 ]

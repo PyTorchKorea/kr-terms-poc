@@ -101,5 +101,29 @@
         "synonyms": ["멜 스케일"]
       }
     ]
+  },
+  {
+    "term": "mean-squared error",
+    "meanings": [
+      {
+        "korean": "평균제곱오차",
+        "domain": "머신러닝",
+        "definition": "예측값과 실제값 차이의 제곱 평균으로, 회귀 문제에서 가장 널리 사용되는 손실 함수입니다.",
+        "examples": ["MSE가 0에 가까울수록 모델의 예측이 정확하다.", "nn.MSELoss()로 mean-squared error 손실 함수를 사용할 수 있다."],
+        "synonyms": ["MSE", "평균 제곱 오차"]
+      }
+    ]
+  },
+  {
+    "term": "mini-batch",
+    "meanings": [
+      {
+        "korean": "미니배치",
+        "domain": "딥러닝",
+        "definition": "전체 학습 데이터를 작은 그룹으로 나눈 것으로, 확률적 경사 하강법에서 한 번의 업데이트에 사용되는 데이터 부분 집합입니다.",
+        "examples": ["mini-batch 크기는 학습 속도와 메모리 사용량에 영향을 미친다."],
+        "synonyms": ["미니 배치"]
+      }
+    ]
   }
 ]

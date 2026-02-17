@@ -19,7 +19,7 @@
         "domain": "학습",
         "definition": "전체 훈련 데이터셋을 한 번 완전히 학습하는 과정",
         "examples": ["모델을 100 에포크 동안 학습시켰다.", "에포크가 증가할수록 훈련 손실은 감소하지만 과적합 위험도 커진다."],
-        "synonyms": ["학습 주기", "훈련 반복"]
+        "synonyms": ["학습 주기", "훈련 반복", "에폭"]
       }
     ]
   },
@@ -92,6 +92,18 @@
         "definition": "학습된 모델을 모바일 기기나 IoT 디바이스 등 엣지 환경에 배포하여 실행하는 것입니다.",
         "examples": ["ExecuTorch는 PyTorch 모델의 edge deployment를 위한 프레임워크이다."],
         "synonyms": ["엣지 추론", "온디바이스 배포"]
+      }
+    ]
+  },
+  {
+    "term": "evaluation mode",
+    "meanings": [
+      {
+        "korean": "평가 모드",
+        "domain": "딥러닝",
+        "definition": "모델을 추론 전용 상태로 전환하여 드롭아웃이나 배치 정규화의 동작을 학습 시와 다르게 설정하는 모드입니다.",
+        "examples": ["model.eval()을 호출하면 evaluation mode로 전환된다."],
+        "synonyms": ["추론 모드"]
       }
     ]
   }
