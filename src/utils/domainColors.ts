@@ -16,8 +16,8 @@ const domainColorMap: Record<string, string> = {
   '자동미분': '#0277bd',
   '공정성': '#4527a0',
   '그래프': '#388e3c',
-  '생성형 AI': '#ec407a',
-  '서포트 벡터 머신': '#43a047',
+  '생성형AI': '#ec407a',
+  '서포트벡터머신': '#43a047',
   '소프트웨어': '#546e7a',
   '아키텍처': '#1565c0',
   '일반': '#616161',
@@ -27,7 +27,7 @@ const domainColorMap: Record<string, string> = {
   '통계': '#6d4c41',
   '평가지표': '#00695c',
   '학습': '#303f9f',
-  '합성곱 신경망': '#d84315',
+  '합성곱신경망': '#d84315',
 }
 
 export function getDomainColor(domain: string): string {
