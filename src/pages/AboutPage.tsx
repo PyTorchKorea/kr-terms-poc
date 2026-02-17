@@ -13,7 +13,7 @@ export function AboutPage(): React.ReactNode {
             프로젝트 소개
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ mt: 2 }}>
-            terms.kr은 인공지능과 머신러닝 용어의 한국어 번역을 표준화하는 오픈소스 프로젝트입니다
+            terms.kr은 PyTorch Korea 커뮤니티에서 운영하는 AI/ML 용어의 한국어 번역 표준화 오픈소스 프로젝트입니다
           </Typography>
         </Box>
 
@@ -176,7 +176,7 @@ export function AboutPage(): React.ReactNode {
             </Button>
           </Box>
           <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 2 }}>
-            MIT 라이센스 · 누구나 자유롭게 사용하고 기여할 수 있습니다
+            MIT 라이센스 · PyTorch Korea 커뮤니티 · 누구나 자유롭게 사용하고 기여할 수 있습니다
           </Typography>
         </Box>
       </Container>

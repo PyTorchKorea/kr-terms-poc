@@ -3,10 +3,17 @@ import { createTheme } from '@mui/material/styles'
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#667eea',
+      main: '#ee4c2c',
+      dark: '#d4431f',
+      light: '#f26849',
     },
     secondary: {
-      main: '#764ba2',
+      main: '#262626',
+      light: '#6c6c6d',
+    },
+    background: {
+      default: '#ffffff',
+      paper: '#ffffff',
     },
   },
   typography: {
@@ -46,6 +53,13 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 6,
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#262626',
         },
       },
     },

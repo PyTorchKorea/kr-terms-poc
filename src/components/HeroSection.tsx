@@ -12,7 +12,7 @@ export function HeroSection({ totalTerms, totalMeanings }: HeroSectionProps) {
   return (
     <Box
       sx={{
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #ee4c2c 0%, #262626 100%)',
         color: 'white',
         py: 8,
         mb: 4,

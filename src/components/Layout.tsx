@@ -55,27 +55,26 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
           py: 4,
           px: 2,
           mt: 'auto',
-          bgcolor: 'grey.100',
-          borderTop: '1px solid',
-          borderColor: 'divider',
+          bgcolor: '#262626',
+          color: '#f3f4f7',
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="body2" color="text.secondary" align="center" gutterBottom>
-            terms.kr - 오픈소스 프로젝트
+          <Typography variant="body2" sx={{ color: '#CCCDD1' }} align="center" gutterBottom>
+            terms.kr - PyTorch Korea 오픈소스 프로젝트
           </Typography>
-          <Typography variant="caption" color="text.secondary" align="center" display="block">
+          <Typography variant="caption" sx={{ color: '#6c6c6d' }} align="center" display="block">
             <Link
               href="https://github.com/9bow/terms-kr"
               target="_blank"
               rel="noopener noreferrer"
-              color="primary"
+              sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' } }}
               underline="hover"
             >
               GitHub에서 기여하기
             </Link>
             {' · '}
-            <Link component="button" onClick={() => navigate('/about')} color="primary" underline="hover">
+            <Link component="button" onClick={() => navigate('/about')} sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' } }} underline="hover">
               프로젝트 소개
             </Link>
             {' · '}
@@ -83,7 +82,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
               href="https://github.com/9bow/terms-kr/issues"
               target="_blank"
               rel="noopener noreferrer"
-              color="primary"
+              sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' } }}
               underline="hover"
             >
               이슈 제기
