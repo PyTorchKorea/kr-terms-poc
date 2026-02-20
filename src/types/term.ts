@@ -1,8 +1,14 @@
+export interface TermExample {
+  en: string
+  ko: string
+  source?: string
+}
+
 export interface TermMeaning {
   korean: string
   domain: string
   definition: string
-  examples: string[]
+  examples: (string | TermExample)[]
   synonyms: string[]
 }
 

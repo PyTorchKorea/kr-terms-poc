@@ -13,7 +13,7 @@ export function AboutPage(): React.ReactNode {
             프로젝트 소개
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ mt: 2 }}>
-            terms.kr은 PyTorch Korea 커뮤니티에서 운영하는 AI/ML 용어의 한국어 번역 표준화 오픈소스 프로젝트입니다
+            terms.kr은 파이토치 한국 사용자 모임(PyTorchKR)에서 운영하는 AI/ML 용어의 한국어 번역 표준화 오픈소스 프로젝트입니다
           </Typography>
         </Box>
 
@@ -130,22 +130,21 @@ export function AboutPage(): React.ReactNode {
       "korean": "에이전트",
       "domain": "강화학습",
       "definition": "환경과 상호작용하며 학습하는 주체",
-      "examples": ["에이전트는 보상을 최대화하도록 학습한다."],
+      "examples": [
+        {
+          "en": "The agent learns to maximize the reward.",
+          "ko": "에이전트는 보상을 최대화하도록 학습한다.",
+          "source": "https://..."
+        }
+      ],
       "synonyms": ["행위자"]
-    },
-    {
-      "korean": "대리인",
-      "domain": "인공지능",
-      "definition": "사용자를 대신하여 작업을 수행하는 시스템",
-      "examples": ["AI 에이전트가 일정을 관리한다."],
-      "synonyms": ["AI 비서"]
     }
   ]
 }`}
           </Box>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
             <strong>주요 필드:</strong> term (영어 원문), meanings (의미 배열), korean (한국어 번역),
-            domain (분야), definition (설명), examples (예시), synonyms (유의어)
+            domain (분야), definition (설명), examples (예시 - 영어 원문/한국어 번역/출처), synonyms (유의어)
           </Typography>
         </Paper>
 
@@ -176,7 +175,7 @@ export function AboutPage(): React.ReactNode {
             </Button>
           </Box>
           <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 2 }}>
-            MIT 라이센스 · PyTorch Korea 커뮤니티 · 누구나 자유롭게 사용하고 기여할 수 있습니다
+            MIT 라이센스 · 파이토치 한국 사용자 모임 · 누구나 자유롭게 사용하고 기여할 수 있습니다
           </Typography>
         </Box>
       </Container>

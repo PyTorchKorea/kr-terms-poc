@@ -26,7 +26,7 @@ export function HeroSection({ totalTerms, totalMeanings }: HeroSectionProps) {
           gutterBottom
           sx={{ fontWeight: 700 }}
         >
-          terms.kr
+          AI/ML 용어집
         </Typography>
         <Typography variant="h6" align="center" sx={{ mb: 3, opacity: 0.95 }}>
           인공지능과 머신러닝 용어의 한국어 번역을 표준화합니다

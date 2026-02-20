@@ -1,6 +1,6 @@
-# terms.kr
+# AI/ML 용어집 (terms.kr)
 
-AI/ML 용어의 한국어 번역을 표준화하는 오픈소스 사전입니다.
+AI/ML 용어의 한국어 번역을 표준화하는 오픈소스 용어집입니다. 파이토치 한국 사용자 모임(PyTorchKR)에서 운영합니다.
 
 🌐 **사이트**: [https://terms.kr](https://terms.kr)
 

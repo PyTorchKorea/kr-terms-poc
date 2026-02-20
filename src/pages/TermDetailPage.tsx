@@ -26,7 +26,11 @@ import HomeIcon from '@mui/icons-material/Home'
 import { Layout } from '../components/Layout'
 import { useTerms } from '../hooks/useTerms'
 import { getDomainColor } from '../utils/domainColors'
-import type { Term } from '../types/term'
+import type { Term, TermExample } from '../types/term'
+
+function isTermExample(example: string | TermExample): example is TermExample {
+  return typeof example === 'object' && 'en' in example && 'ko' in example
+}
 
 function getRelatedTerms(terms: Term[], currentTerm: Term): Term[] {
   const currentDomains = new Set(currentTerm.meanings.map((m) => m.domain))
@@ -174,11 +178,33 @@ export function TermDetailPage(): React.ReactNode {
                     </Typography>
                     <List dense>
                       {meaning.examples.map((example, exIndex) => (
-                        <ListItem key={exIndex}>
-                          <ListItemText
-                            primary={example}
-                            primaryTypographyProps={{ variant: 'body2' }}
-                          />
+                        <ListItem key={exIndex} sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+                          {isTermExample(example) ? (
+                            <Box sx={{ width: '100%' }}>
+                              <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
+                                {example.en}
+                              </Typography>
+                              <Typography variant="body2" sx={{ mt: 0.5 }}>
+                                {example.ko}
+                              </Typography>
+                              {example.source && (
+                                <Link
+                                  href={example.source}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  variant="caption"
+                                  sx={{ mt: 0.5, display: 'inline-block' }}
+                                >
+                                  출처
+                                </Link>
+                              )}
+                            </Box>
+                          ) : (
+                            <ListItemText
+                              primary={example}
+                              primaryTypographyProps={{ variant: 'body2' }}
+                            />
+                          )}
                         </ListItem>
                       ))}
                     </List>

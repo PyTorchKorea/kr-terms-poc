@@ -23,7 +23,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
               sx={{ flexGrow: 1, cursor: 'pointer', fontWeight: 600 }}
               onClick={() => navigate('/')}
             >
-              terms.kr
+              AI/ML 용어집
             </Typography>
             <Button color="inherit" onClick={() => navigate('/about')} sx={{ mr: 1 }}>
               소개
@@ -61,7 +61,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
       >
         <Container maxWidth="lg">
           <Typography variant="body2" sx={{ color: '#CCCDD1' }} align="center" gutterBottom>
-            terms.kr - PyTorch Korea 오픈소스 프로젝트
+            terms.kr - PyTorchKR 오픈소스 프로젝트
           </Typography>
           <Typography variant="caption" sx={{ color: '#6c6c6d' }} align="center" display="block">
             <Link

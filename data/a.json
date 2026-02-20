@@ -6,7 +6,17 @@
         "korean": "어텐션",
         "domain": "딥러닝",
         "definition": "입력 시퀀스의 각 요소에 서로 다른 가중치를 부여하여 중요한 정보에 집중하는 메커니즘",
-        "examples": ["트랜스포머 모델은 셀프 어텐션 메커니즘을 사용한다.", "어텐션 메커니즘은 기계 번역 성능을 크게 향상시켰다."],
+        "examples": [
+          {
+            "en": "The Transformer model uses a self-attention mechanism.",
+            "ko": "트랜스포머 모델은 셀프 어텐션 메커니즘을 사용한다.",
+            "source": "https://arxiv.org/abs/1706.03762"
+          },
+          {
+            "en": "Attention mechanisms have significantly improved machine translation performance.",
+            "ko": "어텐션 메커니즘은 기계 번역 성능을 크게 향상시켰다."
+          }
+        ],
         "synonyms": ["주의 메커니즘", "집중 메커니즘"]
       }
     ]
@@ -18,14 +28,33 @@
         "korean": "에이전트",
         "domain": "강화학습",
         "definition": "환경과 상호작용하며 보상을 최대화하기 위해 행동을 선택하는 학습 주체",
-        "examples": ["강화학습에서 에이전트는 환경으로부터 받은 보상을 통해 정책을 학습한다.", "AlphaGo는 바둑을 두는 에이전트의 대표적인 예시다."],
+        "examples": [
+          {
+            "en": "In reinforcement learning, the agent learns a policy through rewards received from the environment.",
+            "ko": "강화학습에서 에이전트는 환경으로부터 받은 보상을 통해 정책을 학습한다."
+          },
+          {
+            "en": "AlphaGo is a representative example of an agent that plays the game of Go.",
+            "ko": "AlphaGo는 바둑을 두는 에이전트의 대표적인 예시다.",
+            "source": "https://www.nature.com/articles/nature16961"
+          }
+        ],
         "synonyms": ["학습 주체", "행위자"]
       },
       {
         "korean": "대리인",
         "domain": "인공지능",
         "definition": "사용자를 대신하여 특정 작업을 수행하는 자율적인 소프트웨어 시스템",
-        "examples": ["대화형 AI 대리인은 사용자의 질문에 자동으로 응답한다.", "자율 대리인은 복잡한 업무를 독립적으로 처리할 수 있다."],
+        "examples": [
+          {
+            "en": "A conversational AI agent automatically responds to user queries.",
+            "ko": "대화형 AI 대리인은 사용자의 질문에 자동으로 응답한다."
+          },
+          {
+            "en": "Autonomous agents can handle complex tasks independently.",
+            "ko": "자율 대리인은 복잡한 업무를 독립적으로 처리할 수 있다."
+          }
+        ],
         "synonyms": ["자율 에이전트", "지능형 대리인"]
       }
     ]
@@ -37,7 +66,16 @@
         "korean": "활성화 함수",
         "domain": "신경망",
         "definition": "신경망의 뉴런에서 입력 신호를 출력 신호로 변환하는 비선형 함수",
-        "examples": ["ReLU는 가장 널리 사용되는 활성화 함수 중 하나다.", "활성화 함수는 신경망에 비선형성을 부여한다."],
+        "examples": [
+          {
+            "en": "ReLU is one of the most widely used activation functions.",
+            "ko": "ReLU는 가장 널리 사용되는 활성화 함수 중 하나다."
+          },
+          {
+            "en": "Activation functions introduce nonlinearity into neural networks.",
+            "ko": "활성화 함수는 신경망에 비선형성을 부여한다."
+          }
+        ],
         "synonyms": ["활성 함수", "비선형 함수"]
       }
     ]
@@ -49,7 +87,17 @@
         "korean": "적대적 예제",
         "domain": "컴퓨터비전",
         "definition": "모델을 속이기 위해 의도적으로 조작된 입력 데이터로, 사람의 눈에는 차이가 없지만 모델이 잘못된 예측을 하도록 만듭니다.",
-        "examples": ["FGSM 공격은 adversarial example을 생성하는 대표적인 방법이다.", "적대적 예제를 활용한 훈련으로 모델의 강건성을 높일 수 있다."],
+        "examples": [
+          {
+            "en": "The FGSM attack is a representative method for generating adversarial examples.",
+            "ko": "FGSM 공격은 adversarial example을 생성하는 대표적인 방법이다.",
+            "source": "https://arxiv.org/abs/1412.6572"
+          },
+          {
+            "en": "Training with adversarial examples can improve model robustness.",
+            "ko": "적대적 예제를 활용한 훈련으로 모델의 강건성을 높일 수 있다."
+          }
+        ],
         "synonyms": ["적대적 사례", "공격 샘플"]
       }
     ]
@@ -61,7 +109,13 @@
         "korean": "앵커 박스",
         "domain": "컴퓨터비전",
         "definition": "객체 검출에서 다양한 크기와 비율의 사전 정의된 경계 상자로, 모델이 객체 위치를 예측하는 기준점으로 사용됩니다.",
-        "examples": ["Faster R-CNN은 여러 크기의 anchor box를 사용하여 객체를 검출한다."],
+        "examples": [
+          {
+            "en": "Faster R-CNN uses multiple anchor boxes of different sizes to detect objects.",
+            "ko": "Faster R-CNN은 여러 크기의 anchor box를 사용하여 객체를 검출한다.",
+            "source": "https://arxiv.org/abs/1506.01497"
+          }
+        ],
         "synonyms": ["기본 상자", "기준 박스"]
       }
     ]
@@ -73,7 +127,12 @@
         "korean": "올리듀스",
         "domain": "분산학습",
         "definition": "분산 학습에서 모든 노드의 그래디언트를 집계하여 동기화하는 통신 연산입니다.",
-        "examples": ["Ring all-reduce 알고리즘은 대규모 분산 학습에서 효율적인 그래디언트 동기화를 제공한다."],
+        "examples": [
+          {
+            "en": "The ring all-reduce algorithm provides efficient gradient synchronization in large-scale distributed training.",
+            "ko": "Ring all-reduce 알고리즘은 대규모 분산 학습에서 효율적인 그래디언트 동기화를 제공한다."
+          }
+        ],
         "synonyms": ["전체 집계"]
       }
     ]
@@ -85,7 +144,17 @@
         "korean": "자동 미분",
         "domain": "자동미분",
         "definition": "텐서 연산의 그래디언트를 자동으로 계산하는 엔진으로, 역전파 알고리즘의 핵심 구성 요소입니다.",
-        "examples": ["PyTorch의 autograd는 동적 계산 그래프를 사용하여 그래디언트를 계산한다.", "autograd를 비활성화하면 추론 시 메모리를 절약할 수 있다."],
+        "examples": [
+          {
+            "en": "PyTorch's autograd uses dynamic computation graphs to compute gradients.",
+            "ko": "PyTorch의 autograd는 동적 계산 그래프를 사용하여 그래디언트를 계산한다.",
+            "source": "https://pytorch.org/docs/stable/autograd.html"
+          },
+          {
+            "en": "Disabling autograd can save memory during inference.",
+            "ko": "autograd를 비활성화하면 추론 시 메모리를 절약할 수 있다."
+          }
+        ],
         "synonyms": ["자동 미분 엔진", "자동 그래디언트"]
       }
     ]
