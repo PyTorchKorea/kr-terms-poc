@@ -2,7 +2,7 @@
   "name": "terms-kr",
   "private": true,
   "version": "1.0.0",
-  "description": "AI/ML 용어의 한국어 번역을 표준화하는 오픈소스 사전",
+  "description": "AI/ML 용어집 - 파이토치 한국 사용자 모임(PyTorchKR)",
   "author": "9bow",
   "license": "MIT",
   "repository": {
@@ -40,5 +40,8 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1"
+  },
+  "overrides": {
+    "minimatch": ">=10.2.1"
   }
 }
