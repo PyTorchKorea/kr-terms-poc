@@ -11,14 +11,14 @@ AI/ML 용어의 한국어 번역을 표준화하는 오픈소스 용어집입니
 개발자뿐 아니라 연구자, 번역가, 학생 등 **누구나** GitHub를 통해 AI/ML 용어의 한국어 번역을 제안하고 검토할 수 있는 열린 프로젝트입니다.
 
 - 동일한 용어가 여러 도메인에서 다른 의미로 사용될 때, 각각의 정의를 명확히 구분하여 제공합니다.
-- 코드를 몰라도 [GitHub Issue](https://github.com/9bow/terms-kr/issues)를 통해 새로운 용어 추가, 번역 개선, 오류 수정 등을 제안할 수 있습니다.
+- 코드를 몰라도 [GitHub Issue](https://github.com/PyTorchKorea/kr-terms-poc/issues)를 통해 새로운 용어 추가, 번역 개선, 오류 수정 등을 제안할 수 있습니다.
 
 ## 피드백 및 제안
 
 수정이 필요한 사항이나 새로운 용어 제안은 GitHub Issue에서 받고 있습니다:
 
-- [새 용어 요청](https://github.com/9bow/terms-kr/issues/new?template=new-term.yml)
-- [용어 피드백 (번역 개선, 오류 수정 등)](https://github.com/9bow/terms-kr/issues/new?template=term-feedback.yml)
+- [새 용어 요청](https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml)
+- [용어 피드백 (번역 개선, 오류 수정 등)](https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=term-feedback.yml)
 
 ## 주요 기능
 

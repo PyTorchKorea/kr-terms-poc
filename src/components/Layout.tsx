@@ -30,7 +30,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
             </Button>
             <IconButton
               color="inherit"
-              href="https://github.com/9bow/terms-kr"
+              href="https://github.com/PyTorchKorea/kr-terms-poc"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub 저장소"
@@ -65,7 +65,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
           </Typography>
           <Typography variant="caption" sx={{ color: '#6c6c6d' }} align="center" display="block">
             <Link
-              href="https://github.com/9bow/terms-kr"
+              href="https://github.com/PyTorchKorea/kr-terms-poc"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' } }}
@@ -79,7 +79,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
             </Link>
             {' · '}
             <Link
-              href="https://github.com/9bow/terms-kr/issues"
+              href="https://github.com/PyTorchKorea/kr-terms-poc/issues"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' } }}

@@ -82,7 +82,7 @@ export function TermDetailPage(): React.ReactNode {
   }
 
   const handleOpenIssue = (): void => {
-    const url = `https://github.com/9bow/terms-kr/issues/new?template=term-feedback.yml&title=[용어 피드백] ${encodeURIComponent(term.term)}`
+    const url = `https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=term-feedback.yml&title=[용어 피드백] ${encodeURIComponent(term.term)}`
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 

@@ -78,7 +78,7 @@ export function AboutPage(): React.ReactNode {
             <ListItem>
               <ListItemText
                 primary="1. GitHub 저장소 Fork"
-                secondary="https://github.com/9bow/terms-kr 저장소를 본인 계정으로 포크합니다."
+                secondary="https://github.com/PyTorchKorea/kr-terms-poc 저장소를 본인 계정으로 포크합니다."
               />
             </ListItem>
             <Divider component="li" />
@@ -158,7 +158,7 @@ export function AboutPage(): React.ReactNode {
               variant="contained"
               size="large"
               startIcon={<GitHubIcon />}
-              href="https://github.com/9bow/terms-kr"
+              href="https://github.com/PyTorchKorea/kr-terms-poc"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -167,7 +167,7 @@ export function AboutPage(): React.ReactNode {
             <Button
               variant="outlined"
               size="large"
-              href="https://github.com/9bow/terms-kr/issues/new"
+              href="https://github.com/PyTorchKorea/kr-terms-poc/issues/new"
               target="_blank"
               rel="noopener noreferrer"
             >
