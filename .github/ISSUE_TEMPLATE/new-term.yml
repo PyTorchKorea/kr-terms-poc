@@ -38,4 +38,9 @@ body:
     id: examples
     attributes:
       label: 사용 예시 (선택)
-      description: 실제 기술 문서에서 사용되는 예시 문장
+      description: |
+        영어 원문과 한국어 번역을 함께 작성해주세요. 출처가 있다면 URL도 포함해주세요.
+        예시 형식:
+        - EN: The Transformer model uses a self-attention mechanism.
+        - KO: 트랜스포머 모델은 셀프 어텐션 메커니즘을 사용한다.
+        - 출처: https://arxiv.org/abs/1706.03762

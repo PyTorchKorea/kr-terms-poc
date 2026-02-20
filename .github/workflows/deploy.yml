@@ -46,6 +46,14 @@ jobs:
                   console.error('Domain has spaces in ' + file + ': ' + m.domain);
                   errors++;
                 }
+                if (m.examples) {
+                  for (const ex of m.examples) {
+                    if (typeof ex === 'object' && (!ex.en || !ex.ko)) {
+                      console.error('Example missing en/ko in ' + file + ' term: ' + term.term);
+                      errors++;
+                    }
+                  }
+                }
               }
             }
           }

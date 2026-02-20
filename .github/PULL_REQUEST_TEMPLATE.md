@@ -7,7 +7,8 @@
 ## 체크리스트
 - [ ] JSON 파일이 유효한 형식입니다
 - [ ] 도메인 이름에 불필요한 공백이 없습니다
-- [ ] 모든 필수 필드(korean, domain, definition, examples, synonyms)를 포함합니다
+- [ ] 모든 필수 필드(korean, domain, definition)를 포함합니다
+- [ ] 예시는 가능하면 영어 원문(en)과 한국어 번역(ko)을 함께 포함합니다
 - [ ] `npm run build` 가 성공합니다
 
 
