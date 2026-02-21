@@ -1,0 +1,68 @@
+# AI/ML 용어집 (terms.kr)
+
+> AI/ML 분야의 한국어 번역을 표준화하는 오픈소스 용어집입니다. 파이토치 한국 사용자 모임(PyTorchKR)에서 운영합니다.
+
+번역은 생성형 AI 모델을 사용하여 자동화할 수 있지만, 이러한 번역 시에도 일관된 용어를 사용하는 것은 매우 중요합니다. AI/ML 용어집은 빠르게 변화하는 AI/ML 분야의 다양한 용어들을 표준화하고, 이를 공개하여 누구나 사용할 수 있도록 하는 것을 목표로 하고 있습니다.
+
+이 프로젝트는 현재 PoC 단계이며, 수록된 용어 데이터는 AI가 생성한 초안입니다.
+
+## 용어 데이터
+
+용어 데이터는 알파벳별 JSON 파일로 제공됩니다. 각 용어는 영어 원문(term), 한국어 번역(korean), 분야(domain), 정의(definition), 예시(examples), 유의어(synonyms)를 포함합니다.
+
+- [파일 목록 (index.json)](https://poc.terms.kr/data/index.json): 전체 알파벳별 JSON 파일 목록
+- [A](https://poc.terms.kr/data/a.json): attention, agent, activation function, adversarial example, anchor box, all-reduce, autograd
+- [B](https://poc.terms.kr/data/b.json): B로 시작하는 용어
+- [C](https://poc.terms.kr/data/c.json): C로 시작하는 용어
+- [D](https://poc.terms.kr/data/d.json): D로 시작하는 용어
+- [E](https://poc.terms.kr/data/e.json): E로 시작하는 용어
+- [F](https://poc.terms.kr/data/f.json): F로 시작하는 용어
+- [G](https://poc.terms.kr/data/g.json): G로 시작하는 용어
+- [H](https://poc.terms.kr/data/h.json): H로 시작하는 용어
+- [I](https://poc.terms.kr/data/i.json): I로 시작하는 용어
+- [K](https://poc.terms.kr/data/k.json): K로 시작하는 용어
+- [L](https://poc.terms.kr/data/l.json): L로 시작하는 용어
+- [M](https://poc.terms.kr/data/m.json): M로 시작하는 용어
+- [N](https://poc.terms.kr/data/n.json): N으로 시작하는 용어
+- [O](https://poc.terms.kr/data/o.json): O로 시작하는 용어
+- [P](https://poc.terms.kr/data/p.json): P로 시작하는 용어
+- [Q](https://poc.terms.kr/data/q.json): Q로 시작하는 용어
+- [R](https://poc.terms.kr/data/r.json): R로 시작하는 용어
+- [S](https://poc.terms.kr/data/s.json): S로 시작하는 용어
+- [T](https://poc.terms.kr/data/t.json): T로 시작하는 용어
+- [U](https://poc.terms.kr/data/u.json): U로 시작하는 용어
+- [V](https://poc.terms.kr/data/v.json): V로 시작하는 용어
+- [W](https://poc.terms.kr/data/w.json): W로 시작하는 용어
+
+## 데이터 구조
+
+```json
+{
+  "term": "attention",
+  "meanings": [
+    {
+      "korean": "어텐션",
+      "domain": "딥러닝",
+      "definition": "입력 시퀀스의 각 요소에 서로 다른 가중치를 부여하여 중요한 정보에 집중하는 메커니즘",
+      "examples": [
+        {
+          "en": "The Transformer model uses a self-attention mechanism.",
+          "ko": "트랜스포머 모델은 셀프 어텐션 메커니즘을 사용한다."
+        }
+      ],
+      "synonyms": ["주의 메커니즘", "집중 메커니즘"]
+    }
+  ]
+}
+```
+
+## 기여
+
+- [GitHub 저장소](https://github.com/PyTorchKorea/kr-terms-poc)
+- [기여 가이드](https://github.com/PyTorchKorea/kr-terms-poc/blob/poc/CONTRIBUTING.md)
+- [새 용어 요청](https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml)
+- [용어 피드백](https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=term-feedback.yml)
+
+## Optional
+
+- [프로젝트 소개 페이지](https://poc.terms.kr/#/about): 사용 방법, 데이터 구조, 기여 방법 안내

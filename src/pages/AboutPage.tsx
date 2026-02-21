@@ -17,13 +17,16 @@ export function AboutPage(): React.ReactNode {
           </Typography>
         </Box>
 
-        {/* Section 1: 프로젝트 소개 */}
+        {/* Section 1: 왜 AI/ML 용어집인가? */}
         <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
           <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-            📖 프로젝트 목표
+            📖 왜 AI/ML 용어집인가?
           </Typography>
           <Typography variant="body1" paragraph>
-            AI/ML 분야의 급속한 발전과 함께 다양한 용어들이 등장하고 있지만, 한국어 번역이 통일되지 않아 혼란이 발생하고 있습니다.
+            번역은 생성형 AI 모델을 사용하여 자동화할 수 있지만, 이러한 번역 시에도 <strong>일관된 용어를 사용하는 것은 매우 중요합니다.</strong>{' '}
+            AI/ML 용어집은 빠르게 변화하는 AI/ML 분야의 다양한 용어들을 표준화하고, 이를 공개하여 누구나 사용할 수 있도록 하는 것을 목표로 하고 있습니다.
+          </Typography>
+          <Typography variant="body1" paragraph>
             이 프로젝트는 커뮤니티 기반으로 용어의 표준화된 번역을 제공하고, 다의어와 맥락별 번역을 체계적으로 관리합니다.
           </Typography>
           <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mt: 2 }}>
@@ -31,6 +34,7 @@ export function AboutPage(): React.ReactNode {
             <Chip label="커뮤니티 기반" color="secondary" size="small" />
             <Chip label="다의어 지원" color="info" size="small" />
             <Chip label="맥락 기반 번역" color="success" size="small" />
+            <Chip label="LLM 연동" color="warning" size="small" />
           </Box>
         </Paper>
 
@@ -146,6 +150,32 @@ export function AboutPage(): React.ReactNode {
             <strong>주요 필드:</strong> term (영어 원문), meanings (의미 배열), korean (한국어 번역),
             domain (분야), definition (설명), examples (예시 - 영어 원문/한국어 번역/출처), synonyms (유의어)
           </Typography>
+        </Paper>
+
+        {/* Section 5: LLM / AI 번역 도구 연동 */}
+        <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
+          <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+            🤖 LLM / AI 번역 도구 연동
+          </Typography>
+          <Typography variant="body1" paragraph>
+            이 용어집은 사람뿐 아니라 AI 도구에서도 활용할 수 있도록 기계 판독 가능한 형식을 제공합니다.
+            AI 번역 시 이 용어집을 컨텍스트로 제공하면, 일관된 한국어 번역을 유지하는 데 도움이 됩니다.
+          </Typography>
+          <List>
+            <ListItem>
+              <ListItemText
+                primary="llms.txt"
+                secondary="llmstxt.org 표준에 따른 LLM용 프로젝트 안내 파일 (poc.terms.kr/llms.txt)"
+              />
+            </ListItem>
+            <Divider component="li" />
+            <ListItem>
+              <ListItemText
+                primary="JSON 데이터"
+                secondary="알파벳별 JSON 파일로 전체 용어 데이터에 접근 가능 (poc.terms.kr/data/)"
+              />
+            </ListItem>
+          </List>
         </Paper>
 
         {/* CTA Section */}
