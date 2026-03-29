@@ -1,5 +1,29 @@
 [
   {
+    "term": "chain rule",
+    "meanings": [
+      {
+        "korean": "연쇄 법칙",
+        "domain": "자동미분",
+        "definition": "합성 함수의 미분을 구하기 위한 수학적 법칙으로, 역전파 알고리즘의 이론적 기초입니다.",
+        "examples": ["역전파는 chain rule을 반복 적용하여 각 파라미터의 그래디언트를 계산한다."],
+        "synonyms": ["연쇄율", "체인 룰"]
+      }
+    ]
+  },
+  {
+    "term": "checkpoint",
+    "meanings": [
+      {
+        "korean": "체크포인트",
+        "domain": "딥러닝",
+        "definition": "학습 중인 모델의 매개변수, 옵티마이저 상태 등을 특정 시점에 저장한 파일로, 학습 재개나 배포에 사용됩니다.",
+        "examples": [{"en": "Save a DDP model checkpoint by calling torch.save on one process.", "ko": "하나의 프로세스에서 torch.save를 호출하여 DDP 모델의 체크포인트를 저장한다.", "source": "https://tutorials.pytorch.kr/intermediate/ddp_tutorial.html"}],
+        "synonyms": ["저장점", "스냅샷"]
+      }
+    ]
+  },
+  {
     "term": "classification",
     "meanings": [
       {
@@ -12,14 +36,62 @@
     ]
   },
   {
+    "term": "computational graph",
+    "meanings": [
+      {
+        "korean": "계산 그래프",
+        "domain": "자동미분",
+        "definition": "수학적 연산의 흐름을 방향 그래프로 표현한 것으로, 자동 미분과 역전파의 기반이 됩니다.",
+        "examples": ["PyTorch는 동적 계산 그래프를 사용하여 유연한 모델 구성을 지원한다.", {"en": "Autograd records data and operations in a directed acyclic graph consisting of Function objects.", "ko": "Autograd는 Function 객체로 구성된 방향성 비순환 그래프에 데이터와 연산을 기록한다.", "source": "https://tutorials.pytorch.kr/beginner/basics/autogradqs_tutorial.html"}],
+        "synonyms": ["연산 그래프"]
+      }
+    ]
+  },
+  {
+    "term": "confusion matrix",
+    "meanings": [
+      {
+        "korean": "혼동 행렬",
+        "domain": "머신러닝",
+        "definition": "분류 모델의 예측 결과를 실제 값과 비교하여 정리한 행렬로, 모델의 성능을 시각적으로 평가하는 데 사용됩니다.",
+        "examples": ["confusion matrix를 통해 모델이 어떤 클래스를 잘못 분류하는지 확인할 수 있다."],
+        "synonyms": ["오차 행렬"]
+      }
+    ]
+  },
+  {
+    "term": "convergence",
+    "meanings": [
+      {
+        "korean": "수렴",
+        "domain": "최적화",
+        "definition": "학습 과정에서 모델의 손실 값이 더 이상 줄어들지 않는 안정된 상태에 도달하는 것을 의미합니다.",
+        "examples": [{"en": "Different hyperparameter values can affect model training and convergence rates.", "ko": "서로 다른 하이퍼파라미터 값은 모델 학습과 수렴율에 영향을 줄 수 있다.", "source": "https://tutorials.pytorch.kr/beginner/basics/optimization_tutorial.html"}],
+        "synonyms": ["수렴점", "수렴 상태"]
+      }
+    ]
+  },
+  {
     "term": "convolution",
     "meanings": [
       {
         "korean": "합성곱",
         "domain": "컴퓨터비전",
         "definition": "이미지의 일부 영역에 필터를 적용하여 특징을 추출하는 연산",
-        "examples": ["합성곱 신경망은 이미지 인식에서 뛰어난 성능을 보인다.", "합성곱 연산은 이미지의 공간적 특성을 효과적으로 학습한다."],
+        "examples": ["합성곱 신경망은 이미지 인식에서 뛰어난 성능을 보인다.", "합성곱 연산은 이미지의 공간적 특성을 효과적으로 학습한다.", {"en": "Transfer learning is most commonly used with convolutional networks trained on ImageNet.", "ko": "전이학습은 ImageNet에서 학습된 합성곱 네트워크에서 가장 널리 사용된다.", "source": "https://tutorials.pytorch.kr/beginner/transfer_learning_tutorial.html"}],
         "synonyms": ["컨볼루션", "합성곱 연산"]
+      }
+    ]
+  },
+  {
+    "term": "convolutional neural network",
+    "meanings": [
+      {
+        "korean": "합성곱 신경망",
+        "domain": "합성곱신경망",
+        "definition": "합성곱 연산을 사용하여 이미지나 시퀀스 데이터에서 공간적 특징을 자동으로 추출하는 신경망 구조입니다.",
+        "examples": [{"en": "Transfer learning is most commonly used with convolutional neural networks for computer vision.", "ko": "전이학습은 컴퓨터 비전을 위한 합성곱 신경망에서 가장 널리 사용된다.", "source": "https://tutorials.pytorch.kr/beginner/transfer_learning_tutorial.html"}],
+        "synonyms": ["CNN", "컨볼루션 신경망", "합성곱 네트워크"]
       }
     ]
   },
@@ -36,30 +108,6 @@
     ]
   },
   {
-    "term": "computational graph",
-    "meanings": [
-      {
-        "korean": "계산 그래프",
-        "domain": "자동미분",
-        "definition": "수학적 연산의 흐름을 방향 그래프로 표현한 것으로, 자동 미분과 역전파의 기반이 됩니다.",
-        "examples": ["PyTorch는 동적 계산 그래프를 사용하여 유연한 모델 구성을 지원한다."],
-        "synonyms": ["연산 그래프"]
-      }
-    ]
-  },
-  {
-    "term": "chain rule",
-    "meanings": [
-      {
-        "korean": "연쇄 법칙",
-        "domain": "자동미분",
-        "definition": "합성 함수의 미분을 구하기 위한 수학적 법칙으로, 역전파 알고리즘의 이론적 기초입니다.",
-        "examples": ["역전파는 chain rule을 반복 적용하여 각 파라미터의 그래디언트를 계산한다."],
-        "synonyms": ["연쇄율", "체인 룰"]
-      }
-    ]
-  },
-  {
     "term": "CUDA",
     "meanings": [
       {
@@ -68,18 +116,6 @@
         "definition": "NVIDIA의 병렬 컴퓨팅 플랫폼으로, GPU를 활용한 범용 연산을 가능하게 합니다.",
         "examples": ["CUDA를 지원하는 GPU가 있어야 PyTorch에서 GPU 학습이 가능하다.", "torch.cuda.is_available()로 CUDA 사용 가능 여부를 확인할 수 있다."],
         "synonyms": ["쿠다"]
-      }
-    ]
-  },
-  {
-    "term": "confusion matrix",
-    "meanings": [
-      {
-        "korean": "혼동 행렬",
-        "domain": "머신러닝",
-        "definition": "분류 모델의 예측 결과를 실제 값과 비교하여 정리한 행렬로, 모델의 성능을 시각적으로 평가하는 데 사용됩니다.",
-        "examples": ["confusion matrix를 통해 모델이 어떤 클래스를 잘못 분류하는지 확인할 수 있다."],
-        "synonyms": ["오차 행렬"]
       }
     ]
   }

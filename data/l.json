@@ -1,55 +1,5 @@
 [
   {
-    "term": "learning rate",
-    "meanings": [
-      {
-        "korean": "학습률",
-        "domain": "최적화",
-        "definition": "경사 하강법에서 매개변수를 업데이트할 때 그래디언트에 곱해지는 계수",
-        "examples": ["학습률이 너무 크면 최적점을 지나칠 수 있고, 너무 작으면 수렴이 느리다.", "일반적으로 0.001에서 0.01 사이의 학습률을 사용한다."],
-        "synonyms": ["학습 속도", "러닝 레이트"]
-      }
-    ]
-  },
-  {
-    "term": "layer",
-    "meanings": [
-      {
-        "korean": "층",
-        "domain": "신경망",
-        "definition": "신경망을 구성하는 뉴런들의 집합으로, 입력을 변환하는 기본 단위",
-        "examples": ["이 신경망은 5개의 층으로 구성되어 있다.", "각 층은 서로 다른 수준의 특징을 학습한다."],
-        "synonyms": ["레이어", "계층"]
-      },
-      {
-        "korean": "레이어",
-        "domain": "아키텍처",
-        "definition": "시스템이나 소프트웨어의 논리적 구조를 나타내는 추상화 수준",
-        "examples": ["애플리케이션은 프레젠테이션, 비즈니스 로직, 데이터 레이어로 구성된다.", "모델 아키텍처의 각 레이어는 특정 역할을 담당한다."],
-        "synonyms": ["계층", "추상화 수준"]
-      }
-    ]
-  },
-  {
-    "term": "loss",
-    "meanings": [
-      {
-        "korean": "손실",
-        "domain": "머신러닝",
-        "definition": "모델의 예측값과 실제값 사이의 차이를 수치화한 값",
-        "examples": ["손실 함수는 모델이 얼마나 잘못 예측했는지를 측정한다.", "학습 목표는 손실을 최소화하는 것이다."],
-        "synonyms": ["손실값", "오차"]
-      },
-      {
-        "korean": "로스",
-        "domain": "일반",
-        "definition": "정보나 성능의 감소 또는 저하",
-        "examples": ["압축 과정에서 정보 로스가 발생할 수 있다.", "네트워크 지연으로 인한 패킷 로스가 감지되었다."],
-        "synonyms": ["손실", "감소"]
-      }
-    ]
-  },
-  {
     "term": "language model",
     "meanings": [
       {
@@ -62,6 +12,37 @@
     ]
   },
   {
+    "term": "layer",
+    "meanings": [
+      {
+        "korean": "층",
+        "domain": "신경망",
+        "definition": "신경망을 구성하는 뉴런들의 집합으로, 입력을 변환하는 기본 단위",
+        "examples": ["이 신경망은 5개의 층으로 구성되어 있다.", "각 층은 서로 다른 수준의 특징을 학습한다.", {"en": "Neural networks comprise of layers that perform operations on data.", "ko": "신경망은 데이터에 대한 연산을 수행하는 계층(layer)으로 구성된다.", "source": "https://tutorials.pytorch.kr/beginner/basics/buildmodel_tutorial.html"}],
+        "synonyms": ["레이어", "계층"]
+      },
+      {
+        "korean": "레이어",
+        "domain": "아키텍처",
+        "definition": "시스템이나 소프트웨어의 논리적 구조를 나타내는 추상화 수준",
+        "examples": ["애플리케이션은 프레젠테이션, 비즈니스 로직, 데이터 레이어로 구성된다.", "모델 아키텍처의 각 레이어는 특정 역할을 담당한다."],
+        "synonyms": ["계층", "추상화 수준"]
+      }
+    ]
+  },
+  {
+    "term": "learning rate",
+    "meanings": [
+      {
+        "korean": "학습률",
+        "domain": "최적화",
+        "definition": "경사 하강법에서 매개변수를 업데이트할 때 그래디언트에 곱해지는 계수",
+        "examples": ["학습률이 너무 크면 최적점을 지나칠 수 있고, 너무 작으면 수렴이 느리다.", "일반적으로 0.001에서 0.01 사이의 학습률을 사용한다.", {"en": "A smaller learning rate means slower learning speed, while a larger value may cause unpredictable behavior.", "ko": "학습률 값이 작을수록 학습 속도가 느려지고, 값이 크면 예측할 수 없는 동작이 발생할 수 있다.", "source": "https://tutorials.pytorch.kr/beginner/basics/optimization_tutorial.html"}],
+        "synonyms": ["학습 속도", "러닝 레이트"]
+      }
+    ]
+  },
+  {
     "term": "learning rate scheduler",
     "meanings": [
       {
@@ -70,6 +51,49 @@
         "definition": "학습 과정에서 학습률을 동적으로 조절하는 메커니즘으로, 학습 안정성과 수렴 속도를 개선합니다.",
         "examples": ["코사인 어닐링 learning rate scheduler는 학습률을 점진적으로 감소시킨다."],
         "synonyms": ["학습률 조절기"]
+      }
+    ]
+  },
+  {
+    "term": "linear layer",
+    "meanings": [
+      {
+        "korean": "선형 계층",
+        "domain": "신경망",
+        "definition": "입력에 저장된 가중치와 편향을 사용하여 선형 변환을 적용하는 신경망의 기본 구성 요소입니다.",
+        "examples": [{"en": "nn.Linear applies a linear transformation on the input using its stored weights and biases.", "ko": "nn.Linear는 저장된 가중치와 편향을 사용하여 입력에 선형 변환을 적용한다.", "source": "https://tutorials.pytorch.kr/beginner/basics/buildmodel_tutorial.html"}],
+        "synonyms": ["선형 레이어", "FC 레이어"]
+      }
+    ]
+  },
+  {
+    "term": "logit",
+    "meanings": [
+      {
+        "korean": "로짓",
+        "domain": "딥러닝",
+        "definition": "신경망의 마지막 선형 계층에서 활성화 함수를 적용하기 전의 원시 출력값으로, 확률로 변환되기 전 단계입니다.",
+        "examples": [{"en": "We pass the model's output logits to nn.CrossEntropyLoss which normalizes them.", "ko": "모델의 출력 로짓을 nn.CrossEntropyLoss에 전달하면 정규화가 수행된다.", "source": "https://tutorials.pytorch.kr/beginner/basics/optimization_tutorial.html"}],
+        "synonyms": ["로그 오즈", "원시 출력"]
+      }
+    ]
+  },
+  {
+    "term": "loss",
+    "meanings": [
+      {
+        "korean": "손실",
+        "domain": "머신러닝",
+        "definition": "모델의 예측값과 실제값 사이의 차이를 수치화한 값",
+        "examples": ["손실 함수는 모델이 얼마나 잘못 예측했는지를 측정한다.", "학습 목표는 손실을 최소화하는 것이다.", {"en": "Loss function measures the degree of dissimilarity between the obtained result and the target value.", "ko": "손실 함수는 획득한 결과와 실제 값 사이의 틀린 정도(degree of dissimilarity)를 측정한다.", "source": "https://tutorials.pytorch.kr/beginner/basics/optimization_tutorial.html"}],
+        "synonyms": ["손실값", "오차"]
+      },
+      {
+        "korean": "로스",
+        "domain": "일반",
+        "definition": "정보나 성능의 감소 또는 저하",
+        "examples": ["압축 과정에서 정보 로스가 발생할 수 있다.", "네트워크 지연으로 인한 패킷 로스가 감지되었다."],
+        "synonyms": ["손실", "감소"]
       }
     ]
   }

@@ -19,14 +19,14 @@
     ]
   },
   {
-    "term": "fine-tuning",
+    "term": "feature extractor",
     "meanings": [
       {
-        "korean": "미세조정",
+        "korean": "특징 추출기",
         "domain": "전이학습",
-        "definition": "사전 학습된 모델을 특정 작업에 맞게 추가 학습시키는 과정",
-        "examples": ["BERT 모델을 감성 분석 작업에 맞게 미세조정했다.", "미세조정은 적은 데이터로도 높은 성능을 달성할 수 있다."],
-        "synonyms": ["파인튜닝", "전이학습", "미세 조정"]
+        "definition": "사전 학습된 모델에서 마지막 분류 계층을 제외한 부분으로, 입력 데이터에서 유의미한 특징을 추출하는 역할을 합니다.",
+        "examples": [{"en": "Use a pre-trained ConvNet as a fixed feature extractor by freezing all layers except the last.", "ko": "마지막 계층을 제외한 모든 계층을 고정하여 사전 학습된 합성곱 신경망을 고정된 특징 추출기로 사용한다.", "source": "https://tutorials.pytorch.kr/beginner/transfer_learning_tutorial.html"}],
+        "synonyms": ["특성 추출기", "피처 추출기"]
       }
     ]
   },
@@ -51,6 +51,42 @@
         "definition": "입력층에서 출력층까지 한 방향으로만 신호가 전달되는 신경망 구조로, 순환 연결이 없습니다.",
         "examples": ["가장 기본적인 feed-forward network는 다층 퍼셉트론(MLP)이다."],
         "synonyms": ["순방향 신경망", "전방향 신경망"]
+      }
+    ]
+  },
+  {
+    "term": "fine-tuning",
+    "meanings": [
+      {
+        "korean": "미세조정",
+        "domain": "전이학습",
+        "definition": "사전 학습된 모델을 특정 작업에 맞게 추가 학습시키는 과정",
+        "examples": ["BERT 모델을 감성 분석 작업에 맞게 미세조정했다.", "미세조정은 적은 데이터로도 높은 성능을 달성할 수 있다.", {"en": "Fine-tune the ConvNet: instead of random initialization, we initialize the network with a pretrained model.", "ko": "합성곱 신경망의 미세조정: 무작위 초기화 대신, 사전학습된 모델로 네트워크를 초기화한다.", "source": "https://tutorials.pytorch.kr/beginner/transfer_learning_tutorial.html"}],
+        "synonyms": ["파인튜닝", "전이학습", "미세 조정"]
+      }
+    ]
+  },
+  {
+    "term": "flatten",
+    "meanings": [
+      {
+        "korean": "평탄화",
+        "domain": "딥러닝",
+        "definition": "다차원 텐서를 1차원으로 변환하는 연산으로, 합성곱 계층의 출력을 완전 연결 계층에 입력하기 전에 주로 사용됩니다.",
+        "examples": [{"en": "nn.Flatten converts each 2D 28x28 image into a contiguous array of 784 pixel values.", "ko": "nn.Flatten은 각 2D 28x28 이미지를 784개의 연속적인 픽셀 값 배열로 변환한다.", "source": "https://tutorials.pytorch.kr/beginner/basics/buildmodel_tutorial.html"}],
+        "synonyms": ["평활화", "1차원 변환"]
+      }
+    ]
+  },
+  {
+    "term": "forward pass",
+    "meanings": [
+      {
+        "korean": "순전파",
+        "domain": "딥러닝",
+        "definition": "입력 데이터가 신경망의 각 계층을 거쳐 출력까지 전달되는 과정으로, 예측값을 생성하는 단계입니다.",
+        "examples": [{"en": "Calling the model on the input data performs the forward pass.", "ko": "입력 데이터에 대해 모델을 호출하면 순전파가 수행된다.", "source": "https://tutorials.pytorch.kr/beginner/basics/buildmodel_tutorial.html"}],
+        "synonyms": ["순방향 전파", "전방 전달"]
       }
     ]
   },

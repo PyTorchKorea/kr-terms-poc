@@ -1,65 +1,5 @@
 [
   {
-    "term": "attention",
-    "meanings": [
-      {
-        "korean": "어텐션",
-        "domain": "딥러닝",
-        "definition": "입력 시퀀스의 각 요소에 서로 다른 가중치를 부여하여 중요한 정보에 집중하는 메커니즘",
-        "examples": [
-          {
-            "en": "The Transformer model uses a self-attention mechanism.",
-            "ko": "트랜스포머 모델은 셀프 어텐션 메커니즘을 사용한다.",
-            "source": "https://arxiv.org/abs/1706.03762"
-          },
-          {
-            "en": "Attention mechanisms have significantly improved machine translation performance.",
-            "ko": "어텐션 메커니즘은 기계 번역 성능을 크게 향상시켰다."
-          }
-        ],
-        "synonyms": ["주의 메커니즘", "집중 메커니즘"]
-      }
-    ]
-  },
-  {
-    "term": "agent",
-    "meanings": [
-      {
-        "korean": "에이전트",
-        "domain": "강화학습",
-        "definition": "환경과 상호작용하며 보상을 최대화하기 위해 행동을 선택하는 학습 주체",
-        "examples": [
-          {
-            "en": "In reinforcement learning, the agent learns a policy through rewards received from the environment.",
-            "ko": "강화학습에서 에이전트는 환경으로부터 받은 보상을 통해 정책을 학습한다."
-          },
-          {
-            "en": "AlphaGo is a representative example of an agent that plays the game of Go.",
-            "ko": "AlphaGo는 바둑을 두는 에이전트의 대표적인 예시다.",
-            "source": "https://www.nature.com/articles/nature16961"
-          }
-        ],
-        "synonyms": ["학습 주체", "행위자"]
-      },
-      {
-        "korean": "대리인",
-        "domain": "인공지능",
-        "definition": "사용자를 대신하여 특정 작업을 수행하는 자율적인 소프트웨어 시스템",
-        "examples": [
-          {
-            "en": "A conversational AI agent automatically responds to user queries.",
-            "ko": "대화형 AI 대리인은 사용자의 질문에 자동으로 응답한다."
-          },
-          {
-            "en": "Autonomous agents can handle complex tasks independently.",
-            "ko": "자율 대리인은 복잡한 업무를 독립적으로 처리할 수 있다."
-          }
-        ],
-        "synonyms": ["자율 에이전트", "지능형 대리인"]
-      }
-    ]
-  },
-  {
     "term": "activation function",
     "meanings": [
       {
@@ -76,7 +16,10 @@
             "ko": "활성화 함수는 신경망에 비선형성을 부여한다."
           }
         ],
-        "synonyms": ["활성 함수", "비선형 함수"]
+        "synonyms": [
+          "활성 함수",
+          "비선형 함수"
+        ]
       }
     ]
   },
@@ -98,7 +41,74 @@
             "ko": "적대적 예제를 활용한 훈련으로 모델의 강건성을 높일 수 있다."
           }
         ],
-        "synonyms": ["적대적 사례", "공격 샘플"]
+        "synonyms": [
+          "적대적 사례",
+          "공격 샘플"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "agent",
+    "meanings": [
+      {
+        "korean": "에이전트",
+        "domain": "강화학습",
+        "definition": "환경과 상호작용하며 보상을 최대화하기 위해 행동을 선택하는 학습 주체",
+        "examples": [
+          {
+            "en": "In reinforcement learning, the agent learns a policy through rewards received from the environment.",
+            "ko": "강화학습에서 에이전트는 환경으로부터 받은 보상을 통해 정책을 학습한다."
+          },
+          {
+            "en": "AlphaGo is a representative example of an agent that plays the game of Go.",
+            "ko": "AlphaGo는 바둑을 두는 에이전트의 대표적인 예시다.",
+            "source": "https://www.nature.com/articles/nature16961"
+          }
+        ],
+        "synonyms": [
+          "학습 주체",
+          "행위자"
+        ]
+      },
+      {
+        "korean": "대리인",
+        "domain": "인공지능",
+        "definition": "사용자를 대신하여 특정 작업을 수행하는 자율적인 소프트웨어 시스템",
+        "examples": [
+          {
+            "en": "A conversational AI agent automatically responds to user queries.",
+            "ko": "대화형 AI 대리인은 사용자의 질문에 자동으로 응답한다."
+          },
+          {
+            "en": "Autonomous agents can handle complex tasks independently.",
+            "ko": "자율 대리인은 복잡한 업무를 독립적으로 처리할 수 있다."
+          }
+        ],
+        "synonyms": [
+          "자율 에이전트",
+          "지능형 대리인"
+        ]
+      }
+    ],
+    "notes": "강화학습에서는 '에이전트'(음차), 일반 AI 맥락에서는 '대리인'(의역)이 각각 표준적으로 사용됩니다. 도메인별로 번역이 다릅니다."
+  },
+  {
+    "term": "all-reduce",
+    "meanings": [
+      {
+        "korean": "올리듀스",
+        "domain": "분산학습",
+        "definition": "분산 학습에서 모든 노드의 그래디언트를 집계하여 동기화하는 통신 연산입니다.",
+        "examples": [
+          {
+            "en": "The ring all-reduce algorithm provides efficient gradient synchronization in large-scale distributed training.",
+            "ko": "Ring all-reduce 알고리즘은 대규모 분산 학습에서 효율적인 그래디언트 동기화를 제공한다."
+          }
+        ],
+        "synonyms": [
+          "전체 집계"
+        ]
       }
     ]
   },
@@ -116,26 +126,39 @@
             "source": "https://arxiv.org/abs/1506.01497"
           }
         ],
-        "synonyms": ["기본 상자", "기준 박스"]
+        "synonyms": [
+          "기본 상자",
+          "기준 박스"
+        ]
       }
     ]
   },
   {
-    "term": "all-reduce",
+    "term": "attention",
     "meanings": [
       {
-        "korean": "올리듀스",
-        "domain": "분산학습",
-        "definition": "분산 학습에서 모든 노드의 그래디언트를 집계하여 동기화하는 통신 연산입니다.",
+        "korean": "어텐션",
+        "domain": "딥러닝",
+        "definition": "입력 시퀀스의 각 요소에 서로 다른 가중치를 부여하여 중요한 정보에 집중하는 메커니즘",
         "examples": [
           {
-            "en": "The ring all-reduce algorithm provides efficient gradient synchronization in large-scale distributed training.",
-            "ko": "Ring all-reduce 알고리즘은 대규모 분산 학습에서 효율적인 그래디언트 동기화를 제공한다."
+            "en": "The Transformer model uses a self-attention mechanism.",
+            "ko": "트랜스포머 모델은 셀프 어텐션 메커니즘을 사용한다.",
+            "source": "https://arxiv.org/abs/1706.03762"
+          },
+          {
+            "en": "Attention mechanisms have significantly improved machine translation performance.",
+            "ko": "어텐션 메커니즘은 기계 번역 성능을 크게 향상시켰다."
           }
         ],
-        "synonyms": ["전체 집계"]
+        "synonyms": [
+          "주의 메커니즘",
+          "집중 메커니즘"
+        ]
       }
-    ]
+    ],
+    "issueNumber": 1,
+    "notes": "'어텐션'은 학계 및 업계에서 가장 널리 사용되는 음차 표기입니다. '주의 메커니즘'은 의미 번역이나, 실무에서는 어텐션이 표준적으로 사용됩니다."
   },
   {
     "term": "autograd",
@@ -153,9 +176,17 @@
           {
             "en": "Disabling autograd can save memory during inference.",
             "ko": "autograd를 비활성화하면 추론 시 메모리를 절약할 수 있다."
+          },
+          {
+            "en": "PyTorch has a built-in automatic differentiation engine called torch.autograd.",
+            "ko": "PyTorch에는 torch.autograd라고 불리는 자동 미분 엔진이 내장되어 있다.",
+            "source": "https://tutorials.pytorch.kr/beginner/basics/autogradqs_tutorial.html"
           }
         ],
-        "synonyms": ["자동 미분 엔진", "자동 그래디언트"]
+        "synonyms": [
+          "자동 미분 엔진",
+          "자동 그래디언트"
+        ]
       }
     ]
   }

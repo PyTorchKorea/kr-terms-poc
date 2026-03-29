@@ -1,36 +1,5 @@
 [
   {
-    "term": "model",
-    "meanings": [
-      {
-        "korean": "모델",
-        "domain": "머신러닝",
-        "definition": "데이터로부터 학습된 패턴을 바탕으로 예측이나 결정을 수행하는 수학적 구조",
-        "examples": ["CNN 모델은 이미지 분류에 특화되어 있다.", "모델을 저장하고 나중에 다시 불러올 수 있다."],
-        "synonyms": ["학습 모델", "예측 모델"]
-      },
-      {
-        "korean": "모형",
-        "domain": "통계",
-        "definition": "현상을 설명하거나 예측하기 위한 수학적 또는 개념적 표현",
-        "examples": ["회귀 모형을 사용하여 변수 간 관계를 분석한다.", "통계 모형의 적합도를 검증해야 한다."],
-        "synonyms": ["통계 모형", "수학 모형"]
-      }
-    ]
-  },
-  {
-    "term": "momentum",
-    "meanings": [
-      {
-        "korean": "모멘텀",
-        "domain": "최적화",
-        "definition": "이전 그래디언트의 방향을 고려하여 현재 업데이트 방향을 결정하는 최적화 기법",
-        "examples": ["모멘텀은 지역 최솟값을 벗어나는 데 도움을 준다.", "SGD with momentum은 일반 SGD보다 빠르게 수렴한다."],
-        "synonyms": ["운동량", "관성"]
-      }
-    ]
-  },
-  {
     "term": "machine translation",
     "meanings": [
       {
@@ -55,6 +24,54 @@
     ]
   },
   {
+    "term": "matrix multiplication",
+    "meanings": [
+      {
+        "korean": "행렬 곱",
+        "domain": "선형대수",
+        "definition": "두 행렬의 행과 열을 대응시켜 곱하고 합산하는 기본 선형대수 연산으로, 신경망의 핵심 계산입니다.",
+        "examples": [{"en": "torch.matmul computes the matrix multiplication between two tensors.", "ko": "torch.matmul은 두 텐서 간의 행렬 곱을 계산한다.", "source": "https://tutorials.pytorch.kr/beginner/basics/tensorqs_tutorial.html"}],
+        "synonyms": ["행렬 곱셈", "행렬곱"]
+      }
+    ]
+  },
+  {
+    "term": "mean-squared error",
+    "meanings": [
+      {
+        "korean": "평균제곱오차",
+        "domain": "머신러닝",
+        "definition": "예측값과 실제값 차이의 제곱 평균으로, 회귀 문제에서 가장 널리 사용되는 손실 함수입니다.",
+        "examples": ["MSE가 0에 가까울수록 모델의 예측이 정확하다.", "nn.MSELoss()로 mean-squared error 손실 함수를 사용할 수 있다."],
+        "synonyms": ["MSE", "평균 제곱 오차"]
+      }
+    ]
+  },
+  {
+    "term": "mel-frequency",
+    "meanings": [
+      {
+        "korean": "멜 주파수",
+        "domain": "음성처리",
+        "definition": "인간의 청각 인지 특성을 반영한 주파수 척도로, 음성 신호를 스펙트럼으로 변환할 때 사용됩니다.",
+        "examples": ["mel-frequency cepstral coefficients(MFCC)는 음성 인식의 기본 특징으로 사용된다."],
+        "synonyms": ["멜 스케일"]
+      }
+    ]
+  },
+  {
+    "term": "mini-batch",
+    "meanings": [
+      {
+        "korean": "미니배치",
+        "domain": "딥러닝",
+        "definition": "전체 학습 데이터를 작은 그룹으로 나눈 것으로, 확률적 경사 하강법에서 한 번의 업데이트에 사용되는 데이터 부분 집합입니다.",
+        "examples": ["mini-batch 크기는 학습 속도와 메모리 사용량에 영향을 미친다."],
+        "synonyms": ["미니 배치"]
+      }
+    ]
+  },
+  {
     "term": "mixed precision",
     "meanings": [
       {
@@ -63,6 +80,25 @@
         "definition": "FP16과 FP32를 혼합하여 연산하는 기법으로, 메모리 사용량을 줄이고 학습 속도를 높이면서 정밀도를 유지합니다.",
         "examples": ["mixed precision training은 최신 GPU에서 2-3배의 학습 속도 향상을 가져온다."],
         "synonyms": ["혼합 정밀도 학습"]
+      }
+    ]
+  },
+  {
+    "term": "model",
+    "meanings": [
+      {
+        "korean": "모델",
+        "domain": "머신러닝",
+        "definition": "데이터로부터 학습된 패턴을 바탕으로 예측이나 결정을 수행하는 수학적 구조",
+        "examples": ["CNN 모델은 이미지 분류에 특화되어 있다.", "모델을 저장하고 나중에 다시 불러올 수 있다.", {"en": "Every module in PyTorch subclasses the nn.Module.", "ko": "PyTorch의 모든 모듈은 nn.Module의 하위 클래스이다.", "source": "https://tutorials.pytorch.kr/beginner/basics/buildmodel_tutorial.html"}],
+        "synonyms": ["학습 모델", "예측 모델"]
+      },
+      {
+        "korean": "모형",
+        "domain": "통계",
+        "definition": "현상을 설명하거나 예측하기 위한 수학적 또는 개념적 표현",
+        "examples": ["회귀 모형을 사용하여 변수 간 관계를 분석한다.", "통계 모형의 적합도를 검증해야 한다."],
+        "synonyms": ["통계 모형", "수학 모형"]
       }
     ]
   },
@@ -91,38 +127,14 @@
     ]
   },
   {
-    "term": "mel-frequency",
+    "term": "momentum",
     "meanings": [
       {
-        "korean": "멜 주파수",
-        "domain": "음성처리",
-        "definition": "인간의 청각 인지 특성을 반영한 주파수 척도로, 음성 신호를 스펙트럼으로 변환할 때 사용됩니다.",
-        "examples": ["mel-frequency cepstral coefficients(MFCC)는 음성 인식의 기본 특징으로 사용된다."],
-        "synonyms": ["멜 스케일"]
-      }
-    ]
-  },
-  {
-    "term": "mean-squared error",
-    "meanings": [
-      {
-        "korean": "평균제곱오차",
-        "domain": "머신러닝",
-        "definition": "예측값과 실제값 차이의 제곱 평균으로, 회귀 문제에서 가장 널리 사용되는 손실 함수입니다.",
-        "examples": ["MSE가 0에 가까울수록 모델의 예측이 정확하다.", "nn.MSELoss()로 mean-squared error 손실 함수를 사용할 수 있다."],
-        "synonyms": ["MSE", "평균 제곱 오차"]
-      }
-    ]
-  },
-  {
-    "term": "mini-batch",
-    "meanings": [
-      {
-        "korean": "미니배치",
-        "domain": "딥러닝",
-        "definition": "전체 학습 데이터를 작은 그룹으로 나눈 것으로, 확률적 경사 하강법에서 한 번의 업데이트에 사용되는 데이터 부분 집합입니다.",
-        "examples": ["mini-batch 크기는 학습 속도와 메모리 사용량에 영향을 미친다."],
-        "synonyms": ["미니 배치"]
+        "korean": "모멘텀",
+        "domain": "최적화",
+        "definition": "이전 그래디언트의 방향을 고려하여 현재 업데이트 방향을 결정하는 최적화 기법",
+        "examples": ["모멘텀은 지역 최솟값을 벗어나는 데 도움을 준다.", "SGD with momentum은 일반 SGD보다 빠르게 수렴한다."],
+        "synonyms": ["운동량", "관성"]
       }
     ]
   }

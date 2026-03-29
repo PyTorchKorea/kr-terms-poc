@@ -6,7 +6,7 @@
         "korean": "검증",
         "domain": "머신러닝",
         "definition": "학습 중 모델의 성능을 평가하고 하이퍼파라미터를 조정하기 위한 과정",
-        "examples": ["검증 세트는 훈련에 사용되지 않은 별도의 데이터다.", "검증 손실이 증가하면 과적합의 신호일 수 있다."],
+        "examples": ["검증 세트는 훈련에 사용되지 않은 별도의 데이터다.", "검증 손실이 증가하면 과적합의 신호일 수 있다.", {"en": "We also check the model performance against the test dataset to ensure it is learning.", "ko": "모델 성능이 개선되고 있는지 확인하기 위해 테스트 데이터셋으로도 모델 성능을 확인한다.", "source": "https://tutorials.pytorch.kr/beginner/basics/optimization_tutorial.html"}],
         "synonyms": ["유효성 검사", "밸리데이션"]
       }
     ]

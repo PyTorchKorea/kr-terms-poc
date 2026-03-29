@@ -28,6 +28,7 @@ const domainColorMap: Record<string, string> = {
   '평가지표': '#00695c',
   '학습': '#303f9f',
   '합성곱신경망': '#d84315',
+  '선형대수': '#37474f',
 }
 
 export function getDomainColor(domain: string): string {
