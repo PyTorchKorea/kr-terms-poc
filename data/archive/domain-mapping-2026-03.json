@@ -1,0 +1,842 @@
+{
+  "activation function": [
+    {
+      "korean": "활성화 함수",
+      "domain": "신경망"
+    }
+  ],
+  "adversarial example": [
+    {
+      "korean": "적대적 예제",
+      "domain": "컴퓨터비전"
+    }
+  ],
+  "agent": [
+    {
+      "korean": "에이전트",
+      "domain": "강화학습"
+    },
+    {
+      "korean": "대리인",
+      "domain": "인공지능"
+    }
+  ],
+  "all-reduce": [
+    {
+      "korean": "올리듀스",
+      "domain": "분산학습"
+    }
+  ],
+  "anchor box": [
+    {
+      "korean": "앵커 박스",
+      "domain": "컴퓨터비전"
+    }
+  ],
+  "attention": [
+    {
+      "korean": "어텐션",
+      "domain": "딥러닝"
+    }
+  ],
+  "autograd": [
+    {
+      "korean": "자동 미분",
+      "domain": "자동미분"
+    }
+  ],
+  "backpropagation": [
+    {
+      "korean": "역전파",
+      "domain": "신경망"
+    }
+  ],
+  "batch": [
+    {
+      "korean": "배치",
+      "domain": "머신러닝"
+    }
+  ],
+  "batch normalization": [
+    {
+      "korean": "배치 정규화",
+      "domain": "딥러닝"
+    }
+  ],
+  "BERT": [
+    {
+      "korean": "BERT",
+      "domain": "자연어처리"
+    }
+  ],
+  "bias": [
+    {
+      "korean": "바이어스",
+      "domain": "신경망"
+    },
+    {
+      "korean": "편향",
+      "domain": "공정성"
+    }
+  ],
+  "bounding box": [
+    {
+      "korean": "경계 상자",
+      "domain": "컴퓨터비전"
+    }
+  ],
+  "chain rule": [
+    {
+      "korean": "연쇄 법칙",
+      "domain": "자동미분"
+    }
+  ],
+  "checkpoint": [
+    {
+      "korean": "체크포인트",
+      "domain": "딥러닝"
+    }
+  ],
+  "classification": [
+    {
+      "korean": "분류",
+      "domain": "머신러닝"
+    }
+  ],
+  "computational graph": [
+    {
+      "korean": "계산 그래프",
+      "domain": "자동미분"
+    }
+  ],
+  "confusion matrix": [
+    {
+      "korean": "혼동 행렬",
+      "domain": "머신러닝"
+    }
+  ],
+  "convergence": [
+    {
+      "korean": "수렴",
+      "domain": "최적화"
+    }
+  ],
+  "convolution": [
+    {
+      "korean": "합성곱",
+      "domain": "컴퓨터비전"
+    }
+  ],
+  "convolutional neural network": [
+    {
+      "korean": "합성곱 신경망",
+      "domain": "합성곱신경망"
+    }
+  ],
+  "cross-entropy": [
+    {
+      "korean": "교차 엔트로피",
+      "domain": "머신러닝"
+    }
+  ],
+  "CUDA": [
+    {
+      "korean": "CUDA",
+      "domain": "배포/인프라"
+    }
+  ],
+  "DAG": [
+    {
+      "korean": "방향성 비순환 그래프",
+      "domain": "자동미분"
+    }
+  ],
+  "data augmentation": [
+    {
+      "korean": "데이터 증강",
+      "domain": "딥러닝"
+    }
+  ],
+  "data parallel": [
+    {
+      "korean": "데이터 병렬 처리",
+      "domain": "분산학습"
+    }
+  ],
+  "dataloader": [
+    {
+      "korean": "데이터로더",
+      "domain": "딥러닝"
+    }
+  ],
+  "dataset": [
+    {
+      "korean": "데이터셋",
+      "domain": "머신러닝"
+    }
+  ],
+  "deep learning": [
+    {
+      "korean": "심층 학습",
+      "domain": "딥러닝"
+    }
+  ],
+  "deep neural network": [
+    {
+      "korean": "심층 신경망",
+      "domain": "딥러닝"
+    }
+  ],
+  "deep Q-network": [
+    {
+      "korean": "심층 Q 네트워크",
+      "domain": "강화학습"
+    }
+  ],
+  "dense layer": [
+    {
+      "korean": "완전 연결층",
+      "domain": "신경망"
+    }
+  ],
+  "derivative": [
+    {
+      "korean": "도함수",
+      "domain": "자동미분"
+    }
+  ],
+  "distributed data parallel": [
+    {
+      "korean": "분산 데이터 병렬",
+      "domain": "분산학습"
+    }
+  ],
+  "dropout": [
+    {
+      "korean": "드롭아웃",
+      "domain": "정규화"
+    }
+  ],
+  "early stopping": [
+    {
+      "korean": "조기 종료",
+      "domain": "모델최적화"
+    }
+  ],
+  "edge deployment": [
+    {
+      "korean": "엣지 배포",
+      "domain": "배포/인프라"
+    }
+  ],
+  "element-wise": [
+    {
+      "korean": "요소별",
+      "domain": "선형대수"
+    }
+  ],
+  "embedding": [
+    {
+      "korean": "임베딩",
+      "domain": "자연어처리"
+    }
+  ],
+  "ensemble": [
+    {
+      "korean": "앙상블",
+      "domain": "머신러닝"
+    }
+  ],
+  "environment": [
+    {
+      "korean": "환경",
+      "domain": "강화학습"
+    }
+  ],
+  "epoch": [
+    {
+      "korean": "에포크",
+      "domain": "학습"
+    }
+  ],
+  "evaluation mode": [
+    {
+      "korean": "평가 모드",
+      "domain": "딥러닝"
+    }
+  ],
+  "exploitation": [
+    {
+      "korean": "활용",
+      "domain": "강화학습"
+    }
+  ],
+  "exploration": [
+    {
+      "korean": "탐험",
+      "domain": "강화학습"
+    }
+  ],
+  "feature": [
+    {
+      "korean": "특성",
+      "domain": "머신러닝"
+    },
+    {
+      "korean": "기능",
+      "domain": "소프트웨어"
+    }
+  ],
+  "feature extractor": [
+    {
+      "korean": "특징 추출기",
+      "domain": "전이학습"
+    }
+  ],
+  "feature map": [
+    {
+      "korean": "특징 맵",
+      "domain": "딥러닝"
+    }
+  ],
+  "feed-forward network": [
+    {
+      "korean": "순전파 신경망",
+      "domain": "신경망"
+    }
+  ],
+  "fine-tuning": [
+    {
+      "korean": "미세조정",
+      "domain": "전이학습"
+    }
+  ],
+  "flatten": [
+    {
+      "korean": "평탄화",
+      "domain": "딥러닝"
+    }
+  ],
+  "forward pass": [
+    {
+      "korean": "순전파",
+      "domain": "딥러닝"
+    }
+  ],
+  "freezing": [
+    {
+      "korean": "동결",
+      "domain": "딥러닝"
+    }
+  ],
+  "GAN": [
+    {
+      "korean": "생성적 적대 신경망",
+      "domain": "딥러닝"
+    }
+  ],
+  "generative model": [
+    {
+      "korean": "생성 모델",
+      "domain": "생성형AI"
+    }
+  ],
+  "gradient": [
+    {
+      "korean": "그래디언트",
+      "domain": "최적화"
+    }
+  ],
+  "gradient accumulation": [
+    {
+      "korean": "그래디언트 누적",
+      "domain": "모델최적화"
+    }
+  ],
+  "gradient descent": [
+    {
+      "korean": "경사하강법",
+      "domain": "최적화"
+    }
+  ],
+  "gradient synchronization": [
+    {
+      "korean": "그래디언트 동기화",
+      "domain": "분산학습"
+    }
+  ],
+  "hessian": [
+    {
+      "korean": "헤시안",
+      "domain": "자동미분"
+    }
+  ],
+  "hidden layer": [
+    {
+      "korean": "은닉층",
+      "domain": "신경망"
+    }
+  ],
+  "hyperparameter": [
+    {
+      "korean": "하이퍼파라미터",
+      "domain": "머신러닝"
+    }
+  ],
+  "image classification": [
+    {
+      "korean": "이미지 분류",
+      "domain": "컴퓨터비전"
+    }
+  ],
+  "image segmentation": [
+    {
+      "korean": "이미지 분할",
+      "domain": "컴퓨터비전"
+    }
+  ],
+  "in-place": [
+    {
+      "korean": "제자리",
+      "domain": "딥러닝"
+    }
+  ],
+  "inference": [
+    {
+      "korean": "추론",
+      "domain": "머신러닝"
+    }
+  ],
+  "initialization": [
+    {
+      "korean": "초기화",
+      "domain": "딥러닝"
+    }
+  ],
+  "iteration": [
+    {
+      "korean": "반복",
+      "domain": "학습"
+    }
+  ],
+  "kernel": [
+    {
+      "korean": "커널",
+      "domain": "서포트벡터머신"
+    },
+    {
+      "korean": "커널",
+      "domain": "합성곱신경망"
+    }
+  ],
+  "knowledge distillation": [
+    {
+      "korean": "지식 증류",
+      "domain": "모델최적화"
+    }
+  ],
+  "language model": [
+    {
+      "korean": "언어 모델",
+      "domain": "자연어처리"
+    }
+  ],
+  "layer": [
+    {
+      "korean": "층",
+      "domain": "신경망"
+    },
+    {
+      "korean": "레이어",
+      "domain": "아키텍처"
+    }
+  ],
+  "learning rate": [
+    {
+      "korean": "학습률",
+      "domain": "최적화"
+    }
+  ],
+  "learning rate scheduler": [
+    {
+      "korean": "학습률 스케줄러",
+      "domain": "모델최적화"
+    }
+  ],
+  "linear layer": [
+    {
+      "korean": "선형 계층",
+      "domain": "신경망"
+    }
+  ],
+  "logit": [
+    {
+      "korean": "로짓",
+      "domain": "딥러닝"
+    }
+  ],
+  "loss": [
+    {
+      "korean": "손실",
+      "domain": "머신러닝"
+    },
+    {
+      "korean": "로스",
+      "domain": "일반"
+    }
+  ],
+  "machine translation": [
+    {
+      "korean": "기계 번역",
+      "domain": "자연어처리"
+    }
+  ],
+  "Markov decision process": [
+    {
+      "korean": "마르코프 결정 과정",
+      "domain": "강화학습"
+    }
+  ],
+  "matrix multiplication": [
+    {
+      "korean": "행렬 곱",
+      "domain": "선형대수"
+    }
+  ],
+  "mean-squared error": [
+    {
+      "korean": "평균제곱오차",
+      "domain": "머신러닝"
+    }
+  ],
+  "mel-frequency": [
+    {
+      "korean": "멜 주파수",
+      "domain": "음성처리"
+    }
+  ],
+  "mini-batch": [
+    {
+      "korean": "미니배치",
+      "domain": "딥러닝"
+    }
+  ],
+  "mixed precision": [
+    {
+      "korean": "혼합 정밀도",
+      "domain": "모델최적화"
+    }
+  ],
+  "model": [
+    {
+      "korean": "모델",
+      "domain": "머신러닝"
+    },
+    {
+      "korean": "모형",
+      "domain": "통계"
+    }
+  ],
+  "model parallelism": [
+    {
+      "korean": "모델 병렬화",
+      "domain": "분산학습"
+    }
+  ],
+  "model serving": [
+    {
+      "korean": "모델 서빙",
+      "domain": "배포/인프라"
+    }
+  ],
+  "momentum": [
+    {
+      "korean": "모멘텀",
+      "domain": "최적화"
+    }
+  ],
+  "named entity recognition": [
+    {
+      "korean": "개체명 인식",
+      "domain": "자연어처리"
+    }
+  ],
+  "neural network": [
+    {
+      "korean": "신경망",
+      "domain": "딥러닝"
+    }
+  ],
+  "node": [
+    {
+      "korean": "노드",
+      "domain": "신경망"
+    },
+    {
+      "korean": "노드",
+      "domain": "그래프"
+    }
+  ],
+  "normalization": [
+    {
+      "korean": "정규화",
+      "domain": "전처리"
+    }
+  ],
+  "object detection": [
+    {
+      "korean": "객체 검출",
+      "domain": "컴퓨터비전"
+    }
+  ],
+  "one-hot encoding": [
+    {
+      "korean": "원-핫 인코딩",
+      "domain": "머신러닝"
+    }
+  ],
+  "ONNX": [
+    {
+      "korean": "ONNX",
+      "domain": "배포/인프라"
+    }
+  ],
+  "optimizer": [
+    {
+      "korean": "옵티마이저",
+      "domain": "최적화"
+    }
+  ],
+  "overfitting": [
+    {
+      "korean": "과적합",
+      "domain": "머신러닝"
+    }
+  ],
+  "parameter": [
+    {
+      "korean": "매개변수",
+      "domain": "머신러닝"
+    }
+  ],
+  "pipeline parallelism": [
+    {
+      "korean": "파이프라인 병렬화",
+      "domain": "분산학습"
+    }
+  ],
+  "policy gradient": [
+    {
+      "korean": "정책 그래디언트",
+      "domain": "강화학습"
+    }
+  ],
+  "pooling": [
+    {
+      "korean": "풀링",
+      "domain": "컴퓨터비전"
+    }
+  ],
+  "pre-training": [
+    {
+      "korean": "사전학습",
+      "domain": "전이학습"
+    }
+  ],
+  "precision": [
+    {
+      "korean": "정밀도",
+      "domain": "평가지표"
+    }
+  ],
+  "profiling": [
+    {
+      "korean": "프로파일링",
+      "domain": "배포/인프라"
+    }
+  ],
+  "pruning": [
+    {
+      "korean": "가지치기",
+      "domain": "모델최적화"
+    }
+  ],
+  "quantization": [
+    {
+      "korean": "양자화",
+      "domain": "모델최적화"
+    }
+  ],
+  "recall": [
+    {
+      "korean": "재현율",
+      "domain": "평가지표"
+    }
+  ],
+  "recurrent neural network": [
+    {
+      "korean": "순환 신경망",
+      "domain": "딥러닝"
+    }
+  ],
+  "regularization": [
+    {
+      "korean": "정규화",
+      "domain": "머신러닝"
+    }
+  ],
+  "ReLU": [
+    {
+      "korean": "렐루",
+      "domain": "딥러닝"
+    }
+  ],
+  "reward": [
+    {
+      "korean": "보상",
+      "domain": "강화학습"
+    }
+  ],
+  "sentiment analysis": [
+    {
+      "korean": "감성 분석",
+      "domain": "자연어처리"
+    }
+  ],
+  "sequence-to-sequence": [
+    {
+      "korean": "시퀀스-투-시퀀스",
+      "domain": "자연어처리"
+    }
+  ],
+  "sigmoid": [
+    {
+      "korean": "시그모이드",
+      "domain": "딥러닝"
+    }
+  ],
+  "softmax": [
+    {
+      "korean": "소프트맥스",
+      "domain": "딥러닝"
+    }
+  ],
+  "sparsity": [
+    {
+      "korean": "희소성",
+      "domain": "모델최적화"
+    }
+  ],
+  "spectrogram": [
+    {
+      "korean": "스펙트로그램",
+      "domain": "음성처리"
+    }
+  ],
+  "speech recognition": [
+    {
+      "korean": "음성 인식",
+      "domain": "음성처리"
+    }
+  ],
+  "tensor": [
+    {
+      "korean": "텐서",
+      "domain": "딥러닝"
+    }
+  ],
+  "tensor parallelism": [
+    {
+      "korean": "텐서 병렬화",
+      "domain": "분산학습"
+    }
+  ],
+  "TensorBoard": [
+    {
+      "korean": "텐서보드",
+      "domain": "배포/인프라"
+    }
+  ],
+  "text-to-speech": [
+    {
+      "korean": "텍스트 음성 변환",
+      "domain": "음성처리"
+    }
+  ],
+  "tokenization": [
+    {
+      "korean": "토큰화",
+      "domain": "자연어처리"
+    }
+  ],
+  "training": [
+    {
+      "korean": "훈련",
+      "domain": "머신러닝"
+    }
+  ],
+  "training loop": [
+    {
+      "korean": "학습 루프",
+      "domain": "딥러닝"
+    }
+  ],
+  "transfer learning": [
+    {
+      "korean": "전이학습",
+      "domain": "머신러닝"
+    }
+  ],
+  "transformer": [
+    {
+      "korean": "트랜스포머",
+      "domain": "딥러닝"
+    }
+  ],
+  "transpose": [
+    {
+      "korean": "전치",
+      "domain": "선형대수"
+    }
+  ],
+  "underfitting": [
+    {
+      "korean": "과소적합",
+      "domain": "머신러닝"
+    }
+  ],
+  "validation": [
+    {
+      "korean": "검증",
+      "domain": "머신러닝"
+    }
+  ],
+  "vanishing gradient": [
+    {
+      "korean": "기울기 소실",
+      "domain": "신경망"
+    }
+  ],
+  "waveform": [
+    {
+      "korean": "파형",
+      "domain": "음성처리"
+    }
+  ],
+  "weight": [
+    {
+      "korean": "가중치",
+      "domain": "신경망"
+    },
+    {
+      "korean": "가중",
+      "domain": "일반"
+    }
+  ],
+  "word embedding": [
+    {
+      "korean": "단어 임베딩",
+      "domain": "자연어처리"
+    }
+  ]
+}
