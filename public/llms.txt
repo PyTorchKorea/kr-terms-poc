@@ -8,7 +8,7 @@
 
 ## 용어 데이터
 
-용어 데이터는 알파벳별 JSON 파일로 제공됩니다. 각 용어는 영어 원문(term), 한국어 번역(korean), 분야(domain), 정의(definition), 예시(examples), 유의어(synonyms)를 포함합니다.
+용어 데이터는 알파벳별 JSON 파일로 제공됩니다. 각 용어는 영어 원문(term), 한국어 번역(korean), 정의(definition), 예시(examples), 유의어(synonyms)를 포함합니다.
 
 - [파일 목록 (index.json)](https://poc.terms.kr/data/index.json): 전체 알파벳별 JSON 파일 목록
 - [A](https://poc.terms.kr/data/a.json): attention, agent, activation function, adversarial example, anchor box, all-reduce, autograd
@@ -42,7 +42,6 @@
   "meanings": [
     {
       "korean": "어텐션",
-      "domain": "딥러닝",
       "definition": "입력 시퀀스의 각 요소에 서로 다른 가중치를 부여하여 중요한 정보에 집중하는 메커니즘",
       "examples": [
         {
