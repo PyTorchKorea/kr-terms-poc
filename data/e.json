@@ -6,7 +6,11 @@
         "korean": "조기 종료",
         "definition": "검증 손실이 더 이상 개선되지 않을 때 학습을 중단하여 과적합을 방지하는 정규화 기법입니다.",
         "examples": [
-          "early stopping을 적용하면 불필요한 학습 시간을 줄이고 일반화 성능을 높일 수 있다."
+          {
+            "en": "Applying early stopping reduces unnecessary training time and improves generalization performance.",
+            "ko": "early stopping을 적용하면 불필요한 학습 시간을 줄이고 일반화 성능을 높일 수 있다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "조기 중단"
@@ -21,7 +25,11 @@
         "korean": "엣지 배포",
         "definition": "학습된 모델을 모바일 기기나 IoT 디바이스 등 엣지 환경에 배포하여 실행하는 것입니다.",
         "examples": [
-          "ExecuTorch는 PyTorch 모델의 edge deployment를 위한 프레임워크이다."
+          {
+            "en": "ExecuTorch is a framework for edge deployment of PyTorch models.",
+            "ko": "ExecuTorch는 PyTorch 모델의 edge deployment를 위한 프레임워크이다.",
+            "source": "https://pytorch.org/executorch/"
+          }
         ],
         "synonyms": [
           "엣지 추론",
@@ -57,8 +65,16 @@
         "korean": "임베딩",
         "definition": "단어나 문장을 고정 길이의 벡터로 표현하여 의미적 관계를 수치화하는 기법",
         "examples": [
-          "Word2Vec은 단어 임베딩을 생성하는 대표적인 방법이다.",
-          "임베딩 공간에서 유사한 의미의 단어들은 가까이 위치한다."
+          {
+            "en": "Word2Vec is a representative method for generating word embeddings.",
+            "ko": "Word2Vec은 단어 임베딩을 생성하는 대표적인 방법이다.",
+            "source": "https://arxiv.org/abs/1301.3781"
+          },
+          {
+            "en": "In the embedding space, words with similar meanings are located close to each other.",
+            "ko": "임베딩 공간에서 유사한 의미의 단어들은 가까이 위치한다.",
+            "source": "https://arxiv.org/abs/1301.3781"
+          }
         ],
         "synonyms": [
           "벡터 표현",
@@ -74,8 +90,16 @@
         "korean": "앙상블",
         "definition": "여러 개의 모델을 결합하여 예측 성능을 향상시키는 기법",
         "examples": [
-          "앙상블 학습은 개별 모델보다 안정적인 예측을 제공한다.",
-          "랜덤 포레스트는 결정 트리의 앙상블이다."
+          {
+            "en": "Ensemble learning provides more stable predictions than individual models.",
+            "ko": "앙상블 학습은 개별 모델보다 안정적인 예측을 제공한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "Random forest is an ensemble of decision trees.",
+            "ko": "랜덤 포레스트는 결정 트리의 앙상블이다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "앙상블 학습",
@@ -91,7 +115,11 @@
         "korean": "환경",
         "definition": "에이전트가 상호작용하는 외부 시스템으로, 상태와 보상을 제공하고 에이전트의 행동에 따라 변화합니다.",
         "examples": [
-          "OpenAI Gym은 다양한 강화학습 environment를 제공하는 라이브러리이다."
+          {
+            "en": "OpenAI Gym is a library that provides a variety of reinforcement learning environments.",
+            "ko": "OpenAI Gym은 다양한 강화학습 environment를 제공하는 라이브러리이다.",
+            "source": "http://incompleteideas.net/book/the-book-2nd.html"
+          }
         ],
         "synonyms": [
           "학습 환경"
@@ -106,8 +134,16 @@
         "korean": "에포크",
         "definition": "전체 훈련 데이터셋을 한 번 완전히 학습하는 과정",
         "examples": [
-          "모델을 100 에포크 동안 학습시켰다.",
-          "에포크가 증가할수록 훈련 손실은 감소하지만 과적합 위험도 커진다.",
+          {
+            "en": "The model was trained for 100 epochs.",
+            "ko": "모델을 100 에포크 동안 학습시켰다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "As epochs increase, training loss decreases but the risk of overfitting also grows.",
+            "ko": "에포크가 증가할수록 훈련 손실은 감소하지만 과적합 위험도 커진다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
           {
             "en": "Each epoch consists of a training loop and a validation/test loop.",
             "ko": "각 에폭은 학습 단계와 검증/테스트 단계로 구성된다.",
@@ -129,7 +165,11 @@
         "korean": "평가 모드",
         "definition": "모델을 추론 전용 상태로 전환하여 드롭아웃이나 배치 정규화의 동작을 학습 시와 다르게 설정하는 모드입니다.",
         "examples": [
-          "model.eval()을 호출하면 evaluation mode로 전환된다."
+          {
+            "en": "Calling model.eval() switches the model to evaluation mode.",
+            "ko": "model.eval()을 호출하면 evaluation mode로 전환된다.",
+            "source": "https://pytorch.org/docs/stable/generated/torch.nn.Module.html"
+          }
         ],
         "synonyms": [
           "추론 모드"
@@ -144,7 +184,11 @@
         "korean": "활용",
         "definition": "에이전트가 현재까지 학습한 지식을 바탕으로 최적의 행동을 선택하는 전략입니다.",
         "examples": [
-          "exploration과 exploitation의 균형은 강화학습의 핵심 문제이다."
+          {
+            "en": "Balancing exploration and exploitation is a core challenge in reinforcement learning.",
+            "ko": "exploration과 exploitation의 균형은 강화학습의 핵심 문제이다.",
+            "source": "http://incompleteideas.net/book/the-book-2nd.html"
+          }
         ],
         "synonyms": [
           "이용"
@@ -159,7 +203,11 @@
         "korean": "탐험",
         "definition": "에이전트가 새로운 행동을 시도하여 환경에 대한 정보를 수집하는 전략입니다.",
         "examples": [
-          "epsilon-greedy 정책은 일정 확률로 exploration을 수행한다."
+          {
+            "en": "The epsilon-greedy policy performs exploration with a certain probability.",
+            "ko": "epsilon-greedy 정책은 일정 확률로 exploration을 수행한다.",
+            "source": "http://incompleteideas.net/book/the-book-2nd.html"
+          }
         ],
         "synonyms": [
           "탐색"

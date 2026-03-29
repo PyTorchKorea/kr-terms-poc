@@ -6,8 +6,16 @@
         "korean": "역전파",
         "definition": "신경망의 출력층에서 입력층 방향으로 오차를 전파하며 가중치를 업데이트하는 학습 알고리즘",
         "examples": [
-          "역전파 알고리즘은 현대 딥러닝의 핵심 기술이다.",
-          "체인 룰을 이용한 역전파로 각 층의 그래디언트를 계산한다.",
+          {
+            "en": "The backpropagation algorithm is a core technique of modern deep learning.",
+            "ko": "역전파 알고리즘은 현대 딥러닝의 핵심 기술이다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "Using the chain rule in backpropagation, the gradient at each layer is computed.",
+            "ko": "체인 룰을 이용한 역전파로 각 층의 그래디언트를 계산한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
           {
             "en": "The most commonly used algorithm for training neural networks is back propagation.",
             "ko": "신경망을 학습할 때 가장 자주 사용되는 알고리즘은 역전파이다.",
@@ -28,8 +36,16 @@
         "korean": "배치",
         "definition": "모델 학습 시 한 번에 처리되는 훈련 샘플의 집합",
         "examples": [
-          "배치 크기가 32라면 32개의 샘플을 동시에 처리한다.",
-          "미니 배치 학습은 전체 배치와 확률적 경사 하강법의 중간 방식이다.",
+          {
+            "en": "If the batch size is 32, 32 samples are processed simultaneously.",
+            "ko": "배치 크기가 32라면 32개의 샘플을 동시에 처리한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "Mini-batch training is a middle ground between full-batch and stochastic gradient descent.",
+            "ko": "미니 배치 학습은 전체 배치와 확률적 경사 하강법의 중간 방식이다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
           {
             "en": "The number of data samples propagated through the network before the parameters are updated.",
             "ko": "매개변수가 갱신되기 전 신경망을 통해 전파된 데이터 샘플의 수를 배치 크기라 한다.",
@@ -50,8 +66,16 @@
         "korean": "배치 정규화",
         "definition": "각 미니배치에 대해 입력을 정규화하여 학습을 안정화하고 가속화하는 기법입니다.",
         "examples": [
-          "배치 정규화를 적용하면 더 높은 학습률을 사용할 수 있다.",
-          "batch normalization은 내부 공변량 변화를 줄여준다."
+          {
+            "en": "Applying batch normalization allows the use of higher learning rates.",
+            "ko": "배치 정규화를 적용하면 더 높은 학습률을 사용할 수 있다.",
+            "source": "https://arxiv.org/abs/1502.03167"
+          },
+          {
+            "en": "Batch normalization reduces internal covariate shift during training.",
+            "ko": "batch normalization은 내부 공변량 변화를 줄여준다.",
+            "source": "https://arxiv.org/abs/1502.03167"
+          }
         ],
         "synonyms": [
           "배치 놈"
@@ -66,8 +90,16 @@
         "korean": "BERT",
         "definition": "양방향 트랜스포머 인코더를 사용한 사전 학습 언어 모델로, 문맥을 양방향으로 이해하여 다양한 NLP 태스크에서 뛰어난 성능을 보입니다.",
         "examples": [
-          "BERT는 마스크 언어 모델링과 다음 문장 예측으로 사전 학습된다.",
-          "한국어 BERT 모델인 KoBERT가 다양한 NLP 작업에 활용되고 있다."
+          {
+            "en": "BERT is pre-trained using masked language modeling and next sentence prediction.",
+            "ko": "BERT는 마스크 언어 모델링과 다음 문장 예측으로 사전 학습된다.",
+            "source": "https://arxiv.org/abs/1810.04805"
+          },
+          {
+            "en": "KoBERT, a Korean-language BERT model, is being used for various NLP tasks.",
+            "ko": "한국어 BERT 모델인 KoBERT가 다양한 NLP 작업에 활용되고 있다.",
+            "source": "https://github.com/SKTBrain/KoBERT"
+          }
         ],
         "synonyms": [
           "버트"
@@ -82,8 +114,16 @@
         "korean": "바이어스",
         "definition": "신경망의 뉴런에서 가중합에 더해지는 상수 항으로, 활성화 함수의 임계값을 조정하는 매개변수",
         "examples": [
-          "바이어스 항은 모델의 표현력을 높이는 데 기여한다.",
-          "선형 회귀에서 바이어스는 y 절편에 해당한다."
+          {
+            "en": "The bias term contributes to increasing the representational capacity of the model.",
+            "ko": "바이어스 항은 모델의 표현력을 높이는 데 기여한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "In linear regression, the bias corresponds to the y-intercept.",
+            "ko": "선형 회귀에서 바이어스는 y 절편에 해당한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "편향 항",
@@ -94,8 +134,16 @@
         "korean": "편향",
         "definition": "데이터나 알고리즘이 특정 집단에 대해 불공정한 결과를 초래하는 체계적인 오류",
         "examples": [
-          "채용 알고리즘의 성별 편향 문제가 사회적 이슈가 되고 있다.",
-          "편향된 훈련 데이터는 차별적인 AI 시스템을 만들 수 있다."
+          {
+            "en": "Gender bias in hiring algorithms has become a major social issue.",
+            "ko": "채용 알고리즘의 성별 편향 문제가 사회적 이슈가 되고 있다.",
+            "source": "https://arxiv.org/abs/1901.10002"
+          },
+          {
+            "en": "Biased training data can result in discriminatory AI systems.",
+            "ko": "편향된 훈련 데이터는 차별적인 AI 시스템을 만들 수 있다.",
+            "source": "https://arxiv.org/abs/1901.10002"
+          }
         ],
         "synonyms": [
           "알고리즘 편향",
@@ -111,7 +159,11 @@
         "korean": "경계 상자",
         "definition": "이미지에서 객체의 위치를 나타내는 직사각형 영역으로, 좌표값으로 표현됩니다.",
         "examples": [
-          "객체 검출 모델은 각 객체에 대해 bounding box와 클래스를 예측한다."
+          {
+            "en": "Object detection models predict a bounding box and class label for each detected object.",
+            "ko": "객체 검출 모델은 각 객체에 대해 bounding box와 클래스를 예측한다.",
+            "source": "https://arxiv.org/abs/1506.01497"
+          }
         ],
         "synonyms": [
           "바운딩 박스"

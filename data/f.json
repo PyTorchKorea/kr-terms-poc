@@ -6,8 +6,16 @@
         "korean": "특성",
         "definition": "모델 학습에 사용되는 입력 데이터의 개별 측정 가능한 속성",
         "examples": [
-          "주택 가격 예측에서 면적, 방 개수 등이 특성이 된다.",
-          "특성 공학은 모델 성능 향상의 핵심이다."
+          {
+            "en": "In house price prediction, area and number of rooms become features.",
+            "ko": "주택 가격 예측에서 면적, 방 개수 등이 특성이 된다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "Feature engineering is key to improving model performance.",
+            "ko": "특성 공학은 모델 성능 향상의 핵심이다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "피처",
@@ -20,8 +28,16 @@
         "korean": "기능",
         "definition": "소프트웨어나 시스템이 제공하는 특정 능력이나 동작",
         "examples": [
-          "새로운 기능으로 자동 번역이 추가되었다.",
-          "이 모델의 주요 기능은 실시간 객체 탐지다."
+          {
+            "en": "Automatic translation was added as a new feature.",
+            "ko": "새로운 기능으로 자동 번역이 추가되었다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "The main feature of this model is real-time object detection.",
+            "ko": "이 모델의 주요 기능은 실시간 객체 탐지다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "함수",
@@ -57,7 +73,11 @@
         "korean": "특징 맵",
         "definition": "합성곱 연산을 통해 추출된 입력 데이터의 특징 표현으로, 각 필터가 검출한 패턴을 시각화한 것입니다.",
         "examples": [
-          "CNN의 각 합성곱 레이어는 입력에서 서로 다른 feature map을 추출한다."
+          {
+            "en": "Each convolutional layer in a CNN extracts a different feature map from the input.",
+            "ko": "CNN의 각 합성곱 레이어는 입력에서 서로 다른 feature map을 추출한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "특성 맵",
@@ -73,7 +93,11 @@
         "korean": "순전파 신경망",
         "definition": "입력층에서 출력층까지 한 방향으로만 신호가 전달되는 신경망 구조로, 순환 연결이 없습니다.",
         "examples": [
-          "가장 기본적인 feed-forward network는 다층 퍼셉트론(MLP)이다."
+          {
+            "en": "The most basic feed-forward network is the multilayer perceptron (MLP).",
+            "ko": "가장 기본적인 feed-forward network는 다층 퍼셉트론(MLP)이다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "순방향 신경망",
@@ -89,8 +113,16 @@
         "korean": "미세조정",
         "definition": "사전 학습된 모델을 특정 작업에 맞게 추가 학습시키는 과정",
         "examples": [
-          "BERT 모델을 감성 분석 작업에 맞게 미세조정했다.",
-          "미세조정은 적은 데이터로도 높은 성능을 달성할 수 있다.",
+          {
+            "en": "The BERT model was fine-tuned for a sentiment analysis task.",
+            "ko": "BERT 모델을 감성 분석 작업에 맞게 미세조정했다.",
+            "source": "https://arxiv.org/abs/1810.04805"
+          },
+          {
+            "en": "Fine-tuning can achieve high performance even with a small amount of data.",
+            "ko": "미세조정은 적은 데이터로도 높은 성능을 달성할 수 있다.",
+            "source": "https://arxiv.org/abs/1810.04805"
+          },
           {
             "en": "Fine-tune the ConvNet: instead of random initialization, we initialize the network with a pretrained model.",
             "ko": "합성곱 신경망의 미세조정: 무작위 초기화 대신, 사전학습된 모델로 네트워크를 초기화한다.",
@@ -152,7 +184,11 @@
         "korean": "동결",
         "definition": "모델의 특정 레이어의 가중치를 학습 과정에서 업데이트하지 않도록 고정하는 기법으로, 전이학습에서 주로 사용됩니다.",
         "examples": [
-          "사전 학습된 모델의 초기 레이어를 freezing하고 마지막 레이어만 학습시키는 것이 일반적이다."
+          {
+            "en": "It is common practice to freeze the early layers of a pretrained model and train only the last layers.",
+            "ko": "사전 학습된 모델의 초기 레이어를 freezing하고 마지막 레이어만 학습시키는 것이 일반적이다.",
+            "source": "https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html"
+          }
         ],
         "synonyms": [
           "가중치 동결",

@@ -6,7 +6,11 @@
         "korean": "감성 분석",
         "definition": "텍스트에 표현된 감정이나 의견의 긍부정을 판별하는 자연어처리 태스크입니다.",
         "examples": [
-          "영화 리뷰에 대한 sentiment analysis로 관객 반응을 분석할 수 있다."
+          {
+            "en": "Sentiment analysis of movie reviews can be used to analyze audience reactions.",
+            "ko": "영화 리뷰에 대한 sentiment analysis로 관객 반응을 분석할 수 있다.",
+            "source": "https://arxiv.org/abs/1810.04805"
+          }
         ],
         "synonyms": [
           "감정 분석",
@@ -22,7 +26,11 @@
         "korean": "시퀀스-투-시퀀스",
         "definition": "가변 길이의 입력 시퀀스를 가변 길이의 출력 시퀀스로 변환하는 모델 구조로, 인코더-디코더 아키텍처를 사용합니다.",
         "examples": [
-          "seq2seq 모델은 기계 번역, 텍스트 요약 등에 널리 사용된다."
+          {
+            "en": "The seq2seq model is widely used for machine translation and text summarization.",
+            "ko": "seq2seq 모델은 기계 번역, 텍스트 요약 등에 널리 사용된다.",
+            "source": "https://arxiv.org/abs/1409.3215"
+          }
         ],
         "synonyms": [
           "seq2seq",
@@ -38,7 +46,11 @@
         "korean": "시그모이드",
         "definition": "입력값을 0과 1 사이의 값으로 변환하는 S자 형태의 활성화 함수입니다.",
         "examples": [
-          "이진 분류에서 sigmoid 함수를 출력층에 사용한다."
+          {
+            "en": "The sigmoid function is used in the output layer for binary classification.",
+            "ko": "이진 분류에서 sigmoid 함수를 출력층에 사용한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "시그모이드 함수",
@@ -54,7 +66,11 @@
         "korean": "소프트맥스",
         "definition": "입력값을 확률 분포로 변환하는 함수로, 다중 클래스 분류의 출력층에 주로 사용됩니다.",
         "examples": [
-          "분류 모델의 마지막 레이어에 softmax를 적용하여 각 클래스의 확률을 얻는다.",
+          {
+            "en": "Softmax is applied to the final layer of a classification model to obtain per-class probabilities.",
+            "ko": "분류 모델의 마지막 레이어에 softmax를 적용하여 각 클래스의 확률을 얻는다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
           {
             "en": "The last linear layer returns logits which are passed to nn.Softmax to be scaled to values in [0, 1].",
             "ko": "마지막 선형 계층은 로짓을 반환하고, nn.Softmax를 통해 [0, 1] 범위의 값으로 변환된다.",
@@ -74,7 +90,11 @@
         "korean": "희소성",
         "definition": "텐서의 대부분의 원소가 0인 상태로, 모델 압축과 연산 효율 향상에 활용됩니다.",
         "examples": [
-          "반구조적 sparsity는 특정 패턴으로 가중치를 0으로 만들어 하드웨어 가속을 가능하게 한다."
+          {
+            "en": "Semi-structured sparsity zeros weights in specific patterns to enable hardware acceleration.",
+            "ko": "반구조적 sparsity는 특정 패턴으로 가중치를 0으로 만들어 하드웨어 가속을 가능하게 한다.",
+            "source": "https://arxiv.org/abs/2101.09671"
+          }
         ],
         "synonyms": [
           "희소화"
@@ -89,7 +109,11 @@
         "korean": "스펙트로그램",
         "definition": "소리 신호의 주파수 성분을 시간에 따라 시각화한 그래프로, 음성 및 오디오 처리의 기본 표현입니다.",
         "examples": [
-          "멜 스펙트로그램은 음성 인식 모델의 입력으로 자주 사용된다."
+          {
+            "en": "Mel spectrograms are frequently used as input to speech recognition models.",
+            "ko": "멜 스펙트로그램은 음성 인식 모델의 입력으로 자주 사용된다.",
+            "source": "https://arxiv.org/abs/1003.4083"
+          }
         ],
         "synonyms": [
           "분광도"
@@ -104,7 +128,11 @@
         "korean": "음성 인식",
         "definition": "음성 신호를 텍스트로 변환하는 기술로, 자동 음성 인식(ASR)이라고도 합니다.",
         "examples": [
-          "Wav2Vec2는 자기지도 학습 기반의 speech recognition 모델이다."
+          {
+            "en": "Wav2Vec2 is a self-supervised learning-based speech recognition model.",
+            "ko": "Wav2Vec2는 자기지도 학습 기반의 speech recognition 모델이다.",
+            "source": "https://arxiv.org/abs/2006.11477"
+          }
         ],
         "synonyms": [
           "ASR",

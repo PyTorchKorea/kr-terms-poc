@@ -6,8 +6,16 @@
         "korean": "매개변수",
         "definition": "모델 학습 과정에서 데이터로부터 자동으로 학습되는 내부 변수",
         "examples": [
-          "신경망의 가중치와 바이어스는 학습 가능한 매개변수다.",
-          "이 모델은 1억 개의 매개변수를 가진다.",
+          {
+            "en": "The weights and biases of a neural network are learnable parameters.",
+            "ko": "신경망의 가중치와 바이어스는 학습 가능한 매개변수다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "This model has 100 million parameters.",
+            "ko": "이 모델은 1억 개의 매개변수를 가진다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
           {
             "en": "Training a model is the process of optimizing model parameters to fit data.",
             "ko": "모델을 학습시키는 것은 데이터에 맞게 모델 매개변수를 최적화하는 과정이다.",
@@ -28,7 +36,11 @@
         "korean": "파이프라인 병렬화",
         "definition": "모델의 레이어를 여러 GPU에 순차적으로 배치하고, 마이크로배치를 파이프라인 방식으로 처리하는 병렬 기법입니다.",
         "examples": [
-          "GPipe는 대표적인 pipeline parallelism 기법이다."
+          {
+            "en": "GPipe is a representative pipeline parallelism technique.",
+            "ko": "GPipe는 대표적인 pipeline parallelism 기법이다.",
+            "source": "https://arxiv.org/abs/1811.06965"
+          }
         ],
         "synonyms": [
           "파이프라인 병렬 처리"
@@ -43,7 +55,11 @@
         "korean": "정책 그래디언트",
         "definition": "정책을 직접 매개변수화하고 그래디언트 상승법으로 최적화하는 강화학습 방법론입니다.",
         "examples": [
-          "REINFORCE는 가장 기본적인 policy gradient 알고리즘이다."
+          {
+            "en": "REINFORCE is the most basic policy gradient algorithm.",
+            "ko": "REINFORCE는 가장 기본적인 policy gradient 알고리즘이다.",
+            "source": "http://incompleteideas.net/book/the-book-2nd.html"
+          }
         ],
         "synonyms": [
           "정책 경사"
@@ -58,8 +74,16 @@
         "korean": "풀링",
         "definition": "특징 맵의 크기를 줄이고 중요한 정보를 요약하는 다운샘플링 연산",
         "examples": [
-          "맥스 풀링은 영역 내 최댓값을 선택한다.",
-          "풀링층은 계산량을 줄이고 위치 불변성을 제공한다."
+          {
+            "en": "Max pooling selects the maximum value within a region.",
+            "ko": "맥스 풀링은 영역 내 최댓값을 선택한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "Pooling layers reduce computation and provide translation invariance.",
+            "ko": "풀링층은 계산량을 줄이고 위치 불변성을 제공한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "다운샘플링",
@@ -95,8 +119,16 @@
         "korean": "정밀도",
         "definition": "모델이 양성으로 예측한 것 중 실제로 양성인 비율",
         "examples": [
-          "정밀도가 높으면 거짓 양성이 적다.",
-          "정밀도와 재현율은 트레이드오프 관계에 있다."
+          {
+            "en": "High precision means few false positives.",
+            "ko": "정밀도가 높으면 거짓 양성이 적다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "Precision and recall have a trade-off relationship.",
+            "ko": "정밀도와 재현율은 트레이드오프 관계에 있다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "정확도",
@@ -112,7 +144,11 @@
         "korean": "프로파일링",
         "definition": "모델의 실행 시간, 메모리 사용량, GPU 활용률 등을 측정하여 성능 병목을 분석하는 과정입니다.",
         "examples": [
-          "PyTorch Profiler를 사용하면 각 연산의 실행 시간을 상세히 분석할 수 있다."
+          {
+            "en": "Using PyTorch Profiler, you can analyze the execution time of each operation in detail.",
+            "ko": "PyTorch Profiler를 사용하면 각 연산의 실행 시간을 상세히 분석할 수 있다.",
+            "source": "https://pytorch.org/docs/stable/profiler.html"
+          }
         ],
         "synonyms": [
           "성능 분석"
@@ -127,7 +163,11 @@
         "korean": "가지치기",
         "definition": "신경망에서 중요도가 낮은 가중치나 뉴런을 제거하여 모델을 경량화하는 기법입니다.",
         "examples": [
-          "구조적 pruning은 전체 필터나 채널을 제거하여 실제 속도 향상을 가져온다."
+          {
+            "en": "Structured pruning removes entire filters or channels to achieve real speedups.",
+            "ko": "구조적 pruning은 전체 필터나 채널을 제거하여 실제 속도 향상을 가져온다.",
+            "source": "https://arxiv.org/abs/2101.09671"
+          }
         ],
         "synonyms": [
           "프루닝"

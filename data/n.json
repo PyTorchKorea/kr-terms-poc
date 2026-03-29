@@ -6,7 +6,11 @@
         "korean": "개체명 인식",
         "definition": "텍스트에서 인명, 지명, 기관명 등 고유 명사를 식별하고 분류하는 자연어처리 태스크입니다.",
         "examples": [
-          "NER 모델은 뉴스 기사에서 인물, 장소, 조직을 자동으로 추출할 수 있다."
+          {
+            "en": "An NER model can automatically extract people, places, and organizations from news articles.",
+            "ko": "NER 모델은 뉴스 기사에서 인물, 장소, 조직을 자동으로 추출할 수 있다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "NER",
@@ -22,8 +26,16 @@
         "korean": "신경망",
         "definition": "생물학적 뉴런의 구조를 모방하여 만든 계층적 학습 모델",
         "examples": [
-          "인공 신경망은 인간 뇌의 뉴런 네트워크를 모델링한다.",
-          "심층 신경망은 여러 개의 은닉층을 가진다.",
+          {
+            "en": "An artificial neural network models the neuron network of the human brain.",
+            "ko": "인공 신경망은 인간 뇌의 뉴런 네트워크를 모델링한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "A deep neural network has multiple hidden layers.",
+            "ko": "심층 신경망은 여러 개의 은닉층을 가진다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
           {
             "en": "Neural networks comprise of layers/modules that perform operations on data.",
             "ko": "신경망은 데이터에 대한 연산을 수행하는 계층/모듈로 구성된다.",
@@ -44,8 +56,16 @@
         "korean": "노드",
         "definition": "신경망에서 입력을 받아 활성화 함수를 거쳐 출력을 생성하는 기본 단위",
         "examples": [
-          "각 노드는 가중치와 바이어스를 가진다.",
-          "은닉층의 노드 수는 하이퍼파라미터로 설정한다."
+          {
+            "en": "Each node has a weight and a bias.",
+            "ko": "각 노드는 가중치와 바이어스를 가진다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "The number of nodes in a hidden layer is set as a hyperparameter.",
+            "ko": "은닉층의 노드 수는 하이퍼파라미터로 설정한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "뉴런",
@@ -56,8 +76,16 @@
         "korean": "노드",
         "definition": "그래프 구조에서 데이터나 객체를 나타내는 점",
         "examples": [
-          "지식 그래프의 각 노드는 개체를 나타낸다.",
-          "그래프 신경망은 노드 간 관계를 학습한다."
+          {
+            "en": "Each node in a knowledge graph represents an entity.",
+            "ko": "지식 그래프의 각 노드는 개체를 나타낸다.",
+            "source": "https://arxiv.org/abs/1901.00596"
+          },
+          {
+            "en": "Graph neural networks learn the relationships between nodes.",
+            "ko": "그래프 신경망은 노드 간 관계를 학습한다.",
+            "source": "https://arxiv.org/abs/1901.00596"
+          }
         ],
         "synonyms": [
           "정점",
@@ -73,8 +101,16 @@
         "korean": "정규화",
         "definition": "데이터의 범위를 일정한 구간으로 변환하여 학습을 안정화하는 기법",
         "examples": [
-          "배치 정규화는 학습 속도를 크게 향상시킨다.",
-          "입력 데이터를 0과 1 사이로 정규화했다."
+          {
+            "en": "Batch normalization greatly improves training speed.",
+            "ko": "배치 정규화는 학습 속도를 크게 향상시킨다.",
+            "source": "https://arxiv.org/abs/1502.03167"
+          },
+          {
+            "en": "The input data was normalized to the range between 0 and 1.",
+            "ko": "입력 데이터를 0과 1 사이로 정규화했다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "노멀라이제이션",

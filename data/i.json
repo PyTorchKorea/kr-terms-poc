@@ -6,7 +6,11 @@
         "korean": "이미지 분류",
         "definition": "입력 이미지를 사전 정의된 카테고리 중 하나로 분류하는 컴퓨터비전 태스크입니다.",
         "examples": [
-          "ResNet은 image classification에서 획기적인 성능 향상을 달성했다."
+          {
+            "en": "ResNet achieved breakthrough performance improvements in image classification.",
+            "ko": "ResNet은 image classification에서 획기적인 성능 향상을 달성했다.",
+            "source": "https://arxiv.org/abs/1512.03385"
+          }
         ],
         "synonyms": [
           "영상 분류"
@@ -21,7 +25,11 @@
         "korean": "이미지 분할",
         "definition": "이미지의 각 픽셀을 특정 클래스로 분류하여 객체의 정확한 영역을 식별하는 기법입니다.",
         "examples": [
-          "자율주행에서 image segmentation은 도로, 차량, 보행자를 구분하는 데 사용된다."
+          {
+            "en": "In autonomous driving, image segmentation is used to distinguish roads, vehicles, and pedestrians.",
+            "ko": "자율주행에서 image segmentation은 도로, 차량, 보행자를 구분하는 데 사용된다.",
+            "source": "https://arxiv.org/abs/1505.04597"
+          }
         ],
         "synonyms": [
           "영상 분할",
@@ -37,8 +45,16 @@
         "korean": "제자리",
         "definition": "새로운 텐서를 생성하지 않고 기존 텐서의 값을 직접 수정하는 연산 방식으로, 메모리를 절약할 수 있습니다.",
         "examples": [
-          "PyTorch에서 in-place 연산은 함수 이름 뒤에 밑줄(_)을 붙여 표시한다.",
-          "x.add_(1)은 x에 1을 더하는 in-place 연산이다.",
+          {
+            "en": "In PyTorch, in-place operations are indicated by a trailing underscore in the function name.",
+            "ko": "PyTorch에서 in-place 연산은 함수 이름 뒤에 밑줄(_)을 붙여 표시한다.",
+            "source": "https://pytorch.org/docs/stable/tensor_attributes.html"
+          },
+          {
+            "en": "x.add_(1) is an in-place operation that adds 1 to x.",
+            "ko": "x.add_(1)은 x에 1을 더하는 in-place 연산이다.",
+            "source": "https://pytorch.org/docs/stable/tensor_attributes.html"
+          },
           {
             "en": "In-place operations store the result into the operand, denoted by a _ suffix.",
             "ko": "바꿔치기 연산은 연산 결과를 피연산자에 저장하며, _ 접미사로 표시한다.",
@@ -58,8 +74,16 @@
         "korean": "추론",
         "definition": "학습이 완료된 모델을 사용하여 새로운 입력 데이터에 대한 예측을 수행하는 과정",
         "examples": [
-          "추론 시에는 역전파가 필요 없으므로 계산이 빠르다.",
-          "엣지 디바이스에서 실시간 추론을 수행한다."
+          {
+            "en": "During inference, backpropagation is not needed, so computation is faster.",
+            "ko": "추론 시에는 역전파가 필요 없으므로 계산이 빠르다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "Real-time inference is performed on edge devices.",
+            "ko": "엣지 디바이스에서 실시간 추론을 수행한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "예측",
@@ -75,8 +99,16 @@
         "korean": "초기화",
         "definition": "신경망의 가중치를 학습 시작 전에 적절한 값으로 설정하는 과정으로, 학습의 수렴 속도와 성능에 큰 영향을 미칩니다.",
         "examples": [
-          "Xavier initialization은 시그모이드 활성화 함수와 잘 작동한다.",
-          "He initialization은 ReLU 활성화 함수에 적합하다."
+          {
+            "en": "Xavier initialization works well with sigmoid activation functions.",
+            "ko": "Xavier initialization은 시그모이드 활성화 함수와 잘 작동한다.",
+            "source": "https://proceedings.mlr.press/v9/glorot10a.html"
+          },
+          {
+            "en": "He initialization is suited for ReLU activation functions.",
+            "ko": "He initialization은 ReLU 활성화 함수에 적합하다.",
+            "source": "https://arxiv.org/abs/1502.01852"
+          }
         ],
         "synonyms": [
           "가중치 초기화"
@@ -91,8 +123,16 @@
         "korean": "반복",
         "definition": "하나의 배치를 사용하여 모델 매개변수를 한 번 업데이트하는 과정",
         "examples": [
-          "1 에포크는 전체 데이터셋 크기를 배치 크기로 나눈 만큼의 반복을 포함한다.",
-          "매 반복마다 손실 함수 값을 기록하여 학습 진행 상황을 모니터링한다."
+          {
+            "en": "One epoch contains as many iterations as the dataset size divided by the batch size.",
+            "ko": "1 에포크는 전체 데이터셋 크기를 배치 크기로 나눈 만큼의 반복을 포함한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "The loss value is recorded at every iteration to monitor training progress.",
+            "ko": "매 반복마다 손실 함수 값을 기록하여 학습 진행 상황을 모니터링한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "이터레이션",

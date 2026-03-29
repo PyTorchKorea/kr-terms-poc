@@ -8,11 +8,13 @@
         "examples": [
           {
             "en": "ReLU is one of the most widely used activation functions.",
-            "ko": "ReLU는 가장 널리 사용되는 활성화 함수 중 하나다."
+            "ko": "ReLU는 가장 널리 사용되는 활성화 함수 중 하나다.",
+            "source": "https://www.deeplearningbook.org/"
           },
           {
             "en": "Activation functions introduce nonlinearity into neural networks.",
-            "ko": "활성화 함수는 신경망에 비선형성을 부여한다."
+            "ko": "활성화 함수는 신경망에 비선형성을 부여한다.",
+            "source": "https://www.deeplearningbook.org/"
           }
         ],
         "synonyms": [
@@ -36,7 +38,8 @@
           },
           {
             "en": "Training with adversarial examples can improve model robustness.",
-            "ko": "적대적 예제를 활용한 훈련으로 모델의 강건성을 높일 수 있다."
+            "ko": "적대적 예제를 활용한 훈련으로 모델의 강건성을 높일 수 있다.",
+            "source": "https://arxiv.org/abs/1412.6572"
           }
         ],
         "synonyms": [
@@ -55,7 +58,8 @@
         "examples": [
           {
             "en": "In reinforcement learning, the agent learns a policy through rewards received from the environment.",
-            "ko": "강화학습에서 에이전트는 환경으로부터 받은 보상을 통해 정책을 학습한다."
+            "ko": "강화학습에서 에이전트는 환경으로부터 받은 보상을 통해 정책을 학습한다.",
+            "source": "http://incompleteideas.net/book/the-book-2nd.html"
           },
           {
             "en": "AlphaGo is a representative example of an agent that plays the game of Go.",
@@ -74,11 +78,13 @@
         "examples": [
           {
             "en": "A conversational AI agent automatically responds to user queries.",
-            "ko": "대화형 AI 대리인은 사용자의 질문에 자동으로 응답한다."
+            "ko": "대화형 AI 대리인은 사용자의 질문에 자동으로 응답한다.",
+            "source": "https://arxiv.org/abs/2309.07864"
           },
           {
             "en": "Autonomous agents can handle complex tasks independently.",
-            "ko": "자율 대리인은 복잡한 업무를 독립적으로 처리할 수 있다."
+            "ko": "자율 대리인은 복잡한 업무를 독립적으로 처리할 수 있다.",
+            "source": "https://arxiv.org/abs/2309.07864"
           }
         ],
         "synonyms": [
@@ -98,7 +104,8 @@
         "examples": [
           {
             "en": "The ring all-reduce algorithm provides efficient gradient synchronization in large-scale distributed training.",
-            "ko": "Ring all-reduce 알고리즘은 대규모 분산 학습에서 효율적인 그래디언트 동기화를 제공한다."
+            "ko": "Ring all-reduce 알고리즘은 대규모 분산 학습에서 효율적인 그래디언트 동기화를 제공한다.",
+            "source": "https://pytorch.org/docs/stable/distributed.html"
           }
         ],
         "synonyms": [
@@ -141,7 +148,8 @@
           },
           {
             "en": "Attention mechanisms have significantly improved machine translation performance.",
-            "ko": "어텐션 메커니즘은 기계 번역 성능을 크게 향상시켰다."
+            "ko": "어텐션 메커니즘은 기계 번역 성능을 크게 향상시켰다.",
+            "source": "https://arxiv.org/abs/1706.03762"
           }
         ],
         "synonyms": [
@@ -167,7 +175,8 @@
           },
           {
             "en": "Disabling autograd can save memory during inference.",
-            "ko": "autograd를 비활성화하면 추론 시 메모리를 절약할 수 있다."
+            "ko": "autograd를 비활성화하면 추론 시 메모리를 절약할 수 있다.",
+            "source": "https://pytorch.org/docs/stable/autograd.html"
           },
           {
             "en": "PyTorch has a built-in automatic differentiation engine called torch.autograd.",

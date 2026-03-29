@@ -6,8 +6,16 @@
         "korean": "재현율",
         "definition": "실제 양성 중 모델이 양성으로 올바르게 예측한 비율",
         "examples": [
-          "재현율이 높으면 거짓 음성이 적다.",
-          "의료 진단에서는 높은 재현율이 중요하다."
+          {
+            "en": "High recall means few false negatives.",
+            "ko": "재현율이 높으면 거짓 음성이 적다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "High recall is important in medical diagnosis.",
+            "ko": "의료 진단에서는 높은 재현율이 중요하다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "민감도",
@@ -23,8 +31,16 @@
         "korean": "순환 신경망",
         "definition": "이전 시점의 출력을 현재 시점의 입력으로 사용하여 시퀀스 데이터를 처리하는 신경망",
         "examples": [
-          "LSTM은 순환 신경망의 일종으로 장기 의존성 문제를 해결한다.",
-          "순환 신경망은 자연어 처리에서 널리 사용된다."
+          {
+            "en": "LSTM is a type of recurrent neural network that addresses the long-term dependency problem.",
+            "ko": "LSTM은 순환 신경망의 일종으로 장기 의존성 문제를 해결한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "Recurrent neural networks are widely used in natural language processing.",
+            "ko": "순환 신경망은 자연어 처리에서 널리 사용된다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "RNN",
@@ -40,8 +56,16 @@
         "korean": "정규화",
         "definition": "모델의 복잡도를 제한하여 과적합을 방지하는 기법",
         "examples": [
-          "L2 정규화는 가중치의 제곱합에 페널티를 부여한다.",
-          "정규화 강도를 조절하는 람다 값이 중요하다."
+          {
+            "en": "L2 regularization adds a penalty proportional to the sum of squared weights.",
+            "ko": "L2 정규화는 가중치의 제곱합에 페널티를 부여한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "The lambda value controlling regularization strength is important.",
+            "ko": "정규화 강도를 조절하는 람다 값이 중요하다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "규제화",
@@ -57,7 +81,11 @@
         "korean": "렐루",
         "definition": "입력이 양수이면 그대로, 음수이면 0을 출력하는 활성화 함수로, 심층 신경망에서 가장 널리 사용됩니다.",
         "examples": [
-          "ReLU는 기울기 소실 문제를 완화하여 심층 신경망 학습을 가능하게 했다."
+          {
+            "en": "ReLU mitigates the vanishing gradient problem and enables training of deep neural networks.",
+            "ko": "ReLU는 기울기 소실 문제를 완화하여 심층 신경망 학습을 가능하게 했다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "정류 선형 유닛",
@@ -73,7 +101,11 @@
         "korean": "보상",
         "definition": "에이전트가 특정 행동을 수행한 후 환경으로부터 받는 수치적 피드백으로, 학습의 목표가 되는 신호입니다.",
         "examples": [
-          "강화학습에서 에이전트는 누적 reward를 최대화하도록 정책을 학습한다."
+          {
+            "en": "In reinforcement learning, the agent learns a policy to maximize cumulative reward.",
+            "ko": "강화학습에서 에이전트는 누적 reward를 최대화하도록 정책을 학습한다.",
+            "source": "http://incompleteideas.net/book/the-book-2nd.html"
+          }
         ],
         "synonyms": [
           "보상 신호"

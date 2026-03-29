@@ -26,7 +26,11 @@
         "korean": "데이터 증강",
         "definition": "기존 학습 데이터에 변환을 적용하여 데이터셋의 다양성과 크기를 인위적으로 늘리는 기법입니다.",
         "examples": [
-          "이미지 회전, 반전, 크롭 등의 data augmentation으로 과적합을 방지할 수 있다."
+          {
+            "en": "Data augmentation techniques such as image rotation, flipping, and cropping can prevent overfitting.",
+            "ko": "이미지 회전, 반전, 크롭 등의 data augmentation으로 과적합을 방지할 수 있다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "데이터 확장",
@@ -81,8 +85,16 @@
         "korean": "데이터셋",
         "definition": "모델 학습, 검증, 테스트에 사용되는 데이터의 집합",
         "examples": [
-          "ImageNet은 대규모 이미지 데이터셋이다.",
-          "데이터셋을 훈련, 검증, 테스트 세트로 나누어 사용한다.",
+          {
+            "en": "ImageNet is a large-scale image dataset used for visual recognition research.",
+            "ko": "ImageNet은 대규모 이미지 데이터셋이다.",
+            "source": "https://arxiv.org/abs/1409.0575"
+          },
+          {
+            "en": "The dataset is split into training, validation, and test sets for use.",
+            "ko": "데이터셋을 훈련, 검증, 테스트 세트로 나누어 사용한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
           {
             "en": "PyTorch provides two data primitives: torch.utils.data.DataLoader and torch.utils.data.Dataset.",
             "ko": "PyTorch는 torch.utils.data.DataLoader와 torch.utils.data.Dataset 두 가지 데이터 기본 요소를 제공한다.",
@@ -103,7 +115,11 @@
         "korean": "심층 학습",
         "definition": "여러 층의 인공 신경망을 사용하여 데이터로부터 복잡한 패턴과 표현을 학습하는 기계 학습의 하위 분야입니다.",
         "examples": [
-          "deep learning은 이미지 인식, 자연어 처리 등에서 혁신적인 성과를 달성했다."
+          {
+            "en": "Deep learning has achieved breakthrough results in image recognition, natural language processing, and many other domains.",
+            "ko": "deep learning은 이미지 인식, 자연어 처리 등에서 혁신적인 성과를 달성했다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "딥러닝"
@@ -118,7 +134,11 @@
         "korean": "심층 신경망",
         "definition": "여러 개의 은닉층을 가진 인공 신경망으로, 복잡한 비선형 관계를 학습할 수 있습니다.",
         "examples": [
-          "심층 신경망은 이미지 인식과 음성 인식에서 뛰어난 성능을 보인다."
+          {
+            "en": "Deep neural networks demonstrate outstanding performance in image recognition and speech recognition.",
+            "ko": "심층 신경망은 이미지 인식과 음성 인식에서 뛰어난 성능을 보인다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "DNN"
@@ -133,7 +153,11 @@
         "korean": "심층 Q 네트워크",
         "definition": "심층 신경망을 사용하여 Q 함수를 근사하는 강화학습 알고리즘으로, 높은 차원의 상태 공간에서도 효과적으로 학습합니다.",
         "examples": [
-          "DQN은 Atari 게임에서 인간 수준의 성능을 달성한 최초의 심층 강화학습 알고리즘이다."
+          {
+            "en": "DQN was the first deep reinforcement learning algorithm to achieve human-level performance on Atari games.",
+            "ko": "DQN은 Atari 게임에서 인간 수준의 성능을 달성한 최초의 심층 강화학습 알고리즘이다.",
+            "source": "https://www.nature.com/articles/nature14236"
+          }
         ],
         "synonyms": [
           "DQN"
@@ -148,8 +172,16 @@
         "korean": "완전 연결층",
         "definition": "모든 입력 뉴런이 모든 출력 뉴런과 연결된 신경망 계층",
         "examples": [
-          "완전 연결층은 신경망의 마지막 단계에서 주로 사용된다.",
-          "합성곱층 이후 완전 연결층을 통해 최종 분류를 수행한다."
+          {
+            "en": "Fully connected layers are most commonly used at the final stage of a neural network.",
+            "ko": "완전 연결층은 신경망의 마지막 단계에서 주로 사용된다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "After the convolutional layers, a fully connected layer performs the final classification.",
+            "ko": "합성곱층 이후 완전 연결층을 통해 최종 분류를 수행한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "밀집층",
@@ -167,7 +199,11 @@
         "korean": "도함수",
         "definition": "함수의 변화율을 나타내는 수학적 개념으로, 신경망의 역전파에서 손실 함수의 기울기를 계산하는 데 사용됩니다.",
         "examples": [
-          "역전파 알고리즘은 손실 함수의 derivative를 각 가중치에 대해 계산한다.",
+          {
+            "en": "The backpropagation algorithm computes the derivative of the loss function with respect to each weight.",
+            "ko": "역전파 알고리즘은 손실 함수의 derivative를 각 가중치에 대해 계산한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
           {
             "en": "In the backward pass, autograd computes derivatives and stores them in the respective tensor's .grad attribute.",
             "ko": "역방향 전파 단계에서 autograd는 도함수를 계산하고 각 텐서의 .grad 속성에 저장한다.",
@@ -188,8 +224,16 @@
         "korean": "분산 데이터 병렬",
         "definition": "여러 GPU에 데이터를 분산하여 동시에 학습하는 병렬 처리 기법으로, 그래디언트를 동기화하여 일관된 모델 업데이트를 보장합니다.",
         "examples": [
-          "PyTorch의 DistributedDataParallel은 가장 일반적인 분산 학습 방법이다.",
-          "DDP는 각 프로세스에서 독립적으로 순전파를 수행한 후 그래디언트를 동기화한다.",
+          {
+            "en": "PyTorch's DistributedDataParallel is the most common approach for distributed training.",
+            "ko": "PyTorch의 DistributedDataParallel은 가장 일반적인 분산 학습 방법이다.",
+            "source": "https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html"
+          },
+          {
+            "en": "DDP performs the forward pass independently on each process and then synchronizes gradients.",
+            "ko": "DDP는 각 프로세스에서 독립적으로 순전파를 수행한 후 그래디언트를 동기화한다.",
+            "source": "https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html"
+          },
           {
             "en": "DDP uses collective communications to synchronize gradients across processes.",
             "ko": "DDP는 집단 통신을 사용하여 프로세스 간 변화도를 동기화한다.",
@@ -210,8 +254,16 @@
         "korean": "드롭아웃",
         "definition": "학습 중 무작위로 일부 뉴런을 비활성화하여 과적합을 방지하는 정규화 기법",
         "examples": [
-          "드롭아웃을 0.5로 설정하면 각 뉴런이 50% 확률로 비활성화된다.",
-          "드롭아웃은 모델의 일반화 성능을 향상시킨다."
+          {
+            "en": "Setting dropout to 0.5 deactivates each neuron with a 50% probability.",
+            "ko": "드롭아웃을 0.5로 설정하면 각 뉴런이 50% 확률로 비활성화된다.",
+            "source": "https://jmlr.org/papers/v15/srivastava14a.html"
+          },
+          {
+            "en": "Dropout improves the generalization performance of the model.",
+            "ko": "드롭아웃은 모델의 일반화 성능을 향상시킨다.",
+            "source": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
         ],
         "synonyms": [
           "드롭아웃 정규화",

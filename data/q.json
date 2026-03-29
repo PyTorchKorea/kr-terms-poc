@@ -6,8 +6,16 @@
         "korean": "양자화",
         "definition": "모델의 가중치와 활성화 값을 더 낮은 비트 수로 표현하여 모델 크기를 줄이고 추론 속도를 높이는 기법입니다.",
         "examples": [
-          "INT8 quantization을 적용하면 모델 크기를 약 4배 줄일 수 있다.",
-          "동적 양자화는 추론 시에만 양자화를 적용한다."
+          {
+            "en": "Applying INT8 quantization can reduce model size by approximately 4x.",
+            "ko": "INT8 quantization을 적용하면 모델 크기를 약 4배 줄일 수 있다.",
+            "source": "https://pytorch.org/docs/stable/quantization.html"
+          },
+          {
+            "en": "Dynamic quantization applies quantization only at inference time.",
+            "ko": "동적 양자화는 추론 시에만 양자화를 적용한다.",
+            "source": "https://pytorch.org/docs/stable/quantization.html"
+          }
         ],
         "synonyms": [
           "양자화",

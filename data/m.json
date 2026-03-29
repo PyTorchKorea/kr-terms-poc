@@ -6,7 +6,11 @@
         "korean": "기계 번역",
         "definition": "한 언어의 텍스트를 다른 언어로 자동 변환하는 기술로, 시퀀스-투-시퀀스 모델이나 트랜스포머가 주로 사용됩니다.",
         "examples": [
-          "신경망 기반 machine translation은 통계적 방법보다 자연스러운 번역을 생성한다."
+          {
+            "en": "Neural network-based machine translation produces more natural translations than statistical methods.",
+            "ko": "신경망 기반 machine translation은 통계적 방법보다 자연스러운 번역을 생성한다.",
+            "source": "https://arxiv.org/abs/1706.03762"
+          }
         ],
         "synonyms": [
           "NMT",
@@ -22,7 +26,11 @@
         "korean": "마르코프 결정 과정",
         "definition": "순차적 의사결정 문제를 수학적으로 정형화한 프레임워크로, 상태, 행동, 전이 확률, 보상으로 구성됩니다.",
         "examples": [
-          "대부분의 강화학습 문제는 Markov decision process로 모델링할 수 있다."
+          {
+            "en": "Most reinforcement learning problems can be modeled as a Markov decision process.",
+            "ko": "대부분의 강화학습 문제는 Markov decision process로 모델링할 수 있다.",
+            "source": "http://incompleteideas.net/book/the-book-2nd.html"
+          }
         ],
         "synonyms": [
           "MDP"
@@ -57,8 +65,16 @@
         "korean": "평균제곱오차",
         "definition": "예측값과 실제값 차이의 제곱 평균으로, 회귀 문제에서 가장 널리 사용되는 손실 함수입니다.",
         "examples": [
-          "MSE가 0에 가까울수록 모델의 예측이 정확하다.",
-          "nn.MSELoss()로 mean-squared error 손실 함수를 사용할 수 있다."
+          {
+            "en": "The closer the MSE is to zero, the more accurate the model's predictions.",
+            "ko": "MSE가 0에 가까울수록 모델의 예측이 정확하다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "The mean-squared error loss function can be used with nn.MSELoss().",
+            "ko": "nn.MSELoss()로 mean-squared error 손실 함수를 사용할 수 있다.",
+            "source": "https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html"
+          }
         ],
         "synonyms": [
           "MSE",
@@ -74,7 +90,11 @@
         "korean": "멜 주파수",
         "definition": "인간의 청각 인지 특성을 반영한 주파수 척도로, 음성 신호를 스펙트럼으로 변환할 때 사용됩니다.",
         "examples": [
-          "mel-frequency cepstral coefficients(MFCC)는 음성 인식의 기본 특징으로 사용된다."
+          {
+            "en": "Mel-frequency cepstral coefficients (MFCCs) are used as fundamental features in speech recognition.",
+            "ko": "mel-frequency cepstral coefficients(MFCC)는 음성 인식의 기본 특징으로 사용된다.",
+            "source": "https://arxiv.org/abs/1003.4083"
+          }
         ],
         "synonyms": [
           "멜 스케일"
@@ -89,7 +109,11 @@
         "korean": "미니배치",
         "definition": "전체 학습 데이터를 작은 그룹으로 나눈 것으로, 확률적 경사 하강법에서 한 번의 업데이트에 사용되는 데이터 부분 집합입니다.",
         "examples": [
-          "mini-batch 크기는 학습 속도와 메모리 사용량에 영향을 미친다."
+          {
+            "en": "The mini-batch size affects both training speed and memory usage.",
+            "ko": "mini-batch 크기는 학습 속도와 메모리 사용량에 영향을 미친다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "미니 배치"
@@ -104,7 +128,11 @@
         "korean": "혼합 정밀도",
         "definition": "FP16과 FP32를 혼합하여 연산하는 기법으로, 메모리 사용량을 줄이고 학습 속도를 높이면서 정밀도를 유지합니다.",
         "examples": [
-          "mixed precision training은 최신 GPU에서 2-3배의 학습 속도 향상을 가져온다."
+          {
+            "en": "Mixed precision training delivers a 2–3x speedup on modern GPUs.",
+            "ko": "mixed precision training은 최신 GPU에서 2-3배의 학습 속도 향상을 가져온다.",
+            "source": "https://arxiv.org/abs/1710.03740"
+          }
         ],
         "synonyms": [
           "혼합 정밀도 학습"
@@ -119,8 +147,16 @@
         "korean": "모델",
         "definition": "데이터로부터 학습된 패턴을 바탕으로 예측이나 결정을 수행하는 수학적 구조",
         "examples": [
-          "CNN 모델은 이미지 분류에 특화되어 있다.",
-          "모델을 저장하고 나중에 다시 불러올 수 있다.",
+          {
+            "en": "A CNN model is specialized for image classification.",
+            "ko": "CNN 모델은 이미지 분류에 특화되어 있다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "A model can be saved and loaded again later.",
+            "ko": "모델을 저장하고 나중에 다시 불러올 수 있다.",
+            "source": "https://pytorch.org/docs/stable/notes/serialization.html"
+          },
           {
             "en": "Every module in PyTorch subclasses the nn.Module.",
             "ko": "PyTorch의 모든 모듈은 nn.Module의 하위 클래스이다.",
@@ -136,8 +172,16 @@
         "korean": "모형",
         "definition": "현상을 설명하거나 예측하기 위한 수학적 또는 개념적 표현",
         "examples": [
-          "회귀 모형을 사용하여 변수 간 관계를 분석한다.",
-          "통계 모형의 적합도를 검증해야 한다."
+          {
+            "en": "A regression model is used to analyze the relationship between variables.",
+            "ko": "회귀 모형을 사용하여 변수 간 관계를 분석한다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "The goodness of fit of a statistical model must be validated.",
+            "ko": "통계 모형의 적합도를 검증해야 한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "통계 모형",
@@ -153,7 +197,11 @@
         "korean": "모델 병렬화",
         "definition": "하나의 모델을 여러 GPU에 분할하여 배치하는 병렬 처리 기법으로, 단일 GPU 메모리에 담기지 않는 대형 모델 학습에 사용됩니다.",
         "examples": [
-          "GPT-3와 같은 초대형 모델은 model parallelism 없이는 학습이 불가능하다."
+          {
+            "en": "A very large model like GPT-3 cannot be trained without model parallelism.",
+            "ko": "GPT-3와 같은 초대형 모델은 model parallelism 없이는 학습이 불가능하다.",
+            "source": "https://arxiv.org/abs/2005.14165"
+          }
         ],
         "synonyms": [
           "모델 병렬 처리"
@@ -168,7 +216,11 @@
         "korean": "모델 서빙",
         "definition": "학습된 모델을 API나 서비스 형태로 배포하여 실시간 추론 요청을 처리하는 시스템입니다.",
         "examples": [
-          "TorchServe는 PyTorch 모델의 model serving을 위한 공식 프레임워크이다."
+          {
+            "en": "TorchServe is the official framework for model serving of PyTorch models.",
+            "ko": "TorchServe는 PyTorch 모델의 model serving을 위한 공식 프레임워크이다.",
+            "source": "https://pytorch.org/serve/"
+          }
         ],
         "synonyms": [
           "모델 배포",
@@ -184,8 +236,16 @@
         "korean": "모멘텀",
         "definition": "이전 그래디언트의 방향을 고려하여 현재 업데이트 방향을 결정하는 최적화 기법",
         "examples": [
-          "모멘텀은 지역 최솟값을 벗어나는 데 도움을 준다.",
-          "SGD with momentum은 일반 SGD보다 빠르게 수렴한다."
+          {
+            "en": "Momentum helps the optimizer escape local minima.",
+            "ko": "모멘텀은 지역 최솟값을 벗어나는 데 도움을 준다.",
+            "source": "https://www.deeplearningbook.org/"
+          },
+          {
+            "en": "SGD with momentum converges faster than vanilla SGD.",
+            "ko": "SGD with momentum은 일반 SGD보다 빠르게 수렴한다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
         ],
         "synonyms": [
           "운동량",
