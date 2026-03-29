@@ -12,7 +12,7 @@ export const theme = createTheme({
       light: '#6c6c6d',
     },
     background: {
-      default: '#FAFAFA',
+      default: '#F7F7F8',
       paper: '#ffffff',
     },
     text: {
@@ -65,12 +65,13 @@ export const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
-          boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+          borderRadius: 8,
+          border: '1px solid #F0F0F0',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
           transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
           '&:hover': {
-            transform: 'translateY(-2px)',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            transform: 'translateY(-3px)',
+            boxShadow: '0 6px 16px rgba(0,0,0,0.1)',
           },
         },
       },
@@ -95,6 +96,13 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#262626',
+        },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        maxWidthLg: {
+          maxWidth: '1300px !important',
         },
       },
     },

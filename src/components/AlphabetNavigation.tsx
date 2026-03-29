@@ -15,9 +15,9 @@ export function AlphabetNavigation({ onLetterClick, onClearFilter, activeLetter 
       aria-label="알파벳 탐색"
       sx={{
         position: 'sticky',
-        top: 0,
+        top: 'var(--header-height)',
         zIndex: 10,
-        backgroundColor: 'rgba(250,250,250,0.9)',
+        backgroundColor: 'rgba(247,247,248,0.92)',
         backdropFilter: 'blur(8px)',
         borderBottom: '1px solid rgba(0,0,0,0.08)',
         py: 1.5,

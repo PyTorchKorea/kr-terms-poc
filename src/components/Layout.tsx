@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { AppBar, Toolbar, Typography, Container, Box, IconButton, Link, Button } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import SearchIcon from '@mui/icons-material/Search'
@@ -12,6 +12,22 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
   const navigate = useNavigate()
   const location = useLocation()
   const isHomePage = location.pathname === '/' || location.pathname === ''
+  const appBarRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!isHomePage) return
+
+    const handleScroll = () => {
+      if (!appBarRef.current) return
+      const scrolled = window.scrollY > 60
+      appBarRef.current.style.backgroundColor = scrolled ? '#262626' : 'transparent'
+      appBarRef.current.style.boxShadow = scrolled ? '0 2px 8px rgba(0,0,0,0.15)' : 'none'
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isHomePage])
 
   const handleSearchClick = () => {
     if (isHomePage) {
@@ -24,12 +40,13 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <AppBar
-        position={isHomePage ? 'absolute' : 'static'}
-        elevation={isHomePage ? 0 : 2}
+        ref={appBarRef}
+        position="fixed"
+        elevation={0}
         sx={{
           backgroundColor: isHomePage ? 'transparent' : '#262626',
-          width: '100%',
-          zIndex: isHomePage ? 20 : undefined,
+          transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
+          zIndex: 20,
         }}
       >
         <Toolbar>
@@ -41,10 +58,19 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
           >
             AI/ML 용어집
           </Typography>
-          <IconButton color="inherit" onClick={handleSearchClick} aria-label="검색" sx={{ mr: 0.5 }}>
+          <IconButton
+            color="inherit"
+            onClick={handleSearchClick}
+            aria-label="검색"
+            sx={{ mr: 0.5, minHeight: 44, minWidth: 44 }}
+          >
             <SearchIcon />
           </IconButton>
-          <Button color="inherit" onClick={() => navigate('/about')} sx={{ mr: 1 }}>
+          <Button
+            color="inherit"
+            onClick={() => navigate('/about')}
+            sx={{ mr: 1, minHeight: 44 }}
+          >
             소개
           </Button>
           <IconButton
@@ -53,24 +79,25 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub 저장소"
+            sx={{ minHeight: 44, minWidth: 44 }}
           >
             <GitHubIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-      <Box component="main" sx={{ flex: 1 }}>
+      <Box component="main" sx={{ flex: 1, pt: 'var(--header-height)' }}>
         {isHomePage ? (
           children
         ) : (
-          <Container sx={{ py: 4 }}>{children}</Container>
+          <Container maxWidth="lg" sx={{ py: 4, px: { xs: 2, md: 3 } }}>{children}</Container>
         )}
       </Box>
 
       <Box
         component="footer"
         sx={{
-          py: 3,
+          py: 2.5,
           px: 2,
           mt: 'auto',
           bgcolor: '#262626',

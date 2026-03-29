@@ -91,6 +91,7 @@ export function TermCard({ term, hasDuplicateTranslation, query }: TermCardProps
                 label={firstSynonym}
                 size="small"
                 variant="outlined"
+                sx={{ maxWidth: 120, '& .MuiChip-label': { overflow: 'hidden', textOverflow: 'ellipsis' } }}
               />
             )}
           </Box>

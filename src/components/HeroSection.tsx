@@ -13,11 +13,11 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
   return (
     <Box
       sx={{
-        background: 'linear-gradient(135deg, #ee4c2c 0%, #1a1a1a 100%)',
+        background: 'linear-gradient(135deg, #ee4c2c 0%, #2D2D2D 100%)',
         color: 'white',
-        pt: { xs: 10, md: 11 },
-        pb: { xs: 4, md: 5 },
-        mb: 4,
+        pt: { xs: 8, md: 9 },
+        pb: { xs: 3, md: 4 },
+        mb: 0,
       }}
     >
       <Container maxWidth="md">
@@ -30,11 +30,8 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
         >
           AI/ML 용어집
         </Typography>
-        <Typography variant="h6" align="center" sx={{ mb: 2, opacity: 0.95 }}>
-          AI/ML 한국어 번역 표준화
-        </Typography>
-        <Typography variant="body2" align="center" sx={{ mb: 3, opacity: 0.85 }}>
-          {totalTerms} 용어 · {totalMeanings} 의미
+        <Typography variant="body1" align="center" sx={{ mb: 3, opacity: 0.9 }}>
+          AI/ML 한국어 번역 표준화 · {totalTerms} 용어 · {totalMeanings} 의미
         </Typography>
         <Box sx={{ maxWidth: 600, mx: 'auto' }}>
           <TextField
