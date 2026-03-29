@@ -47,12 +47,19 @@ interface TermMeaning {
   examples: (string | TermExample)[]  // Union type for backward compat
   synonyms: string[]
 }
-interface Term { term: string; meanings: TermMeaning[] }
+interface Term {
+  term: string
+  meanings: TermMeaning[]
+  issueNumber?: number       // GitHub Issue number for traceability
+  notes?: string             // Editorial notes (why this translation was chosen)
+}
 ```
 
 Domain colors are mapped in `utils/domainColors.ts` (29 domains). New domains need a color entry there.
 
 **Examples format**: Prefer `TermExample` objects (`{en, ko, source?}`) over plain strings. Both are supported. `TermDetailPage` uses `isTermExample()` type guard to render accordingly.
+
+**Optional fields**: `issueNumber` links to the GitHub Issue where the term was discussed. `notes` provides editorial context. Both are set automatically by the co-author workflow, or manually when adding terms via PR.
 
 ## Adding New Terms
 
@@ -62,9 +69,21 @@ Domain colors are mapped in `utils/domainColors.ts` (29 domains). New domains ne
 4. Domain names must have no spaces (e.g., `컴퓨터비전` not `컴퓨터 비전`)
 5. CI validates: JSON syntax, required fields, domain spacing, TermExample `en`/`ko` presence
 
+## Co-author Workflow
+
+`.github/workflows/term-coauthor.yml`: Triggered when `approved` label is added to an issue.
+
+**Two-path automation**:
+- **새 용어 요청** (label: `새 용어 요청`): Parses structured issue fields → auto-commits to `data/{letter}.json` with `Co-authored-by` trailer → closes issue.
+- **용어 피드백** (label: `용어 피드백`): Posts formatted JSON snippet as comment → admin reviews → `commit-ready` label triggers commit.
+
+**Helper script**: `scripts/update-term-from-issue.mjs` handles collision detection (create/append/warn-on-duplicate) and sets `issueNumber` on the term.
+
 ## CI/CD
 
-`.github/workflows/deploy.yml`: On push to `poc`, validates term data → builds → deploys to GitHub Pages. The validation step checks all JSON files for required fields, domain spacing, and TermExample structure.
+`.github/workflows/deploy.yml`: On push to `poc`, validates term data → builds → deploys to GitHub Pages. The validation step checks all JSON files for required fields, domain spacing, TermExample structure, and optional field types (`issueNumber`, `notes`).
+
+`.github/workflows/term-coauthor.yml`: Co-author workflow (see above).
 
 ## LLM Integration
 

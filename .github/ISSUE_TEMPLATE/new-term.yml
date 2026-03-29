@@ -3,6 +3,10 @@ description: 사전에 없는 AI/ML 용어의 추가를 요청합니다
 title: "[새 용어] "
 labels: ["새 용어 요청"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        > 💡 관리자가 `approved` 라벨을 추가하면 자동으로 반영되며, 기여자로 등록됩니다(Co-authored-by).
   - type: input
     id: term
     attributes:

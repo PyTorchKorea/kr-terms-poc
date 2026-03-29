@@ -1,0 +1,296 @@
+name: Term Co-author Workflow
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: "term-update"
+  cancel-in-progress: false
+
+jobs:
+  process-term:
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'approved'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: poc
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Detect issue template type
+        id: detect
+        env:
+          ISSUE_LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
+        run: |
+          if echo "$ISSUE_LABELS" | grep -q '"새 용어 요청"'; then
+            echo "template=new-term" >> "$GITHUB_OUTPUT"
+          elif echo "$ISSUE_LABELS" | grep -q '"용어 피드백"'; then
+            echo "template=term-feedback" >> "$GITHUB_OUTPUT"
+          else
+            echo "template=unknown" >> "$GITHUB_OUTPUT"
+            echo "::notice::Issue does not match any known template. Skipping."
+          fi
+
+      # ─── Path A: New Term (auto-commit) ───
+      - name: Parse new-term issue body
+        if: steps.detect.outputs.template == 'new-term'
+        id: parse-new
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const sections = {};
+            let currentId = null;
+
+            for (const line of body.split('\n')) {
+              const headerMatch = line.match(/^### (.+)/);
+              if (headerMatch) {
+                const label = headerMatch[1].trim();
+                if (label.includes('영문 용어')) currentId = 'term';
+                else if (label.includes('제안 한글 번역')) currentId = 'korean';
+                else if (label.includes('분야')) currentId = 'domain';
+                else if (label.includes('정의')) currentId = 'definition';
+                else if (label.includes('사용 예시')) currentId = 'examples';
+                else currentId = null;
+              } else if (currentId) {
+                const trimmed = line.trim();
+                if (trimmed && trimmed !== '_No response_') {
+                  sections[currentId] = sections[currentId]
+                    ? sections[currentId] + '\n' + trimmed
+                    : trimmed;
+                }
+              }
+            }
+
+            if (!sections.term || !sections.korean || !sections.domain || !sections.definition) {
+              core.setFailed('Missing required fields in issue body');
+              return;
+            }
+
+            core.setOutput('term', sections.term);
+            core.setOutput('korean', sections.korean);
+            core.setOutput('domain', sections.domain.replace(/\s+/g, ''));
+            core.setOutput('definition', sections.definition);
+            core.setOutput('examples', sections.examples || '');
+
+      - name: Update term data (new-term)
+        if: steps.detect.outputs.template == 'new-term'
+        env:
+          TERM: ${{ steps.parse-new.outputs.term }}
+          KOREAN: ${{ steps.parse-new.outputs.korean }}
+          DOMAIN: ${{ steps.parse-new.outputs.domain }}
+          DEFINITION: ${{ steps.parse-new.outputs.definition }}
+          EXAMPLES: ${{ steps.parse-new.outputs.examples }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          node scripts/update-term-from-issue.mjs \
+            --term "$TERM" \
+            --korean "$KOREAN" \
+            --domain "$DOMAIN" \
+            --definition "$DEFINITION" \
+            --issue-number "$ISSUE_NUMBER" \
+            --examples "$EXAMPLES"
+
+      - name: Commit and push (new-term)
+        if: steps.detect.outputs.template == 'new-term'
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          AUTHOR_NAME: ${{ github.event.issue.user.login }}
+          AUTHOR_ID: ${{ github.event.issue.user.id }}
+          TERM: ${{ steps.parse-new.outputs.term }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "$(cat <<EOF
+          feat: 새 용어 추가 - ${TERM} (#${ISSUE_NUMBER})
+
+          Co-authored-by: ${AUTHOR_NAME} <${AUTHOR_ID}+${AUTHOR_NAME}@users.noreply.github.com>
+          EOF
+          )"
+          git push origin poc
+
+      - name: Close issue with success comment (new-term)
+        if: steps.detect.outputs.template == 'new-term'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ 용어가 추가되었습니다. 기여해주셔서 감사합니다!\n\nCo-authored-by로 등록되었습니다.`
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
+
+      # ─── Path B: Term Feedback (comment with JSON snippet) ───
+      - name: Parse feedback and post JSON snippet
+        if: steps.detect.outputs.template == 'term-feedback'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const sections = {};
+            let currentId = null;
+
+            for (const line of body.split('\n')) {
+              const headerMatch = line.match(/^### (.+)/);
+              if (headerMatch) {
+                const label = headerMatch[1].trim();
+                if (label.includes('영문 용어')) currentId = 'term';
+                else if (label.includes('피드백 유형')) currentId = 'feedback-type';
+                else if (label.includes('제안 내용')) currentId = 'suggestion';
+                else if (label.includes('추가 맥락')) currentId = 'context';
+                else currentId = null;
+              } else if (currentId) {
+                const trimmed = line.trim();
+                if (trimmed && trimmed !== '_No response_') {
+                  sections[currentId] = sections[currentId]
+                    ? sections[currentId] + '\n' + trimmed
+                    : trimmed;
+                }
+              }
+            }
+
+            const snippet = {
+              term: sections.term || '(영문 용어)',
+              meanings: [{
+                korean: '(제안 번역)',
+                domain: '(분야)',
+                definition: sections.suggestion || '(제안 내용을 바탕으로 정의 작성)',
+                examples: [],
+                synonyms: []
+              }]
+            };
+
+            const comment = [
+              '📋 **피드백을 확인했습니다.** 관리자가 검토 후 반영합니다.',
+              '',
+              `**피드백 유형**: ${sections['feedback-type'] || '(미지정)'}`,
+              `**대상 용어**: ${sections.term || '(미지정)'}`,
+              '',
+              '관리자가 아래 JSON을 검토/수정한 뒤 `commit-ready` 라벨을 추가하면 자동으로 반영됩니다.',
+              '',
+              '```json',
+              JSON.stringify(snippet, null, 2),
+              '```',
+              '',
+              '> 💡 위 JSON은 자동 생성된 초안입니다. 관리자가 검토 후 수정할 수 있습니다.'
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+
+      # ─── Path B-2: commit-ready (admin-reviewed feedback) ───
+  apply-feedback:
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'commit-ready'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: poc
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Extract JSON from bot comment
+        id: extract
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100
+            });
+
+            // Find last bot comment with JSON block
+            const botComments = comments.data
+              .filter(c => c.user.login === 'github-actions[bot]')
+              .reverse();
+
+            for (const comment of botComments) {
+              const jsonMatch = comment.body.match(/```json\n([\s\S]*?)\n```/);
+              if (jsonMatch) {
+                const parsed = JSON.parse(jsonMatch[1]);
+                if (parsed.term && parsed.meanings) {
+                  const meaning = parsed.meanings[0];
+                  core.setOutput('term', parsed.term);
+                  core.setOutput('korean', meaning.korean);
+                  core.setOutput('domain', meaning.domain);
+                  core.setOutput('definition', meaning.definition);
+                  return;
+                }
+              }
+            }
+
+            core.setFailed('No valid JSON snippet found in bot comments. Re-trigger the approval workflow.');
+
+      - name: Update term data (feedback)
+        env:
+          TERM: ${{ steps.extract.outputs.term }}
+          KOREAN: ${{ steps.extract.outputs.korean }}
+          DOMAIN: ${{ steps.extract.outputs.domain }}
+          DEFINITION: ${{ steps.extract.outputs.definition }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          node scripts/update-term-from-issue.mjs \
+            --term "$TERM" \
+            --korean "$KOREAN" \
+            --domain "$DOMAIN" \
+            --definition "$DEFINITION" \
+            --issue-number "$ISSUE_NUMBER"
+
+      - name: Commit, push, and close
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          AUTHOR_NAME: ${{ github.event.issue.user.login }}
+          AUTHOR_ID: ${{ github.event.issue.user.id }}
+          TERM: ${{ steps.extract.outputs.term }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "$(cat <<EOF
+          feat: 용어 피드백 반영 - ${TERM} (#${ISSUE_NUMBER})
+
+          Co-authored-by: ${AUTHOR_NAME} <${AUTHOR_ID}+${AUTHOR_NAME}@users.noreply.github.com>
+          EOF
+          )"
+          git push origin poc
+
+      - name: Close issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '✅ 피드백이 반영되었습니다. 기여해주셔서 감사합니다!\n\nCo-authored-by로 등록되었습니다.'
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });

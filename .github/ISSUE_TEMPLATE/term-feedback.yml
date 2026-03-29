@@ -3,6 +3,10 @@ description: AI/ML 용어의 번역이나 설명에 대한 의견을 제안합�
 title: "[용어 피드백] "
 labels: ["용어 피드백"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        > 💡 관리자가 검토 후 제안 내용을 반영합니다. 기여자로 등록됩니다(Co-authored-by).
   - type: input
     id: term
     attributes:

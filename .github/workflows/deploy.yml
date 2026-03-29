@@ -37,6 +37,16 @@ jobs:
                 console.error('Invalid term in ' + file + ':', term.term);
                 errors++;
               }
+              if (term.issueNumber !== undefined) {
+                if (typeof term.issueNumber !== 'number' || !Number.isInteger(term.issueNumber) || term.issueNumber <= 0) {
+                  console.error('Invalid issueNumber in ' + file + ' term: ' + term.term);
+                  errors++;
+                }
+              }
+              if (term.notes !== undefined && typeof term.notes !== 'string') {
+                console.error('Invalid notes in ' + file + ' term: ' + term.term);
+                errors++;
+              }
               for (const m of term.meanings) {
                 if (!m.korean || !m.domain || !m.definition) {
                   console.error('Missing fields in ' + file + ' term: ' + term.term);
