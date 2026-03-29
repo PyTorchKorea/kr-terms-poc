@@ -1,4 +1,20 @@
 body {
   margin: 0;
   font-family: "Pretendard Variable", "Pretendard", "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+mark {
+  background-color: #FFF3F0;
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+@media (forced-colors: active) {
+  mark {
+    background-color: Mark;
+    color: MarkText;
+  }
 }

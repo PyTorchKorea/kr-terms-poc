@@ -8,14 +8,12 @@ import {
   AccordionSummary,
   AccordionDetails,
   Chip,
-  List,
-  ListItem,
-  ListItemText,
   Alert,
   IconButton,
   Snackbar,
   Breadcrumbs,
   Link,
+  Skeleton,
 } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
@@ -51,7 +49,14 @@ export function TermDetailPage(): React.ReactNode {
   }, [term])
 
   if (loading) {
-    return <Layout><Typography>로딩 중...</Typography></Layout>
+    return (
+      <Layout>
+        <Skeleton variant="text" width={200} height={24} sx={{ mb: 3 }} />
+        <Skeleton variant="text" width={300} height={48} sx={{ mb: 3 }} />
+        <Skeleton variant="rounded" height={80} sx={{ mb: 2, borderRadius: 3 }} />
+        <Skeleton variant="rounded" height={80} sx={{ mb: 2, borderRadius: 3 }} />
+      </Layout>
+    )
   }
 
   if (error) {
@@ -150,7 +155,8 @@ export function TermDetailPage(): React.ReactNode {
             sx={{
               mb: 2,
               '&:before': { display: 'none' },
-              boxShadow: 2,
+              borderLeft: '3px solid',
+              borderLeftColor: 'primary.main',
             }}
           >
             <AccordionSummary
@@ -195,38 +201,55 @@ export function TermDetailPage(): React.ReactNode {
                     <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 600, color: 'primary.main' }}>
                       예시
                     </Typography>
-                    <List dense>
-                      {meaning.examples.map((example, exIndex) => (
-                        <ListItem key={exIndex} sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-                          {isTermExample(example) ? (
-                            <Box sx={{ width: '100%' }}>
-                              <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
-                                {example.en}
-                              </Typography>
-                              <Typography variant="body2" sx={{ mt: 0.5 }}>
-                                {example.ko}
-                              </Typography>
-                              {example.source && (
-                                <Link
-                                  href={example.source}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  variant="caption"
-                                  sx={{ mt: 0.5, display: 'inline-block' }}
-                                >
-                                  출처
-                                </Link>
-                              )}
-                            </Box>
-                          ) : (
-                            <ListItemText
-                              primary={example}
-                              primaryTypographyProps={{ variant: 'body2' }}
-                            />
-                          )}
-                        </ListItem>
-                      ))}
-                    </List>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+                      {meaning.examples.map((example, exIndex) =>
+                        isTermExample(example) ? (
+                          <Box
+                            key={exIndex}
+                            sx={{
+                              borderLeft: '4px solid',
+                              borderLeftColor: 'rgba(238, 76, 44, 0.2)',
+                              backgroundColor: '#FAFAFA',
+                              px: 2,
+                              py: 1.5,
+                              borderRadius: 1,
+                            }}
+                          >
+                            <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
+                              {example.en}
+                            </Typography>
+                            <Typography variant="body2" sx={{ mt: 0.5 }}>
+                              {example.ko}
+                            </Typography>
+                            {example.source && (
+                              <Link
+                                href={example.source}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="caption"
+                                sx={{ mt: 0.5, display: 'inline-block' }}
+                              >
+                                출처
+                              </Link>
+                            )}
+                          </Box>
+                        ) : (
+                          <Box
+                            key={exIndex}
+                            sx={{
+                              borderLeft: '4px solid',
+                              borderLeftColor: 'rgba(238, 76, 44, 0.2)',
+                              backgroundColor: '#FAFAFA',
+                              px: 2,
+                              py: 1.5,
+                              borderRadius: 1,
+                            }}
+                          >
+                            <Typography variant="body2">{example}</Typography>
+                          </Box>
+                        )
+                      )}
+                    </Box>
                   </Box>
                 )}
 
@@ -237,7 +260,13 @@ export function TermDetailPage(): React.ReactNode {
                     </Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                       {meaning.synonyms.map((synonym, synIndex) => (
-                        <Chip key={synIndex} label={synonym} size="small" variant="outlined" />
+                        <Chip
+                          key={synIndex}
+                          label={synonym}
+                          size="small"
+                          variant="outlined"
+                          color="primary"
+                        />
                       ))}
                     </Box>
                   </Box>
@@ -248,7 +277,13 @@ export function TermDetailPage(): React.ReactNode {
         ))}
       </Box>
 
-      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+      <Box sx={{
+        mt: 4,
+        display: 'flex',
+        justifyContent: 'center',
+        gap: 2,
+        flexDirection: { xs: 'column', sm: 'row' },
+      }}>
         <Button
           variant="contained"
           startIcon={<GitHubIcon />}

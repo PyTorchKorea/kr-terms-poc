@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { TextField, Grid, Typography, Box, InputAdornment, Skeleton, Button } from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search'
+import { Grid, Typography, Box, Skeleton, Button } from '@mui/material'
+import SearchOffIcon from '@mui/icons-material/SearchOff'
 import AddIcon from '@mui/icons-material/Add'
 import { Layout } from '../components/Layout'
 import { TermCard } from '../components/TermCard'
@@ -35,14 +35,18 @@ export function SearchPage(): React.ReactNode {
     setSearchParams(params, { replace: true })
   }, [setSearchParams])
 
-  const handleQueryChange = (newQuery: string): void => {
+  const handleQueryChange = useCallback((newQuery: string): void => {
     updateSearchParams(newQuery, selectedLetter)
-  }
+  }, [updateSearchParams, selectedLetter])
 
-  const handleLetterClick = (letter: string): void => {
+  const handleLetterClick = useCallback((letter: string): void => {
     const newLetter = selectedLetter === letter ? null : letter
     updateSearchParams(query, newLetter)
-  }
+  }, [updateSearchParams, selectedLetter, query])
+
+  const handleClearFilter = useCallback((): void => {
+    updateSearchParams(query, null)
+  }, [updateSearchParams, query])
 
   if (error) {
     return (
@@ -57,7 +61,7 @@ export function SearchPage(): React.ReactNode {
   if (loading) {
     return (
       <Layout>
-        <HeroSection totalTerms={0} totalMeanings={0} />
+        <HeroSection totalTerms={0} totalMeanings={0} query="" onQueryChange={() => {}} />
         <Box sx={{ px: 2 }}>
           <Grid container spacing={3}>
             {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -76,37 +80,18 @@ export function SearchPage(): React.ReactNode {
       <HeroSection
         totalTerms={statistics.totalTerms}
         totalMeanings={statistics.totalMeanings}
+        query={query}
+        onQueryChange={handleQueryChange}
       />
 
-      <Box sx={{ px: 2, mb: 4 }}>
-        <TextField
-          fullWidth
-          variant="outlined"
-          placeholder="영어 용어 또는 한글 번역으로 검색하세요..."
-          aria-label="용어 검색"
-          value={query}
-          onChange={(e) => handleQueryChange(e.target.value)}
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            },
-          }}
-          sx={{ mb: 3 }}
-        />
+      <AlphabetNavigation
+        onLetterClick={handleLetterClick}
+        onClearFilter={handleClearFilter}
+        activeLetter={selectedLetter}
+      />
 
-        <Typography variant="subtitle2" gutterBottom sx={{ mb: 1 }}>
-          알파벳 탐색
-        </Typography>
-        <AlphabetNavigation
-          onLetterClick={handleLetterClick}
-          activeLetter={selectedLetter}
-        />
-
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, flexWrap: 'wrap', gap: 1 }}>
+      <Box sx={{ px: 2, mb: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
           <Typography variant="body2" color="text.secondary">
             {finalFilteredTerms.length}개의 용어 표시 중
           </Typography>
@@ -125,11 +110,12 @@ export function SearchPage(): React.ReactNode {
 
       {finalFilteredTerms.length === 0 ? (
         <Box sx={{ textAlign: 'center', py: 8 }}>
+          <SearchOffIcon sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }} />
           <Typography variant="h6" color="text.secondary" gutterBottom>
             검색 결과가 없습니다
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-            다른 검색어나 필터를 시도해보세요
+            다른 검색어를 시도하거나, 알파벳 탐색으로 용어를 찾아보세요
           </Typography>
           <Button
             variant="contained"
@@ -149,7 +135,7 @@ export function SearchPage(): React.ReactNode {
               const hasDuplicate = duplicates && duplicates.length > 1
               return (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={term.term}>
-                  <TermCard term={term} hasDuplicateTranslation={hasDuplicate} />
+                  <TermCard term={term} hasDuplicateTranslation={hasDuplicate} query={query} />
                 </Grid>
               )
             })}

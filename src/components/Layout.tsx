@@ -1,6 +1,7 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography, Container, Box, IconButton, Link, Button } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
+import SearchIcon from '@mui/icons-material/Search'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 interface LayoutProps {
@@ -12,34 +13,51 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
   const location = useLocation()
   const isHomePage = location.pathname === '/' || location.pathname === ''
 
+  const handleSearchClick = () => {
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      navigate('/')
+    }
+  }
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {!isHomePage && (
-        <AppBar position="static" elevation={2}>
-          <Toolbar>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, cursor: 'pointer', fontWeight: 600 }}
-              onClick={() => navigate('/')}
-            >
-              AI/ML 용어집
-            </Typography>
-            <Button color="inherit" onClick={() => navigate('/about')} sx={{ mr: 1 }}>
-              소개
-            </Button>
-            <IconButton
-              color="inherit"
-              href="https://github.com/PyTorchKorea/kr-terms-poc"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub 저장소"
-            >
-              <GitHubIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      )}
+      <AppBar
+        position={isHomePage ? 'absolute' : 'static'}
+        elevation={isHomePage ? 0 : 2}
+        sx={{
+          backgroundColor: isHomePage ? 'transparent' : '#262626',
+          width: '100%',
+          zIndex: isHomePage ? 20 : undefined,
+        }}
+      >
+        <Toolbar>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, cursor: 'pointer', fontWeight: 600 }}
+            onClick={() => navigate('/')}
+          >
+            AI/ML 용어집
+          </Typography>
+          <IconButton color="inherit" onClick={handleSearchClick} aria-label="검색" sx={{ mr: 0.5 }}>
+            <SearchIcon />
+          </IconButton>
+          <Button color="inherit" onClick={() => navigate('/about')} sx={{ mr: 1 }}>
+            소개
+          </Button>
+          <IconButton
+            color="inherit"
+            href="https://github.com/PyTorchKorea/kr-terms-poc"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub 저장소"
+          >
+            <GitHubIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
 
       <Box component="main" sx={{ flex: 1 }}>
         {isHomePage ? (
@@ -52,7 +70,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
       <Box
         component="footer"
         sx={{
-          py: 4,
+          py: 3,
           px: 2,
           mt: 'auto',
           bgcolor: '#262626',
@@ -68,13 +86,18 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
               href="https://github.com/PyTorchKorea/kr-terms-poc"
               target="_blank"
               rel="noopener noreferrer"
-              sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' } }}
+              sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' }, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
               underline="hover"
             >
               GitHub에서 기여하기
             </Link>
             {' · '}
-            <Link component="button" onClick={() => navigate('/about')} sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' } }} underline="hover">
+            <Link
+              component="button"
+              onClick={() => navigate('/about')}
+              sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' }, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+              underline="hover"
+            >
               프로젝트 소개
             </Link>
             {' · '}
@@ -82,7 +105,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
               href="https://github.com/PyTorchKorea/kr-terms-poc/issues"
               target="_blank"
               rel="noopener noreferrer"
-              sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' } }}
+              sx={{ color: '#ee4c2c', '&:hover': { color: '#f26849' }, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
               underline="hover"
             >
               이슈 제기
