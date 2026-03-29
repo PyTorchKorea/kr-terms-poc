@@ -15,4 +15,6 @@ export interface TermMeaning {
 export interface Term {
   term: string
   meanings: TermMeaning[]
+  issueNumber?: number
+  notes?: string
 }

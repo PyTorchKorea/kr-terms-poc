@@ -1,6 +1,8 @@
-import React, { useState, useMemo } from 'react'
-import { TextField, Grid, Typography, Box, InputAdornment, Skeleton } from '@mui/material'
+import React, { useMemo, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { TextField, Grid, Typography, Box, InputAdornment, Skeleton, Button } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
+import AddIcon from '@mui/icons-material/Add'
 import { Layout } from '../components/Layout'
 import { TermCard } from '../components/TermCard'
 import { HeroSection } from '../components/HeroSection'
@@ -10,27 +12,36 @@ import { useSearch } from '../hooks/useSearch'
 import { calculateStatistics } from '../utils/statistics'
 
 export function SearchPage(): React.ReactNode {
-  const [query, setQuery] = useState('')
-  const [selectedLetter, setSelectedLetter] = useState<string | null>(null)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const query = searchParams.get('q') || ''
+  const selectedLetter = searchParams.get('letter') || null
   const { terms, loading, error } = useTerms()
   const filteredTerms = useSearch(terms, query)
 
   const statistics = useMemo(() => calculateStatistics(terms), [terms])
 
   const finalFilteredTerms = useMemo(() => {
-    let result = filteredTerms
+    if (!selectedLetter) return filteredTerms
 
-    if (selectedLetter) {
-      result = result.filter((term) =>
-        term.term.toUpperCase().startsWith(selectedLetter)
-      )
-    }
-
-    return result
+    return filteredTerms.filter((term) =>
+      term.term.toUpperCase().startsWith(selectedLetter)
+    )
   }, [filteredTerms, selectedLetter])
 
+  const updateSearchParams = useCallback((q: string, letter: string | null) => {
+    const params = new URLSearchParams()
+    if (q) params.set('q', q)
+    if (letter) params.set('letter', letter)
+    setSearchParams(params, { replace: true })
+  }, [setSearchParams])
+
+  const handleQueryChange = (newQuery: string): void => {
+    updateSearchParams(newQuery, selectedLetter)
+  }
+
   const handleLetterClick = (letter: string): void => {
-    setSelectedLetter((prev) => (prev === letter ? null : letter))
+    const newLetter = selectedLetter === letter ? null : letter
+    updateSearchParams(query, newLetter)
   }
 
   if (error) {
@@ -72,8 +83,9 @@ export function SearchPage(): React.ReactNode {
           fullWidth
           variant="outlined"
           placeholder="영어 용어 또는 한글 번역으로 검색하세요..."
+          aria-label="용어 검색"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => handleQueryChange(e.target.value)}
           slotProps={{
             input: {
               startAdornment: (
@@ -94,9 +106,21 @@ export function SearchPage(): React.ReactNode {
           activeLetter={selectedLetter}
         />
 
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-          {finalFilteredTerms.length}개의 용어 표시 중
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, flexWrap: 'wrap', gap: 1 }}>
+          <Typography variant="body2" color="text.secondary">
+            {finalFilteredTerms.length}개의 용어 표시 중
+          </Typography>
+          <Button
+            variant="text"
+            size="small"
+            startIcon={<AddIcon />}
+            href="https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            새 용어 요청
+          </Button>
+        </Box>
       </Box>
 
       {finalFilteredTerms.length === 0 ? (
@@ -104,9 +128,18 @@ export function SearchPage(): React.ReactNode {
           <Typography variant="h6" color="text.secondary" gutterBottom>
             검색 결과가 없습니다
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
             다른 검색어나 필터를 시도해보세요
           </Typography>
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            href="https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            찾으시는 용어가 없나요? 새 용어를 요청하세요
+          </Button>
         </Box>
       ) : (
         <Box sx={{ px: 2 }}>

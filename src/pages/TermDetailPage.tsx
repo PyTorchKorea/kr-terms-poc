@@ -23,6 +23,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import HomeIcon from '@mui/icons-material/Home'
+import HistoryIcon from '@mui/icons-material/History'
+import AddIcon from '@mui/icons-material/Add'
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import { Layout } from '../components/Layout'
 import { useTerms } from '../hooks/useTerms'
 import { getDomainColor } from '../utils/domainColors'
@@ -34,12 +37,28 @@ function isTermExample(example: string | TermExample): example is TermExample {
 
 function getRelatedTerms(terms: Term[], currentTerm: Term): Term[] {
   const currentDomains = new Set(currentTerm.meanings.map((m) => m.domain))
-  return terms
-    .filter((t) =>
-      t.term !== currentTerm.term &&
-      t.meanings.some((m) => currentDomains.has(m.domain))
-    )
-    .slice(0, 6)
+  const currentSynonyms = new Set(
+    currentTerm.meanings.flatMap((m) => m.synonyms.map((s) => s.toLowerCase()))
+  )
+
+  const scored = terms
+    .filter((t) => t.term !== currentTerm.term)
+    .map((t) => {
+      let score = 0
+      // Synonym match is strongest signal
+      if (currentSynonyms.has(t.term.toLowerCase()) ||
+          t.meanings.some((m) => currentSynonyms.has(m.korean.toLowerCase()))) {
+        score += 3
+      }
+      // Same domain
+      const domainOverlap = t.meanings.filter((m) => currentDomains.has(m.domain)).length
+      score += domainOverlap
+      return { term: t, score }
+    })
+    .filter((item) => item.score > 0)
+
+  scored.sort((a, b) => b.score - a.score)
+  return scored.slice(0, 6).map((item) => item.term)
 }
 
 export function TermDetailPage(): React.ReactNode {
@@ -81,8 +100,13 @@ export function TermDetailPage(): React.ReactNode {
     navigate('/')
   }
 
-  const handleOpenIssue = (): void => {
+  const handleOpenFeedback = (): void => {
     const url = `https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=term-feedback.yml&title=[용어 피드백] ${encodeURIComponent(term.term)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleRequestMeaning = (): void => {
+    const url = `https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml&title=[새 용어] ${encodeURIComponent(term.term)}`
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
@@ -122,6 +146,29 @@ export function TermDetailPage(): React.ReactNode {
         </Alert>
       )}
 
+      {term.notes && (
+        <Alert icon={<InfoOutlinedIcon />} severity="success" sx={{ mb: 3 }}>
+          <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
+            번역 참고사항
+          </Typography>
+          <Typography variant="body2">{term.notes}</Typography>
+        </Alert>
+      )}
+
+      {term.issueNumber && (
+        <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+          <HistoryIcon fontSize="small" color="action" />
+          <Link
+            href={`https://github.com/PyTorchKorea/kr-terms-poc/issues/${term.issueNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="body2"
+          >
+            이 용어의 논의 내역 보기 (#{term.issueNumber})
+          </Link>
+        </Box>
+      )}
+
       <Box sx={{ my: 3 }}>
         {term.meanings.map((meaning, index) => (
           <Accordion
@@ -150,6 +197,7 @@ export function TermDetailPage(): React.ReactNode {
                     e.stopPropagation()
                     handleCopyKorean(meaning.korean)
                   }}
+                  aria-label={`${meaning.korean} 복사`}
                   sx={{ mr: 1 }}
                 >
                   <ContentCopyIcon fontSize="small" />
@@ -234,7 +282,7 @@ export function TermDetailPage(): React.ReactNode {
           <Divider sx={{ my: 4 }} />
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
-              같은 도메인의 관련 용어
+              관련 용어
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
               {relatedTerms.map((relatedTerm) => (
@@ -254,10 +302,18 @@ export function TermDetailPage(): React.ReactNode {
         <Button
           variant="contained"
           startIcon={<GitHubIcon />}
-          onClick={handleOpenIssue}
+          onClick={handleOpenFeedback}
           size="large"
         >
           번역 개선 제안하기
+        </Button>
+        <Button
+          variant="outlined"
+          startIcon={<AddIcon />}
+          onClick={handleRequestMeaning}
+          size="large"
+        >
+          새로운 의미 추가 요청
         </Button>
         <Button
           variant="outlined"

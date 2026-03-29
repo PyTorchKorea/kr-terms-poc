@@ -35,8 +35,9 @@ export function HeroSection({ totalTerms, totalMeanings }: HeroSectionProps) {
           sx={{
             display: 'flex',
             justifyContent: 'center',
-            gap: 4,
-            flexWrap: 'wrap',
+            gap: { xs: 3, sm: 4 },
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: 'center',
           }}
         >
           <Box sx={{ textAlign: 'center' }}>

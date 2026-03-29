@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from 'react'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import React, { lazy, Suspense, useEffect } from 'react'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { CircularProgress, Box } from '@mui/material'
@@ -8,6 +8,14 @@ import { theme } from './theme'
 const SearchPage = lazy(() => import('./pages/SearchPage').then(m => ({ default: m.SearchPage })))
 const TermDetailPage = lazy(() => import('./pages/TermDetailPage').then(m => ({ default: m.TermDetailPage })))
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })))
+
+function ScrollToTop(): null {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 function LoadingFallback(): React.ReactNode {
   return (
@@ -22,6 +30,7 @@ export function App(): React.ReactNode {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <HashRouter>
+        <ScrollToTop />
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             <Route path="/" element={<SearchPage />} />
