@@ -56,7 +56,6 @@ jobs:
                 const label = headerMatch[1].trim();
                 if (label.includes('영문 용어')) currentId = 'term';
                 else if (label.includes('제안 한글 번역')) currentId = 'korean';
-                else if (label.includes('분야')) currentId = 'domain';
                 else if (label.includes('정의')) currentId = 'definition';
                 else if (label.includes('사용 예시')) currentId = 'examples';
                 else currentId = null;
@@ -70,14 +69,13 @@ jobs:
               }
             }
 
-            if (!sections.term || !sections.korean || !sections.domain || !sections.definition) {
+            if (!sections.term || !sections.korean || !sections.definition) {
               core.setFailed('Missing required fields in issue body');
               return;
             }
 
             core.setOutput('term', sections.term);
             core.setOutput('korean', sections.korean);
-            core.setOutput('domain', sections.domain.replace(/\s+/g, ''));
             core.setOutput('definition', sections.definition);
             core.setOutput('examples', sections.examples || '');
 
@@ -86,7 +84,6 @@ jobs:
         env:
           TERM: ${{ steps.parse-new.outputs.term }}
           KOREAN: ${{ steps.parse-new.outputs.korean }}
-          DOMAIN: ${{ steps.parse-new.outputs.domain }}
           DEFINITION: ${{ steps.parse-new.outputs.definition }}
           EXAMPLES: ${{ steps.parse-new.outputs.examples }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
@@ -94,7 +91,6 @@ jobs:
           node scripts/update-term-from-issue.mjs \
             --term "$TERM" \
             --korean "$KOREAN" \
-            --domain "$DOMAIN" \
             --definition "$DEFINITION" \
             --issue-number "$ISSUE_NUMBER" \
             --examples "$EXAMPLES"
@@ -169,7 +165,6 @@ jobs:
               term: sections.term || '(영문 용어)',
               meanings: [{
                 korean: '(제안 번역)',
-                domain: '(분야)',
                 definition: sections.suggestion || '(제안 내용을 바탕으로 정의 작성)',
                 examples: [],
                 synonyms: []
@@ -236,7 +231,6 @@ jobs:
                   const meaning = parsed.meanings[0];
                   core.setOutput('term', parsed.term);
                   core.setOutput('korean', meaning.korean);
-                  core.setOutput('domain', meaning.domain);
                   core.setOutput('definition', meaning.definition);
                   return;
                 }
@@ -249,14 +243,12 @@ jobs:
         env:
           TERM: ${{ steps.extract.outputs.term }}
           KOREAN: ${{ steps.extract.outputs.korean }}
-          DOMAIN: ${{ steps.extract.outputs.domain }}
           DEFINITION: ${{ steps.extract.outputs.definition }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           node scripts/update-term-from-issue.mjs \
             --term "$TERM" \
             --korean "$KOREAN" \
-            --domain "$DOMAIN" \
             --definition "$DEFINITION" \
             --issue-number "$ISSUE_NUMBER"
 

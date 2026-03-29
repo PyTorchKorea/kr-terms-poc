@@ -7,7 +7,6 @@
  *   node scripts/update-term-from-issue.mjs \
  *     --term "attention" \
  *     --korean "어텐션" \
- *     --domain "딥러닝" \
  *     --definition "..." \
  *     --issue-number 42 \
  *     [--examples "EN: ... | KO: ... | source: ..."] \
@@ -15,8 +14,8 @@
  *
  * Collision rules:
  *   (a) Term does not exist → create new entry
- *   (b) Term exists + different domain or korean → append as additional meaning
- *   (c) Term exists + same domain AND same korean → exit with warning
+ *   (b) Term exists + different korean → append as additional meaning
+ *   (c) Term exists + same korean → exit with warning
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
@@ -67,7 +66,7 @@ function parseSynonyms(raw) {
 function main() {
   const args = parseArgs(process.argv)
 
-  const required = ['term', 'korean', 'domain', 'definition', 'issue-number']
+  const required = ['term', 'korean', 'definition', 'issue-number']
   for (const field of required) {
     if (!args[field]) {
       console.error(`Missing required field: --${field}`)
@@ -105,7 +104,6 @@ function main() {
 
   const newMeaning = {
     korean: args.korean.trim(),
-    domain: args.domain.trim(),
     definition: args.definition.trim(),
     examples: parseExamples(args.examples || ''),
     synonyms: parseSynonyms(args.synonyms || ''),
@@ -127,14 +125,13 @@ function main() {
   } else {
     // Check for collision
     const duplicate = existingTerm.meanings.find(
-      (m) =>
-        m.domain === newMeaning.domain && m.korean === newMeaning.korean
+      (m) => m.korean === newMeaning.korean
     )
 
     if (duplicate) {
-      // Rule (c): same domain + korean → warn and exit
+      // Rule (c): same korean → warn and exit
       console.error(
-        `COLLISION: Term "${termName}" already has meaning with domain="${newMeaning.domain}" and korean="${newMeaning.korean}". Manual resolution required.`
+        `COLLISION: Term "${termName}" already has meaning with korean="${newMeaning.korean}". Manual resolution required.`
       )
       process.exit(2)
     }
@@ -145,7 +142,7 @@ function main() {
       existingTerm.issueNumber = issueNumber
     }
     console.log(
-      `Appended new meaning to existing term: ${termName} (domain: ${newMeaning.domain})`
+      `Appended new meaning to existing term: ${termName} (korean: ${newMeaning.korean})`
     )
   }
 

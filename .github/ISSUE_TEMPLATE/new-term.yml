@@ -23,14 +23,6 @@ body:
       placeholder: "예: 검색 증강 생성"
     validations:
       required: true
-  - type: input
-    id: domain
-    attributes:
-      label: 분야
-      description: 해당 용어가 사용되는 AI/ML 세부 분야
-      placeholder: "예: 자연어처리"
-    validations:
-      required: true
   - type: textarea
     id: definition
     attributes:
