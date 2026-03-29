@@ -102,7 +102,9 @@ export const theme = createTheme({
     MuiContainer: {
       styleOverrides: {
         maxWidthLg: {
-          maxWidth: '1300px !important',
+          '@media (min-width: 1200px)': {
+            maxWidth: 1300,
+          },
         },
       },
     },

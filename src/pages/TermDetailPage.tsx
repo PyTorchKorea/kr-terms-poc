@@ -31,6 +31,15 @@ function isTermExample(example: string | TermExample): example is TermExample {
   return typeof example === 'object' && 'en' in example && 'ko' in example
 }
 
+const exampleBoxSx = {
+  borderLeft: '4px solid',
+  borderLeftColor: 'rgba(238, 76, 44, 0.2)',
+  backgroundColor: '#F7F7F8',
+  px: 2,
+  py: 1.5,
+  borderRadius: 1,
+} as const
+
 function MeaningContent({ meaning }: { meaning: TermMeaning }) {
   return (
     <Box>
@@ -46,17 +55,7 @@ function MeaningContent({ meaning }: { meaning: TermMeaning }) {
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
             {meaning.examples.map((example, exIndex) =>
               isTermExample(example) ? (
-                <Box
-                  key={exIndex}
-                  sx={{
-                    borderLeft: '4px solid',
-                    borderLeftColor: 'rgba(238, 76, 44, 0.2)',
-                    backgroundColor: '#F7F7F8',
-                    px: 2,
-                    py: 1.5,
-                    borderRadius: 1,
-                  }}
-                >
+                <Box key={exIndex} sx={exampleBoxSx}>
                   <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
                     {example.en}
                   </Typography>
@@ -76,17 +75,7 @@ function MeaningContent({ meaning }: { meaning: TermMeaning }) {
                   )}
                 </Box>
               ) : (
-                <Box
-                  key={exIndex}
-                  sx={{
-                    borderLeft: '4px solid',
-                    borderLeftColor: 'rgba(238, 76, 44, 0.2)',
-                    backgroundColor: '#F7F7F8',
-                    px: 2,
-                    py: 1.5,
-                    borderRadius: 1,
-                  }}
-                >
+                <Box key={exIndex} sx={exampleBoxSx}>
                   <Typography variant="body2">{example}</Typography>
                 </Box>
               )
@@ -253,6 +242,7 @@ export function TermDetailPage(): React.ReactNode {
                 size="small"
                 onClick={() => handleCopyKorean(term.meanings[0].korean)}
                 aria-label={`${term.meanings[0].korean} 복사`}
+                sx={{ minHeight: 44, minWidth: 44 }}
               >
                 <ContentCopyIcon fontSize="small" />
               </IconButton>

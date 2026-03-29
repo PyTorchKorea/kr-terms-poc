@@ -15,7 +15,7 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
       sx={{
         background: 'linear-gradient(135deg, #ee4c2c 0%, #2D2D2D 100%)',
         color: 'white',
-        pt: { xs: 8, md: 9 },
+        pt: { xs: 10, md: 11 },
         pb: { xs: 3, md: 4 },
         mb: 0,
       }}

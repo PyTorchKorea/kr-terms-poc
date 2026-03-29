@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { AppBar, Toolbar, Typography, Container, Box, IconButton, Link, Button } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import SearchIcon from '@mui/icons-material/Search'
@@ -12,39 +12,41 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
   const navigate = useNavigate()
   const location = useLocation()
   const isHomePage = location.pathname === '/' || location.pathname === ''
-  const appBarRef = useRef<HTMLDivElement>(null)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     if (!isHomePage) return
 
     const handleScroll = () => {
-      if (!appBarRef.current) return
-      const scrolled = window.scrollY > 60
-      appBarRef.current.style.backgroundColor = scrolled ? '#262626' : 'transparent'
-      appBarRef.current.style.boxShadow = scrolled ? '0 2px 8px rgba(0,0,0,0.15)' : 'none'
+      setScrolled(window.scrollY > 60)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      setScrolled(false)
+    }
   }, [isHomePage])
 
-  const handleSearchClick = () => {
+  const handleSearchClick = useCallback(() => {
     if (isHomePage) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       navigate('/')
     }
-  }
+  }, [isHomePage, navigate])
+
+  const showSolidHeader = !isHomePage || scrolled
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <AppBar
-        ref={appBarRef}
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: isHomePage ? 'transparent' : '#262626',
+          backgroundColor: showSolidHeader ? '#262626' : 'transparent',
+          boxShadow: showSolidHeader ? '0 2px 8px rgba(0,0,0,0.15)' : 'none',
           transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
           zIndex: 20,
         }}
@@ -86,7 +88,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
         </Toolbar>
       </AppBar>
 
-      <Box component="main" sx={{ flex: 1, pt: 'var(--header-height)' }}>
+      <Box component="main" sx={{ flex: 1, pt: isHomePage ? 0 : 'var(--header-height)' }}>
         {isHomePage ? (
           children
         ) : (
