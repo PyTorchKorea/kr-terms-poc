@@ -56,7 +56,7 @@ function IntroTab(): React.ReactNode {
           예를 들어, &quot;attention&quot;은 &quot;어텐션&quot;, &quot;주의&quot;, &quot;주의 메커니즘&quot;, &quot;집중 메커니즘&quot; 등으로 번역되곤 합니다.
         </Typography>
         <Typography variant="body1" paragraph>
-          이 용어집은 이러한 문제를 해결하기 위해 시작되었습니다. 각 용어에 대해 <strong>도메인별 표준 번역</strong>을 제공하고,
+          이 용어집은 이러한 문제를 해결하기 위해 시작되었습니다. 각 용어에 대해 <strong>표준 번역</strong>을 제공하고,
           왜 그 번역이 선택되었는지에 대한 근거도 함께 기록합니다. 사람뿐 아니라 AI 번역 도구에서도 이 데이터를 참조하여 일관된 번역을 유지할 수 있습니다.
         </Typography>
       </Paper>
@@ -121,7 +121,7 @@ function UserGuideTab(): React.ReactNode {
           <ListItem>
             <ListItemText
               primary="4. 다의어 구분"
-              secondary="하나의 용어가 여러 의미를 가질 경우, 각 의미별로 아코디언으로 구분되어 표시됩니다. 도메인(분야)에 따라 번역이 다를 수 있습니다."
+              secondary="하나의 용어가 여러 의미를 가질 경우, 각 의미별로 아코디언으로 구분되어 표시됩니다. 맥락에 따라 번역이 다를 수 있습니다."
             />
           </ListItem>
         </List>
@@ -167,14 +167,14 @@ function UserGuideTab(): React.ReactNode {
           <ListItem>
             <ListItemText
               primary="같은 용어에 다른 번역을 제안할 수 있나요?"
-              secondary="네. 하나의 용어가 도메인(분야)에 따라 다른 번역을 가질 수 있습니다. 새로운 의미 추가 요청을 통해 제안해주세요."
+              secondary="네. 하나의 용어가 맥락에 따라 다른 번역을 가질 수 있습니다. 새로운 의미 추가 요청을 통해 제안해주세요."
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="어떤 분야의 용어를 다루나요?"
-              secondary="딥러닝, 머신러닝, 강화학습, 자연어처리, 컴퓨터비전, 생성형AI 등 AI/ML 전 분야를 다룹니다. 현재 29개 도메인이 등록되어 있습니다."
+              secondary="딥러닝, 머신러닝, 강화학습, 자연어처리, 컴퓨터비전, 생성형AI 등 AI/ML 전 분야를 다룹니다."
             />
           </ListItem>
           <Divider component="li" />
@@ -215,7 +215,7 @@ function ContributorGuideTab(): React.ReactNode {
             <ListItemText primary={'1. "새 용어 요청" 버튼을 클릭합니다'} />
           </ListItem>
           <ListItem>
-            <ListItemText primary="2. 영문 용어, 한글 번역, 분야, 정의를 입력합니다" />
+            <ListItemText primary="2. 영문 용어, 한글 번역, 정의를 입력합니다" />
           </ListItem>
           <ListItem>
             <ListItemText primary="3. 관리자가 검토 후 approved 라벨을 추가합니다" />
@@ -316,7 +316,6 @@ function ContributorGuideTab(): React.ReactNode {
   "meanings": [
     {
       "korean": "에이전트",
-      "domain": "강화학습",
       "definition": "환경과 상호작용하며 학습하는 주체",
       "examples": [
         {
@@ -333,7 +332,7 @@ function ContributorGuideTab(): React.ReactNode {
 }`}
         </Box>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-          <strong>필수 필드:</strong> term, korean, domain, definition
+          <strong>필수 필드:</strong> term, korean, definition
           <br />
           <strong>선택 필드:</strong> examples, synonyms, issueNumber (GitHub Issue 번호), notes (번역 참고사항)
         </Typography>
@@ -371,7 +370,7 @@ function AdminGuideTab(): React.ReactNode {
           <ListItem>
             <ListItemText
               primary="2. 품질 기준 확인"
-              secondary="영문 용어, 한글 번역, 분야, 정의가 모두 적절한지 확인합니다. 분야명에 공백이 없어야 합니다."
+              secondary="영문 용어, 한글 번역, 정의가 모두 적절한지 확인합니다."
             />
           </ListItem>
           <ListItem>
@@ -429,21 +428,14 @@ function AdminGuideTab(): React.ReactNode {
           <ListItem>
             <ListItemText
               primary="필수 필드 확인"
-              secondary="korean, domain, definition이 모두 채워져 있어야 합니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="분야명 규칙"
-              secondary={'도메인(분야)명에는 공백이 없어야 합니다. 예: "딥러닝" (O), "딥 러닝" (X)'}
+              secondary="korean, definition이 모두 채워져 있어야 합니다."
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="중복 확인"
-              secondary="같은 도메인 + 같은 한글 번역이 이미 있는지 확인합니다. 중복 시 스크립트가 자동으로 경고합니다."
+              secondary="같은 한글 번역이 이미 있는지 확인합니다. 중복 시 스크립트가 자동으로 경고합니다."
             />
           </ListItem>
           <Divider component="li" />

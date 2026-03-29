@@ -19,7 +19,6 @@ export function useSearch(terms: Term[], query: string): Term[] {
 
         return term.meanings.some((meaning) =>
           meaning.korean.toLowerCase().includes(lowerQuery) ||
-          meaning.domain.toLowerCase().includes(lowerQuery) ||
           meaning.synonyms.some((s) => s.toLowerCase().includes(lowerQuery))
         )
       })

@@ -2,7 +2,6 @@ import React from 'react'
 import { Card, CardContent, Typography, Chip, Box, CardActionArea, Badge } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import type { Term } from '../types/term'
-import { getDomainColor } from '../utils/domainColors'
 
 interface TermCardProps {
   term: Term
@@ -45,15 +44,6 @@ export function TermCard({ term, hasDuplicateTranslation }: TermCardProps): Reac
             {firstMeaning.korean}
           </Typography>
           <Box sx={{ mt: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
-            <Chip
-              label={firstMeaning.domain}
-              size="small"
-              sx={{
-                backgroundColor: getDomainColor(firstMeaning.domain),
-                color: 'white',
-                fontWeight: 500,
-              }}
-            />
             {hasDuplicateTranslation && (
               <Chip
                 label="중복"

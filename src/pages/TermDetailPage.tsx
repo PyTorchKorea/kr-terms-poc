@@ -16,7 +16,6 @@ import {
   Snackbar,
   Breadcrumbs,
   Link,
-  Divider,
 } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
@@ -28,37 +27,10 @@ import AddIcon from '@mui/icons-material/Add'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import { Layout } from '../components/Layout'
 import { useTerms } from '../hooks/useTerms'
-import { getDomainColor } from '../utils/domainColors'
-import type { Term, TermExample } from '../types/term'
+import type { TermExample } from '../types/term'
 
 function isTermExample(example: string | TermExample): example is TermExample {
   return typeof example === 'object' && 'en' in example && 'ko' in example
-}
-
-function getRelatedTerms(terms: Term[], currentTerm: Term): Term[] {
-  const currentDomains = new Set(currentTerm.meanings.map((m) => m.domain))
-  const currentSynonyms = new Set(
-    currentTerm.meanings.flatMap((m) => m.synonyms.map((s) => s.toLowerCase()))
-  )
-
-  const scored = terms
-    .filter((t) => t.term !== currentTerm.term)
-    .map((t) => {
-      let score = 0
-      // Synonym match is strongest signal
-      if (currentSynonyms.has(t.term.toLowerCase()) ||
-          t.meanings.some((m) => currentSynonyms.has(m.korean.toLowerCase()))) {
-        score += 3
-      }
-      // Same domain
-      const domainOverlap = t.meanings.filter((m) => currentDomains.has(m.domain)).length
-      score += domainOverlap
-      return { term: t, score }
-    })
-    .filter((item) => item.score > 0)
-
-  scored.sort((a, b) => b.score - a.score)
-  return scored.slice(0, 6).map((item) => item.term)
 }
 
 export function TermDetailPage(): React.ReactNode {
@@ -72,10 +44,11 @@ export function TermDetailPage(): React.ReactNode {
     [terms, termId]
   )
 
-  const relatedTerms = useMemo(
-    () => term ? getRelatedTerms(terms, term) : [],
-    [terms, term]
-  )
+  const hasDuplicateKorean = useMemo(() => {
+    if (!term) return false
+    const koreanValues = term.meanings.map((m) => m.korean)
+    return koreanValues.length !== new Set(koreanValues).size
+  }, [term])
 
   if (loading) {
     return <Layout><Typography>로딩 중...</Typography></Layout>
@@ -188,9 +161,16 @@ export function TermDetailPage(): React.ReactNode {
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
-                <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
-                  {meaning.korean}
-                </Typography>
+                <Box sx={{ flexGrow: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                    {meaning.korean}
+                  </Typography>
+                  {hasDuplicateKorean && (
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 0.25 }}>
+                      {meaning.definition.slice(0, 30)}{meaning.definition.length > 30 ? '...' : ''}
+                    </Typography>
+                  )}
+                </Box>
                 <IconButton
                   size="small"
                   onClick={(e) => {
@@ -202,15 +182,6 @@ export function TermDetailPage(): React.ReactNode {
                 >
                   <ContentCopyIcon fontSize="small" />
                 </IconButton>
-                <Chip
-                  label={meaning.domain}
-                  size="small"
-                  sx={{
-                    backgroundColor: getDomainColor(meaning.domain),
-                    color: 'white',
-                    fontWeight: 600,
-                  }}
-                />
               </Box>
             </AccordionSummary>
             <AccordionDetails>
@@ -276,27 +247,6 @@ export function TermDetailPage(): React.ReactNode {
           </Accordion>
         ))}
       </Box>
-
-      {relatedTerms.length > 0 && (
-        <>
-          <Divider sx={{ my: 4 }} />
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
-              관련 용어
-            </Typography>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
-              {relatedTerms.map((relatedTerm) => (
-                <Chip
-                  key={relatedTerm.term}
-                  label={relatedTerm.term}
-                  onClick={() => navigate(`/term/${encodeURIComponent(relatedTerm.term)}`)}
-                  sx={{ cursor: 'pointer' }}
-                />
-              ))}
-            </Box>
-          </Box>
-        </>
-      )}
 
       <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
         <Button
