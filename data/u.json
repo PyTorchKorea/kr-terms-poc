@@ -4,10 +4,13 @@
     "meanings": [
       {
         "korean": "과소적합",
-        "domain": "머신러닝",
         "definition": "모델이 학습 데이터의 패턴조차 충분히 학습하지 못하여 학습 데이터와 검증 데이터 모두에서 낮은 성능을 보이는 상태입니다.",
-        "examples": ["모델이 너무 단순하면 underfitting이 발생할 수 있다."],
-        "synonyms": ["언더피팅"]
+        "examples": [
+          "모델이 너무 단순하면 underfitting이 발생할 수 있다."
+        ],
+        "synonyms": [
+          "언더피팅"
+        ]
       }
     ]
   }

@@ -4,7 +4,6 @@
     "meanings": [
       {
         "korean": "파형",
-        "domain": "음성처리",
         "definition": "시간에 따른 음성 신호의 진폭 변화를 나타내는 1차원 표현입니다.",
         "examples": [
           "원시 waveform을 직접 입력으로 사용하는 음성 모델도 있다."
@@ -21,7 +20,6 @@
     "meanings": [
       {
         "korean": "가중치",
-        "domain": "신경망",
         "definition": "신경망에서 입력 신호에 곱해지는 학습 가능한 매개변수",
         "examples": [
           "가중치는 역전파를 통해 업데이트된다.",
@@ -39,7 +37,6 @@
       },
       {
         "korean": "가중",
-        "domain": "일반",
         "definition": "특정 요소에 중요도나 비중을 부여하는 것",
         "examples": [
           "손실 함수에서 각 항목에 서로 다른 가중을 적용할 수 있다.",
@@ -57,7 +54,6 @@
     "meanings": [
       {
         "korean": "단어 임베딩",
-        "domain": "자연어처리",
         "definition": "단어를 고정 크기의 밀집 벡터로 표현하는 기법으로, 의미적으로 유사한 단어가 가까운 벡터 공간에 위치합니다.",
         "examples": [
           "Word2Vec과 GloVe는 대표적인 word embedding 방법이다."

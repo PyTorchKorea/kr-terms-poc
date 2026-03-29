@@ -4,7 +4,6 @@
     "meanings": [
       {
         "korean": "이미지 분류",
-        "domain": "컴퓨터비전",
         "definition": "입력 이미지를 사전 정의된 카테고리 중 하나로 분류하는 컴퓨터비전 태스크입니다.",
         "examples": [
           "ResNet은 image classification에서 획기적인 성능 향상을 달성했다."
@@ -20,7 +19,6 @@
     "meanings": [
       {
         "korean": "이미지 분할",
-        "domain": "컴퓨터비전",
         "definition": "이미지의 각 픽셀을 특정 클래스로 분류하여 객체의 정확한 영역을 식별하는 기법입니다.",
         "examples": [
           "자율주행에서 image segmentation은 도로, 차량, 보행자를 구분하는 데 사용된다."
@@ -37,7 +35,6 @@
     "meanings": [
       {
         "korean": "제자리",
-        "domain": "딥러닝",
         "definition": "새로운 텐서를 생성하지 않고 기존 텐서의 값을 직접 수정하는 연산 방식으로, 메모리를 절약할 수 있습니다.",
         "examples": [
           "PyTorch에서 in-place 연산은 함수 이름 뒤에 밑줄(_)을 붙여 표시한다.",
@@ -59,7 +56,6 @@
     "meanings": [
       {
         "korean": "추론",
-        "domain": "머신러닝",
         "definition": "학습이 완료된 모델을 사용하여 새로운 입력 데이터에 대한 예측을 수행하는 과정",
         "examples": [
           "추론 시에는 역전파가 필요 없으므로 계산이 빠르다.",
@@ -77,7 +73,6 @@
     "meanings": [
       {
         "korean": "초기화",
-        "domain": "딥러닝",
         "definition": "신경망의 가중치를 학습 시작 전에 적절한 값으로 설정하는 과정으로, 학습의 수렴 속도와 성능에 큰 영향을 미칩니다.",
         "examples": [
           "Xavier initialization은 시그모이드 활성화 함수와 잘 작동한다.",
@@ -94,7 +89,6 @@
     "meanings": [
       {
         "korean": "반복",
-        "domain": "학습",
         "definition": "하나의 배치를 사용하여 모델 매개변수를 한 번 업데이트하는 과정",
         "examples": [
           "1 에포크는 전체 데이터셋 크기를 배치 크기로 나눈 만큼의 반복을 포함한다.",
