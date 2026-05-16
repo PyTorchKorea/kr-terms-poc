@@ -1,4 +1,4 @@
-import { Box, Chip } from '@mui/material'
+import { Box, Container } from '@mui/material'
 
 interface AlphabetNavigationProps {
   onLetterClick: (letter: string) => void
@@ -16,53 +16,101 @@ export function AlphabetNavigation({ onLetterClick, onClearFilter, activeLetter 
       sx={{
         position: 'sticky',
         top: 'var(--header-height)',
-        zIndex: 10,
-        backgroundColor: 'rgba(247,247,248,0.92)',
+        zIndex: 5,
+        bgcolor: 'rgba(255,255,255,0.92)',
         backdropFilter: 'blur(8px)',
-        borderBottom: '1px solid rgba(0,0,0,0.08)',
-        py: 1.5,
-        px: 2,
-        display: 'flex',
-        gap: 1,
-        justifyContent: { xs: 'flex-start', sm: 'center' },
-        mb: 3,
-        overflowX: { xs: 'auto', sm: 'visible' },
-        flexWrap: { xs: 'nowrap', sm: 'wrap' },
-        '&::-webkit-scrollbar': { height: 4 },
-        '&::-webkit-scrollbar-thumb': { backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: 2 },
+        borderBottom: '1px solid var(--ptk-line-soft)',
       }}
     >
-      <Chip
-        label="전체"
-        onClick={onClearFilter}
-        color={activeLetter === null ? 'primary' : 'default'}
-        variant={activeLetter === null ? 'filled' : 'outlined'}
-        aria-label="전체 용어 보기"
-        aria-pressed={activeLetter === null}
-        sx={{
-          minWidth: 44,
-          cursor: 'pointer',
-          fontWeight: activeLetter === null ? 700 : 400,
-          flexShrink: 0,
-        }}
-      />
-      {ALPHABET.map((letter) => (
-        <Chip
-          key={letter}
-          label={letter}
-          onClick={() => onLetterClick(letter)}
-          color={activeLetter === letter ? 'primary' : 'default'}
-          variant={activeLetter === letter ? 'filled' : 'outlined'}
-          aria-label={`${letter}로 시작하는 용어 필터`}
-          aria-pressed={activeLetter === letter}
+      <Container maxWidth="lg" disableGutters sx={{ px: { xs: 2.5, md: 5 } }}>
+        <Box
           sx={{
-            minWidth: 44,
-            cursor: 'pointer',
-            fontWeight: activeLetter === letter ? 700 : 400,
-            flexShrink: 0,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0.5,
+            py: 1.5,
+            overflowX: { xs: 'auto', md: 'visible' },
+            '&::-webkit-scrollbar': { height: 4 },
+            '&::-webkit-scrollbar-thumb': { backgroundColor: 'var(--ptk-line)' },
           }}
-        />
-      ))}
+        >
+          <Box
+            component="span"
+            sx={{
+              fontFamily: 'var(--ff-mono)',
+              fontSize: 11,
+              fontWeight: 700,
+              color: 'var(--fg-3)',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              mr: 2,
+              flexShrink: 0,
+            }}
+          >
+            A–Z
+          </Box>
+
+          <LetterButton
+            label="ALL"
+            active={activeLetter === null}
+            onClick={onClearFilter}
+            ariaLabel="전체 용어 보기"
+          />
+
+          {ALPHABET.map((letter) => (
+            <LetterButton
+              key={letter}
+              label={letter}
+              active={activeLetter === letter}
+              onClick={() => onLetterClick(letter)}
+              ariaLabel={`${letter}로 시작하는 용어 필터`}
+            />
+          ))}
+        </Box>
+      </Container>
+    </Box>
+  )
+}
+
+interface LetterButtonProps {
+  label: string
+  active: boolean
+  onClick: () => void
+  ariaLabel: string
+}
+
+function LetterButton({ label, active, onClick, ariaLabel }: LetterButtonProps) {
+  return (
+    <Box
+      component="button"
+      onClick={onClick}
+      aria-label={ariaLabel}
+      aria-pressed={active}
+      sx={{
+        flexShrink: 0,
+        minWidth: 36,
+        height: 32,
+        px: label.length > 1 ? 1.25 : 0,
+        display: 'inline-grid',
+        placeItems: 'center',
+        fontFamily: 'var(--ff-mono)',
+        fontSize: 12,
+        fontWeight: 700,
+        letterSpacing: '0.04em',
+        cursor: 'pointer',
+        border: '1px solid',
+        borderColor: active ? 'var(--ptk-orange)' : 'transparent',
+        bgcolor: active ? 'var(--ptk-orange)' : 'transparent',
+        color: active ? '#fff' : 'var(--fg-2)',
+        transition: 'all 120ms ease',
+        borderRadius: 0,
+        '&:hover': {
+          color: active ? '#fff' : 'var(--ptk-orange)',
+          bgcolor: active ? 'var(--ptk-orange)' : 'var(--bg-2)',
+        },
+      }}
+    >
+      {label}
     </Box>
   )
 }

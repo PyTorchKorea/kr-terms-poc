@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardContent, Typography, Chip, Box, CardActionArea, Badge } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import type { Term } from '../types/term'
 
@@ -33,70 +33,155 @@ export function TermCard({ term, hasDuplicateTranslation, query }: TermCardProps
   }
 
   return (
-    <Card sx={{ height: '100%', position: 'relative' }}>
-      <CardActionArea onClick={handleClick} sx={{ height: '100%' }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
-            <Typography
-              variant="h6"
-              component="h2"
-              sx={{ flexGrow: 1, fontWeight: 700, fontSize: '1.15rem' }}
-            >
-              {highlightText(term.term, query)}
-            </Typography>
-            {hasMultipleMeanings && (
-              <Badge
-                badgeContent={term.meanings.length}
-                color="secondary"
-                sx={{
-                  '& .MuiBadge-badge': {
-                    fontSize: '0.75rem',
-                    height: 20,
-                    minWidth: 20,
-                  },
-                }}
-              />
-            )}
-          </Box>
-          <Typography
-            variant="body1"
-            sx={{ color: 'primary.main', fontWeight: 500, mb: 0.5 }}
-          >
-            {highlightText(firstMeaning.korean, query)}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
+    <Box
+      component="article"
+      onClick={handleClick}
+      role="link"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          handleClick()
+        }
+      }}
+      sx={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        bgcolor: '#fff',
+        border: '1px solid var(--ptk-line-soft)',
+        borderRadius: 0,
+        p: 2.5,
+        cursor: 'pointer',
+        transition: 'border-color 120ms ease, background 120ms ease',
+        '&:hover': {
+          borderColor: 'var(--fg-1)',
+        },
+        '&:hover .term-name-underline': {
+          backgroundSize: '100% 1px',
+        },
+        '&:focus-visible': {
+          outline: '2px solid var(--ptk-orange)',
+          outlineOffset: 2,
+        },
+      }}
+    >
+      <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, mb: 1 }}>
+        <Typography
+          component="h2"
+          className="term-name-underline"
+          sx={{
+            flex: 1,
+            fontFamily: 'var(--ff-display)',
+            fontWeight: 700,
+            fontSize: '1.35rem',
+            lineHeight: 1.2,
+            letterSpacing: '-0.01em',
+            color: 'var(--fg-1)',
+            backgroundImage: 'linear-gradient(var(--fg-1), var(--fg-1))',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: '0 100%',
+            backgroundSize: '0% 1px',
+            transition: 'background-size 200ms ease',
+            wordBreak: 'break-word',
+          }}
+        >
+          {highlightText(term.term, query)}
+        </Typography>
+
+        {hasMultipleMeanings && (
+          <Box
             sx={{
+              flexShrink: 0,
+              fontFamily: 'var(--ff-mono)',
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: 'var(--ptk-purple)',
+              bgcolor: 'rgba(129,44,229,0.08)',
+              px: 1,
+              py: 0.5,
+              borderRadius: '999px',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {term.meanings.length}개 의미
+          </Box>
+        )}
+      </Box>
+
+      <Typography
+        component="div"
+        sx={{
+          fontSize: '1rem',
+          fontWeight: 500,
+          color: 'var(--ptk-orange)',
+          mb: 1,
+          lineHeight: 1.4,
+        }}
+      >
+        {highlightText(firstMeaning.korean, query)}
+      </Typography>
+
+      <Typography
+        sx={{
+          fontSize: 14,
+          lineHeight: 1.55,
+          color: 'var(--fg-2)',
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
+          mb: 1.5,
+          flex: 1,
+        }}
+      >
+        {firstMeaning.definition}
+      </Typography>
+
+      <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap', mt: 'auto' }}>
+        {firstSynonym && (
+          <Box
+            sx={{
+              fontFamily: 'var(--ff-mono)',
+              fontSize: 11,
+              fontWeight: 600,
+              color: 'var(--fg-2)',
+              border: '1px solid var(--ptk-line-soft)',
+              bgcolor: 'var(--bg-3)',
+              px: 1,
+              py: 0.5,
+              maxWidth: 200,
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
-              mb: 1,
+              letterSpacing: '0.02em',
             }}
           >
-            {firstMeaning.definition}
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
-            {hasDuplicateTranslation && (
-              <Chip
-                label="중복"
-                size="small"
-                variant="outlined"
-                color="warning"
-                sx={{ fontWeight: 500 }}
-              />
-            )}
-            {firstSynonym && (
-              <Chip
-                label={firstSynonym}
-                size="small"
-                variant="outlined"
-                sx={{ maxWidth: 120, '& .MuiChip-label': { overflow: 'hidden', textOverflow: 'ellipsis' } }}
-              />
-            )}
+            {firstSynonym}
           </Box>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+        )}
+        {hasDuplicateTranslation && (
+          <Box
+            sx={{
+              fontFamily: 'var(--ff-mono)',
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: '#b07300',
+              border: '1px solid rgba(255,193,7,0.5)',
+              bgcolor: 'rgba(255,193,7,0.1)',
+              px: 1,
+              py: 0.5,
+            }}
+          >
+            중복 번역
+          </Box>
+        )}
+      </Box>
+    </Box>
   )
 }

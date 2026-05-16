@@ -1,0 +1,163 @@
+/* ============================================================
+   PyTorch Korea Design System — Foundations
+   Source: skill `pytorchkr/design-system`
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ===== Brand ===== */
+  --ptk-orange:        #EE4C2C;
+  --ptk-orange-press:  #D63916;
+  --ptk-orange-hover:  #F26C50;
+  --ptk-purple:        #812CE5;
+  --ptk-teal:          #009999;
+
+  /* ===== Neutrals ===== */
+  --ptk-ink:           #000000;
+  --ptk-ink-strong:    #262626;
+  --ptk-ink-medium:    #4D5154;
+  --ptk-ink-muted:     #6C6C6D;
+  --ptk-ink-soft:      #8C8C8C;
+  --ptk-line-strong:   #979797;
+  --ptk-line:          #CCCDD1;
+  --ptk-line-soft:     #E2E2E2;
+  --ptk-line-faint:    #F0F0F0;
+  --ptk-bg:            #FFFFFF;
+  --ptk-surface:       #F3F4F7;
+  --ptk-surface-2:     #F8F9FA;
+
+  /* ===== Semantic ===== */
+  --ptk-success:       #198754;
+  --ptk-warning:       #FFC107;
+  --ptk-danger:        #DC3545;
+  --ptk-info:          #0DCAF0;
+
+  /* ===== Aliases ===== */
+  --fg-1:              var(--ptk-ink-strong);
+  --fg-2:              var(--ptk-ink-medium);
+  --fg-3:              var(--ptk-ink-muted);
+  --fg-on-accent:      #FFFFFF;
+  --bg-1:              var(--ptk-bg);
+  --bg-2:              var(--ptk-surface);
+  --bg-3:              var(--ptk-surface-2);
+  --link:              var(--ptk-orange);
+  --link-hover:        var(--ptk-orange-press);
+
+  /* ===== Type ===== */
+  --ff-sans:    "Noto Sans KR", "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ff-display: "Source Sans 3", "Noto Sans KR", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ff-mono:    "IBM Plex Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --fs-display: clamp(48px, 7vw, 84px);
+  --fs-h1:      48px;
+  --fs-h2:      36px;
+  --fs-h3:      28px;
+  --fs-h4:      22px;
+  --fs-h5:      18px;
+  --fs-h6:      16px;
+  --fs-body:    16px;
+  --fs-small:   14px;
+  --fs-xs:      12px;
+  --fs-code:    14px;
+
+  --lh-tight:   1.1;
+  --lh-snug:    1.25;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.7;
+
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.06em;
+
+  /* ===== Spacing (4-pt base) ===== */
+  --sp-0:   0px;
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   24px;
+  --sp-6:   32px;
+  --sp-7:   48px;
+  --sp-8:   64px;
+  --sp-9:   96px;
+  --sp-10: 128px;
+
+  /* ===== Radii — square by default ===== */
+  --r-0:   0px;
+  --r-1:   4px;
+  --r-2:   6px;
+  --r-3:   10px;
+  --r-pill: 999px;
+
+  /* ===== Borders ===== */
+  --bw-hairline: 1px;
+  --bw-thick:    2px;
+
+  /* ===== Shadows — used sparingly ===== */
+  --shadow-none:  none;
+  --shadow-sm:    0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:    0 4px 12px rgba(0,0,0,0.06);
+  --shadow-focus: 0 0 0 3px rgba(238,76,44,0.22);
+
+  /* ===== Motion ===== */
+  --ease-out:    cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:    120ms;
+  --dur-base:    200ms;
+  --dur-slow:    320ms;
+
+  /* ===== Containers ===== */
+  --container-narrow: 720px;
+  --container:        1100px;
+  --container-wide:   1320px;
+
+  /* App chrome */
+  --header-height: 72px;
+}
+
+/* ============================================================
+   Selection + scrollbar accents
+   ============================================================ */
+::selection { background: var(--ptk-orange); color: #fff; }
+
+/* ============================================================
+   Editorial highlight (search match)
+   ============================================================ */
+mark {
+  background: rgba(238, 76, 44, 0.14);
+  color: var(--ptk-orange-press);
+  padding: 0 2px;
+  border-radius: 0;
+  font-weight: 700;
+}
+@media (forced-colors: active) {
+  mark { background-color: Mark; color: MarkText; }
+}
+
+/* ============================================================
+   Editorial utility classes
+   ============================================================ */
+.eyebrow {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--ptk-orange);
+}
+.meta-mono {
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  color: var(--fg-3);
+  letter-spacing: 0.02em;
+}

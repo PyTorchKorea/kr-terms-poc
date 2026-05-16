@@ -22,7 +22,6 @@ export function SearchPage(): React.ReactNode {
 
   const finalFilteredTerms = useMemo(() => {
     if (!selectedLetter) return filteredTerms
-
     return filteredTerms.filter((term) =>
       term.term.toUpperCase().startsWith(selectedLetter)
     )
@@ -62,15 +61,15 @@ export function SearchPage(): React.ReactNode {
     return (
       <Layout>
         <HeroSection totalTerms={0} totalMeanings={0} query="" onQueryChange={() => {}} />
-        <Box sx={{ px: 2 }}>
+        <Container maxWidth="lg" sx={{ py: 5, px: { xs: 2.5, md: 5 } }}>
           <Grid container spacing={3}>
-            {[1, 2, 3, 4, 5, 6].map((i) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
               <Grid size={{ xs: 12, sm: 6, md: 4 }} key={i}>
-                <Skeleton variant="rectangular" height={180} sx={{ borderRadius: 1 }} />
+                <Skeleton variant="rectangular" height={180} sx={{ borderRadius: 0 }} />
               </Grid>
             ))}
           </Grid>
-        </Box>
+        </Container>
       </Layout>
     )
   }
@@ -90,33 +89,87 @@ export function SearchPage(): React.ReactNode {
         activeLetter={selectedLetter}
       />
 
-      <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
-        <Box sx={{ mb: 2 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
-            <Typography variant="body2" color="text.secondary">
-              {finalFilteredTerms.length}개의 용어 표시 중
-            </Typography>
-            <Button
-              variant="text"
-              size="small"
-              startIcon={<AddIcon />}
-              href="https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml"
-              target="_blank"
-              rel="noopener noreferrer"
+      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, md: 5 } }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'baseline',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 1.5,
+            mb: 3,
+            pb: 2,
+            borderBottom: '2px solid var(--fg-1)',
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 2, flexWrap: 'wrap' }}>
+            <Typography
+              component="h2"
+              sx={{
+                fontFamily: 'var(--ff-display)',
+                fontWeight: 700,
+                fontSize: { xs: 24, md: 32 },
+                letterSpacing: '-0.015em',
+                lineHeight: 1,
+                color: 'var(--fg-1)',
+              }}
             >
-              새 용어 요청
-            </Button>
+              {selectedLetter ? selectedLetter : query ? '검색 결과' : '전체 용어'}
+            </Typography>
+            <Box
+              component="span"
+              sx={{
+                fontFamily: 'var(--ff-mono)',
+                fontSize: 13,
+                color: 'var(--fg-3)',
+                letterSpacing: '0.04em',
+              }}
+            >
+              {finalFilteredTerms.length.toLocaleString()}개 용어
+              {query && (
+                <Box component="span" sx={{ ml: 1, color: 'var(--ptk-orange)' }}>
+                  · "{query}"
+                </Box>
+              )}
+            </Box>
           </Box>
+
+          <Button
+            variant="text"
+            size="small"
+            startIcon={<AddIcon />}
+            href="https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ fontSize: 13, fontWeight: 700 }}
+          >
+            새 용어 요청
+          </Button>
         </Box>
 
         {finalFilteredTerms.length === 0 ? (
-          <Box sx={{ textAlign: 'center', py: 8 }}>
-            <SearchOffIcon sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }} />
-            <Typography variant="h6" color="text.secondary" gutterBottom>
+          <Box
+            sx={{
+              border: '1px dashed var(--ptk-line)',
+              p: { xs: 5, md: 8 },
+              textAlign: 'center',
+              color: 'var(--fg-3)',
+            }}
+          >
+            <SearchOffIcon sx={{ fontSize: 48, color: 'var(--ptk-line)', mb: 2 }} />
+            <Typography
+              sx={{
+                fontFamily: 'var(--ff-display)',
+                fontWeight: 400,
+                fontSize: 22,
+                color: 'var(--fg-1)',
+                mb: 1,
+              }}
+            >
               검색 결과가 없습니다
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-              다른 검색어를 시도하거나, 알파벳 탐색으로 용어를 찾아보세요
+            <Typography sx={{ fontSize: 14, color: 'var(--fg-3)', mb: 3 }}>
+              다른 검색어를 시도하거나 알파벳 필터를 해제해 보세요.
             </Typography>
             <Button
               variant="contained"
@@ -129,7 +182,7 @@ export function SearchPage(): React.ReactNode {
             </Button>
           </Box>
         ) : (
-          <Grid container spacing={3}>
+          <Grid container spacing={2.5}>
             {finalFilteredTerms.map((term) => {
               const duplicates = statistics.duplicateTranslations.get(term.meanings[0].korean)
               const hasDuplicate = duplicates && duplicates.length > 1

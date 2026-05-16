@@ -1,36 +1,22 @@
-:root {
-  --header-height: 56px;
-}
-
-@media (min-width: 600px) {
-  :root {
-    --header-height: 64px;
-  }
-}
+@import "./styles/design-tokens.css";
 
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 }
+
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  font-family: "Pretendard Variable", "Pretendard", "Noto Sans KR", sans-serif;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  font-weight: var(--fw-regular);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-mark {
-  background-color: #FFF3F0;
-  color: inherit;
-  padding: 0 2px;
-  border-radius: 2px;
-}
-
-@media (forced-colors: active) {
-  mark {
-    background-color: Mark;
-    color: MarkText;
-  }
-}
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }

@@ -7,7 +7,6 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Chip,
   Alert,
   IconButton,
   Snackbar,
@@ -19,7 +18,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import HomeIcon from '@mui/icons-material/Home'
 import HistoryIcon from '@mui/icons-material/History'
 import AddIcon from '@mui/icons-material/Add'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
@@ -31,73 +29,148 @@ function isTermExample(example: string | TermExample): example is TermExample {
   return typeof example === 'object' && 'en' in example && 'ko' in example
 }
 
-const exampleBoxSx = {
-  borderLeft: '4px solid',
-  borderLeftColor: 'rgba(238, 76, 44, 0.2)',
-  backgroundColor: '#F7F7F8',
-  px: 2,
-  py: 1.5,
-  borderRadius: 1,
-} as const
-
 function MeaningContent({ meaning }: { meaning: TermMeaning }) {
   return (
     <Box>
-      <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+      <Typography
+        sx={{
+          fontSize: 16,
+          lineHeight: 1.7,
+          color: 'var(--fg-1)',
+          mb: 3,
+        }}
+      >
         {meaning.definition}
       </Typography>
 
       {meaning.examples.length > 0 && (
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 600, color: 'primary.main' }}>
+        <Box sx={{ mb: 3 }}>
+          <Box
+            sx={{
+              fontFamily: 'var(--ff-mono)',
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--ptk-orange)',
+              mb: 1.5,
+            }}
+          >
             예시
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-            {meaning.examples.map((example, exIndex) =>
-              isTermExample(example) ? (
-                <Box key={exIndex} sx={exampleBoxSx}>
-                  <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
-                    {example.en}
-                  </Typography>
-                  <Typography variant="body2" sx={{ mt: 0.5 }}>
-                    {example.ko}
-                  </Typography>
-                  {example.source && (
-                    <Link
-                      href={example.source}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      variant="caption"
-                      sx={{ mt: 0.5, display: 'inline-block' }}
+          </Box>
+          <Box
+            component="ul"
+            sx={{
+              listStyle: 'none',
+              p: 0,
+              m: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 1,
+            }}
+          >
+            {meaning.examples.map((example, exIndex) => (
+              <Box
+                key={exIndex}
+                component="li"
+                sx={{
+                  bgcolor: 'var(--bg-3)',
+                  borderLeft: '2px solid var(--ptk-orange)',
+                  px: 2,
+                  py: 1.5,
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                }}
+              >
+                {isTermExample(example) ? (
+                  <>
+                    <Box
+                      sx={{
+                        fontFamily: 'var(--ff-mono)',
+                        fontSize: 11,
+                        fontWeight: 700,
+                        color: 'var(--fg-3)',
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        mb: 0.5,
+                      }}
                     >
-                      출처
-                    </Link>
-                  )}
-                </Box>
-              ) : (
-                <Box key={exIndex} sx={exampleBoxSx}>
-                  <Typography variant="body2">{example}</Typography>
-                </Box>
-              )
-            )}
+                      EN
+                    </Box>
+                    <Box sx={{ color: 'var(--fg-2)', fontStyle: 'italic', mb: 1 }}>{example.en}</Box>
+                    <Box
+                      sx={{
+                        fontFamily: 'var(--ff-mono)',
+                        fontSize: 11,
+                        fontWeight: 700,
+                        color: 'var(--fg-3)',
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        mb: 0.5,
+                      }}
+                    >
+                      KO
+                    </Box>
+                    <Box sx={{ color: 'var(--fg-1)' }}>{example.ko}</Box>
+                    {example.source && (
+                      <Link
+                        href={example.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{
+                          mt: 1,
+                          display: 'inline-block',
+                          fontFamily: 'var(--ff-mono)',
+                          fontSize: 11,
+                          letterSpacing: '0.04em',
+                        }}
+                      >
+                        출처 →
+                      </Link>
+                    )}
+                  </>
+                ) : (
+                  <Box sx={{ color: 'var(--fg-1)' }}>{example}</Box>
+                )}
+              </Box>
+            ))}
           </Box>
         </Box>
       )}
 
       {meaning.synonyms.length > 0 && (
         <Box>
-          <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 600, color: 'primary.main' }}>
+          <Box
+            sx={{
+              fontFamily: 'var(--ff-mono)',
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--ptk-orange)',
+              mb: 1.5,
+            }}
+          >
             유사 용어
-          </Typography>
+          </Box>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             {meaning.synonyms.map((synonym, synIndex) => (
-              <Chip
+              <Box
                 key={synIndex}
-                label={synonym}
-                size="small"
-                variant="outlined"
-                color="primary"
-              />
+                sx={{
+                  fontFamily: 'var(--ff-mono)',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: 'var(--fg-2)',
+                  border: '1px solid var(--ptk-line-soft)',
+                  bgcolor: '#fff',
+                  px: 1.25,
+                  py: 0.5,
+                  letterSpacing: '0.02em',
+                }}
+              >
+                {synonym}
+              </Box>
             ))}
           </Box>
         </Box>
@@ -127,9 +200,9 @@ export function TermDetailPage(): React.ReactNode {
     return (
       <Layout>
         <Skeleton variant="text" width={200} height={24} sx={{ mb: 3 }} />
-        <Skeleton variant="text" width={300} height={48} sx={{ mb: 3 }} />
-        <Skeleton variant="rounded" height={80} sx={{ mb: 2, borderRadius: 3 }} />
-        <Skeleton variant="rounded" height={80} sx={{ mb: 2, borderRadius: 3 }} />
+        <Skeleton variant="text" width={320} height={56} sx={{ mb: 3 }} />
+        <Skeleton variant="rectangular" height={120} sx={{ mb: 2, borderRadius: 0 }} />
+        <Skeleton variant="rectangular" height={120} sx={{ mb: 2, borderRadius: 0 }} />
       </Layout>
     )
   }
@@ -166,116 +239,190 @@ export function TermDetailPage(): React.ReactNode {
   const handleCopyKorean = (korean: string): void => {
     navigator.clipboard.writeText(korean).then(() => {
       setSnackbarOpen(true)
-    }).catch(() => {
-      // Silent fail
-    })
+    }).catch(() => {})
   }
 
   return (
     <Layout>
-      <Breadcrumbs sx={{ mb: 3 }}>
+      <Breadcrumbs
+        sx={{
+          mb: 4,
+          fontFamily: 'var(--ff-mono)',
+          fontSize: 12,
+          letterSpacing: '0.04em',
+          '& .MuiBreadcrumbs-separator': { color: 'var(--ptk-line)' },
+        }}
+      >
         <Link
           component="button"
-          variant="body2"
           onClick={handleGoBack}
-          sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer' }}
+          sx={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 0.5,
+            cursor: 'pointer',
+            color: 'var(--fg-3)',
+            fontFamily: 'inherit',
+            fontSize: 'inherit',
+            letterSpacing: 'inherit',
+            textTransform: 'uppercase',
+            border: 0,
+            background: 'transparent',
+            p: 0,
+            '&:hover': { color: 'var(--ptk-orange)' },
+          }}
           underline="hover"
         >
-          <HomeIcon fontSize="small" />
-          홈
+          ← 목록으로
         </Link>
-        <Typography variant="body2" color="text.primary">
+        <Box
+          component="span"
+          sx={{
+            color: 'var(--fg-1)',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+          }}
+        >
           {term.term}
-        </Typography>
+        </Box>
       </Breadcrumbs>
 
-      <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
-        {term.term}
-      </Typography>
-
-      {term.meanings.length > 1 && (
-        <Alert severity="info" sx={{ mb: 3 }}>
-          이 용어는 {term.meanings.length}개의 다른 의미를 가지고 있습니다.
-        </Alert>
-      )}
+      <Box
+        sx={{
+          pb: 3,
+          mb: 4,
+          borderBottom: '2px solid var(--fg-1)',
+        }}
+      >
+        <Box
+          sx={{
+            fontFamily: 'var(--ff-mono)',
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: 'var(--ptk-orange)',
+            mb: 1.5,
+          }}
+        >
+          용어
+        </Box>
+        <Typography
+          component="h1"
+          sx={{
+            fontFamily: 'var(--ff-display)',
+            fontWeight: 700,
+            fontSize: 'clamp(36px, 5vw, 56px)',
+            lineHeight: 1.05,
+            letterSpacing: '-0.02em',
+            color: 'var(--fg-1)',
+            wordBreak: 'break-word',
+          }}
+        >
+          {term.term}
+        </Typography>
+        {term.meanings.length > 1 && (
+          <Box
+            sx={{
+              mt: 2,
+              fontFamily: 'var(--ff-mono)',
+              fontSize: 13,
+              color: 'var(--ptk-purple)',
+              letterSpacing: '0.04em',
+            }}
+          >
+            {term.meanings.length}개의 의미가 등록되어 있습니다
+          </Box>
+        )}
+      </Box>
 
       {term.notes && (
-        <Alert icon={<InfoOutlinedIcon />} severity="success" sx={{ mb: 3 }}>
-          <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
+        <Alert
+          icon={<InfoOutlinedIcon />}
+          severity="success"
+          sx={{ mb: 3 }}
+        >
+          <Typography sx={{ fontWeight: 700, mb: 0.5, fontSize: 14 }}>
             번역 참고사항
           </Typography>
-          <Typography variant="body2">{term.notes}</Typography>
+          <Typography sx={{ fontSize: 14, color: 'var(--fg-2)' }}>{term.notes}</Typography>
         </Alert>
       )}
 
       {term.issueNumber && (
-        <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
-          <HistoryIcon fontSize="small" color="action" />
+        <Box
+          sx={{
+            mb: 3,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+            fontFamily: 'var(--ff-mono)',
+            fontSize: 12,
+            color: 'var(--fg-3)',
+            letterSpacing: '0.02em',
+          }}
+        >
+          <HistoryIcon fontSize="small" sx={{ color: 'var(--fg-3)' }} />
           <Link
             href={`https://github.com/PyTorchKorea/kr-terms-poc/issues/${term.issueNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            variant="body2"
+            sx={{ fontFamily: 'inherit', fontSize: 'inherit' }}
           >
-            이 용어의 논의 내역 보기 (#{term.issueNumber})
+            논의 내역 보기 #{term.issueNumber}
           </Link>
         </Box>
       )}
 
-      <Box sx={{ my: 3 }}>
+      <Box sx={{ mb: 5 }}>
         {term.meanings.length === 1 ? (
-          <Box
-            sx={{
-              borderLeft: '3px solid',
-              borderLeftColor: 'primary.main',
-              borderRadius: 2,
-              boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-              p: 3,
-              backgroundColor: 'background.paper',
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-              <Typography variant="h6" sx={{ fontWeight: 600, flexGrow: 1 }}>
-                {term.meanings[0].korean}
-              </Typography>
-              <IconButton
-                size="small"
-                onClick={() => handleCopyKorean(term.meanings[0].korean)}
-                aria-label={`${term.meanings[0].korean} 복사`}
-                sx={{ minHeight: 44, minWidth: 44 }}
-              >
-                <ContentCopyIcon fontSize="small" />
-              </IconButton>
-            </Box>
-            <MeaningContent meaning={term.meanings[0]} />
-          </Box>
+          <SenseBlock
+            index={1}
+            meaning={term.meanings[0]}
+            onCopy={handleCopyKorean}
+          />
         ) : (
           term.meanings.map((meaning, index) => (
-            <Accordion
-              key={index}
-              defaultExpanded={index === 0}
-              sx={{
-                mb: 2,
-                '&:before': { display: 'none' },
-                borderLeft: '3px solid',
-                borderLeftColor: 'primary.main',
-              }}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                sx={{
-                  backgroundColor: 'background.default',
-                  '&:hover': { backgroundColor: 'action.hover' },
-                }}
-              >
+            <Accordion key={index} defaultExpanded={index === 0} sx={{ mb: 2 }}>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
-                  <Box sx={{ flexGrow: 1 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                  <Box
+                    sx={{
+                      fontFamily: 'var(--ff-display)',
+                      fontWeight: 700,
+                      fontSize: 22,
+                      color: 'var(--ptk-orange)',
+                      lineHeight: 1,
+                      minWidth: 28,
+                    }}
+                  >
+                    {index + 1}
+                  </Box>
+                  <Box sx={{ flex: 1 }}>
+                    <Typography
+                      sx={{
+                        fontFamily: 'var(--ff-display)',
+                        fontWeight: 700,
+                        fontSize: 20,
+                        letterSpacing: '-0.005em',
+                        color: 'var(--fg-1)',
+                      }}
+                    >
                       {meaning.korean}
                     </Typography>
                     {hasDuplicateKorean && (
-                      <Typography variant="body2" color="text.secondary" sx={{ mt: 0.25 }}>
-                        {meaning.definition.slice(0, 30)}{meaning.definition.length > 30 ? '...' : ''}
+                      <Typography
+                        sx={{
+                          mt: 0.25,
+                          fontSize: 13,
+                          color: 'var(--fg-3)',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                          maxWidth: { xs: 200, sm: 400 },
+                        }}
+                      >
+                        {meaning.definition.slice(0, 60)}{meaning.definition.length > 60 ? '...' : ''}
                       </Typography>
                     )}
                   </Box>
@@ -286,13 +433,13 @@ export function TermDetailPage(): React.ReactNode {
                       handleCopyKorean(meaning.korean)
                     }}
                     aria-label={`${meaning.korean} 복사`}
-                    sx={{ mr: 1 }}
+                    sx={{ color: 'var(--fg-3)', '&:hover': { color: 'var(--ptk-orange)' } }}
                   >
                     <ContentCopyIcon fontSize="small" />
                   </IconButton>
                 </Box>
               </AccordionSummary>
-              <AccordionDetails>
+              <AccordionDetails sx={{ pl: { xs: 2.5, md: 7 } }}>
                 <MeaningContent meaning={meaning} />
               </AccordionDetails>
             </Accordion>
@@ -300,34 +447,27 @@ export function TermDetailPage(): React.ReactNode {
         )}
       </Box>
 
-      <Box sx={{
-        mt: 4,
-        display: 'flex',
-        justifyContent: 'center',
-        gap: 2,
-        flexDirection: { xs: 'column', sm: 'row' },
-      }}>
-        <Button
-          variant="contained"
-          startIcon={<GitHubIcon />}
-          onClick={handleOpenFeedback}
-          size="large"
-        >
-          번역 개선 제안하기
+      <Box
+        sx={{
+          mt: 6,
+          pt: 4,
+          borderTop: '1px solid var(--ptk-line-soft)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 1.5,
+        }}
+      >
+        <Button variant="contained" startIcon={<GitHubIcon />} onClick={handleOpenFeedback}>
+          번역 개선 제안
         </Button>
-        <Button
-          variant="outlined"
-          startIcon={<AddIcon />}
-          onClick={handleRequestMeaning}
-          size="large"
-        >
+        <Button variant="outlined" startIcon={<AddIcon />} onClick={handleRequestMeaning}>
           새로운 의미 추가 요청
         </Button>
         <Button
-          variant="outlined"
+          variant="text"
           startIcon={<ArrowBackIcon />}
           onClick={handleGoBack}
-          size="large"
+          sx={{ ml: { sm: 'auto' } }}
         >
           목록으로 돌아가기
         </Button>
@@ -340,5 +480,63 @@ export function TermDetailPage(): React.ReactNode {
         message="번역이 복사되었습니다"
       />
     </Layout>
+  )
+}
+
+interface SenseBlockProps {
+  index: number
+  meaning: TermMeaning
+  onCopy: (korean: string) => void
+}
+
+function SenseBlock({ index, meaning, onCopy }: SenseBlockProps) {
+  return (
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', md: '56px 1fr' },
+        gap: { xs: 2, md: 3 },
+        border: '1px solid var(--ptk-line-soft)',
+        p: { xs: 2.5, md: 3.5 },
+        bgcolor: '#fff',
+      }}
+    >
+      <Box
+        sx={{
+          fontFamily: 'var(--ff-display)',
+          fontWeight: 700,
+          fontSize: 36,
+          color: 'var(--ptk-orange)',
+          lineHeight: 1,
+        }}
+      >
+        {index}
+      </Box>
+      <Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+          <Typography
+            sx={{
+              flex: 1,
+              fontFamily: 'var(--ff-display)',
+              fontWeight: 700,
+              fontSize: 26,
+              letterSpacing: '-0.01em',
+              color: 'var(--fg-1)',
+            }}
+          >
+            {meaning.korean}
+          </Typography>
+          <IconButton
+            size="small"
+            onClick={() => onCopy(meaning.korean)}
+            aria-label={`${meaning.korean} 복사`}
+            sx={{ color: 'var(--fg-3)', '&:hover': { color: 'var(--ptk-orange)' } }}
+          >
+            <ContentCopyIcon fontSize="small" />
+          </IconButton>
+        </Box>
+        <MeaningContent meaning={meaning} />
+      </Box>
+    </Box>
   )
 }
