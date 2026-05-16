@@ -1,5 +1,24 @@
 [
   {
+    "term": "teacher model",
+    "meanings": [
+      {
+        "korean": "교사 모델",
+        "definition": "지식 증류에서 학생 모델이 따르도록 기준 출력을 제공하는 큰 모델입니다.",
+        "examples": [
+          {
+            "en": "The teacher model provides soft targets for the student model.",
+            "ko": "교사 모델은 학생 모델에 부드러운 목표값을 제공한다.",
+            "source": "https://discuss.pytorch.kr/t/smollm-v2-on-device-slm-feat-huggingface/5429"
+          }
+        ],
+        "synonyms": [
+          "교사"
+        ]
+      }
+    ]
+  },
+  {
     "term": "tensor",
     "meanings": [
       {
@@ -88,6 +107,25 @@
     ]
   },
   {
+    "term": "token",
+    "meanings": [
+      {
+        "korean": "토큰",
+        "definition": "텍스트를 모델이 처리할 수 있도록 나눈 기본 단위입니다.",
+        "examples": [
+          {
+            "en": "The model predicts one token at a time during generation.",
+            "ko": "모델은 생성 중 한 번에 하나의 토큰을 예측한다.",
+            "source": "https://discuss.pytorch.kr/t/torchtune-pytorch-llm/4150"
+          }
+        ],
+        "synonyms": [
+          "토큰 단위"
+        ]
+      }
+    ]
+  },
+  {
     "term": "tokenization",
     "meanings": [
       {
@@ -115,17 +153,17 @@
     "term": "training",
     "meanings": [
       {
-        "korean": "훈련",
+        "korean": "학습",
         "definition": "데이터를 사용하여 모델의 매개변수를 최적화하는 과정",
         "examples": [
           {
             "en": "Using a GPU for model training significantly improves speed.",
-            "ko": "모델 훈련에 GPU를 사용하면 속도가 크게 향상된다.",
+            "ko": "모델 학습에 GPU를 사용하면 속도가 크게 향상된다.",
             "source": "https://www.deeplearningbook.org/"
           },
           {
             "en": "During training, we monitor whether the loss is decreasing.",
-            "ko": "훈련 과정에서 손실이 감소하는지 모니터링한다.",
+            "ko": "학습 과정에서 손실이 감소하는지 모니터링한다.",
             "source": "https://www.deeplearningbook.org/"
           },
           {
@@ -136,7 +174,7 @@
         ],
         "synonyms": [
           "트레이닝",
-          "학습"
+          "훈련"
         ]
       }
     ]

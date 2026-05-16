@@ -25,6 +25,25 @@
     ]
   },
   {
+    "term": "off-policy",
+    "meanings": [
+      {
+        "korean": "오프-정책",
+        "definition": "현재 학습 중인 정책과 다른 정책으로 수집한 데이터를 사용해 학습하는 방식입니다.",
+        "examples": [
+          {
+            "en": "Off-policy algorithms can learn from data collected by a different behavior policy.",
+            "ko": "오프-정책 알고리즘은 다른 행동 정책으로 수집한 데이터에서도 학습할 수 있다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "오프폴리시"
+        ]
+      }
+    ]
+  },
+  {
     "term": "one-hot encoding",
     "meanings": [
       {
@@ -39,6 +58,25 @@
         ],
         "synonyms": [
           "원핫 인코딩"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "on-policy",
+    "meanings": [
+      {
+        "korean": "온-정책",
+        "definition": "현재 학습 중인 정책으로 수집한 데이터를 사용해 같은 정책을 개선하는 방식입니다.",
+        "examples": [
+          {
+            "en": "On-policy training updates the policy using rollouts from the current model.",
+            "ko": "온-정책 학습은 현재 모델의 롤아웃을 사용해 정책을 업데이트한다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "온폴리시"
         ]
       }
     ]
@@ -97,7 +135,7 @@
     "meanings": [
       {
         "korean": "과적합",
-        "definition": "모델이 훈련 데이터에 지나치게 특화되어 새로운 데이터에 대한 일반화 성능이 떨어지는 현상",
+        "definition": "모델이 학습 데이터에 지나치게 특화되어 새로운 데이터에 대한 일반화 성능이 떨어지는 현상",
         "examples": [
           {
             "en": "Regularization techniques are used to prevent overfitting.",
@@ -106,7 +144,7 @@
           },
           {
             "en": "High training accuracy but low validation accuracy is a sign of overfitting.",
-            "ko": "훈련 정확도는 높지만 검증 정확도가 낮으면 과적합을 의심해야 한다.",
+            "ko": "학습 정확도는 높지만 검증 정확도가 낮으면 과적합을 의심해야 한다.",
             "source": "https://www.deeplearningbook.org/"
           }
         ],

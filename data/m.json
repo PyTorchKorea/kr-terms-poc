@@ -20,6 +20,25 @@
     ]
   },
   {
+    "term": "margin",
+    "meanings": [
+      {
+        "korean": "마진",
+        "definition": "두 점수나 보상 사이의 차이로, 선호도나 분류 결정의 여유 폭을 나타냅니다.",
+        "examples": [
+          {
+            "en": "A larger reward margin indicates a stronger preference for the chosen response.",
+            "ko": "보상 마진이 클수록 선택된 응답에 대한 선호가 더 강함을 나타낸다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "여유 폭"
+        ]
+      }
+    ]
+  },
+  {
     "term": "Markov decision process",
     "meanings": [
       {

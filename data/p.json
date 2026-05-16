@@ -57,7 +57,7 @@
         "examples": [
           {
             "en": "REINFORCE is the most basic policy gradient algorithm.",
-            "ko": "REINFORCE는 가장 기본적인 policy gradient 알고리즘이다.",
+            "ko": "REINFORCE는 가장 기본적인 정책 그래디언트 알고리즘이다.",
             "source": "http://incompleteideas.net/book/the-book-2nd.html"
           }
         ],
@@ -88,6 +88,63 @@
         "synonyms": [
           "다운샘플링",
           "서브샘플링"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "post-training",
+    "meanings": [
+      {
+        "korean": "사후 학습",
+        "definition": "사전 학습된 모델을 배포 목적이나 사용자 요구에 맞게 추가로 조정하는 단계입니다.",
+        "examples": [
+          {
+            "en": "Post-training often combines supervised fine-tuning and preference optimization.",
+            "ko": "사후 학습은 지도 미세조정과 선호 최적화를 함께 사용하는 경우가 많다.",
+            "source": "https://discuss.pytorch.kr/t/torchtune-pytorch-llm/4150"
+          }
+        ],
+        "synonyms": [
+          "포스트 트레이닝"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "preference data",
+    "meanings": [
+      {
+        "korean": "선호도 데이터",
+        "definition": "여러 응답 사이의 선호 관계를 담아 정렬 학습에 사용하는 데이터입니다.",
+        "examples": [
+          {
+            "en": "Preference data records which response a human or evaluator preferred.",
+            "ko": "선호도 데이터는 사람이나 평가자가 어떤 응답을 선호했는지 기록한다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "선호 데이터"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "prefix",
+    "meanings": [
+      {
+        "korean": "접두 문맥",
+        "definition": "생성 대상 토큰 앞에 주어져 모델의 다음 출력을 조건화하는 문맥입니다.",
+        "examples": [
+          {
+            "en": "The prefix conditions the model before it predicts the next token.",
+            "ko": "접두 문맥은 모델이 다음 토큰을 예측하기 전에 조건으로 주어진다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "prefix"
         ]
       }
     ]
@@ -152,6 +209,25 @@
         ],
         "synonyms": [
           "성능 분석"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "prompt",
+    "meanings": [
+      {
+        "korean": "프롬프트",
+        "definition": "모델에 작업 의도와 입력 정보를 전달하기 위해 제공하는 텍스트입니다.",
+        "examples": [
+          {
+            "en": "A clear prompt can make the model produce more useful answers.",
+            "ko": "명확한 프롬프트는 모델이 더 유용한 답변을 생성하게 할 수 있다.",
+            "source": "https://discuss.pytorch.kr/t/torchtune-pytorch-llm/4150"
+          }
+        ],
+        "synonyms": [
+          "입력 프롬프트"
         ]
       }
     ]

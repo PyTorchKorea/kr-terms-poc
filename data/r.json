@@ -75,6 +75,44 @@
     ]
   },
   {
+    "term": "reinforcement learning",
+    "meanings": [
+      {
+        "korean": "강화학습",
+        "definition": "에이전트가 환경과 상호작용하며 보상을 최대화하도록 정책을 학습하는 방법입니다.",
+        "examples": [
+          {
+            "en": "Reinforcement learning trains an agent to maximize cumulative reward.",
+            "ko": "강화학습은 에이전트가 누적 보상을 최대화하도록 학습시킨다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "RL"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "rejection sampling",
+    "meanings": [
+      {
+        "korean": "거부 샘플링",
+        "definition": "후보 샘플 중 기준을 만족하는 결과만 선택하고 나머지는 버리는 샘플링 방법입니다.",
+        "examples": [
+          {
+            "en": "Rejection sampling keeps generated candidates that pass the reward threshold.",
+            "ko": "거부 샘플링은 보상 임계값을 통과한 생성 후보만 유지한다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "리젝션 샘플링"
+        ]
+      }
+    ]
+  },
+  {
     "term": "ReLU",
     "meanings": [
       {
@@ -95,6 +133,25 @@
     ]
   },
   {
+    "term": "reverse KL",
+    "meanings": [
+      {
+        "korean": "역방향 KL",
+        "definition": "모델 분포를 기준으로 기준 분포와의 차이를 계산하는 KL 발산 방향입니다.",
+        "examples": [
+          {
+            "en": "Reverse KL tends to prefer high-probability modes of the reference distribution.",
+            "ko": "역방향 KL은 기준 분포의 확률이 높은 모드를 선호하는 경향이 있다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "역방향 KL 발산"
+        ]
+      }
+    ]
+  },
+  {
     "term": "reward",
     "meanings": [
       {
@@ -109,6 +166,44 @@
         ],
         "synonyms": [
           "보상 신호"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "reward model",
+    "meanings": [
+      {
+        "korean": "보상 모델",
+        "definition": "응답이나 행동의 품질을 점수화하여 정책 학습에 보상 신호를 제공하는 모델입니다.",
+        "examples": [
+          {
+            "en": "A reward model scores candidate responses before policy optimization.",
+            "ko": "보상 모델은 정책 최적화 전에 후보 응답에 점수를 부여한다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "RM"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "rollout",
+    "meanings": [
+      {
+        "korean": "롤아웃",
+        "definition": "현재 정책이나 모델로부터 응답 또는 행동 시퀀스를 생성하는 과정입니다.",
+        "examples": [
+          {
+            "en": "A rollout samples a full response from the current policy.",
+            "ko": "롤아웃은 현재 정책에서 전체 응답을 샘플링한다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "롤아웃 샘플"
         ]
       }
     ]

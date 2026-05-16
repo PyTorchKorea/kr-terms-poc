@@ -38,7 +38,7 @@
           },
           {
             "en": "Training with adversarial examples can improve model robustness.",
-            "ko": "적대적 예제를 활용한 훈련으로 모델의 강건성을 높일 수 있다.",
+            "ko": "적대적 예제를 활용한 학습으로 모델의 강건성을 높일 수 있다.",
             "source": "https://arxiv.org/abs/1412.6572"
           }
         ],

@@ -68,7 +68,7 @@
           },
           {
             "en": "Parameters are adjusted according to the gradient of the loss function.",
-            "ko": "매개변수는 손실 함수의 변화도에 따라 조정된다.",
+            "ko": "매개변수는 손실 함수의 그래디언트에 따라 조정된다.",
             "source": "https://tutorials.pytorch.kr/beginner/basics/autogradqs_tutorial.html"
           }
         ],
@@ -89,7 +89,7 @@
         "examples": [
           {
             "en": "When GPU memory is limited, gradient accumulation can increase the effective batch size.",
-            "ko": "GPU 메모리가 부족할 때 gradient accumulation을 사용하면 효과적인 배치 크기를 늘릴 수 있다.",
+            "ko": "GPU 메모리가 부족할 때 그래디언트 누적을 사용하면 효과적인 배치 크기를 늘릴 수 있다.",
             "source": "https://pytorch.org/docs/stable/notes/amp_examples.html"
           }
         ],
@@ -128,7 +128,7 @@
         "examples": [
           {
             "en": "The efficiency of gradient synchronization determines the scalability of distributed training.",
-            "ko": "gradient synchronization의 효율성이 분산 학습의 확장성을 결정한다.",
+            "ko": "그래디언트 동기화의 효율성이 분산 학습의 확장성을 결정한다.",
             "source": "https://pytorch.org/docs/stable/distributed.html"
           }
         ],

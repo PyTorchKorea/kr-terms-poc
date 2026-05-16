@@ -140,5 +140,43 @@
         ]
       }
     ]
+  },
+  {
+    "term": "student model",
+    "meanings": [
+      {
+        "korean": "학생 모델",
+        "definition": "지식 증류에서 교사 모델의 출력을 학습해 더 작거나 빠르게 동작하도록 만드는 모델입니다.",
+        "examples": [
+          {
+            "en": "The student model learns to match the teacher model's predictions.",
+            "ko": "학생 모델은 교사 모델의 예측을 따르도록 학습한다.",
+            "source": "https://discuss.pytorch.kr/t/smollm-v2-on-device-slm-feat-huggingface/5429"
+          }
+        ],
+        "synonyms": [
+          "학생"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "supervised fine-tuning",
+    "meanings": [
+      {
+        "korean": "지도 미세조정",
+        "definition": "정답 응답이 포함된 지도 데이터로 사전 학습된 모델을 미세조정하는 과정입니다.",
+        "examples": [
+          {
+            "en": "Supervised fine-tuning trains the model on instruction-response examples.",
+            "ko": "지도 미세조정은 지시문-응답 예제로 모델을 학습시킨다.",
+            "source": "https://discuss.pytorch.kr/t/torchtune-pytorch-llm/4150"
+          }
+        ],
+        "synonyms": [
+          "SFT"
+        ]
+      }
+    ]
   }
 ]

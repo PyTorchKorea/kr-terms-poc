@@ -8,7 +8,7 @@
         "examples": [
           {
             "en": "The validation set is a separate dataset not used during training.",
-            "ko": "검증 세트는 훈련에 사용되지 않은 별도의 데이터다.",
+            "ko": "검증 세트는 학습에 사용되지 않은 별도의 데이터다.",
             "source": "https://www.deeplearningbook.org/"
           },
           {
@@ -33,22 +33,22 @@
     "term": "vanishing gradient",
     "meanings": [
       {
-        "korean": "기울기 소실",
+        "korean": "그래디언트 소실",
         "definition": "역전파 과정에서 그래디언트가 점점 작아져 초기 층의 학습이 어려워지는 문제",
         "examples": [
           {
             "en": "The ReLU activation function mitigates the vanishing gradient problem.",
-            "ko": "ReLU 활성화 함수는 기울기 소실 문제를 완화한다.",
+            "ko": "ReLU 활성화 함수는 그래디언트 소실 문제를 완화한다.",
             "source": "https://www.deeplearningbook.org/"
           },
           {
             "en": "LSTM was designed to address the vanishing gradient problem.",
-            "ko": "LSTM은 기울기 소실 문제를 해결하기 위해 고안되었다.",
+            "ko": "LSTM은 그래디언트 소실 문제를 해결하기 위해 고안되었다.",
             "source": "https://www.deeplearningbook.org/"
           }
         ],
         "synonyms": [
-          "그래디언트 소실",
+          "기울기 소실",
           "경사 소실"
         ]
       }

@@ -53,13 +53,14 @@
         "examples": [
           {
             "en": "Through knowledge distillation, a BERT-sized model can be compressed to a size runnable on mobile devices.",
-            "ko": "knowledge distillation을 통해 BERT 크기의 모델을 모바일에서 실행 가능한 크기로 압축할 수 있다.",
+            "ko": "지식 증류를 통해 BERT 크기의 모델을 모바일에서 실행 가능한 크기로 압축할 수 있다.",
             "source": "https://arxiv.org/abs/1503.02531"
           }
         ],
         "synonyms": [
           "지식 전이",
-          "모델 증류"
+          "모델 증류",
+          "KD"
         ]
       }
     ]

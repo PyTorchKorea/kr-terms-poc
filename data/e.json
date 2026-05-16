@@ -132,7 +132,7 @@
     "meanings": [
       {
         "korean": "에포크",
-        "definition": "전체 훈련 데이터셋을 한 번 완전히 학습하는 과정",
+        "definition": "전체 학습 데이터셋을 한 번 완전히 학습하는 과정",
         "examples": [
           {
             "en": "The model was trained for 100 epochs.",
@@ -141,7 +141,7 @@
           },
           {
             "en": "As epochs increase, training loss decreases but the risk of overfitting also grows.",
-            "ko": "에포크가 증가할수록 훈련 손실은 감소하지만 과적합 위험도 커진다.",
+            "ko": "에포크가 증가할수록 학습 손실은 감소하지만 과적합 위험도 커진다.",
             "source": "https://www.deeplearningbook.org/"
           },
           {
@@ -152,7 +152,7 @@
         ],
         "synonyms": [
           "학습 주기",
-          "훈련 반복",
+          "학습 반복",
           "에폭"
         ]
       }
@@ -173,6 +173,25 @@
         ],
         "synonyms": [
           "추론 모드"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "exact match",
+    "meanings": [
+      {
+        "korean": "정확 일치",
+        "definition": "모델 출력이 정답 문자열과 완전히 같은지를 측정하는 평가 지표입니다.",
+        "examples": [
+          {
+            "en": "Exact match is strict because any extra token can make the answer incorrect.",
+            "ko": "정확 일치는 엄격한 지표라서 불필요한 토큰 하나만 있어도 오답이 될 수 있다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "EM"
         ]
       }
     ]

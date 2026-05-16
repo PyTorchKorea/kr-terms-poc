@@ -92,7 +92,7 @@
           },
           {
             "en": "The dataset is split into training, validation, and test sets for use.",
-            "ko": "데이터셋을 훈련, 검증, 테스트 세트로 나누어 사용한다.",
+            "ko": "데이터셋을 학습, 검증, 테스트 세트로 나누어 사용한다.",
             "source": "https://www.deeplearningbook.org/"
           },
           {
@@ -218,6 +218,44 @@
     ]
   },
   {
+    "term": "direct alignment algorithms",
+    "meanings": [
+      {
+        "korean": "직접 정렬 알고리즘",
+        "definition": "선호도나 보상 신호를 사용해 모델 출력을 직접 정렬하는 알고리즘 계열입니다.",
+        "examples": [
+          {
+            "en": "DPO is one of the direct alignment algorithms used after supervised fine-tuning.",
+            "ko": "DPO는 지도 미세조정 이후 사용하는 직접 정렬 알고리즘 중 하나다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "직접 정렬 기법"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "direct preference optimization",
+    "meanings": [
+      {
+        "korean": "직접 선호 최적화",
+        "definition": "선호도 데이터로부터 보상 모델 없이 정책을 직접 최적화하는 정렬 방법입니다.",
+        "examples": [
+          {
+            "en": "Direct preference optimization trains a model to prefer chosen responses over rejected ones.",
+            "ko": "직접 선호 최적화는 선택된 응답을 거부된 응답보다 선호하도록 모델을 학습시킨다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "DPO"
+        ]
+      }
+    ]
+  },
+  {
     "term": "distributed data parallel",
     "meanings": [
       {
@@ -236,7 +274,7 @@
           },
           {
             "en": "DDP uses collective communications to synchronize gradients across processes.",
-            "ko": "DDP는 집단 통신을 사용하여 프로세스 간 변화도를 동기화한다.",
+            "ko": "DDP는 집단 통신을 사용하여 프로세스 간 그래디언트를 동기화한다.",
             "source": "https://tutorials.pytorch.kr/intermediate/ddp_tutorial.html"
           }
         ],

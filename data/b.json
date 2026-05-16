@@ -30,11 +30,30 @@
     ]
   },
   {
+    "term": "baseline",
+    "meanings": [
+      {
+        "korean": "기준선",
+        "definition": "성능이나 보상을 비교하기 위해 기준으로 삼는 값이나 모델입니다.",
+        "examples": [
+          {
+            "en": "A baseline helps measure whether a new alignment method improves the reward.",
+            "ko": "기준선은 새로운 정렬 방법이 보상을 개선하는지 측정하는 데 도움을 준다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "베이스라인"
+        ]
+      }
+    ]
+  },
+  {
     "term": "batch",
     "meanings": [
       {
         "korean": "배치",
-        "definition": "모델 학습 시 한 번에 처리되는 훈련 샘플의 집합",
+        "definition": "모델 학습 시 한 번에 처리되는 학습 샘플의 집합",
         "examples": [
           {
             "en": "If the batch size is 32, 32 samples are processed simultaneously.",
@@ -141,7 +160,7 @@
           },
           {
             "en": "Biased training data can result in discriminatory AI systems.",
-            "ko": "편향된 훈련 데이터는 차별적인 AI 시스템을 만들 수 있다.",
+            "ko": "편향된 학습 데이터는 차별적인 AI 시스템을 만들 수 있다.",
             "source": "https://arxiv.org/abs/1901.10002"
           }
         ],

@@ -117,6 +117,25 @@
     ]
   },
   {
+    "term": "instruction tuning",
+    "meanings": [
+      {
+        "korean": "지시 미세조정",
+        "definition": "지시문과 응답 쌍으로 모델을 미세조정하여 지시 수행 능력을 높이는 과정입니다.",
+        "examples": [
+          {
+            "en": "Instruction tuning improves a language model's ability to follow user requests.",
+            "ko": "지시 미세조정은 언어 모델이 사용자 요청을 따르는 능력을 높인다.",
+            "source": "https://discuss.pytorch.kr/t/torchtune-pytorch-llm/4150"
+          }
+        ],
+        "synonyms": [
+          "인스트럭션 튜닝"
+        ]
+      }
+    ]
+  },
+  {
     "term": "iteration",
     "meanings": [
       {

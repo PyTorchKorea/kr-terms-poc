@@ -123,6 +123,44 @@
     ]
   },
   {
+    "term": "likelihood",
+    "meanings": [
+      {
+        "korean": "가능도",
+        "definition": "관측된 데이터가 특정 모델이나 매개변수에서 나타날 가능성을 나타내는 값입니다.",
+        "examples": [
+          {
+            "en": "The likelihood measures how well the model explains the observed sequence.",
+            "ko": "가능도는 모델이 관측된 시퀀스를 얼마나 잘 설명하는지 나타낸다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "우도"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "LLM-as-a-judge",
+    "meanings": [
+      {
+        "korean": "LLM-as-a-judge",
+        "definition": "LLM을 평가자로 사용해 응답 품질이나 선호도를 판정하는 평가 방식입니다.",
+        "examples": [
+          {
+            "en": "LLM-as-a-judge can compare two generated answers using a rubric.",
+            "ko": "LLM-as-a-judge는 평가 기준에 따라 생성된 두 답변을 비교할 수 있다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "LLM 평가자"
+        ]
+      }
+    ]
+  },
+  {
     "term": "linear layer",
     "meanings": [
       {

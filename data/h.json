@@ -20,6 +20,26 @@
     ]
   },
   {
+    "term": "held-out set",
+    "meanings": [
+      {
+        "korean": "보류 평가셋",
+        "definition": "학습에는 사용하지 않고 평가를 위해 따로 남겨 둔 데이터셋입니다.",
+        "examples": [
+          {
+            "en": "A held-out set is used to estimate performance on unseen examples.",
+            "ko": "보류 평가셋은 보지 못한 예제에 대한 성능을 추정하는 데 사용된다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "홀드아웃 세트",
+          "보류 세트"
+        ]
+      }
+    ]
+  },
+  {
     "term": "hidden layer",
     "meanings": [
       {

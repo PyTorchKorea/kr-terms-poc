@@ -3,17 +3,17 @@
     "term": "feature",
     "meanings": [
       {
-        "korean": "특성",
+        "korean": "특징",
         "definition": "모델 학습에 사용되는 입력 데이터의 개별 측정 가능한 속성",
         "examples": [
           {
             "en": "In house price prediction, area and number of rooms become features.",
-            "ko": "주택 가격 예측에서 면적, 방 개수 등이 특성이 된다.",
+            "ko": "주택 가격 예측에서 면적, 방 개수 등이 특징이 된다.",
             "source": "https://www.deeplearningbook.org/"
           },
           {
             "en": "Feature engineering is key to improving model performance.",
-            "ko": "특성 공학은 모델 성능 향상의 핵심이다.",
+            "ko": "특징 공학은 모델 성능 향상의 핵심이다.",
             "source": "https://www.deeplearningbook.org/"
           }
         ],
@@ -21,7 +21,7 @@
           "피처",
           "속성",
           "변수",
-          "특징"
+          "특성"
         ]
       },
       {
@@ -153,6 +153,25 @@
         "synonyms": [
           "평활화",
           "1차원 변환"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "forward KL",
+    "meanings": [
+      {
+        "korean": "순방향 KL",
+        "definition": "기준 분포를 기준으로 모델 분포와의 차이를 계산하는 KL 발산 방향입니다.",
+        "examples": [
+          {
+            "en": "Forward KL penalizes missing probability mass from the reference distribution.",
+            "ko": "순방향 KL은 기준 분포의 확률 질량을 놓치는 경우에 페널티를 준다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "순방향 KL 발산"
         ]
       }
     ]

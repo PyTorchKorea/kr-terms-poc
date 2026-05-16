@@ -218,7 +218,7 @@ function ContributorGuideTab(): React.ReactNode {
             <ListItemText primary="2. 영문 용어, 한글 번역, 정의를 입력합니다" />
           </ListItem>
           <ListItem>
-            <ListItemText primary="3. 관리자가 검토 후 approved 라벨을 추가합니다" />
+            <ListItemText primary="3. 관리자가 검토 후 /approve 댓글을 남깁니다" />
           </ListItem>
           <ListItem>
             <ListItemText primary="4. 자동으로 용어가 반영되고, 기여자로 등록됩니다" />
@@ -246,7 +246,7 @@ function ContributorGuideTab(): React.ReactNode {
             <ListItemText primary="2. 피드백 유형을 선택하고 제안 내용을 작성합니다" />
           </ListItem>
           <ListItem>
-            <ListItemText primary="3. 관리자가 검토 후 JSON 초안을 코멘트로 작성합니다" />
+            <ListItemText primary="3. 관리자가 /approve 댓글을 남기면 JSON 초안이 생성됩니다" />
           </ListItem>
           <ListItem>
             <ListItemText primary="4. 관리자가 commit-ready 라벨을 추가하면 자동 반영됩니다" />
@@ -352,7 +352,7 @@ function AdminGuideTab(): React.ReactNode {
           저장소에 권한이 있는 관리자는 다음 절차로 용어를 관리합니다.
         </Typography>
         <Alert severity="warning" sx={{ mb: 2 }}>
-          <code>approved</code> 라벨을 추가하면 자동으로 데이터가 반영됩니다. 신중하게 검토한 후 라벨을 추가하세요.
+          <code>/approve</code> 댓글을 남기면 자동으로 데이터가 반영됩니다. 신중하게 검토한 후 승인하세요.
         </Alert>
 
         <Typography variant="subtitle1" sx={{ fontWeight: 600, mt: 3, mb: 1 }}>
@@ -375,7 +375,7 @@ function AdminGuideTab(): React.ReactNode {
           </ListItem>
           <ListItem>
             <ListItemText
-              primary={'3. 승인: approved 라벨 추가'}
+              primary={'3. 승인: /approve 댓글 작성'}
               secondary="자동으로 용어가 데이터에 추가되고, 이슈 작성자가 Co-authored-by로 등록됩니다. 이슈가 자동으로 닫힙니다."
             />
           </ListItem>
@@ -401,7 +401,7 @@ function AdminGuideTab(): React.ReactNode {
           </ListItem>
           <ListItem>
             <ListItemText
-              primary={'2. approved 라벨 추가'}
+              primary={'2. /approve 댓글 작성'}
               secondary="봇이 자동으로 JSON 초안 코멘트를 작성합니다. 이 단계에서는 데이터에 반영되지 않습니다."
             />
           </ListItem>
