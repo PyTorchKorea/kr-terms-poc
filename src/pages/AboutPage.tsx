@@ -1,533 +1,235 @@
-import React, { useState } from 'react'
-import {
-  Typography, Box, Container, Paper, List, ListItem, ListItemText,
-  Divider, Chip, Button, Alert, Tabs, Tab, Link,
-} from '@mui/material'
+import React from 'react'
+import { Typography, Box, Container, Button, Link } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import AddIcon from '@mui/icons-material/Add'
-import FeedbackIcon from '@mui/icons-material/Feedback'
+import MenuBookIcon from '@mui/icons-material/MenuBook'
+import { useNavigate } from 'react-router-dom'
 import { Layout } from '../components/Layout'
+import { PARTNER_ORGS } from '../data/members'
 
 const REPO_URL = 'https://github.com/PyTorchKorea/kr-terms-poc'
 const NEW_TERM_URL = `${REPO_URL}/issues/new?template=new-term.yml`
-const FEEDBACK_URL = `${REPO_URL}/issues/new?template=term-feedback.yml`
-
-interface TabPanelProps {
-  children: React.ReactNode
-  index: number
-  value: number
-}
-
-function TabPanel({ children, value, index }: TabPanelProps): React.ReactNode {
-  if (value !== index) return null
-  return <Box sx={{ py: 3 }}>{children}</Box>
-}
-
-function IntroTab(): React.ReactNode {
-  return (
-    <>
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          왜 AI/ML 용어집인가?
-        </Typography>
-        <Typography variant="body1" paragraph>
-          번역은 생성형 AI 모델을 사용하여 자동화할 수 있지만, 이러한 번역 시에도 <strong>일관된 용어를 사용하는 것은 매우 중요합니다.</strong>{' '}
-          인공지능 및 머신러닝 분야의 다양한 용어들을 표준화하고, 이를 공개하여 누구나 사용할 수 있도록 하는 것을 목표로 하고 있습니다.
-        </Typography>
-        <Typography variant="body1" paragraph>
-          이 프로젝트는 오픈소스 커뮤니티 기반으로 용어의 표준화된 번역을 제공하고, 다의어와 맥락별 번역을 체계적으로 관리합니다.
-          파이토치 한국 사용자 모임(PyTorchKR)에서 운영합니다.
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mt: 2 }}>
-          <Chip label="오픈소스" color="primary" size="small" />
-          <Chip label="커뮤니티 기반" color="secondary" size="small" />
-          <Chip label="다의어 지원" color="info" size="small" />
-          <Chip label="맥락 기반 번역" color="success" size="small" />
-          <Chip label="LLM 연동" color="warning" size="small" />
-        </Box>
-      </Paper>
-
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          프로젝트의 의의
-        </Typography>
-        <Typography variant="body1" paragraph>
-          한국어로 된 인공지능/머신러닝 문서를 읽을 때 같은 용어가 여러 가지로 번역되어 혼란을 느끼신 적이 있으실 겁니다.
-          예를 들어, &quot;attention&quot;은 &quot;어텐션&quot;, &quot;주의&quot;, &quot;주의 메커니즘&quot;, &quot;집중 메커니즘&quot; 등으로 번역되곤 합니다.
-        </Typography>
-        <Typography variant="body1" paragraph>
-          이 용어집은 이러한 문제를 해결하기 위해 시작되었습니다. 각 용어에 대해 <strong>표준 번역</strong>을 제공하고,
-          왜 그 번역이 선택되었는지에 대한 근거도 함께 기록합니다. 사람뿐 아니라 AI 번역 도구에서도 이 데이터를 참조하여 일관된 번역을 유지할 수 있습니다.
-        </Typography>
-      </Paper>
-
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          LLM / AI 번역 도구 연동
-        </Typography>
-        <Typography variant="body1" paragraph>
-          이 용어집은 사람뿐 아니라 AI 도구에서도 활용할 수 있도록 기계 판독 가능한 형식을 제공합니다.
-          AI 번역 시 이 용어집을 컨텍스트로 제공하면, 일관된 한국어 번역을 유지하는 데 도움이 됩니다.
-        </Typography>
-        <List>
-          <ListItem>
-            <ListItemText
-              primary="llms.txt"
-              secondary={<>llmstxt.org 표준에 따른 LLM용 프로젝트 안내 파일 (<Link href="https://poc.terms.kr/llms.txt" target="_blank" rel="noopener noreferrer">poc.terms.kr/llms.txt</Link>)</>}
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="JSON 데이터"
-              secondary={<>알파벳별 JSON 파일로 전체 용어 데이터에 접근 가능 (<Link href="https://poc.terms.kr/data/index.json" target="_blank" rel="noopener noreferrer">poc.terms.kr/data/</Link>)</>}
-            />
-          </ListItem>
-        </List>
-      </Paper>
-    </>
-  )
-}
-
-function UserGuideTab(): React.ReactNode {
-  return (
-    <>
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          용어 검색하기
-        </Typography>
-        <List>
-          <ListItem>
-            <ListItemText
-              primary="1. 검색"
-              secondary="메인 페이지에서 영어 또는 한국어로 용어를 검색하세요. 실시간으로 결과가 필터링됩니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="2. 알파벳 탐색"
-              secondary="A-Z 알파벳 칩을 클릭하면 해당 알파벳으로 시작하는 용어만 필터링됩니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="3. 상세 정보 확인"
-              secondary="검색 결과를 클릭하면 용어의 모든 의미, 설명, 사용 예시, 관련 용어를 확인할 수 있습니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="4. 다의어 구분"
-              secondary="하나의 용어가 여러 의미를 가질 경우, 각 의미별로 아코디언으로 구분되어 표시됩니다. 맥락에 따라 번역이 다를 수 있습니다."
-            />
-          </ListItem>
-        </List>
-      </Paper>
-
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          용어 요청 및 피드백
-        </Typography>
-        <Typography variant="body1" paragraph>
-          찾으시는 용어가 없거나, 기존 번역에 대한 의견이 있으시면 GitHub Issue를 통해 요청하실 수 있습니다.
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 3 }}>
-          <Button
-            variant="contained"
-            startIcon={<AddIcon />}
-            href={NEW_TERM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            새 용어 요청
-          </Button>
-          <Button
-            variant="outlined"
-            startIcon={<FeedbackIcon />}
-            href={FEEDBACK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            번역 개선 제안
-          </Button>
-        </Box>
-        <Alert severity="info">
-          각 용어 상세 페이지에서도 &quot;번역 개선 제안하기&quot;, &quot;새로운 의미 추가 요청&quot; 버튼을 통해 바로 피드백을 제출할 수 있습니다.
-        </Alert>
-      </Paper>
-
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          자주 묻는 질문
-        </Typography>
-        <List>
-          <ListItem>
-            <ListItemText
-              primary="같은 용어에 다른 번역을 제안할 수 있나요?"
-              secondary="네. 하나의 용어가 맥락에 따라 다른 번역을 가질 수 있습니다. 새로운 의미 추가 요청을 통해 제안해주세요."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="어떤 분야의 용어를 다루나요?"
-              secondary="딥러닝, 머신러닝, 강화학습, 자연어처리, 컴퓨터비전, 생성형AI 등 AI/ML 전 분야를 다룹니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="기여하면 어떤 혜택이 있나요?"
-              secondary="GitHub Issue를 통해 제안한 용어가 승인되면 Co-authored-by로 기여자가 자동 등록됩니다. 커밋 히스토리에 여러분의 이름이 남습니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="현재 PoC 단계인데 실제로 사용해도 되나요?"
-              secondary="네, 자유롭게 사용하실 수 있습니다. 다만, 현재 수록된 용어 데이터는 AI가 생성한 초안이며 커뮤니티 검토를 거치는 중입니다. MIT 라이센스로 자유롭게 활용 가능합니다."
-            />
-          </ListItem>
-        </List>
-      </Paper>
-    </>
-  )
-}
-
-function ContributorGuideTab(): React.ReactNode {
-  return (
-    <>
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          Issue를 통한 기여 (추천)
-        </Typography>
-        <Alert severity="success" sx={{ mb: 2 }}>
-          코드 작업 없이 GitHub Issue만으로 기여할 수 있습니다. 승인되면 Co-authored-by로 자동 등록됩니다.
-        </Alert>
-        <Typography variant="subtitle1" sx={{ fontWeight: 600, mt: 2, mb: 1 }}>
-          새 용어 추가 요청
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText primary={'1. "새 용어 요청" 버튼을 클릭합니다'} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="2. 영문 용어, 한글 번역, 정의를 입력합니다" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="3. 관리자가 검토 후 /approve 댓글을 남깁니다" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="4. 자동으로 용어가 반영되고, 기여자로 등록됩니다" />
-          </ListItem>
-        </List>
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
-          href={NEW_TERM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ mt: 1, mb: 3 }}
-        >
-          새 용어 요청하기
-        </Button>
-
-        <Typography variant="subtitle1" sx={{ fontWeight: 600, mt: 2, mb: 1 }}>
-          번역 개선 제안
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText primary="1. 용어 상세 페이지에서 '번역 개선 제안하기' 버튼을 클릭합니다" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="2. 피드백 유형을 선택하고 제안 내용을 작성합니다" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="3. 관리자가 /approve 댓글을 남기면 JSON 초안이 생성됩니다" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="4. 관리자가 commit-ready 라벨을 추가하면 자동 반영됩니다" />
-          </ListItem>
-        </List>
-      </Paper>
-
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          Pull Request를 통한 기여
-        </Typography>
-        <Typography variant="body1" paragraph>
-          직접 데이터 파일을 수정하여 PR로 기여할 수도 있습니다.
-        </Typography>
-        <List>
-          <ListItem>
-            <ListItemText
-              primary="1. 저장소 Fork"
-              secondary={<>
-                <Link href={REPO_URL} target="_blank" rel="noopener noreferrer">{REPO_URL}</Link>를 본인 계정으로 포크합니다.
-              </>}
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="2. 데이터 수정"
-              secondary="data/ 디렉토리의 알파벳별 JSON 파일에 새로운 용어를 추가하거나 기존 항목을 수정합니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="3. Pull Request 생성"
-              secondary="변경사항을 커밋하고 원본 저장소로 Pull Request를 생성합니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="4. 리뷰 및 병합"
-              secondary="관리자 리뷰를 거쳐 승인되면 메인 브랜치에 병합됩니다."
-            />
-          </ListItem>
-        </List>
-      </Paper>
-
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          데이터 구조
-        </Typography>
-        <Typography variant="body1" paragraph>
-          용어 데이터는 알파벳별 JSON 파일로 관리되며, 다의어를 지원하기 위해 <code>meanings</code> 배열 구조를 사용합니다.
-        </Typography>
-        <Box
-          component="pre"
-          sx={{
-            bgcolor: 'grey.100',
-            p: 2,
-            borderRadius: 1,
-            overflow: 'auto',
-            fontSize: '0.875rem',
-          }}
-        >
-{`{
-  "term": "agent",
-  "meanings": [
-    {
-      "korean": "에이전트",
-      "definition": "환경과 상호작용하며 학습하는 주체",
-      "examples": [
-        {
-          "en": "The agent learns to maximize the reward.",
-          "ko": "에이전트는 보상을 최대화하도록 학습한다.",
-          "source": "https://..."
-        }
-      ],
-      "synonyms": ["행위자"]
-    }
-  ],
-  "issueNumber": 1,
-  "notes": "번역 선택 근거 메모"
-}`}
-        </Box>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-          <strong>필수 필드:</strong> term, korean, definition
-          <br />
-          <strong>선택 필드:</strong> examples, synonyms, issueNumber (GitHub Issue 번호), notes (번역 참고사항)
-        </Typography>
-      </Paper>
-    </>
-  )
-}
-
-function AdminGuideTab(): React.ReactNode {
-  return (
-    <>
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          이슈 검토 워크플로우
-        </Typography>
-        <Typography variant="body1" paragraph>
-          저장소에 권한이 있는 관리자는 다음 절차로 용어를 관리합니다.
-        </Typography>
-        <Alert severity="warning" sx={{ mb: 2 }}>
-          <code>/approve</code> 댓글을 남기면 자동으로 데이터가 반영됩니다. 신중하게 검토한 후 승인하세요.
-        </Alert>
-
-        <Typography variant="subtitle1" sx={{ fontWeight: 600, mt: 3, mb: 1 }}>
-          새 용어 요청 처리
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText
-              primary="1. 이슈 확인"
-              secondary={<>
-                <Link href={`${REPO_URL}/issues?q=label:"새 용어 요청"`} target="_blank" rel="noopener noreferrer">새 용어 요청</Link> 라벨의 이슈를 확인합니다.
-              </>}
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary="2. 품질 기준 확인"
-              secondary="영문 용어, 한글 번역, 정의가 모두 적절한지 확인합니다."
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={'3. 승인: /approve 댓글 작성'}
-              secondary="자동으로 용어가 데이터에 추가되고, 이슈 작성자가 Co-authored-by로 등록됩니다. 이슈가 자동으로 닫힙니다."
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary="4. 거부: 이슈 닫기"
-              secondary="사유를 코멘트로 작성한 후 이슈를 닫습니다. 수정 요청이 필요한 경우 코멘트로 안내합니다."
-            />
-          </ListItem>
-        </List>
-
-        <Typography variant="subtitle1" sx={{ fontWeight: 600, mt: 3, mb: 1 }}>
-          번역 피드백 처리
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText
-              primary="1. 이슈 확인"
-              secondary={<>
-                <Link href={`${REPO_URL}/issues?q=label:"용어 피드백"`} target="_blank" rel="noopener noreferrer">용어 피드백</Link> 라벨의 이슈를 확인합니다.
-              </>}
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={'2. /approve 댓글 작성'}
-              secondary="봇이 자동으로 JSON 초안 코멘트를 작성합니다. 이 단계에서는 데이터에 반영되지 않습니다."
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary="3. JSON 초안 검토/수정"
-              secondary="봇이 작성한 JSON 코멘트를 확인하고, 필요 시 수정 코멘트를 작성합니다."
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={'4. commit-ready 라벨 추가'}
-              secondary="봇의 마지막 JSON 코멘트 내용이 자동으로 데이터에 반영되고, 이슈가 닫힙니다."
-            />
-          </ListItem>
-        </List>
-      </Paper>
-
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          용어 품질 기준
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText
-              primary="필수 필드 확인"
-              secondary="korean, definition이 모두 채워져 있어야 합니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="중복 확인"
-              secondary="같은 한글 번역이 이미 있는지 확인합니다. 중복 시 스크립트가 자동으로 경고합니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="예시 형식"
-              secondary={'예시는 "en" (영문), "ko" (한글), "source" (출처, 선택) 형식을 권장합니다.'}
-            />
-          </ListItem>
-        </List>
-      </Paper>
-
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          롤백 및 문제 해결
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText
-              primary="잘못된 커밋 되돌리기"
-              secondary={'git revert <commit-sha>로 되돌릴 수 있습니다. 커밋 메시지에 이슈 번호가 포함되어 있어 추적이 가능합니다.'}
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="워크플로우 실패 시"
-              secondary="GitHub Actions 탭에서 실패 로그를 확인합니다. 필수 필드 누락이나 JSON 형식 오류가 주요 원인입니다."
-            />
-          </ListItem>
-          <Divider component="li" />
-          <ListItem>
-            <ListItemText
-              primary="동시 승인"
-              secondary="여러 이슈가 동시에 승인되어도 대기열 방식(concurrency group)으로 순차 처리되므로 충돌이 발생하지 않습니다."
-            />
-          </ListItem>
-        </List>
-      </Paper>
-    </>
-  )
-}
 
 export function AboutPage(): React.ReactNode {
-  const [tab, setTab] = useState(0)
+  const navigate = useNavigate()
 
   return (
     <Layout>
-      <Container maxWidth="md" sx={{ py: 6 }}>
-        <Box sx={{ mb: 4, textAlign: 'center' }}>
-          <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
-            AI/ML 용어집
-          </Typography>
-          <Typography variant="h6" color="text.secondary" sx={{ mt: 2 }}>
-            인공지능 및 머신러닝 분야의 용어 표준화를 위한 오픈소스 프로젝트
-          </Typography>
-        </Box>
+      <Container maxWidth="md" sx={{ py: { xs: 5, md: 8 } }}>
+        <PageHeader
+          eyebrow="소개"
+          title="AI/ML 용어를 데이터처럼 다룹니다"
+          lead="모든 용어는 JSON 파일, 모든 합의는 GitHub Issue·PR 이력으로 남습니다. 사람과 AI 번역 도구 모두가 동일한 한국어 용어를 쓸 수 있도록 표준화하는 오픈소스 프로젝트입니다."
+        />
 
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 1 }}>
-          <Tabs
-            value={tab}
-            onChange={(_, v) => setTab(v)}
-            variant="scrollable"
-            scrollButtons="auto"
+        <Section eyebrow="Why" title="왜 용어집을 데이터로?">
+          <P>
+            AI/ML 분야는 새로운 용어가 매주 쏟아지고, 같은 용어가 사람마다 다르게 번역됩니다.
+            <Em>"attention"</Em>은 <Em>어텐션 / 주의 / 주의 메커니즘 / 집중 메커니즘</Em>으로,
+            <Em>"embedding"</Em>은 <Em>임베딩 / 매장 / 매장값</Em>으로 흩어집니다. 이 분기(分岐)는 문서를 읽는 사람과
+            번역하는 LLM 모두에게 비용입니다.
+          </P>
+          <P>
+            본 프로젝트는 각 용어를 <Em>JSON 한 줄</Em>로 표준화하고, 채택 근거와 다의어를 함께 기록합니다.
+            데이터는 <code>data/&#123;letter&#125;.json</code>에, 합의 과정은 <code>Co-authored-by</code>가 박힌
+            Git 커밋과 종결된 GitHub Issue로 보존됩니다.
+          </P>
+          <UL
+            items={[
+              <><code>git log</code>로 용어가 <Em>언제 누구의 손으로</Em> 추가·수정됐는지 확인</>,
+              <><code>git diff</code>로 <Em>정확히 어떤 번역이 바뀌었는지</Em> 한눈에 비교</>,
+              <><code>jq</code>·<code>grep</code>으로 전체 용어 체계에서 <Em>키워드와 분야</Em>를 검색</>,
+              <>누구나 <Em>포크(fork), 복제(clone), 분석</Em> 가능한 오픈 데이터 (MIT)</>,
+            ]}
+          />
+        </Section>
+
+        <Section eyebrow="How" title="다의어와 맥락별 번역까지">
+          <P>
+            한 영어 단어가 분야에 따라 다른 한국어 번역을 가지는 경우(예: <code>head</code> →
+            "헤드" vs. "헤드(다중 헤드 어텐션)" vs. "출력 헤드")가 흔합니다. 데이터 모델은 다의어를 일급 시민으로
+            취급하도록 설계되었습니다.
+          </P>
+          <Pre>{`{
+  "term": "head",
+  "meanings": [
+    {
+      "korean": "헤드",
+      "definition": "Transformer에서 하나의 어텐션 계산 단위",
+      "examples": [{ "en": "multi-head attention", "ko": "다중 헤드 어텐션" }],
+      "synonyms": ["어텐션 헤드"]
+    },
+    {
+      "korean": "출력층",
+      "definition": "모델의 마지막 분류/회귀 출력 모듈",
+      "examples": [{ "en": "classification head", "ko": "분류 출력층" }],
+      "synonyms": []
+    }
+  ],
+  "issueNumber": 42,
+  "notes": "분야에 따라 의미가 달라지는 대표 다의어"
+}`}</Pre>
+          <P>
+            각 의미는 검색 결과·상세 페이지에서 별도 카드로 분리되어 표시됩니다. <code>notes</code>에는
+            왜 그 번역을 채택했는지를 기록해, 후속 기여자가 같은 논의를 반복하지 않도록 합니다.
+          </P>
+        </Section>
+
+        <Section eyebrow="Data" title="데이터 출처와 형식">
+          <P>
+            데이터는 <Link href={`${REPO_URL}/tree/poc/data`} target="_blank" rel="noopener noreferrer">
+              <code>data/</code> 디렉토리</Link>의 알파벳별 JSON 파일로 관리되며, 빌드 시점에 정적 사이트와
+            함께 <code>poc.terms.kr/data/</code> 경로로 배포됩니다.
+          </P>
+          <UL
+            items={[
+              <>
+                <Link href="https://poc.terms.kr/data/index.json" target="_blank" rel="noopener noreferrer">
+                  <code>/data/index.json</code>
+                </Link>{' '}
+                — 수록된 알파벳 파일 목록
+              </>,
+              <>
+                <Link href="https://poc.terms.kr/data/a.json" target="_blank" rel="noopener noreferrer">
+                  <code>/data/&#123;a-z&#125;.json</code>
+                </Link>{' '}
+                — 알파벳별 용어 배열 (병렬 fetch)
+              </>,
+              <>
+                <Link href="https://poc.terms.kr/llms.txt" target="_blank" rel="noopener noreferrer">
+                  <code>/llms.txt</code>
+                </Link>{' '}
+                — <Link href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer">llmstxt.org</Link> 표준 LLM 안내 파일
+              </>,
+            ]}
+          />
+          <P>
+            현재 수록된 용어 데이터는 AI가 생성한 초안이며, 커뮤니티 검토와 승인을 거쳐 점진적으로
+            교정됩니다. 이슈에 <code>/approve</code> 댓글이 달리면 자동화 워크플로우가{' '}
+            <code>Co-authored-by</code>와 함께 커밋합니다.
+          </P>
+        </Section>
+
+        <Section eyebrow="Stack" title="기술 스택">
+          <UL
+            items={[
+              <><Em>데이터</Em>: Markdown × JSON, 알파벳별 파일 분할, 다의어 배열 구조</>,
+              <><Em>웹</Em>: React 19 + TypeScript + Vite + MUI v7, GitHub Pages 정적 배포</>,
+              <><Em>자동화</Em>: GitHub Actions — 이슈 → 데이터 반영, JSON 유효성 검증, 배포</>,
+              <><Em>디자인</Em>: PyTorch Korea Design System (오렌지 #EE4C2C, 평면·편집형)</>,
+            ]}
+          />
+        </Section>
+
+        <Section eyebrow="Org" title="운영 및 기여 조직">
+          <P>
+            본 저장소는 <Em>파이토치 한국 사용자 모임(PyTorchKR)</Em>의 GitHub Organization 산하에서
+            운영됩니다. 관리자 목록과 활동 이력은 GitHub Organization 페이지에서 최신 상태로 확인하실 수
+            있습니다 — 본 페이지에 별도로 명단을 박제하지 않습니다.
+          </P>
+
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+              gap: 1.5,
+              mt: 2,
+            }}
           >
-            <Tab label="소개" />
-            <Tab label="사용 가이드" />
-            <Tab label="기여 가이드" />
-            <Tab label="관리자 가이드" />
-          </Tabs>
-        </Box>
+            {PARTNER_ORGS.map((org) => (
+              <Box
+                key={org.href}
+                component="a"
+                href={org.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  display: 'block',
+                  textDecoration: 'none',
+                  p: 2.25,
+                  bgcolor: '#fff',
+                  border: '1px solid var(--ptk-line-soft)',
+                  transition: 'border-color 120ms ease',
+                  '&:hover': { borderColor: 'var(--fg-1)' },
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: 'var(--ff-display)',
+                    fontWeight: 700,
+                    fontSize: 16,
+                    color: 'var(--fg-1)',
+                    mb: 0.5,
+                    letterSpacing: '-0.005em',
+                  }}
+                >
+                  {org.name}
+                </Box>
+                <Box sx={{ fontSize: 13, color: 'var(--fg-2)', lineHeight: 1.5, mb: 1 }}>
+                  {org.description}
+                </Box>
+                <Box
+                  sx={{
+                    fontFamily: 'var(--ff-mono)',
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: '0.06em',
+                    color: 'var(--ptk-orange)',
+                  }}
+                >
+                  {org.href.replace(/^https?:\/\//, '')} →
+                </Box>
+              </Box>
+            ))}
+          </Box>
 
-        <TabPanel value={tab} index={0}>
-          <IntroTab />
-        </TabPanel>
-        <TabPanel value={tab} index={1}>
-          <UserGuideTab />
-        </TabPanel>
-        <TabPanel value={tab} index={2}>
-          <ContributorGuideTab />
-        </TabPanel>
-        <TabPanel value={tab} index={3}>
-          <AdminGuideTab />
-        </TabPanel>
+          <Box
+            sx={{
+              mt: 2.5,
+              p: 2.25,
+              border: '1px dashed var(--ptk-line)',
+              fontSize: 13,
+              lineHeight: 1.6,
+              color: 'var(--fg-2)',
+            }}
+          >
+            <Box component="span" sx={{ fontWeight: 700, color: 'var(--fg-1)' }}>
+              조직·기관 참여 안내:
+            </Box>{' '}
+            본 용어집을 활용하거나 자체 도메인의 용어를 추가하고 싶으신 기관·연구실·기업은{' '}
+            <Link href={`${REPO_URL}/issues/new`} target="_blank" rel="noopener noreferrer">
+              GitHub Issue
+            </Link>
+            로 문의해 주세요.
+          </Box>
+        </Section>
 
-        <Box sx={{ textAlign: 'center', mt: 4 }}>
-          <Typography variant="h6" gutterBottom sx={{ mb: 3 }}>
+        <Section eyebrow="License" title="라이선스">
+          <P>
+            <Em>코드</Em>: <Link href={`${REPO_URL}/blob/poc/LICENSE`} target="_blank" rel="noopener noreferrer">MIT License</Link>.
+            누구나 자유롭게 사용, 수정, 재배포할 수 있습니다.
+          </P>
+          <P>
+            <Em>용어 데이터</Em>: 동일하게 MIT 하에 공개됩니다. 인용·번역·RAG 데이터셋 등 어떤 용도로도
+            자유롭게 활용 가능합니다. 출처를 표기해 주시면 감사하겠습니다.
+          </P>
+        </Section>
+
+        <Box sx={{ textAlign: 'center', mt: 8 }}>
+          <Typography variant="h6" gutterBottom sx={{ mb: 3, fontWeight: 600 }}>
             함께 만들어가는 AI/ML 용어 사전
           </Typography>
-          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Box sx={{ display: 'flex', gap: 1.5, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Button
               variant="contained"
+              size="large"
+              startIcon={<MenuBookIcon />}
+              onClick={() => navigate('/guide')}
+            >
+              사용법 보기
+            </Button>
+            <Button
+              variant="outlined"
               size="large"
               startIcon={<GitHubIcon />}
               href={REPO_URL}
@@ -544,14 +246,185 @@ export function AboutPage(): React.ReactNode {
               target="_blank"
               rel="noopener noreferrer"
             >
-              새 용어 요청하기
+              새 용어 요청
             </Button>
           </Box>
-          <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 2 }}>
-            MIT 라이센스 · 파이토치 한국 사용자 모임 · 누구나 자유롭게 사용하고 기여할 수 있습니다
-          </Typography>
         </Box>
       </Container>
     </Layout>
+  )
+}
+
+/* ---------- Section primitives (editorial layout) ---------- */
+
+function PageHeader({
+  eyebrow,
+  title,
+  lead,
+}: {
+  eyebrow: string
+  title: string
+  lead: string
+}): React.ReactNode {
+  return (
+    <Box sx={{ mb: 7 }}>
+      <Box
+        sx={{
+          fontFamily: 'var(--ff-mono)',
+          fontSize: 12,
+          fontWeight: 700,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color: 'var(--ptk-orange)',
+          mb: 1.5,
+        }}
+      >
+        {eyebrow}
+      </Box>
+      <Typography
+        component="h1"
+        sx={{
+          fontFamily: 'var(--ff-display)',
+          fontWeight: 300,
+          fontSize: 'clamp(34px, 5vw, 52px)',
+          lineHeight: 1.08,
+          letterSpacing: '-0.025em',
+          color: 'var(--fg-1)',
+          mb: 2.5,
+        }}
+      >
+        {title}
+      </Typography>
+      <Typography
+        sx={{
+          fontSize: { xs: 16, md: 18 },
+          lineHeight: 1.65,
+          color: 'var(--fg-2)',
+          maxWidth: 640,
+        }}
+      >
+        {lead}
+      </Typography>
+    </Box>
+  )
+}
+
+function Section({
+  eyebrow,
+  title,
+  children,
+}: {
+  eyebrow: string
+  title: string
+  children: React.ReactNode
+}): React.ReactNode {
+  return (
+    <Box component="section" sx={{ mt: 6, mb: 6 }}>
+      <Box sx={{ mb: 3, pb: 1.5, borderBottom: '2px solid var(--fg-1)' }}>
+        <Box
+          sx={{
+            fontFamily: 'var(--ff-mono)',
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            color: 'var(--ptk-orange)',
+            mb: 0.75,
+          }}
+        >
+          {eyebrow}
+        </Box>
+        <Typography
+          component="h2"
+          sx={{
+            fontFamily: 'var(--ff-display)',
+            fontWeight: 700,
+            fontSize: { xs: 24, md: 32 },
+            letterSpacing: '-0.015em',
+            color: 'var(--fg-1)',
+            lineHeight: 1.1,
+          }}
+        >
+          {title}
+        </Typography>
+      </Box>
+      <Box sx={{ '& > * + *': { mt: 2 } }}>{children}</Box>
+    </Box>
+  )
+}
+
+function P({ children }: { children: React.ReactNode }): React.ReactNode {
+  return (
+    <Typography component="p" sx={{ fontSize: 16, lineHeight: 1.75, color: 'var(--fg-1)' }}>
+      {children}
+    </Typography>
+  )
+}
+
+function Em({ children }: { children: React.ReactNode }): React.ReactNode {
+  return <Box component="strong" sx={{ fontWeight: 700, color: 'var(--fg-1)' }}>{children}</Box>
+}
+
+function UL({ items }: { items: React.ReactNode[] }): React.ReactNode {
+  return (
+    <Box
+      component="ul"
+      sx={{
+        m: 0,
+        pl: 0,
+        listStyle: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 1,
+      }}
+    >
+      {items.map((it, i) => (
+        <Box
+          key={i}
+          component="li"
+          sx={{
+            position: 'relative',
+            pl: 2.5,
+            fontSize: 15,
+            lineHeight: 1.65,
+            color: 'var(--fg-1)',
+            '&::before': {
+              content: '"—"',
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              color: 'var(--ptk-orange)',
+              fontFamily: 'var(--ff-mono)',
+              fontWeight: 700,
+            },
+          }}
+        >
+          {it}
+        </Box>
+      ))}
+    </Box>
+  )
+}
+
+function Pre({ children }: { children: React.ReactNode }): React.ReactNode {
+  return (
+    <Box
+      component="pre"
+      sx={{
+        bgcolor: 'var(--ptk-ink-strong)',
+        color: '#f8f8f2',
+        p: 2.5,
+        m: 0,
+        fontFamily: 'var(--ff-mono)',
+        fontSize: 13,
+        lineHeight: 1.55,
+        overflow: 'auto',
+        borderRadius: 0,
+      }}
+    >
+      <Box component="code" sx={{ bgcolor: 'transparent', color: 'inherit', p: 0 }}>
+        {children}
+      </Box>
+    </Box>
   )
 }

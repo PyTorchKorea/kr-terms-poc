@@ -35,20 +35,18 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
             >
               <Box
                 component="span"
+                aria-hidden="true"
                 sx={{
-                  width: 28,
-                  height: 28,
+                  width: 32,
+                  height: 32,
                   display: 'inline-grid',
                   placeItems: 'center',
-                  bgcolor: 'var(--ptk-orange)',
-                  color: '#fff',
-                  fontFamily: 'var(--ff-mono)',
-                  fontWeight: 700,
-                  fontSize: 14,
-                  letterSpacing: 0,
+                  fontSize: 20,
+                  lineHeight: 1,
+                  filter: 'saturate(1.05)',
                 }}
               >
-                kr
+                📖
               </Box>
               <Typography
                 component="div"
@@ -96,6 +94,19 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
                 }}
               >
                 소개
+              </Button>
+              <Button
+                color="inherit"
+                onClick={() => navigate('/guide')}
+                sx={{
+                  display: { xs: 'none', sm: 'inline-flex' },
+                  color: 'var(--fg-1)',
+                  fontSize: 14,
+                  fontWeight: 700,
+                  '&:hover': { color: 'var(--ptk-orange)', bgcolor: 'transparent' },
+                }}
+              >
+                사용법
               </Button>
               <Button
                 variant="outlined"
@@ -208,6 +219,13 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
                 sx={footerLinkSx}
               >
                 프로젝트 소개
+              </Link>
+              <Link
+                component="button"
+                onClick={() => navigate('/guide')}
+                sx={footerLinkSx}
+              >
+                사용법
               </Link>
               <Link
                 href="https://github.com/PyTorchKorea/kr-terms-poc/issues"
