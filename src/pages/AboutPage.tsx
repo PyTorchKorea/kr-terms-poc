@@ -24,31 +24,31 @@ export function AboutPage(): React.ReactNode {
 
         <Section eyebrow="Why" title="왜 용어집을 데이터로?">
           <P>
-            AI/ML 분야는 새로운 용어가 매주 쏟아지고, 같은 용어가 사람마다 다르게 번역됩니다.
-            <Em>"attention"</Em>은 <Em>어텐션 / 주의 / 주의 메커니즘 / 집중 메커니즘</Em>으로,
-            <Em>"embedding"</Em>은 <Em>임베딩 / 매장 / 매장값</Em>으로 흩어집니다. 이 분기(分岐)는 문서를 읽는 사람과
-            번역하는 LLM 모두에게 비용입니다.
+            AI/ML 분야는 새로운 용어가 매일같이 쏟아지고, 사람마다 같은 용어를 다르게 번역합니다.
+            누군가는 <Em>"attention"</Em>을 <Em>어텐션</Em>으로 적고, 다른 누군가는 <Em>주의</Em>·<Em>주의 메커니즘</Em>·
+            <Em>집중 메커니즘</Em>으로 적습니다. <Em>"embedding"</Em>도 마찬가지로 <Em>임베딩</Em>·<Em>매장</Em>·<Em>매장값</Em>으로
+            갈립니다. 이런 분기(分岐)는 문서를 읽는 사람과 번역하는 LLM 모두에게 부담을 줍니다.
           </P>
           <P>
             본 프로젝트는 각 용어를 <Em>JSON 한 줄</Em>로 표준화하고, 채택 근거와 다의어를 함께 기록합니다.
-            데이터는 <code>data/&#123;letter&#125;.json</code>에, 합의 과정은 <code>Co-authored-by</code>가 박힌
-            Git 커밋과 종결된 GitHub Issue로 보존됩니다.
+            데이터는 <code>data/&#123;letter&#125;.json</code>에 모으고, 합의 과정은{' '}
+            <code>Co-authored-by</code>를 담은 Git 커밋과 닫힌 GitHub Issue에 그대로 남깁니다.
           </P>
           <UL
             items={[
-              <><code>git log</code>로 용어가 <Em>언제 누구의 손으로</Em> 추가·수정됐는지 확인</>,
-              <><code>git diff</code>로 <Em>정확히 어떤 번역이 바뀌었는지</Em> 한눈에 비교</>,
+              <><code>git log</code>로 누가 <Em>언제 용어를 추가하거나 고쳤는지</Em> 확인</>,
+              <><code>git diff</code>로 <Em>어떤 번역이 어떻게 달라졌는지</Em> 한눈에 비교</>,
               <><code>jq</code>·<code>grep</code>으로 전체 용어 체계에서 <Em>키워드와 분야</Em>를 검색</>,
-              <>누구나 <Em>포크(fork), 복제(clone), 분석</Em> 가능한 오픈 데이터 (MIT)</>,
+              <>누구나 <Em>포크(fork)·복제(clone)·분석</Em>할 수 있는 오픈 데이터 (MIT)</>,
             ]}
           />
         </Section>
 
         <Section eyebrow="How" title="다의어와 맥락별 번역까지">
           <P>
-            한 영어 단어가 분야에 따라 다른 한국어 번역을 가지는 경우(예: <code>head</code> →
-            "헤드" vs. "헤드(다중 헤드 어텐션)" vs. "출력 헤드")가 흔합니다. 데이터 모델은 다의어를 일급 시민으로
-            취급하도록 설계되었습니다.
+            한 영어 단어가 분야에 따라 다른 한국어 번역을 갖는 경우는 흔합니다. 예를 들어
+            <code>head</code>는 맥락에 따라 "헤드", "어텐션 헤드", "출력층"으로 갈립니다. 그래서 데이터 모델도
+            다의어를 기본으로 고려하도록 설계했습니다.
           </P>
           <Pre>{`{
   "term": "head",
@@ -70,43 +70,43 @@ export function AboutPage(): React.ReactNode {
   "notes": "분야에 따라 의미가 달라지는 대표 다의어"
 }`}</Pre>
           <P>
-            각 의미는 검색 결과·상세 페이지에서 별도 카드로 분리되어 표시됩니다. <code>notes</code>에는
-            왜 그 번역을 채택했는지를 기록해, 후속 기여자가 같은 논의를 반복하지 않도록 합니다.
+            검색 결과와 상세 페이지는 각 의미를 별도 카드로 나누어 보여줍니다. <code>notes</code>에는
+            왜 그 번역을 골랐는지 적어 두어, 후속 기여자가 같은 논의를 다시 하지 않도록 돕습니다.
           </P>
         </Section>
 
         <Section eyebrow="Data" title="데이터 출처와 형식">
           <P>
-            데이터는 <Link href={`${REPO_URL}/tree/poc/data`} target="_blank" rel="noopener noreferrer">
-              <code>data/</code> 디렉토리</Link>의 알파벳별 JSON 파일로 관리되며, 빌드 시점에 정적 사이트와
-            함께 <code>poc.terms.kr/data/</code> 경로로 배포됩니다.
+            모든 용어는 <Link href={`${REPO_URL}/tree/poc/data`} target="_blank" rel="noopener noreferrer">
+              <code>data/</code> 디렉토리</Link> 아래 알파벳별 JSON 파일에 들어 있습니다. 빌드 과정이 이
+            파일들을 정적 사이트와 함께 <code>poc.terms.kr/data/</code> 경로에 올립니다.
           </P>
           <UL
             items={[
               <>
                 <Link href="https://poc.terms.kr/data/index.json" target="_blank" rel="noopener noreferrer">
                   <code>/data/index.json</code>
-                </Link>{' '}
-                — 수록된 알파벳 파일 목록
+                </Link>
+                : 수록한 알파벳 파일 목록
               </>,
               <>
                 <Link href="https://poc.terms.kr/data/a.json" target="_blank" rel="noopener noreferrer">
                   <code>/data/&#123;a-z&#125;.json</code>
-                </Link>{' '}
-                — 알파벳별 용어 배열 (병렬 fetch)
+                </Link>
+                : 알파벳별 용어 배열 (병렬 fetch)
               </>,
               <>
                 <Link href="https://poc.terms.kr/llms.txt" target="_blank" rel="noopener noreferrer">
                   <code>/llms.txt</code>
-                </Link>{' '}
-                — <Link href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer">llmstxt.org</Link> 표준 LLM 안내 파일
+                </Link>
+                : <Link href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer">llmstxt.org</Link> 표준 LLM 안내 파일
               </>,
             ]}
           />
           <P>
-            현재 수록된 용어 데이터는 AI가 생성한 초안이며, 커뮤니티 검토와 승인을 거쳐 점진적으로
-            교정됩니다. 이슈에 <code>/approve</code> 댓글이 달리면 자동화 워크플로우가{' '}
-            <code>Co-authored-by</code>와 함께 커밋합니다.
+            현재 수록한 용어는 AI가 만든 초안이며, 커뮤니티가 검토하고 승인하면서 점차 다듬어 갑니다.
+            관리자가 이슈에 <code>/approve</code> 댓글을 남기면 자동화 워크플로우가{' '}
+            <code>Co-authored-by</code>를 담아 커밋합니다.
           </P>
         </Section>
 
@@ -123,9 +123,9 @@ export function AboutPage(): React.ReactNode {
 
         <Section eyebrow="Org" title="운영 및 기여 조직">
           <P>
-            본 저장소는 <Em>파이토치 한국 사용자 모임(PyTorchKR)</Em>의 GitHub Organization 산하에서
-            운영됩니다. 관리자 목록과 활동 이력은 GitHub Organization 페이지에서 최신 상태로 확인하실 수
-            있습니다 — 본 페이지에 별도로 명단을 박제하지 않습니다.
+            <Em>파이토치 한국 사용자 모임(PyTorchKR)</Em>이 본 저장소를 운영합니다. 관리자 명단과 활동 이력은
+            GitHub Organization 페이지에서 직접 확인하실 수 있습니다 — 본 페이지에 따로 명단을 박제하지
+            않습니다.
           </P>
 
           <Box

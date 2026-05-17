@@ -56,10 +56,10 @@ function UserGuide(): React.ReactNode {
       <Section eyebrow="Browse" title="브라우저에서 검색하기">
         <Steps
           items={[
-            { k: '검색', v: '메인 페이지 검색창에 영어 또는 한국어를 입력하면 200ms 디바운스로 실시간 필터링됩니다.' },
-            { k: '알파벳', v: '히어로 아래 A–Z 네비게이션에서 알파벳을 선택하면 해당 알파벳으로 시작하는 용어만 표시됩니다.' },
-            { k: '상세 보기', v: '용어 카드를 클릭하면 모든 의미, 정의, 예시(EN/KO), 유사 용어, 논의 이력을 확인할 수 있습니다.' },
-            { k: '다의어', v: '여러 의미가 있는 용어는 카드에 보라색 “다중 의미” 배지가 표시되고, 상세 페이지에서 아코디언으로 분리됩니다.' },
+            { k: '검색', v: '메인 페이지 검색창에 영어나 한국어를 입력하면 200ms 디바운스로 결과를 실시간으로 좁혀줍니다.' },
+            { k: '알파벳', v: '히어로 아래 A–Z 네비게이션에서 알파벳을 누르면 해당 알파벳으로 시작하는 용어만 보여줍니다.' },
+            { k: '상세 보기', v: '용어 카드를 누르면 모든 의미와 정의, 예시(EN/KO), 유사 용어, 논의 이력까지 확인할 수 있습니다.' },
+            { k: '다의어', v: '여러 의미를 가진 용어는 카드에 보라색 “다중 의미” 배지를 달고, 상세 페이지에서는 의미별로 아코디언을 펼쳐서 보여줍니다.' },
           ]}
         />
       </Section>
@@ -97,8 +97,8 @@ $ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attentio
           <Link href="https://poc.terms.kr/llms.txt" target="_blank" rel="noopener noreferrer">
             <code>llms.txt</code>
           </Link>
-          는 LLM이 본 용어집의 구조와 데이터 위치를 자동으로 이해할 수 있도록 작성된 파일입니다. 번역
-          파이프라인이나 시스템 프롬프트에 본 URL을 컨텍스트로 제공하면, 모델이 검색·인용할 수 있습니다.
+          는 LLM이 본 용어집의 구조와 데이터 위치를 자동으로 파악하도록 만든 파일입니다. 번역
+          파이프라인이나 시스템 프롬프트에 본 URL을 컨텍스트로 넣어 두면 모델이 직접 검색하고 인용할 수 있습니다.
         </P>
         <Pre>{`# 시스템 프롬프트 예시
 한국어로 번역할 때는 다음 표준을 따르시오:
@@ -141,17 +141,17 @@ function ContributorGuide(): React.ReactNode {
     <>
       <Section eyebrow="Issue" title="이슈로 기여 (권장)">
         <P>
-          코드 작업 없이 GitHub Issue만 작성해도 기여할 수 있습니다. 승인되면 자동화가{' '}
-          <code>Co-authored-by</code>로 기여자를 박아 커밋합니다.
+          코드 작업 없이 GitHub Issue만 작성해도 기여할 수 있습니다. 관리자가 승인하면 자동화가{' '}
+          <code>Co-authored-by</code>에 기여자를 담아 커밋합니다.
         </P>
 
         <SubHead>새 용어 요청</SubHead>
         <Steps
           items={[
-            { k: '요청', v: '“새 용어 요청” 버튼을 누르고 영문 용어, 한글 번역, 정의를 입력합니다.' },
+            { k: '요청', v: '“새 용어 요청” 버튼을 눌러 영문 용어, 한글 번역, 정의를 입력합니다.' },
             { k: '검토', v: '관리자가 표기·중복·맥락을 검토합니다.' },
-            { k: '승인', v: '관리자가 /approve 댓글을 남기면 자동화 워크플로우가 동작합니다.' },
-            { k: '반영', v: '데이터 파일에 추가되고 이슈가 닫히며, 기여자가 커밋에 기록됩니다.' },
+            { k: '승인', v: '관리자가 /approve 댓글을 남기면 자동화 워크플로우를 트리거합니다.' },
+            { k: '반영', v: '자동화가 데이터 파일에 새 용어를 더하고 이슈를 닫으며, 기여자를 커밋에 함께 기록합니다.' },
           ]}
         />
         <Box sx={{ mt: 2, display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
@@ -168,7 +168,7 @@ function ContributorGuide(): React.ReactNode {
           items={[
             { k: '제안', v: '용어 상세 페이지의 “번역 개선 제안” 버튼으로 피드백 이슈를 엽니다.' },
             { k: '초안', v: '관리자가 /approve를 남기면 봇이 JSON 초안 코멘트를 작성합니다.' },
-            { k: '확정', v: '관리자가 commit-ready 라벨을 부착하면 봇의 최신 JSON이 그대로 데이터에 반영됩니다.' },
+            { k: '확정', v: '관리자가 commit-ready 라벨을 붙이면 자동화가 봇의 최신 JSON을 그대로 데이터에 반영합니다.' },
           ]}
         />
       </Section>
@@ -187,7 +187,7 @@ function ContributorGuide(): React.ReactNode {
 
       <Section eyebrow="Schema" title="데이터 구조">
         <P>
-          용어 데이터는 알파벳별 JSON 배열로 관리되며, 다의어를 위해 <code>meanings</code> 배열을 사용합니다.
+          용어 데이터는 알파벳별 JSON 배열에 담고, 다의어는 <code>meanings</code> 배열로 표현합니다.
         </P>
         <Pre>{`{
   "term": "agent",
@@ -214,6 +214,14 @@ function ContributorGuide(): React.ReactNode {
             <><Em>선택</Em>: <code>examples</code> (EN/KO 권장), <code>synonyms</code>, <code>issueNumber</code>, <code>notes</code></>,
           ]}
         />
+      </Section>
+
+      <Section eyebrow="Validate" title="제출 전 점검">
+        <P>
+          PR을 보내기 전에 로컬에서 다음 명령으로 JSON 유효성과 타입을 함께 확인해 주세요.
+        </P>
+        <Pre>{`$ npm run build      # TypeScript + JSON 유효성 검증
+$ npm run lint       # ESLint`}</Pre>
       </Section>
     </>
   )
@@ -255,10 +263,10 @@ function AdminGuide(): React.ReactNode {
       <Section eyebrow="Quality" title="용어 품질 기준">
         <UL
           items={[
-            <><Em>필수 필드</Em> — <code>korean</code>, <code>definition</code>이 모두 채워져 있어야 합니다.</>,
-            <><Em>중복 확인</Em> — 같은 한글 번역이 이미 있는지 확인합니다. 자동화 스크립트가 충돌 시 경고합니다.</>,
-            <><Em>예시 형식</Em> — <code>&#123;"en", "ko", "source"&#125;</code> 객체 형식을 권장합니다.</>,
-            <><Em>API 명</Em> — <code>torch.compile</code>처럼 영문 API 명은 번역하지 않고 그대로 둡니다.</>,
+            <><Em>필수 필드</Em>: <code>korean</code>과 <code>definition</code>을 모두 채웁니다.</>,
+            <><Em>중복 확인</Em>: 같은 한글 번역이 이미 있는지 살핍니다. 자동화 스크립트가 충돌을 발견하면 경고를 띄웁니다.</>,
+            <><Em>예시 형식</Em>: <code>&#123;"en", "ko", "source"&#125;</code> 객체 형식을 권장합니다.</>,
+            <><Em>API 명</Em>: <code>torch.compile</code>처럼 영문 API 이름은 번역하지 않고 그대로 둡니다.</>,
           ]}
         />
       </Section>
@@ -266,9 +274,9 @@ function AdminGuide(): React.ReactNode {
       <Section eyebrow="Ops" title="롤백 및 문제 해결">
         <UL
           items={[
-            <><Em>잘못된 커밋</Em> — <code>git revert &lt;sha&gt;</code>로 되돌립니다. 커밋 메시지에 이슈 번호가 박혀 있어 추적이 쉽습니다.</>,
-            <><Em>워크플로우 실패</Em> — GitHub Actions 탭에서 실패 로그를 확인합니다. 필수 필드 누락이나 JSON 파싱 오류가 주된 원인입니다.</>,
-            <><Em>동시 승인</Em> — 여러 이슈가 동시에 승인되어도 concurrency group으로 순차 처리되므로 충돌하지 않습니다.</>,
+            <><Em>잘못된 커밋</Em>: <code>git revert &lt;sha&gt;</code>로 되돌립니다. 커밋 메시지에 이슈 번호가 들어 있어 추적이 쉽습니다.</>,
+            <><Em>워크플로우 실패</Em>: GitHub Actions 탭에서 실패 로그를 확인합니다. 필수 필드 누락이나 JSON 파싱 오류가 주된 원인입니다.</>,
+            <><Em>동시 승인</Em>: 여러 이슈를 동시에 승인해도 concurrency group이 순차로 처리하므로 충돌하지 않습니다.</>,
           ]}
         />
       </Section>
