@@ -20,6 +20,7 @@
     "prebuild": "node scripts/sync-public-data.mjs",
     "build": "npm run validate:data && tsc -b && vite build",
     "lint": "eslint .",
+    "audit:security": "npm audit --audit-level=moderate && npm audit signatures",
     "validate:data": "node scripts/validate-term-data.mjs",
     "preview": "vite preview"
   },
@@ -47,6 +48,6 @@
     "vite": "^7.3.3"
   },
   "overrides": {
-    "minimatch": ">=10.2.1"
+    "minimatch": ">=10.2.3"
   }
 }

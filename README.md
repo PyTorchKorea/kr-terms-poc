@@ -77,6 +77,7 @@ AI 번역 시 이 용어집을 컨텍스트로 제공하면, 일관된 한국어
 
 - 공통 URL과 연락처 값은 `src/data/const.ts`에서 관리합니다. 예: `REPO_URL`, `NEW_TERM_URL`, `FEEDBACK_URL`, `ORGANIZATION_JOIN_URL`, `CONTACT_EMAIL`.
 - 프로젝트 전용 GitHub 라벨은 `.github/labels.yml`에 정의되어 있습니다. 워크플로우는 `새 용어 요청`, `용어 피드백`, `조직 참여`, `approved`, `commit-ready` 라벨을 사용합니다.
+- 의존성 보안 점검은 `npm run audit:security`로 실행합니다. GitHub Pages 배포 워크플로우도 같은 명령으로 moderate 이상 취약점과 npm 서명을 확인합니다.
 - 화면에서 문단과 인라인 코드가 함께 표시될 때 줄 간격이 흔들리지 않도록 공통 스타일을 `src/styles/design-tokens.css`에서 조정합니다.
 - 정적 사이트이므로 서버 저장소나 비공개 API 없이 공개 JSON과 GitHub 이력만으로 동작합니다.
 

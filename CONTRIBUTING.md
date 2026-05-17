@@ -91,6 +91,9 @@ npm run dev
 # 린트
 npm run lint
 
+# 의존성 보안 점검
+npm run audit:security
+
 # 데이터 검증
 npm run validate:data
 
