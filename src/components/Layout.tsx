@@ -2,6 +2,7 @@ import React from 'react'
 import { AppBar, Toolbar, Typography, Container, Box, IconButton, Link, Button, Stack } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { NEW_TERM_URL, REPO_URL } from '../data/const'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -74,7 +75,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
                     textTransform: 'uppercase',
                   }}
                 >
-                  PyTorchKR
+                  terms.kr
                 </Box>
               </Typography>
             </Box>
@@ -110,7 +111,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
               </Button>
               <Button
                 variant="outlined"
-                href="https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml"
+                href={NEW_TERM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
@@ -123,7 +124,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
                 새 용어 요청
               </Button>
               <IconButton
-                href="https://github.com/PyTorchKorea/kr-terms-poc"
+                href={REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub 저장소"
@@ -145,7 +146,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
         {isHomePage ? (
           children
         ) : (
-          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 7 }, px: { xs: 2.5, md: 5 } }}>{children}</Container>
+          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 5 }, px: { xs: 2.5, md: 5 } }}>{children}</Container>
         )}
       </Box>
 
@@ -155,7 +156,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
           mt: 'auto',
           bgcolor: 'var(--ptk-ink-strong)',
           color: 'rgba(255,255,255,0.78)',
-          py: { xs: 4, md: 5 },
+          py: { xs: 3.5, md: 4 },
           px: { xs: 2.5, md: 5 },
         }}
       >
@@ -203,10 +204,11 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
                 gap: { xs: 2, md: 3 },
                 fontSize: 13,
                 fontFamily: 'var(--ff-sans)',
+                ml: { md: 'auto' },
               }}
             >
               <Link
-                href="https://github.com/PyTorchKorea/kr-terms-poc"
+                href={REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={footerLinkSx}
@@ -218,7 +220,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
                 onClick={() => navigate('/about')}
                 sx={footerLinkSx}
               >
-                프로젝트 소개
+                용어집 소개
               </Link>
               <Link
                 component="button"
@@ -228,30 +230,12 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
                 사용법
               </Link>
               <Link
-                href="https://github.com/PyTorchKorea/kr-terms-poc/issues"
-                target="_blank"
-                rel="noopener noreferrer"
+                component="button"
+                onClick={() => navigate('/organizations')}
                 sx={footerLinkSx}
               >
-                이슈 제기
+                운영 및 기여 조직
               </Link>
-              <Link href="https://pytorch.kr" target="_blank" rel="noopener noreferrer" sx={footerLinkSx}>
-                pytorch.kr
-              </Link>
-            </Box>
-
-            <Box
-              sx={{
-                ml: { md: 'auto' },
-                fontFamily: 'var(--ff-mono)',
-                fontSize: 11,
-                color: 'rgba(255,255,255,0.45)',
-                letterSpacing: '0.04em',
-                maxWidth: 420,
-                lineHeight: 1.5,
-              }}
-            >
-              파이토치 한국 사용자 모임이 운영하는 독립 커뮤니티 프로젝트입니다. 용어는 합의된 번역이며 분야별로 다른 표기가 통용될 수 있습니다.
             </Box>
           </Box>
         </Container>

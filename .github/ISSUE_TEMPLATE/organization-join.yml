@@ -1,0 +1,74 @@
+name: 참여 신청
+description: AI/ML 용어집에 기업, 연구실, 커뮤니티 단위로 참여를 신청합니다
+title: "[참여 신청] "
+labels: ["조직 참여"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        AI/ML 용어집을 함께 활용하거나, 특정 도메인의 용어 정리에 참여하고 싶은 기업/연구실/커뮤니티는 이 양식으로 신청해주세요.
+        관리자가 공개 이슈에서 확인 후 후속 절차를 안내합니다.
+  - type: input
+    id: organization-name
+    attributes:
+      label: 조직명
+      description: 공개 페이지에 표시할 조직명을 입력해주세요.
+      placeholder: "예: Hugging Face KREW"
+    validations:
+      required: true
+  - type: dropdown
+    id: organization-type
+    attributes:
+      label: 조직 유형
+      description: 가장 가까운 유형을 선택해주세요.
+      options:
+        - 커뮤니티
+        - 연구실
+        - 기업
+        - 비영리/공공기관
+        - 기타
+    validations:
+      required: true
+  - type: input
+    id: homepage
+    attributes:
+      label: 대표 링크
+      description: 홈페이지, GitHub Organization, Hugging Face Organization 등 공개 링크를 입력해주세요.
+      placeholder: "예: https://huggingface.co/Huggingface-KREW"
+    validations:
+      required: true
+  - type: input
+    id: image
+    attributes:
+      label: 대표 이미지 URL (선택)
+      description: 조직 카드에 사용할 로고 또는 아바타 이미지 URL이 있다면 입력해주세요.
+      placeholder: "예: https://cdn-avatars.huggingface.co/..."
+  - type: input
+    id: contact
+    attributes:
+      label: 담당자 GitHub 계정
+      description: 향후 용어집 저장소에 관리자로 참여할 담당자의 GitHub ID를 추가해주세요. 없다면 생략해도 됩니다.
+      placeholder: "예: @9bow"
+    validations:
+      required: false
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 참여 목적
+      description: 용어집을 어떻게 활용하거나 어떤 방식으로 기여하고 싶은지 작성해주세요.
+      placeholder: "예: 한국어 LLM 평가 / 데이터셋 관련 용어를 함께 정리하고 싶습니다."
+    validations:
+      required: true
+  - type: textarea
+    id: domains
+    attributes:
+      label: 관심 도메인 또는 용어 범위 (선택)
+      description: 조직이 주로 다루는 AI/ML 분야나 정리하고 싶은 용어 범위가 있다면 작성해주세요.
+      placeholder: "예: 자연어처리, 한국어 평가 벤치마크, 오픈소스 모델"
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: 확인 사항
+      options:
+        - label: 이슈 작성자가 해당 조직을 대표하여 신청하였으며, 이 이슈에 작성한 조직명, 링크, 이미지는 용어집에 공개될 수 있음을 확인했습니다.
+          required: true

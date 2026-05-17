@@ -24,6 +24,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import { Layout } from '../components/Layout'
 import { useTerms } from '../hooks/useTerms'
 import type { TermMeaning, TermExample } from '../types/term'
+import { getFeedbackUrl, getIssueUrl, getNewTermUrl } from '../data/const'
 
 function isTermExample(example: string | TermExample): example is TermExample {
   return typeof example === 'object' && 'en' in example && 'ko' in example
@@ -227,13 +228,11 @@ export function TermDetailPage(): React.ReactNode {
   }
 
   const handleOpenFeedback = (): void => {
-    const url = `https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=term-feedback.yml&title=[용어 피드백] ${encodeURIComponent(term.term)}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+    window.open(getFeedbackUrl(term.term), '_blank', 'noopener,noreferrer')
   }
 
   const handleRequestMeaning = (): void => {
-    const url = `https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml&title=[새 용어] ${encodeURIComponent(term.term)}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+    window.open(getNewTermUrl(term.term), '_blank', 'noopener,noreferrer')
   }
 
   const handleCopyKorean = (korean: string): void => {
@@ -364,7 +363,7 @@ export function TermDetailPage(): React.ReactNode {
         >
           <HistoryIcon fontSize="small" sx={{ color: 'var(--fg-3)' }} />
           <Link
-            href={`https://github.com/PyTorchKorea/kr-terms-poc/issues/${term.issueNumber}`}
+            href={getIssueUrl(term.issueNumber)}
             target="_blank"
             rel="noopener noreferrer"
             sx={{ fontFamily: 'inherit', fontSize: 'inherit' }}

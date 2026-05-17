@@ -10,6 +10,7 @@ import { AlphabetNavigation } from '../components/AlphabetNavigation'
 import { useTerms } from '../hooks/useTerms'
 import { useSearch } from '../hooks/useSearch'
 import { calculateStatistics } from '../utils/statistics'
+import { NEW_TERM_URL } from '../data/const'
 
 export function SearchPage(): React.ReactNode {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -46,6 +47,14 @@ export function SearchPage(): React.ReactNode {
   const handleClearFilter = useCallback((): void => {
     updateSearchParams(query, null)
   }, [updateSearchParams, query])
+
+  const resultTitle = selectedLetter
+    ? query ? `${selectedLetter} 검색 결과` : `${selectedLetter} 용어`
+    : query ? '검색 결과' : '전체 용어'
+
+  const emptyMessage = selectedLetter
+    ? query ? '검색어를 바꾸거나 알파벳 필터를 해제해 보세요.' : '다른 알파벳을 선택하거나 전체 보기로 돌아가 보세요.'
+    : '다른 검색어를 시도해 보세요.'
 
   if (error) {
     return (
@@ -114,7 +123,7 @@ export function SearchPage(): React.ReactNode {
                 color: 'var(--fg-1)',
               }}
             >
-              {selectedLetter ? selectedLetter : query ? '검색 결과' : '전체 용어'}
+              {resultTitle}
             </Typography>
             <Box
               component="span"
@@ -126,9 +135,14 @@ export function SearchPage(): React.ReactNode {
               }}
             >
               {finalFilteredTerms.length.toLocaleString()}개 용어
+              {selectedLetter && (
+                <Box component="span" sx={{ ml: 1, color: 'var(--fg-3)' }}>
+                  · {selectedLetter}로 시작
+                </Box>
+              )}
               {query && (
                 <Box component="span" sx={{ ml: 1, color: 'var(--ptk-orange)' }}>
-                  · "{query}"
+                  · "{query}" 검색
                 </Box>
               )}
             </Box>
@@ -138,7 +152,7 @@ export function SearchPage(): React.ReactNode {
             variant="text"
             size="small"
             startIcon={<AddIcon />}
-            href="https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml"
+            href={NEW_TERM_URL}
             target="_blank"
             rel="noopener noreferrer"
             sx={{ fontSize: 13, fontWeight: 700 }}
@@ -169,12 +183,12 @@ export function SearchPage(): React.ReactNode {
               검색 결과가 없습니다
             </Typography>
             <Typography sx={{ fontSize: 14, color: 'var(--fg-3)', mb: 3 }}>
-              다른 검색어를 시도하거나 알파벳 필터를 해제해 보세요.
+              {emptyMessage}
             </Typography>
             <Button
               variant="contained"
               startIcon={<AddIcon />}
-              href="https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml"
+              href={NEW_TERM_URL}
               target="_blank"
               rel="noopener noreferrer"
             >

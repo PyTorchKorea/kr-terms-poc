@@ -1,10 +1,10 @@
 ---
 role: maintainer
-joined: 202501
+joined: 202601
 _id: 9bow
 name: 박정환
-title: Lead Maintainer
-team: kr-terms-poc
+title: Maintainer
+team: @Code, @Term
 link_github: https://github.com/9bow
 link_linkedin: https://linkedin.com/in/9bow/
 link_twitter:

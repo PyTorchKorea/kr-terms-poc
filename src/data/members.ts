@@ -30,6 +30,7 @@ export interface Organization {
   title: string
   joined: string
   description: string
+  image?: string
   links: MemberLinks
 }
 
@@ -80,6 +81,7 @@ for (const [path, raw] of Object.entries(RAW)) {
       title: fm.title || '',
       joined: fm.joined || '',
       description: fm.description || '',
+      image: fm.image || undefined,
       links: toLinks(fm),
     })
     continue

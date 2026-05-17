@@ -38,12 +38,12 @@ jobs:
         )
       )
     steps:
-      - name: Validate approver permission
-        if: github.event_name == 'issue_comment'
+      - name: Validate actor permission
+        if: github.event_name == 'issue_comment' || (github.event_name == 'issues' && github.event.label.name == 'approved')
         uses: actions/github-script@v7
         with:
           script: |
-            const username = context.payload.comment.user.login;
+            const username = context.payload.comment?.user?.login || context.actor;
             let permission = 'none';
 
             try {
@@ -66,7 +66,7 @@ jobs:
                 issue_number: context.issue.number,
                 body: `@${username} 님은 이슈를 승인할 권한이 없습니다. 저장소 write 이상의 권한이 필요합니다.`
               });
-              core.setFailed(`@${username} has ${permission} permission, but /approve requires write or higher.`);
+              core.setFailed(`@${username} has ${permission} permission, but approval requires write or higher.`);
               return;
             }
 
@@ -251,8 +251,44 @@ jobs:
       # ─── Path B-2: commit-ready (admin-reviewed feedback) ───
   apply-feedback:
     runs-on: ubuntu-latest
-    if: github.event_name == 'issues' && github.event.label.name == 'commit-ready'
+    if: |
+      github.event_name == 'issues' &&
+      github.event.label.name == 'commit-ready' &&
+      contains(github.event.issue.labels.*.name, '용어 피드백')
     steps:
+      - name: Validate actor permission
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const username = context.actor;
+            let permission = 'none';
+
+            try {
+              const response = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                username
+              });
+              permission = response.data.permission;
+            } catch (error) {
+              core.setFailed(`Could not verify permission for @${username}: ${error.message}`);
+              return;
+            }
+
+            const allowed = ['admin', 'maintain', 'write'];
+            if (!allowed.includes(permission)) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `@${username} 님은 피드백 반영 권한이 없습니다. 저장소 write 이상의 권한이 필요합니다.`
+              });
+              core.setFailed(`@${username} has ${permission} permission, but commit-ready requires write or higher.`);
+              return;
+            }
+
+            core.info(`@${username} has ${permission} permission.`);
+
       - uses: actions/checkout@v4
         with:
           ref: poc

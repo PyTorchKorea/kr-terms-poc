@@ -9,6 +9,7 @@ const SearchPage = lazy(() => import('./pages/SearchPage').then(m => ({ default:
 const TermDetailPage = lazy(() => import('./pages/TermDetailPage').then(m => ({ default: m.TermDetailPage })))
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })))
 const GuidePage = lazy(() => import('./pages/GuidePage').then(m => ({ default: m.GuidePage })))
+const OrganizationsPage = lazy(() => import('./pages/OrganizationsPage').then(m => ({ default: m.OrganizationsPage })))
 
 function ScrollToTop(): null {
   const { pathname } = useLocation()
@@ -38,6 +39,7 @@ export function App(): React.ReactNode {
             <Route path="/term/:termId" element={<TermDetailPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/guide" element={<GuidePage />} />
+            <Route path="/organizations" element={<OrganizationsPage />} />
           </Routes>
         </Suspense>
       </HashRouter>

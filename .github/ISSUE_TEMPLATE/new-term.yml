@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        > 💡 권한이 있는 관리자가 `/approve` 댓글을 남기면 자동으로 반영되며, 기여자로 등록됩니다(Co-authored-by).
+        > 💡 권한이 있는 관리자가 `/approve` 댓글을 남기거나 `approved` 라벨을 붙이면 자동으로 반영되며, 기여자로 등록됩니다(Co-authored-by).
   - type: input
     id: term
     attributes:

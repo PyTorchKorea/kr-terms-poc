@@ -32,7 +32,7 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
             mb: 2,
           }}
         >
-          Glossary · 베타
+          Glossary
         </Box>
 
         <Box
@@ -48,12 +48,11 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
             maxWidth: 900,
           }}
         >
-          AI/ML 한국어 용어를{' '}
+          AI/ML 용어 번역을<br />
           <Box component="span" sx={{ color: 'var(--ptk-orange)', fontWeight: 400 }}>
             한 곳에서
           </Box>
-          <br />
-          표준화합니다
+          {' '} 정리합니다
         </Box>
 
         <Box
@@ -67,8 +66,7 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
             color: 'var(--fg-2)',
           }}
         >
-          빠르게 변화하는 분야의 용어를 사람과 AI 번역 도구 모두가 일관되게 쓸 수 있도록,
-          파이토치 한국 사용자 모임이 합의한 한국어 번역을 모았습니다.
+          AI/ML 분야의 영문 용어, 한국어 번역, 동의어를 한 번에 검색하고 사람과 AI 번역 도구가 함께 쓸 수 있도록 개선합니다.
         </Box>
 
         <Box
@@ -92,7 +90,7 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
             fullWidth
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
-            placeholder="영어 용어 또는 한글 번역으로 검색"
+            placeholder="영문 용어, 한국어 번역, 동의어 검색"
             inputProps={{ 'aria-label': '용어 검색' }}
             sx={{
               flex: 1,
@@ -129,7 +127,7 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
                 letterSpacing: '0.04em',
               }}
             >
-              검색
+              실시간
             </Box>
           )}
         </Box>

@@ -1,0 +1,19 @@
+- name: 새 용어 요청
+  color: "1f6feb"
+  description: 새 AI/ML 용어 추가 요청
+
+- name: 용어 피드백
+  color: "fb8500"
+  description: 기존 용어의 번역, 정의, 예시, 유의어 개선 제안
+
+- name: 조직 참여
+  color: "7c3aed"
+  description: 기업, 연구실, 커뮤니티 단위 참여 신청
+
+- name: approved
+  color: "2da44e"
+  description: 관리자가 자동 반영을 승인한 이슈
+
+- name: commit-ready
+  color: "0e8a16"
+  description: 검토된 피드백 JSON을 데이터에 반영할 준비 완료

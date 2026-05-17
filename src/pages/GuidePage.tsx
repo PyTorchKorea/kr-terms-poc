@@ -3,10 +3,14 @@ import { Typography, Box, Container, Button, Tabs, Tab, Link } from '@mui/materi
 import AddIcon from '@mui/icons-material/Add'
 import FeedbackIcon from '@mui/icons-material/Feedback'
 import { Layout } from '../components/Layout'
-
-const REPO_URL = 'https://github.com/PyTorchKorea/kr-terms-poc'
-const NEW_TERM_URL = `${REPO_URL}/issues/new?template=new-term.yml`
-const FEEDBACK_URL = `${REPO_URL}/issues/new?template=term-feedback.yml`
+import {
+  DATA_TREE_URL,
+  FEEDBACK_ISSUES_URL,
+  FEEDBACK_URL,
+  NEW_TERM_ISSUES_URL,
+  NEW_TERM_URL,
+  REPO_URL,
+} from '../data/const'
 
 interface TabPanelProps {
   children: React.ReactNode
@@ -16,7 +20,7 @@ interface TabPanelProps {
 
 function TabPanel({ children, value, index }: TabPanelProps): React.ReactNode {
   if (value !== index) return null
-  return <Box sx={{ py: 4 }}>{children}</Box>
+  return <Box sx={{ pt: 3, pb: 4, '& > section:first-of-type': { mt: 0 }, '& > section:last-of-type': { mb: 0 } }}>{children}</Box>
 }
 
 export function GuidePage(): React.ReactNode {
@@ -24,7 +28,7 @@ export function GuidePage(): React.ReactNode {
 
   return (
     <Layout>
-      <Container maxWidth="md" sx={{ py: { xs: 5, md: 8 } }}>
+      <Container maxWidth="md" sx={{ py: 0 }}>
         <PageHeader
           eyebrow="사용법"
           title="검색 · 기여 · 운영을 한 곳에서"
@@ -56,9 +60,9 @@ function UserGuide(): React.ReactNode {
       <Section eyebrow="Browse" title="브라우저에서 검색하기">
         <Steps
           items={[
-            { k: '검색', v: '메인 페이지 검색창에 영어나 한국어를 입력하면 200ms 디바운스로 결과를 실시간으로 좁혀줍니다.' },
+            { k: '검색', v: '메인 페이지 검색창에 영문 용어, 한국어 번역, 동의어를 입력하면 200ms 디바운스로 결과를 실시간으로 좁혀줍니다.' },
             { k: '알파벳', v: '히어로 아래 A–Z 네비게이션에서 알파벳을 누르면 해당 알파벳으로 시작하는 용어만 보여줍니다.' },
-            { k: '상세 보기', v: '용어 카드를 누르면 모든 의미와 정의, 예시(EN/KO), 유사 용어, 논의 이력까지 확인할 수 있습니다.' },
+            { k: '상세 보기', v: '용어 카드를 누르면 모든 의미와 정의, 예시(EN/KO), 유사 용어, 등록된 경우 논의 이력까지 확인할 수 있습니다.' },
             { k: '다의어', v: '여러 의미를 가진 용어는 카드에 보라색 “다중 의미” 배지를 달고, 상세 페이지에서는 의미별로 아코디언을 펼쳐서 보여줍니다.' },
           ]}
         />
@@ -67,9 +71,7 @@ function UserGuide(): React.ReactNode {
       <Section eyebrow="API" title="JSON 데이터로 직접 조회">
         <P>웹 UI를 거치지 않고도 같은 데이터를 자동화·LLM 파이프라인에 그대로 가져다 쓸 수 있습니다.</P>
         <Pre>{`$ curl -s https://poc.terms.kr/data/index.json
-{
-  "files": ["a.json", "b.json", ..., "w.json"]
-}
+["a.json", "b.json", ..., "w.json"]
 
 $ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attention")'
 {
@@ -85,7 +87,7 @@ $ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attentio
 }`}</Pre>
         <P>
           전체 데이터셋은{' '}
-          <Link href={`${REPO_URL}/tree/poc/data`} target="_blank" rel="noopener noreferrer">
+          <Link href={DATA_TREE_URL} target="_blank" rel="noopener noreferrer">
             <code>poc/data/</code>
           </Link>{' '}
           에서 직접 보거나 저장소를 <code>git clone</code>하여 받을 수 있습니다.
@@ -101,7 +103,7 @@ $ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attentio
           파이프라인이나 시스템 프롬프트에 본 URL을 컨텍스트로 넣어 두면 모델이 직접 검색하고 인용할 수 있습니다.
         </P>
         <Pre>{`# 시스템 프롬프트 예시
-한국어로 번역할 때는 다음 표준을 따르시오:
+한국어로 번역할 때는 다음 표준을 따르세요:
 - 영어 용어: https://poc.terms.kr/data/{letter}.json
 - 인덱스:    https://poc.terms.kr/data/index.json
 - 규약:      https://poc.terms.kr/llms.txt`}</Pre>
@@ -120,11 +122,11 @@ $ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attentio
             },
             {
               q: '기여하면 어떻게 기록되나요?',
-              a: 'GitHub Issue가 승인되면 자동화가 Co-authored-by 트레일러를 박은 커밋을 만들어 메인 브랜치에 반영합니다.',
+              a: 'GitHub Issue가 승인되면 자동 워크플로우가 `Co-authored-by`에 기여자를 포함한 커밋을 만들어 메인 브랜치에 반영합니다.',
             },
             {
               q: '현재 데이터는 신뢰할 수 있나요?',
-              a: '현재 PoC 단계이며 수록된 용어 다수는 AI가 생성한 초안입니다. 커뮤니티 검토를 통해 점진적으로 교정됩니다. MIT 라이선스로 자유롭게 사용·재배포 가능합니다.',
+              a: '현재 PoC 단계이며 수록된 용어 다수는 AI가 생성한 초안입니다. 커뮤니티 검토를 통해 점진적으로 개선해나갈 예정입니다.',
             },
           ]}
         />
@@ -150,7 +152,7 @@ function ContributorGuide(): React.ReactNode {
           items={[
             { k: '요청', v: '“새 용어 요청” 버튼을 눌러 영문 용어, 한글 번역, 정의를 입력합니다.' },
             { k: '검토', v: '관리자가 표기·중복·맥락을 검토합니다.' },
-            { k: '승인', v: '관리자가 /approve 댓글을 남기면 자동화 워크플로우를 트리거합니다.' },
+            { k: '승인', v: '관리자가 /approve 댓글을 남기거나 approved 라벨을 붙이면 자동화 워크플로우를 트리거합니다.' },
             { k: '반영', v: '자동화가 데이터 파일에 새 용어를 더하고 이슈를 닫으며, 기여자를 커밋에 함께 기록합니다.' },
           ]}
         />
@@ -235,16 +237,16 @@ function AdminGuide(): React.ReactNode {
     <>
       <Section eyebrow="Review" title="이슈 검토 워크플로우">
         <P>
-          저장소 권한이 있는 관리자가 따르는 표준 절차입니다. <code>/approve</code> 댓글이 자동화 트리거이므로
+          저장소 권한이 있는 관리자가 따르는 표준 절차입니다. <code>/approve</code> 댓글과 승인 라벨이 자동화 트리거이므로
           신중히 검토해 주세요.
         </P>
 
         <SubHead>새 용어 요청 처리</SubHead>
         <Steps
           items={[
-            { k: '확인', v: <><Link href={`${REPO_URL}/issues?q=label:"새 용어 요청"`} target="_blank" rel="noopener noreferrer">새 용어 요청</Link> 라벨의 이슈를 봅니다.</> },
+            { k: '확인', v: <><Link href={NEW_TERM_ISSUES_URL} target="_blank" rel="noopener noreferrer">새 용어 요청</Link> 라벨의 이슈를 봅니다.</> },
             { k: '품질', v: '영문 용어, 한글 번역, 정의가 모두 적절한지 확인합니다.' },
-            { k: '승인', v: <><code>/approve</code> 댓글로 자동화 트리거 — 데이터 반영 + Co-authored-by 등록 + 이슈 자동 닫힘.</> },
+            { k: '승인', v: <><code>/approve</code> 댓글 또는 <code>approved</code> 라벨로 자동화 트리거 — 데이터 반영 + Co-authored-by 등록 + 이슈 자동 닫힘.</> },
             { k: '거부', v: '사유 코멘트 후 이슈를 닫습니다. 수정이 필요하면 코멘트로 안내합니다.' },
           ]}
         />
@@ -252,7 +254,7 @@ function AdminGuide(): React.ReactNode {
         <SubHead>번역 피드백 처리</SubHead>
         <Steps
           items={[
-            { k: '확인', v: <><Link href={`${REPO_URL}/issues?q=label:"용어 피드백"`} target="_blank" rel="noopener noreferrer">용어 피드백</Link> 라벨의 이슈를 봅니다.</> },
+            { k: '확인', v: <><Link href={FEEDBACK_ISSUES_URL} target="_blank" rel="noopener noreferrer">용어 피드백</Link> 라벨의 이슈를 봅니다.</> },
             { k: '초안', v: <><code>/approve</code> 댓글로 봇의 JSON 초안 코멘트를 받습니다 (이 단계에서는 데이터에 반영되지 않음).</> },
             { k: '편집', v: '필요하면 봇 코멘트를 직접 수정하거나, 새 JSON 코멘트를 추가합니다.' },
             { k: '확정', v: <><code>commit-ready</code> 라벨을 붙이면 봇의 마지막 JSON이 그대로 반영됩니다.</> },
@@ -396,7 +398,7 @@ function SubHead({ children }: { children: React.ReactNode }): React.ReactNode {
 }
 
 function P({ children }: { children: React.ReactNode }): React.ReactNode {
-  return <Typography component="p" sx={{ fontSize: 16, lineHeight: 1.75, color: 'var(--fg-1)' }}>{children}</Typography>
+  return <Typography component="p" sx={{ my: 0.75, fontSize: 16, lineHeight: 1.75, color: 'var(--fg-1)' }}>{children}</Typography>
 }
 
 function Em({ children }: { children: React.ReactNode }): React.ReactNode {
