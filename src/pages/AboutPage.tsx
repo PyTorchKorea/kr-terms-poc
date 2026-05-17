@@ -4,8 +4,18 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import AddIcon from '@mui/icons-material/Add'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import { useNavigate } from 'react-router-dom'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import LanguageIcon from '@mui/icons-material/Language'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import TwitterIcon from '@mui/icons-material/Twitter'
 import { Layout } from '../components/Layout'
-import { PARTNER_ORGS } from '../data/members'
+import {
+  MAINTAINERS,
+  ORGANIZATIONS,
+  type Member,
+  type Organization,
+  type MemberLinks,
+} from '../data/members'
 
 const REPO_URL = 'https://github.com/PyTorchKorea/kr-terms-poc'
 const NEW_TERM_URL = `${REPO_URL}/issues/new?template=new-term.yml`
@@ -217,86 +227,23 @@ function OrgSection(): React.ReactNode {
     <>
       <Section eyebrow="Operator" title="저장소 운영">
         <P>
-          <Em>파이토치 한국 사용자 모임(PyTorchKR)</Em>이 본 저장소를 운영합니다. 관리자 명단과 활동
-          이력은 GitHub Organization 페이지에서 직접 확인하실 수 있습니다. 본 페이지는 명단을 따로
-          박제하지 않고 GitHub의 최신 상태를 단일 진실 공급원으로 삼습니다.
+          본 저장소는 <Em>파이토치 한국 사용자 모임(PyTorchKR)</Em> 산하에서 운영합니다. 아래 관리자들이
+          이슈 검토와 용어 승인을 담당하며, 자동화 워크플로우가 변경 사항을 데이터 파일에 반영합니다.
+          명단은 <code>_members/</code> 디렉토리의 마크다운 파일을 단일 진실 공급원으로 삼고, 페이지는
+          빌드 시점에 그대로 카드로 옮깁니다.
         </P>
-        <UL
-          items={[
-            <>
-              관리자·활동 이력:{' '}
-              <Link href="https://github.com/orgs/PyTorchKorea/people" target="_blank" rel="noopener noreferrer">
-                github.com/orgs/PyTorchKorea/people
-              </Link>
-            </>,
-            <>
-              본 저장소 커밋 이력:{' '}
-              <Link href={`${REPO_URL}/commits/poc`} target="_blank" rel="noopener noreferrer">
-                {REPO_URL.replace(/^https?:\/\//, '')}/commits/poc
-              </Link>
-            </>,
-          ]}
-        />
       </Section>
 
-      <Section eyebrow="Channels" title="참여 채널 및 자매 프로젝트">
+      <Section eyebrow="Maintainers" title="용어집 관리자">
+        <MemberGrid members={MAINTAINERS} />
+      </Section>
+
+      <Section eyebrow="Organizations" title="참여 조직">
         <P>
-          본 프로젝트와 함께 운영하거나, 본 용어집 데이터를 활용하는 PyTorchKR 산하 채널입니다.
+          본 용어집을 함께 활용하거나 데이터·도메인 지식을 보태는 한국 AI 커뮤니티입니다. 새 조직 참여
+          제안은 <Em>아래</Em> 기여·참여 안내를 따라 주세요.
         </P>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
-            gap: 1.5,
-            mt: 1,
-          }}
-        >
-          {PARTNER_ORGS.map((org) => (
-            <Box
-              key={org.href}
-              component="a"
-              href={org.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                display: 'block',
-                textDecoration: 'none',
-                p: 2.25,
-                bgcolor: '#fff',
-                border: '1px solid var(--ptk-line-soft)',
-                transition: 'border-color 120ms ease',
-                '&:hover': { borderColor: 'var(--fg-1)' },
-              }}
-            >
-              <Box
-                sx={{
-                  fontFamily: 'var(--ff-display)',
-                  fontWeight: 700,
-                  fontSize: 16,
-                  color: 'var(--fg-1)',
-                  mb: 0.5,
-                  letterSpacing: '-0.005em',
-                }}
-              >
-                {org.name}
-              </Box>
-              <Box sx={{ fontSize: 13, color: 'var(--fg-2)', lineHeight: 1.5, mb: 1 }}>
-                {org.description}
-              </Box>
-              <Box
-                sx={{
-                  fontFamily: 'var(--ff-mono)',
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: '0.06em',
-                  color: 'var(--ptk-orange)',
-                }}
-              >
-                {org.href.replace(/^https?:\/\//, '')} →
-              </Box>
-            </Box>
-          ))}
-        </Box>
+        <OrgGrid orgs={ORGANIZATIONS} />
       </Section>
 
       <Section eyebrow="Join" title="기여·참여 방법">
@@ -349,6 +296,245 @@ function OrgSection(): React.ReactNode {
         </Box>
       </Section>
     </>
+  )
+}
+
+/* ============================================================
+   Member / Organization cards
+   ============================================================ */
+
+function MemberGrid({ members }: { members: Member[] }): React.ReactNode {
+  if (members.length === 0) return null
+  return (
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: {
+          xs: 'repeat(2, 1fr)',
+          sm: 'repeat(3, 1fr)',
+          md: 'repeat(4, 1fr)',
+        },
+        gap: 2,
+      }}
+    >
+      {members.map((m) => (
+        <PersonCard key={m.id} member={m} />
+      ))}
+    </Box>
+  )
+}
+
+function PersonCard({ member }: { member: Member }): React.ReactNode {
+  const avatar = `https://github.com/${member.id}.png?size=160`
+  const isLead = /lead/i.test(member.title)
+  return (
+    <Box
+      sx={{
+        bgcolor: '#fff',
+        border: '1px solid var(--ptk-line-soft)',
+        borderTop: isLead ? '3px solid var(--ptk-orange)' : '1px solid var(--ptk-line-soft)',
+        p: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
+        transition: 'border-color 120ms ease',
+        '&:hover': { borderColor: 'var(--fg-1)' },
+      }}
+    >
+      <Box
+        component="img"
+        src={avatar}
+        alt={member.name}
+        loading="lazy"
+        sx={{
+          width: 72,
+          height: 72,
+          borderRadius: '50%',
+          mb: 1.5,
+          bgcolor: 'var(--bg-2)',
+          objectFit: 'cover',
+        }}
+      />
+      <Box
+        sx={{
+          fontFamily: 'var(--ff-display)',
+          fontWeight: 700,
+          fontSize: 15,
+          color: 'var(--fg-1)',
+          lineHeight: 1.2,
+          mb: 0.25,
+        }}
+      >
+        {member.name}
+      </Box>
+      <Box
+        sx={{
+          fontFamily: 'var(--ff-mono)',
+          fontSize: 11,
+          fontWeight: 700,
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
+          color: isLead ? 'var(--ptk-orange)' : 'var(--fg-3)',
+          mb: 0.5,
+        }}
+      >
+        {member.title}
+      </Box>
+      {member.team && (
+        <Box
+          sx={{
+            fontSize: 12,
+            color: 'var(--fg-2)',
+            mb: 1.25,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            maxWidth: '100%',
+          }}
+          title={`팀: ${member.team}`}
+        >
+          {member.team}
+        </Box>
+      )}
+      <SocialRow links={member.links} />
+    </Box>
+  )
+}
+
+function OrgGrid({ orgs }: { orgs: Organization[] }): React.ReactNode {
+  if (orgs.length === 0) return null
+  return (
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+        gap: 2,
+        mt: 1,
+      }}
+    >
+      {orgs.map((o) => (
+        <OrgCard key={o.id} org={o} />
+      ))}
+    </Box>
+  )
+}
+
+function OrgCard({ org }: { org: Organization }): React.ReactNode {
+  const avatar = `https://github.com/${org.id}.png?size=160`
+  const primary = org.links.homepage || org.links.github
+  return (
+    <Box
+      sx={{
+        bgcolor: '#fff',
+        border: '1px solid var(--ptk-line-soft)',
+        p: 2.25,
+        display: 'flex',
+        gap: 2,
+        alignItems: 'flex-start',
+        transition: 'border-color 120ms ease',
+        '&:hover': { borderColor: 'var(--fg-1)' },
+      }}
+    >
+      <Box
+        component={primary ? 'a' : 'div'}
+        href={primary}
+        target={primary ? '_blank' : undefined}
+        rel={primary ? 'noopener noreferrer' : undefined}
+        sx={{ flexShrink: 0, display: 'block' }}
+      >
+        <Box
+          component="img"
+          src={avatar}
+          alt={org.name}
+          loading="lazy"
+          sx={{
+            width: 56,
+            height: 56,
+            bgcolor: 'var(--bg-2)',
+            border: '1px solid var(--ptk-line-soft)',
+            objectFit: 'cover',
+          }}
+        />
+      </Box>
+      <Box sx={{ minWidth: 0, flex: 1 }}>
+        <Box
+          sx={{
+            fontFamily: 'var(--ff-display)',
+            fontWeight: 700,
+            fontSize: 16,
+            color: 'var(--fg-1)',
+            letterSpacing: '-0.005em',
+            mb: 0.25,
+          }}
+        >
+          {primary ? (
+            <Link href={primary} target="_blank" rel="noopener noreferrer" underline="none" sx={{ color: 'inherit' }}>
+              {org.name}
+            </Link>
+          ) : (
+            org.name
+          )}
+        </Box>
+        {org.title && org.title !== org.name && (
+          <Box
+            sx={{
+              fontFamily: 'var(--ff-mono)',
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '0.06em',
+              color: 'var(--fg-3)',
+              textTransform: 'uppercase',
+              mb: 0.5,
+            }}
+          >
+            {org.title}
+          </Box>
+        )}
+        {org.description && (
+          <Box sx={{ fontSize: 13, color: 'var(--fg-2)', lineHeight: 1.55, mb: 1 }}>
+            {org.description}
+          </Box>
+        )}
+        <SocialRow links={org.links} />
+      </Box>
+    </Box>
+  )
+}
+
+function SocialRow({ links }: { links: MemberLinks }): React.ReactNode {
+  const entries: Array<{ href: string; label: string; icon: React.ReactNode }> = []
+  if (links.github) entries.push({ href: links.github, label: 'GitHub', icon: <GitHubIcon sx={{ fontSize: 16 }} /> })
+  if (links.linkedin) entries.push({ href: links.linkedin, label: 'LinkedIn', icon: <LinkedInIcon sx={{ fontSize: 16 }} /> })
+  if (links.twitter) entries.push({ href: links.twitter, label: 'Twitter', icon: <TwitterIcon sx={{ fontSize: 16 }} /> })
+  if (links.facebook) entries.push({ href: links.facebook, label: 'Facebook', icon: <FacebookIcon sx={{ fontSize: 16 }} /> })
+  if (links.homepage) entries.push({ href: links.homepage, label: 'Homepage', icon: <LanguageIcon sx={{ fontSize: 16 }} /> })
+  if (entries.length === 0) return null
+  return (
+    <Box sx={{ display: 'flex', gap: 0.5, mt: 'auto', flexWrap: 'wrap' }}>
+      {entries.map((e) => (
+        <Box
+          key={e.href}
+          component="a"
+          href={e.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={e.label}
+          sx={{
+            display: 'inline-grid',
+            placeItems: 'center',
+            width: 28,
+            height: 28,
+            color: 'var(--fg-3)',
+            border: '1px solid var(--ptk-line-soft)',
+            transition: 'color 120ms ease, border-color 120ms ease',
+            '&:hover': { color: 'var(--ptk-orange)', borderColor: 'var(--ptk-orange)' },
+          }}
+        >
+          {e.icon}
+        </Box>
+      ))}
+    </Box>
   )
 }
 
