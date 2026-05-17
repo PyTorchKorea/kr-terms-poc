@@ -131,6 +131,28 @@
 ::selection { background: var(--ptk-orange); color: #fff; }
 
 /* ============================================================
+   Inline code — distinct, scannable
+   ============================================================ */
+:where(p, li, h1, h2, h3, h4, h5, h6, span, div, a, strong, em, label) > code {
+  font-family: var(--ff-mono);
+  font-size: 0.88em;
+  background: rgba(238, 76, 44, 0.08);
+  color: var(--ptk-orange-press);
+  border: 1px solid rgba(238, 76, 44, 0.18);
+  padding: 1px 6px;
+  border-radius: 3px;
+  word-break: break-word;
+}
+pre code,
+pre > code {
+  background: transparent;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* ============================================================
    Editorial highlight (search match)
    ============================================================ */
 mark {
