@@ -150,17 +150,15 @@ export function HeroSection({ totalTerms, totalMeanings, query, onQueryChange }:
             <Box component="b" sx={{ color: 'var(--fg-1)', fontFamily: 'var(--ff-sans)', fontWeight: 700, mr: 1 }}>
               {totalTerms.toLocaleString()}
             </Box>
-            terms
+            용어
           </span>
           <Box component="span" sx={{ color: 'var(--ptk-line)' }}>/</Box>
           <span>
             <Box component="b" sx={{ color: 'var(--fg-1)', fontFamily: 'var(--ff-sans)', fontWeight: 700, mr: 1 }}>
               {totalMeanings.toLocaleString()}
             </Box>
-            meanings
+            의미
           </span>
-          <Box component="span" sx={{ color: 'var(--ptk-line)' }}>/</Box>
-          <span>open source · CC-BY-4.0</span>
         </Box>
       </Container>
     </Box>
