@@ -94,20 +94,48 @@ export function TermCard({ term, hasDuplicateTranslation, query }: TermCardProps
           <Box
             sx={{
               flexShrink: 0,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 0.75,
               fontFamily: 'var(--ff-mono)',
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: 700,
-              letterSpacing: '0.08em',
+              letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              color: 'var(--ptk-purple)',
-              bgcolor: 'rgba(129,44,229,0.08)',
-              px: 1,
-              py: 0.5,
-              borderRadius: '999px',
+              color: '#fff',
+              bgcolor: 'var(--ptk-purple)',
+              px: 1.25,
+              py: 0.625,
+              borderRadius: 0,
               whiteSpace: 'nowrap',
+              lineHeight: 1,
+              boxShadow: '2px 2px 0 0 rgba(129,44,229,0.18)',
             }}
+            aria-label={`다중 의미 (${term.meanings.length}개)`}
           >
-            {term.meanings.length}개 의미
+            <Box
+              component="span"
+              sx={{
+                width: 5,
+                height: 5,
+                bgcolor: '#fff',
+                borderRadius: '50%',
+                opacity: 0.95,
+              }}
+            />
+            다중 의미
+            <Box
+              component="span"
+              sx={{
+                pl: 0.75,
+                ml: 0.25,
+                borderLeft: '1px solid rgba(255,255,255,0.4)',
+                fontWeight: 700,
+                letterSpacing: '0.04em',
+              }}
+            >
+              {term.meanings.length}
+            </Box>
           </Box>
         )}
       </Box>
