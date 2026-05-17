@@ -300,7 +300,7 @@ function PageHeader({
           fontSize: { xs: 16, md: 18 },
           lineHeight: 1.65,
           color: 'var(--fg-2)',
-          maxWidth: 640,
+          width: '100%',
         }}
       >
         {lead}
