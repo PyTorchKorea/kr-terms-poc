@@ -1,23 +1,21 @@
 [
   {
-    "term": "hessian",
+    "term": "hardware-agnostic",
     "meanings": [
       {
-        "korean": "헤시안",
-        "definition": "다변수 함수의 이차 편미분으로 구성된 행렬로, 손실 함수의 곡률 정보를 제공하여 최적화에 활용됩니다.",
+        "korean": "하드웨어에 구애받지 않는",
+        "definition": "특정 하드웨어 아키텍처에 종속되지 않고 다양한 종류의 가속기(GPU, CPU, 전용 칩 등) 위에서 동일하게 동작할 수 있도록 설계된 소프트웨어/프레임워크의 성질.",
         "examples": [
           {
-            "en": "The eigenvalues of the Hessian matrix characterize the curvature of the loss landscape.",
-            "ko": "hessian 행렬의 고유값은 손실 함수 지형의 특성을 나타낸다.",
-            "source": "https://www.deeplearningbook.org/"
+            "en": "PyTorch is evolving from a research-first framework into a unified, hardware-agnostic platform for production training and inference at scale.",
+            "ko": "PyTorch는 연구 중심의 프레임워크에서, 대규모 프로덕션 학습 및 추론을 위한 통합된 하드웨어에 구애받지 않는(hardware-agnostic) 플랫폼으로 진화해 왔습니다.",
+            "source": "https://pytorch.org/blog/pytorch-2-12-release-blog/"
           }
         ],
-        "synonyms": [
-          "헤시안 행렬",
-          "헤세 행렬"
-        ]
+        "synonyms": []
       }
-    ]
+    ],
+    "issueNumber": 15
   },
   {
     "term": "held-out set",
@@ -35,6 +33,26 @@
         "synonyms": [
           "홀드아웃 세트",
           "보류 세트"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "hessian",
+    "meanings": [
+      {
+        "korean": "헤시안",
+        "definition": "다변수 함수의 이차 편미분으로 구성된 행렬로, 손실 함수의 곡률 정보를 제공하여 최적화에 활용됩니다.",
+        "examples": [
+          {
+            "en": "The eigenvalues of the Hessian matrix characterize the curvature of the loss landscape.",
+            "ko": "hessian 행렬의 고유값은 손실 함수 지형의 특성을 나타낸다.",
+            "source": "https://www.deeplearningbook.org/"
+          }
+        ],
+        "synonyms": [
+          "헤시안 행렬",
+          "헤세 행렬"
         ]
       }
     ]
