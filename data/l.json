@@ -142,25 +142,6 @@
     ]
   },
   {
-    "term": "LLM-as-a-judge",
-    "meanings": [
-      {
-        "korean": "LLM-as-a-judge",
-        "definition": "LLM을 평가자로 사용해 응답 품질이나 선호도를 판정하는 평가 방식입니다.",
-        "examples": [
-          {
-            "en": "LLM-as-a-judge can compare two generated answers using a rubric.",
-            "ko": "LLM-as-a-judge는 평가 기준에 따라 생성된 두 답변을 비교할 수 있다.",
-            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
-          }
-        ],
-        "synonyms": [
-          "LLM 평가자"
-        ]
-      }
-    ]
-  },
-  {
     "term": "linear layer",
     "meanings": [
       {
@@ -176,6 +157,25 @@
         "synonyms": [
           "선형 레이어",
           "FC 레이어"
+        ]
+      }
+    ]
+  },
+  {
+    "term": "LLM-as-a-judge",
+    "meanings": [
+      {
+        "korean": "LLM-as-a-judge",
+        "definition": "LLM을 평가자로 사용해 응답 품질이나 선호도를 판정하는 평가 방식입니다.",
+        "examples": [
+          {
+            "en": "LLM-as-a-judge can compare two generated answers using a rubric.",
+            "ko": "LLM-as-a-judge는 평가 기준에 따라 생성된 두 답변을 비교할 수 있다.",
+            "source": "https://discuss.pytorch.kr/t/deep-research-llm/6112"
+          }
+        ],
+        "synonyms": [
+          "LLM 평가자"
         ]
       }
     ]
@@ -249,5 +249,23 @@
         ]
       }
     ]
+  },
+  {
+    "term": "lowering",
+    "meanings": [
+      {
+        "korean": "저수준화",
+        "definition": "컴파일러가 고수준 표현(고수준 IR, AST, Python 함수 등)을 점진적으로 더 저수준의 표현이나 코드(예: Triton, LLVM IR, 어셈블리)로 변환하는 과정. PyTorch의 Inductor, TorchInductor, Helion 등에서 자주 등장합니다.",
+        "examples": [
+          {
+            "en": "Inductor's lowering used separate multiply and divide instructions, introducing small floating-point rounding differences compared to eager mode.",
+            "ko": "Inductor의 저수준화(lowering)가 별도의 곱셈과 나눗셈 명령을 사용하여, eager 모드와 비교했을 때 작은 부동소수점 반올림 차이가 발생했습니다.",
+            "source": "https://pytorch.org/blog/pytorch-2-12-release-blog/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 19
   }
 ]
