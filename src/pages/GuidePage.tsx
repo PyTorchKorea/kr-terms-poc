@@ -246,10 +246,31 @@ function AdminGuide(): React.ReactNode {
           items={[
             { k: '확인', v: <><Link href={NEW_TERM_ISSUES_URL} target="_blank" rel="noopener noreferrer">새 용어 요청</Link> 라벨의 이슈를 봅니다.</> },
             { k: '품질', v: '영문 용어, 한글 번역, 정의가 모두 적절한지 확인합니다.' },
+            { k: '수정', v: <>내용을 바꿔야 하면 이슈 본문을 직접 고치거나, <Em>아래 양식 그대로 댓글</Em>을 남깁니다. 본문을 덮어쓰지 않아 기여자의 원안이 그대로 보존됩니다.</> },
             { k: '승인', v: <><code>/approve</code> 댓글 또는 <code>approved</code> 라벨로 자동화 트리거 — 데이터 반영 + Co-authored-by 등록 + 이슈 자동 닫힘.</> },
-            { k: '거부', v: '사유 코멘트 후 이슈를 닫습니다. 수정이 필요하면 코멘트로 안내합니다.' },
+            { k: '거부', v: '사유 코멘트 후 이슈를 닫습니다.' },
           ]}
         />
+        <P>
+          <Em>댓글로 내용 수정하기</Em> — <code>/approve</code> 시 자동화는 가장 최근 댓글부터 거슬러 올라가며
+          아래 양식에 맞게 작성된 내용을 찾아 이슈 본문보다 우선 적용합니다. <Em>write 이상 권한</Em>을 가진 관리자가
+          남긴 댓글만 인식하므로(작성자 권한 검증), 권한 없는 사용자의 댓글은 무시됩니다. 양식에 맞는 댓글이 없으면
+          이슈 본문을 그대로 사용합니다. 아래 양식을 복사해 값만 바꿔 댓글로 붙여넣으세요. <code>### 사용 예시</code>는
+          선택 항목입니다.
+        </P>
+        <Pre>{`### 영문 용어
+retrieval-augmented generation
+
+### 제안 한글 번역
+검색 증강 생성
+
+### 정의
+외부 지식을 검색해 생성 결과를 보강하는 기법
+
+### 사용 예시
+- EN: RAG retrieves documents before generating an answer.
+- KO: RAG는 답을 생성하기 전에 문서를 검색한다.
+- 출처: https://arxiv.org/abs/2005.11401`}</Pre>
 
         <SubHead>번역 피드백 처리</SubHead>
         <Steps

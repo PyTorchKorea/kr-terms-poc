@@ -95,40 +95,96 @@ jobs:
           fi
 
       # ─── Path A: New Term (auto-commit) ───
-      - name: Parse new-term issue body
+      - name: Parse new-term spec (admin comment override → issue body)
         if: steps.detect.outputs.template == 'new-term'
         id: parse-new
         uses: actions/github-script@v7
         with:
           script: |
-            const body = context.payload.issue.body || '';
-            const sections = {};
-            let currentId = null;
+            // Maintainers (write+) can post a revised spec as a comment in the same
+            // markdown format as the issue body. On approval we scan comments
+            // newest-first and the latest complete one wins; otherwise the body is
+            // used. This preserves the contributor's original submission in the body.
+            const ALLOWED_PERMISSIONS = ['admin', 'maintain', 'write'];
 
-            for (const line of body.split('\n')) {
-              const headerMatch = line.match(/^### (.+)/);
-              if (headerMatch) {
-                const label = headerMatch[1].trim();
-                if (label.includes('영문 용어')) currentId = 'term';
-                else if (label.includes('제안 한글 번역')) currentId = 'korean';
-                else if (label.includes('정의')) currentId = 'definition';
-                else if (label.includes('사용 예시')) currentId = 'examples';
-                else currentId = null;
-              } else if (currentId) {
-                const trimmed = line.trim();
-                if (trimmed && trimmed !== '_No response_') {
-                  sections[currentId] = sections[currentId]
-                    ? sections[currentId] + '\n' + trimmed
-                    : trimmed;
+            const parseSections = (text) => {
+              const sections = {};
+              let currentId = null;
+              for (const line of (text || '').split('\n')) {
+                const headerMatch = line.match(/^###\s+(.+)/);
+                if (headerMatch) {
+                  const label = headerMatch[1].trim();
+                  if (label.includes('영문 용어')) currentId = 'term';
+                  else if (label.includes('제안 한글 번역')) currentId = 'korean';
+                  else if (label.includes('정의')) currentId = 'definition';
+                  else if (label.includes('사용 예시')) currentId = 'examples';
+                  else currentId = null;
+                } else if (currentId) {
+                  const trimmed = line.trim();
+                  if (trimmed && trimmed !== '_No response_') {
+                    sections[currentId] = sections[currentId]
+                      ? sections[currentId] + '\n' + trimmed
+                      : trimmed;
+                  }
                 }
               }
+              return sections;
+            };
+
+            const isComplete = (s) => Boolean(s.term && s.korean && s.definition);
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100
+            });
+
+            // author_association (MEMBER/COLLABORATOR) does not imply repo write
+            // access, so verify each candidate author's real permission. Cached per
+            // login; lookup failures (e.g. non-collaborators) are treated as no access.
+            const permissionCache = new Map();
+            const hasWriteAccess = async (username) => {
+              if (!username) return false;
+              if (permissionCache.has(username)) return permissionCache.get(username);
+              let permission = 'none';
+              try {
+                const res = await github.rest.repos.getCollaboratorPermissionLevel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  username
+                });
+                permission = res.data.permission;
+              } catch (error) {
+                core.info(`Could not resolve permission for @${username}: ${error.message}`);
+              }
+              const allowed = ALLOWED_PERMISSIONS.includes(permission);
+              permissionCache.set(username, allowed);
+              return allowed;
+            };
+
+            let sections = null;
+            let source = 'issue body';
+            // Newest-first: the latest complete spec from a write+ maintainer wins.
+            for (const comment of [...comments].reverse()) {
+              const parsed = parseSections(comment.body);
+              if (!isComplete(parsed)) continue;
+              if (!(await hasWriteAccess(comment.user?.login))) continue;
+              sections = parsed;
+              source = `comment by @${comment.user.login} (${comment.html_url})`;
+              break;
             }
 
-            if (!sections.term || !sections.korean || !sections.definition) {
-              core.setFailed('Missing required fields in issue body');
+            if (!sections) {
+              sections = parseSections(context.payload.issue.body || '');
+            }
+
+            if (!isComplete(sections)) {
+              core.setFailed('Missing required fields: no complete spec in the issue body or any maintainer override comment.');
               return;
             }
 
+            core.info(`Term spec source: ${source}`);
             core.setOutput('term', sections.term);
             core.setOutput('korean', sections.korean);
             core.setOutput('definition', sections.definition);
