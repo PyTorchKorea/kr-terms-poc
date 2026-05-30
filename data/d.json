@@ -218,6 +218,24 @@
     ]
   },
   {
+    "term": "device-agnostic",
+    "meanings": [
+      {
+        "korean": "장치에 구애받지 않는",
+        "definition": "특정 장치(GPU, XPU, MPS 등)의 종류에 의존하지 않고 동일한 API/인터페이스로 동작할 수 있도록 추상화된 성질. PyTorch에서는 `torch.accelerator.Graph`와 같이 백엔드 구현체 위에 통합된 추상화 계층을 제공하는 API에 주로 사용됩니다.",
+        "examples": [
+          {
+            "en": "torch.accelerator.Graph is a new device-agnostic API for graph capture and replay.",
+            "ko": "torch.accelerator.Graph는 그래프 캡처와 재생을 위한 새로운 장치에 구애받지 않는(device-agnostic) API입니다.",
+            "source": "https://pytorch.org/blog/pytorch-2-12-release-blog/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 16
+  },
+  {
     "term": "direct alignment algorithms",
     "meanings": [
       {
