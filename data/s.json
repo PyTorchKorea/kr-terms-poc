@@ -1,5 +1,23 @@
 [
   {
+    "term": "semi-structured sparsity",
+    "meanings": [
+      {
+        "korean": "반구조화 희소성",
+        "definition": "정해진 구조적 패턴(예: 4개 원소마다 2개를 0으로 두는 2:4 패턴) 안에서 가지치기를 수행하는 희소성 형태. 완전히 비정형적인 비구조화 희소성보다는 하드웨어 가속(NVIDIA Ampere+, AMD MI350X 등)에 친화적이고, 완전 구조화 희소성보다는 정확도 손실이 적습니다.",
+        "examples": [
+          {
+            "en": "hipSPARSELt is now enabled by default in PyTorch builds on ROCm >= 7.12, bringing semi-structured (2:4) sparsity support to AMD GPUs.",
+            "ko": "ROCm >= 7.12의 PyTorch 빌드에서 hipSPARSELt가 기본적으로 활성화되어, AMD GPU에 반구조화(2:4) 희소성(semi-structured sparsity) 지원이 추가되었습니다.",
+            "source": "https://pytorch.org/blog/pytorch-2-12-release-blog/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 22
+  },
+  {
     "term": "sentiment analysis",
     "meanings": [
       {
