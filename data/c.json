@@ -65,6 +65,24 @@
     ]
   },
   {
+    "term": "collective",
+    "meanings": [
+      {
+        "korean": "집합 통신",
+        "definition": "분산 학습에서 여러 프로세스(rank)가 함께 참여하여 데이터를 교환·집계하는 통신 연산. `all_reduce`, `all_gather`, `reduce_scatter`, `broadcast` 등이 대표적이며 NCCL, Gloo, MPI 등의 백엔드로 구현됩니다.",
+        "examples": [
+          {
+            "en": "All c10d functional collective ops (all_reduce, reduce_scatter, etc.) have been updated to accept both ProcessGroup objects directly and the string names.",
+            "ko": "모든 c10d 함수형 집합 통신 연산(all_reduce, reduce_scatter 등)이 ProcessGroup 객체와 문자열 이름 모두를 받을 수 있도록 업데이트되었습니다.",
+            "source": "https://pytorch.org/blog/pytorch-2-12-release-blog/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 17
+  },
+  {
     "term": "computational graph",
     "meanings": [
       {
