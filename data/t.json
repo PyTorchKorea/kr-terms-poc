@@ -107,6 +107,24 @@
     ]
   },
   {
+    "term": "tile",
+    "meanings": [
+      {
+        "korean": "타일",
+        "definition": "GPU 커널 작성에서 반복 공간(iteration space)이나 Tensor를 작은 블록 단위로 나눈 조각. 각 타일은 단일 스레드 블록이 처리하는 데이터 양을 결정하며, 레지스터 사용량·공유 메모리 요구사항·병렬성에 영향을 줍니다. 동작인 tiling은 \"타일링\"으로 표기합니다.",
+        "examples": [
+          {
+            "en": "The core language construct, hl.tile, subdivides the kernel's iteration space into tiles.",
+            "ko": "핵심 언어 구성 요소인 hl.tile은 커널의 반복 공간(iteration space)을 타일로 분할합니다.",
+            "source": "https://pytorch.org/blog/helion/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 21
+  },
+  {
     "term": "token",
     "meanings": [
       {
