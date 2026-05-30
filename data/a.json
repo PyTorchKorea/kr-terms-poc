@@ -190,5 +190,23 @@
         ]
       }
     ]
+  },
+  {
+    "term": "autotuner",
+    "meanings": [
+      {
+        "korean": "오토튜너",
+        "definition": "커널 구현 선택(블록 크기, 루프 순서, 메모리 접근 패턴, 워프 수 등)을 자동으로 탐색·벤치마킹하여 대상 하드웨어와 입력 형상에 최적인 구성을 찾는 컴파일러/런타임 컴포넌트. Triton, Helion, Inductor 등에서 사용됩니다. 동작인 autotuning은 \"오토튜닝\"으로 표기합니다.",
+        "examples": [
+          {
+            "en": "Helion's key differentiator is its automated, ahead-of-time (AOT) autotuning engine.",
+            "ko": "Helion의 핵심 차별점은 자동화된 AOT(ahead-of-time) 오토튜닝 엔진입니다.",
+            "source": "https://pytorch.org/blog/helion/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 18
   }
 ]
