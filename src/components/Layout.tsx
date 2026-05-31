@@ -82,7 +82,7 @@ export function Layout({ children }: LayoutProps): React.ReactNode {
 
             <Box sx={{ flex: 1 }} />
 
-            <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
+            <Stack direction="row" spacing={{ xs: 0.5, sm: 1.5 }} sx={{ alignItems: 'center' }}>
               <Button
                 color="inherit"
                 onClick={() => navigate('/about')}

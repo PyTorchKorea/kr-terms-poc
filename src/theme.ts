@@ -106,21 +106,34 @@ export const theme = createTheme({
           paddingLeft: 18,
           paddingRight: 18,
         },
-        containedPrimary: {
-          backgroundColor: '#EE4C2C',
-          color: '#FFFFFF',
-          '&:hover': { backgroundColor: '#D63916' },
-        },
-        outlinedPrimary: {
-          borderColor: '#CCCDD1',
-          color: '#262626',
-          '&:hover': { borderColor: '#EE4C2C', color: '#EE4C2C', backgroundColor: 'transparent' },
-        },
-        textPrimary: {
-          color: '#EE4C2C',
-          '&:hover': { color: '#D63916', backgroundColor: 'transparent', textDecoration: 'underline' },
-        },
       },
+      // MUI v9 removed the color-composed style slots (containedPrimary, …) from
+      // styleOverrides; color/variant-specific styling now uses the variants API.
+      variants: [
+        {
+          props: { variant: 'contained', color: 'primary' },
+          style: {
+            backgroundColor: '#EE4C2C',
+            color: '#FFFFFF',
+            '&:hover': { backgroundColor: '#D63916' },
+          },
+        },
+        {
+          props: { variant: 'outlined', color: 'primary' },
+          style: {
+            borderColor: '#CCCDD1',
+            color: '#262626',
+            '&:hover': { borderColor: '#EE4C2C', color: '#EE4C2C', backgroundColor: 'transparent' },
+          },
+        },
+        {
+          props: { variant: 'text', color: 'primary' },
+          style: {
+            color: '#EE4C2C',
+            '&:hover': { color: '#D63916', backgroundColor: 'transparent', textDecoration: 'underline' },
+          },
+        },
+      ],
     },
     MuiPaper: {
       styleOverrides: {
@@ -224,27 +237,27 @@ export const theme = createTheme({
           border: '1px solid',
           fontFamily: FONT_SANS,
         },
-        standardInfo: {
-          backgroundColor: '#F3F4F7',
-          borderColor: '#CCCDD1',
-          color: '#262626',
-        },
-        standardSuccess: {
-          backgroundColor: 'rgba(25,135,84,0.06)',
-          borderColor: 'rgba(25,135,84,0.4)',
-          color: '#262626',
-        },
-        standardWarning: {
-          backgroundColor: 'rgba(255,193,7,0.08)',
-          borderColor: 'rgba(255,193,7,0.5)',
-          color: '#262626',
-        },
-        standardError: {
-          backgroundColor: 'rgba(220,53,69,0.06)',
-          borderColor: 'rgba(220,53,69,0.4)',
-          color: '#262626',
-        },
       },
+      // MUI v9 removed the severity-composed style slots (standardInfo, …);
+      // these are matched through the variants API on variant + severity.
+      variants: [
+        {
+          props: { variant: 'standard', severity: 'info' },
+          style: { backgroundColor: '#F3F4F7', borderColor: '#CCCDD1', color: '#262626' },
+        },
+        {
+          props: { variant: 'standard', severity: 'success' },
+          style: { backgroundColor: 'rgba(25,135,84,0.06)', borderColor: 'rgba(25,135,84,0.4)', color: '#262626' },
+        },
+        {
+          props: { variant: 'standard', severity: 'warning' },
+          style: { backgroundColor: 'rgba(255,193,7,0.08)', borderColor: 'rgba(255,193,7,0.5)', color: '#262626' },
+        },
+        {
+          props: { variant: 'standard', severity: 'error' },
+          style: { backgroundColor: 'rgba(220,53,69,0.06)', borderColor: 'rgba(220,53,69,0.4)', color: '#262626' },
+        },
+      ],
     },
     MuiContainer: {
       styleOverrides: {
