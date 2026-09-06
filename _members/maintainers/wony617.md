@@ -1,11 +1,11 @@
 ---
 role: maintainer
 joined: 202608
-_id: wony617
+_id: Jwaminju
 name: 좌민주
 title: Maintainer
 team: @Term
-link_github: https://github.com/wony617
+link_github: https://github.com/Jwaminju
 link_linkedin: https://www.linkedin.com/in/min-ju-jwa-585875201/
 link_twitter:
 link_facebook:
