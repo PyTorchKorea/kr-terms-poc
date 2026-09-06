@@ -25,6 +25,18 @@
     ]
   },
   {
+    "term": "GEMM",
+    "meanings": [
+      {
+        "korean": "GEMM",
+        "definition": "General Matrix Multiply(일반 행렬 곱). 통상 번역하지 않고 그대로 사용.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 36
+  },
+  {
     "term": "generative model",
     "meanings": [
       {
@@ -48,6 +60,18 @@
         ]
       }
     ]
+  },
+  {
+    "term": "global memory",
+    "meanings": [
+      {
+        "korean": "전역 메모리",
+        "definition": "GPU의 느린 대용량 메모리(DRAM). 융합으로 접근 횟수를 줄이는 대상.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 32
   },
   {
     "term": "gradient",

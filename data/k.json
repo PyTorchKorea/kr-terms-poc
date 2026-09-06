@@ -45,6 +45,30 @@
     ]
   },
   {
+    "term": "kernel fusion",
+    "meanings": [
+      {
+        "korean": "커널 융합",
+        "definition": "서로 의존하는 연산들을 단일 커널로 결합해 메모리 이동과 커널 실행 오버헤드를 줄이는 기법.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 26
+  },
+  {
+    "term": "kernel launch",
+    "meanings": [
+      {
+        "korean": "커널 실행",
+        "definition": "GPU에서 커널을 시작하는 동작. 매 실행마다 고정 오버헤드가 발생.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 35
+  },
+  {
     "term": "knowledge distillation",
     "meanings": [
       {

@@ -53,5 +53,17 @@
         ]
       }
     ]
+  },
+  {
+    "term": "vertical fusion",
+    "meanings": [
+      {
+        "korean": "수직 융합",
+        "definition": "한 연산의 출력이 다음 연산의 입력이 되는 연쇄 연산을 하나의 커널로 결합하는 융합.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 27
   }
 ]

@@ -1,5 +1,23 @@
 [
   {
+    "term": "race condition",
+    "meanings": [
+      {
+        "korean": "경쟁 조건",
+        "definition": "여러 스레드/프로세스가 공유 자원에 동시에 접근할 때, 실행 순서나 타이밍에 따라 결과가 달라지는 버그. 분산 학습이나 멀티스레드 환경에서 자주 발생하며, 무한 루프·교착 상태·결과 비결정성 등의 문제로 이어질 수 있습니다.",
+        "examples": [
+          {
+            "en": "A race condition that could cause an infinite loop when multiple process groups concurrently accessed the FlightRecorder singleton was also fixed in this cycle.",
+            "ko": "이번 사이클에서는 여러 프로세스 그룹이 FlightRecorder 싱글톤에 동시 접근할 때 무한 루프를 일으킬 수 있던 경쟁 조건(race condition)도 수정되었습니다.",
+            "source": "https://pytorch.org/blog/pytorch-2-12-release-blog/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 23
+  },
+  {
     "term": "recall",
     "meanings": [
       {
@@ -48,6 +66,24 @@
         ]
       }
     ]
+  },
+  {
+    "term": "reduction",
+    "meanings": [
+      {
+        "korean": "리덕션",
+        "definition": "Tensor의 한 차원(또는 여러 차원)을 따라 값을 누적하여 단일 값/축약된 Tensor를 생성하는 연산. 합계(sum), 평균(mean), 최댓값(max), softmax의 정규화 단계 등이 해당합니다. 커널·컴파일러 문맥에서 \"축약\"보다 \"리덕션\" 음차가 통용됩니다.",
+        "examples": [
+          {
+            "en": "When performing a reduction (e.g., sum() over a tensor dimension), a persistent reduction processes the entire reduction dimension for a single tile.",
+            "ko": "리덕션(예: Tensor 차원에 대한 sum()) 수행 시, 영속적 리덕션(persistent reduction)은 단일 타일에 대한 전체 리덕션 차원을 처리합니다.",
+            "source": "https://pytorch.org/blog/helion/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 20
   },
   {
     "term": "regularization",

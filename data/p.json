@@ -49,6 +49,18 @@
     ]
   },
   {
+    "term": "pointwise fusion",
+    "meanings": [
+      {
+        "korean": "점별 융합",
+        "definition": "원소별(pointwise) 연산들을 결합하는 수직 융합의 한 형태. pointwise는 '점별'로 옮김.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 29
+  },
+  {
     "term": "policy gradient",
     "meanings": [
       {
@@ -212,6 +224,18 @@
         ]
       }
     ]
+  },
+  {
+    "term": "prologue fusion",
+    "meanings": [
+      {
+        "korean": "프롤로그 융합",
+        "definition": "데이터를 불러오는 동안 전처리(정규화 등)를 수행하는, 에필로그 융합의 반대 형태.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 31
   },
   {
     "term": "prompt",

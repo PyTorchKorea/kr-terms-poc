@@ -128,6 +128,18 @@
     ]
   },
   {
+    "term": "epilogue fusion",
+    "meanings": [
+      {
+        "korean": "에필로그 융합",
+        "definition": "GEMM 등 무거운 연산 뒤에 이어지는 간단한 연산(편향 덧셈, 활성화 등)을 같은 커널에 붙이는 융합.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 30
+  },
+  {
     "term": "epoch",
     "meanings": [
       {

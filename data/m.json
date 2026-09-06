@@ -78,6 +78,30 @@
     ]
   },
   {
+    "term": "memory bandwidth",
+    "meanings": [
+      {
+        "korean": "메모리 대역폭",
+        "definition": "단위 시간당 메모리에서 읽고 쓸 수 있는 데이터의 양.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 33
+  },
+  {
+    "term": "memory traffic",
+    "meanings": [
+      {
+        "korean": "메모리 트래픽",
+        "definition": "연산 수행 중 발생하는 메모리 읽기/쓰기의 총량.",
+        "examples": [],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 34
+  },
+  {
     "term": "mean-squared error",
     "meanings": [
       {
@@ -139,6 +163,24 @@
         ]
       }
     ]
+  },
+  {
+    "term": "Microscaling",
+    "meanings": [
+      {
+        "korean": "마이크로스케일링",
+        "definition": "OCP(Open Compute Project)에서 표준화한 저비트 양자화 형식 계열의 총칭. 블록 단위로 공유되는 스케일 지수(shared block-scale exponent, 일반적으로 float8_e8m0fnu)를 사용하여 메모리·연산 비용을 크게 줄이면서도 정확도를 유지합니다. MXFP4, MXFP6, MXFP8 등이 있습니다.",
+        "examples": [
+          {
+            "en": "torch.export.save now supports Microscaling (MX) quantization formats, enabling full export of aggressively compressed models.",
+            "ko": "torch.export.save가 마이크로스케일링(Microscaling, MX) 양자화 형식을 지원하여, 공격적으로 압축된 모델의 완전한 내보내기(export)가 가능합니다.",
+            "source": "https://pytorch.org/blog/pytorch-2-12-release-blog/"
+          }
+        ],
+        "synonyms": []
+      }
+    ],
+    "issueNumber": 24
   },
   {
     "term": "mixed precision",
