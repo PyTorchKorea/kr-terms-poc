@@ -25,6 +25,9 @@ export async function loadAllTerms(): Promise<Term[]> {
 
     return [...allTerms].sort((a, b) => a.term.localeCompare(b.term))
   } catch (error) {
-    throw new Error(`Failed to load terms: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    throw new Error(
+      `Failed to load terms: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      { cause: error }
+    )
   }
 }
