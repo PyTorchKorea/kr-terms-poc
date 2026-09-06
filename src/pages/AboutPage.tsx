@@ -125,24 +125,24 @@ function ProjectIntro(): React.ReactNode {
             <code>data/</code> 디렉토리
           </Link>{' '}
           아래 알파벳별 JSON 파일에 들어 있습니다. 빌드 과정이 이 파일들을 정적 사이트와 함께{' '}
-          <code>poc.terms.kr/data/</code> 경로에 올립니다.
+          <code>terms.kr/data/</code> 경로에 올립니다.
         </P>
         <UL
           items={[
             <>
-              <Link href="https://poc.terms.kr/data/index.json" target="_blank" rel="noopener noreferrer">
+              <Link href="https://terms.kr/data/index.json" target="_blank" rel="noopener noreferrer">
                 <code>/data/index.json</code>
               </Link>
               : 수록한 알파벳 파일 목록
             </>,
             <>
-              <Link href="https://poc.terms.kr/data/a.json" target="_blank" rel="noopener noreferrer">
+              <Link href="https://terms.kr/data/a.json" target="_blank" rel="noopener noreferrer">
                 <code>/data/&#123;a-z&#125;.json</code>
               </Link>
               : 알파벳별 용어 배열 (병렬 fetch)
             </>,
             <>
-              <Link href="https://poc.terms.kr/llms.txt" target="_blank" rel="noopener noreferrer">
+              <Link href="https://terms.kr/llms.txt" target="_blank" rel="noopener noreferrer">
                 <code>/llms.txt</code>
               </Link>
               : <Link href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer">llmstxt.org</Link> 표준 LLM 안내 파일

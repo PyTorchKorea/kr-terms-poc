@@ -1,13 +1,13 @@
-export const REPO_URL = 'https://github.com/PyTorchKorea/kr-terms-poc'
+export const REPO_URL = 'https://github.com/PyTorchKR/terms-kr'
 export const CONTACT_EMAIL = 'contact@terms.kr'
 
 export const NEW_TERM_URL = createIssueUrl('new-term.yml')
 export const FEEDBACK_URL = createIssueUrl('term-feedback.yml')
 export const ORGANIZATION_JOIN_URL = createIssueUrl('organization-join.yml')
 
-export const DATA_TREE_URL = `${REPO_URL}/tree/poc/data`
+export const DATA_TREE_URL = `${REPO_URL}/tree/main/data`
 export const ISSUES_URL = `${REPO_URL}/issues`
-export const LICENSE_URL = `${REPO_URL}/blob/poc/LICENSE`
+export const LICENSE_URL = `${REPO_URL}/blob/main/LICENSE`
 export const NEW_TERM_ISSUES_URL = `${REPO_URL}/issues?q=label:"새 용어 요청"`
 export const FEEDBACK_ISSUES_URL = `${REPO_URL}/issues?q=label:"용어 피드백"`
 

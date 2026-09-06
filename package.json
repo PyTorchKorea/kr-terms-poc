@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PyTorchKorea/kr-terms-poc"
+    "url": "https://github.com/PyTorchKR/terms-kr"
   },
   "type": "module",
   "packageManager": "npm@11.12.1",

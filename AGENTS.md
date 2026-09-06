@@ -6,7 +6,7 @@ This file provides guidance to AI coding agents working in this repository.
 
 AI/ML 용어집 - 빠르게 변화하는 AI/ML 분야의 용어를 표준화하여 사람과 AI 번역 도구 모두가 일관된 한국어 번역을 사용할 수 있도록 하는 오픈소스 프로젝트. 파이토치 한국 사용자 모임(PyTorchKR) 운영. 현재 PoC 단계이며, 수록된 용어 데이터는 AI 생성 초안.
 
-**Repository**: `PyTorchKorea/kr-terms-poc` (branch: `poc`)
+**Repository**: `PyTorchKR/terms-kr` (branch: `main`)
 
 ## Commands
 
@@ -24,7 +24,7 @@ No test framework is configured. Validation runs in CI via inline Node script in
 
 Static SPA for AI/ML Korean terminology glossary. No backend; all data is JSON fetched at runtime.
 
-**Stack**: React 19 + TypeScript + Vite + MUI v7, deployed to GitHub Pages (`poc.terms.kr`).
+**Stack**: React 19 + TypeScript + Vite + MUI v7, deployed to GitHub Pages (`terms.kr`).
 
 **Routing** (`App.tsx`): HashRouter with lazy-loaded pages.
 - `/` -> `SearchPage` (search + alphabet filter)
@@ -85,21 +85,21 @@ interface Term {
 
 ## CI/CD
 
-`.github/workflows/deploy.yml`: On push to `poc`, validates term data -> builds -> deploys to GitHub Pages. The validation step checks all JSON files for required fields, TermExample structure, and optional field types (`issueNumber`, `notes`).
+`.github/workflows/deploy.yml`: On push to `main`, validates term data -> builds -> deploys to GitHub Pages. The validation step checks all JSON files for required fields, TermExample structure, and optional field types (`issueNumber`, `notes`).
 
 `.github/workflows/term-coauthor.yml`: Co-author workflow (see above).
 
 ## LLM Integration
 
-- `public/llms.txt`: [llmstxt.org](https://llmstxt.org/) standard guidance file for LLMs. Includes project overview, links to all data files, and data structure documentation. Available at `poc.terms.kr/llms.txt` after deployment.
-- JSON data is discoverable via `poc.terms.kr/data/index.json`, with each alphabet file accessible directly.
+- `public/llms.txt`: [llmstxt.org](https://llmstxt.org/) standard guidance file for LLMs. Includes project overview, links to all data files, and data structure documentation. Available at `terms.kr/llms.txt` after deployment.
+- JSON data is discoverable via `terms.kr/data/index.json`, with each alphabet file accessible directly.
 
 ## Branding
 
 - Project name: "AI/ML 용어집"
 - Organization: "파이토치 한국 사용자 모임" (full) / "PyTorchKR" (short)
 - Theme primary: `#ee4c2c` (PyTorch orange-red), secondary: `#262626`
-- Domain: `poc.terms.kr`
+- Domain: `terms.kr`
 
 ## Security
 

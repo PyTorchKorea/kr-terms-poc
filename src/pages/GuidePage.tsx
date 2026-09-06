@@ -70,10 +70,10 @@ function UserGuide(): React.ReactNode {
 
       <Section eyebrow="API" title="JSON 데이터로 직접 조회">
         <P>웹 UI를 거치지 않고도 같은 데이터를 자동화·LLM 파이프라인에 그대로 가져다 쓸 수 있습니다.</P>
-        <Pre>{`$ curl -s https://poc.terms.kr/data/index.json
+        <Pre>{`$ curl -s https://terms.kr/data/index.json
 ["a.json", "b.json", ..., "w.json"]
 
-$ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attention")'
+$ curl -s https://terms.kr/data/a.json | jq '.[] | select(.term == "attention")'
 {
   "term": "attention",
   "meanings": [
@@ -88,7 +88,7 @@ $ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attentio
         <P>
           전체 데이터셋은{' '}
           <Link href={DATA_TREE_URL} target="_blank" rel="noopener noreferrer">
-            <code>poc/data/</code>
+            <code>data/</code>
           </Link>{' '}
           에서 직접 보거나 저장소를 <code>git clone</code>하여 받을 수 있습니다.
         </P>
@@ -96,7 +96,7 @@ $ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attentio
 
       <Section eyebrow="LLM" title="LLM 번역 도구에 연결">
         <P>
-          <Link href="https://poc.terms.kr/llms.txt" target="_blank" rel="noopener noreferrer">
+          <Link href="https://terms.kr/llms.txt" target="_blank" rel="noopener noreferrer">
             <code>llms.txt</code>
           </Link>
           는 LLM이 본 용어집의 구조와 데이터 위치를 자동으로 파악하도록 만든 파일입니다. 번역
@@ -104,9 +104,9 @@ $ curl -s https://poc.terms.kr/data/a.json | jq '.[] | select(.term == "attentio
         </P>
         <Pre>{`# 시스템 프롬프트 예시
 한국어로 번역할 때는 다음 표준을 따르세요:
-- 영어 용어: https://poc.terms.kr/data/{letter}.json
-- 인덱스:    https://poc.terms.kr/data/index.json
-- 규약:      https://poc.terms.kr/llms.txt`}</Pre>
+- 영어 용어: https://terms.kr/data/{letter}.json
+- 인덱스:    https://terms.kr/data/index.json
+- 규약:      https://terms.kr/llms.txt`}</Pre>
       </Section>
 
       <Section eyebrow="FAQ" title="자주 묻는 질문">

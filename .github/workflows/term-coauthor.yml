@@ -74,7 +74,7 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          ref: poc
+          ref: main
 
       - uses: actions/setup-node@v4
         with:
@@ -223,7 +223,7 @@ jobs:
           Co-authored-by: ${AUTHOR_NAME} <${AUTHOR_ID}+${AUTHOR_NAME}@users.noreply.github.com>
           EOF
           )"
-          git push origin poc
+          git push origin main
 
       - name: Close issue with success comment (new-term)
         if: steps.detect.outputs.template == 'new-term'
@@ -347,7 +347,7 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          ref: poc
+          ref: main
 
       - uses: actions/setup-node@v4
         with:
@@ -415,7 +415,7 @@ jobs:
           Co-authored-by: ${AUTHOR_NAME} <${AUTHOR_ID}+${AUTHOR_NAME}@users.noreply.github.com>
           EOF
           )"
-          git push origin poc
+          git push origin main
 
       - name: Close issue
         uses: actions/github-script@v7

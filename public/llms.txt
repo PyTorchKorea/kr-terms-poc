@@ -10,29 +10,29 @@
 
 용어 데이터는 알파벳별 JSON 파일로 제공됩니다. 각 용어는 영어 원문(term), 한국어 번역(korean), 정의(definition), 예시(examples), 유의어(synonyms)를 포함합니다.
 
-- [파일 목록 (index.json)](https://poc.terms.kr/data/index.json): 전체 알파벳별 JSON 파일 목록
-- [A](https://poc.terms.kr/data/a.json): attention, agent, activation function, adversarial example, anchor box, all-reduce, autograd
-- [B](https://poc.terms.kr/data/b.json): B로 시작하는 용어
-- [C](https://poc.terms.kr/data/c.json): C로 시작하는 용어
-- [D](https://poc.terms.kr/data/d.json): D로 시작하는 용어
-- [E](https://poc.terms.kr/data/e.json): E로 시작하는 용어
-- [F](https://poc.terms.kr/data/f.json): F로 시작하는 용어
-- [G](https://poc.terms.kr/data/g.json): G로 시작하는 용어
-- [H](https://poc.terms.kr/data/h.json): H로 시작하는 용어
-- [I](https://poc.terms.kr/data/i.json): I로 시작하는 용어
-- [K](https://poc.terms.kr/data/k.json): K로 시작하는 용어
-- [L](https://poc.terms.kr/data/l.json): L로 시작하는 용어
-- [M](https://poc.terms.kr/data/m.json): M로 시작하는 용어
-- [N](https://poc.terms.kr/data/n.json): N으로 시작하는 용어
-- [O](https://poc.terms.kr/data/o.json): O로 시작하는 용어
-- [P](https://poc.terms.kr/data/p.json): P로 시작하는 용어
-- [Q](https://poc.terms.kr/data/q.json): Q로 시작하는 용어
-- [R](https://poc.terms.kr/data/r.json): R로 시작하는 용어
-- [S](https://poc.terms.kr/data/s.json): S로 시작하는 용어
-- [T](https://poc.terms.kr/data/t.json): T로 시작하는 용어
-- [U](https://poc.terms.kr/data/u.json): U로 시작하는 용어
-- [V](https://poc.terms.kr/data/v.json): V로 시작하는 용어
-- [W](https://poc.terms.kr/data/w.json): W로 시작하는 용어
+- [파일 목록 (index.json)](https://terms.kr/data/index.json): 전체 알파벳별 JSON 파일 목록
+- [A](https://terms.kr/data/a.json): attention, agent, activation function, adversarial example, anchor box, all-reduce, autograd
+- [B](https://terms.kr/data/b.json): B로 시작하는 용어
+- [C](https://terms.kr/data/c.json): C로 시작하는 용어
+- [D](https://terms.kr/data/d.json): D로 시작하는 용어
+- [E](https://terms.kr/data/e.json): E로 시작하는 용어
+- [F](https://terms.kr/data/f.json): F로 시작하는 용어
+- [G](https://terms.kr/data/g.json): G로 시작하는 용어
+- [H](https://terms.kr/data/h.json): H로 시작하는 용어
+- [I](https://terms.kr/data/i.json): I로 시작하는 용어
+- [K](https://terms.kr/data/k.json): K로 시작하는 용어
+- [L](https://terms.kr/data/l.json): L로 시작하는 용어
+- [M](https://terms.kr/data/m.json): M로 시작하는 용어
+- [N](https://terms.kr/data/n.json): N으로 시작하는 용어
+- [O](https://terms.kr/data/o.json): O로 시작하는 용어
+- [P](https://terms.kr/data/p.json): P로 시작하는 용어
+- [Q](https://terms.kr/data/q.json): Q로 시작하는 용어
+- [R](https://terms.kr/data/r.json): R로 시작하는 용어
+- [S](https://terms.kr/data/s.json): S로 시작하는 용어
+- [T](https://terms.kr/data/t.json): T로 시작하는 용어
+- [U](https://terms.kr/data/u.json): U로 시작하는 용어
+- [V](https://terms.kr/data/v.json): V로 시작하는 용어
+- [W](https://terms.kr/data/w.json): W로 시작하는 용어
 
 ## 데이터 구조
 
@@ -57,11 +57,11 @@
 
 ## 기여
 
-- [GitHub 저장소](https://github.com/PyTorchKorea/kr-terms-poc)
-- [기여 가이드](https://github.com/PyTorchKorea/kr-terms-poc/blob/poc/CONTRIBUTING.md)
-- [새 용어 요청](https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=new-term.yml)
-- [용어 피드백](https://github.com/PyTorchKorea/kr-terms-poc/issues/new?template=term-feedback.yml)
+- [GitHub 저장소](https://github.com/PyTorchKR/terms-kr)
+- [기여 가이드](https://github.com/PyTorchKR/terms-kr/blob/main/CONTRIBUTING.md)
+- [새 용어 요청](https://github.com/PyTorchKR/terms-kr/issues/new?template=new-term.yml)
+- [용어 피드백](https://github.com/PyTorchKR/terms-kr/issues/new?template=term-feedback.yml)
 
 ## Optional
 
-- [프로젝트 소개 페이지](https://poc.terms.kr/#/about): 사용 방법, 데이터 구조, 기여 방법 안내
+- [프로젝트 소개 페이지](https://terms.kr/#/about): 사용 방법, 데이터 구조, 기여 방법 안내
